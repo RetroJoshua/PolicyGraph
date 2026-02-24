@@ -2,7 +2,7 @@
   <img src="docs/assets/logo.png" alt="IAMGuard Logo" width="200"/>
 </p>
 
-<h1 align="center">IAMGuard</h1>
+<h1 align="center">PolicyGraph</h1>
 
 <p align="center">
   <strong>Graph Neural Networks for IAM Policy Security Analysis</strong>
