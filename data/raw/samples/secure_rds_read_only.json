@@ -3,7 +3,10 @@
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": "sts:GetSessionToken",
+      "Action": [
+        "rds:Describe*",
+        "rds:ListTagsForResource"
+      ],
       "Resource": "*"
     }
   ]

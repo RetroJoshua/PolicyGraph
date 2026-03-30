@@ -4,12 +4,10 @@
     {
       "Effect": "Allow",
       "Action": [
+        "cloudformation:UpdateStack",
         "cloudformation:DescribeStacks",
         "cloudformation:DescribeStackEvents",
-        "cloudformation:DescribeStackResources",
-        "cloudformation:GetTemplate",
-        "cloudformation:ListStacks",
-        "cloudformation:ListStackResources"
+        "cloudformation:GetTemplate"
       ],
       "Resource": "*"
     }

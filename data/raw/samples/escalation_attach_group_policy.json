@@ -3,8 +3,8 @@
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": "sts:GetSessionToken",
-      "Resource": "*"
+      "Action": "iam:AttachGroupPolicy",
+      "Resource": "arn:aws:iam::*:group/*"
     }
   ]
 }

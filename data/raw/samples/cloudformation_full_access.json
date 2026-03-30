@@ -3,7 +3,7 @@
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": "sts:GetSessionToken",
+      "Action": "cloudformation:*",
       "Resource": "*"
     }
   ]

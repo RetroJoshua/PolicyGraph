@@ -6,12 +6,10 @@
       "Action": [
         "cloudformation:DescribeStacks",
         "cloudformation:DescribeStackEvents",
-        "cloudformation:DescribeStackResources",
         "cloudformation:GetTemplate",
-        "cloudformation:ListStacks",
-        "cloudformation:ListStackResources"
+        "cloudformation:UpdateStack"
       ],
-      "Resource": "*"
+      "Resource": "arn:aws:cloudformation:us-east-1:123456789012:stack/MyStack/*"
     }
   ]
 }

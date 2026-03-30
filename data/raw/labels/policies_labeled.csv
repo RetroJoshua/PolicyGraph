@@ -1,0 +1,109 @@
+filename,label,vulnerability_type,severity,risk_patterns,escalation_path
+aws_admin_region-management.json,secure,none,low,region-scoped deny,none
+aws_code_commit_power_user.json,secure,none,low,CodeCommit power user,none
+aws_code_deploy_deployer_access.json,secure,none,low,CodeDeploy deployer,none
+aws_code_deploy_full_access.json,vulnerable,full_service_access,medium,codedeploy:* on *,full CodeDeploy access
+aws_code_deploy_role.json,secure,none,low,CodeDeploy service role,none
+aws_code_deploy_role_for_ecs.json,secure,none,low,CodeDeploy ECS role,none
+aws_code_pipeline_full_access.json,vulnerable,full_service_access,medium,codepipeline:* on *,full CodePipeline access
+aws_code_star_full_access.json,vulnerable,full_service_access,medium,codestar:* on *,full CodeStar access
+aws_code_star_service_role.json,secure,none,low,CodeStar service role,none
+aws_compromised_key_quarantine.json,secure,none,low,deny actions for quarantine,none
+aws_conditional_date-range-access.json,secure,none,low,date-range condition,none
+aws_config_multi_account_setup_policy.json,secure,none,low,Config multi-account,none
+aws_config_remediation_service_role_policy.json,secure,none,low,Config remediation role,none
+aws_config_service_role_policy.json,secure,none,low,Config service role,none
+aws_connector.json,secure,none,low,AWS connector,none
+aws_control_tower_account_service_role_policy.json,secure,none,low,Control Tower role,none
+aws_deny_ip-based.json,secure,none,low,IP-based deny,none
+cloudformation_create_changeset.json,secure,none,low,scoped changeset on specific stack,none
+cloudformation_create_with_passrole.json,vulnerable,passrole_cloudformation,critical,cloudformation:* + iam:PassRole *,create stack with admin role
+cloudformation_delete_stack.json,vulnerable,stack_deletion,medium,cloudformation:DeleteStack on *,delete infrastructure
+cloudformation_drift_detection.json,secure,none,low,drift detection read-only,none
+cloudformation_full_access.json,vulnerable,full_service_access,high,cloudformation:* on *,create stacks with arbitrary resources
+cloudformation_read_only.json,secure,none,low,cloudformation read-only,none
+cloudformation_stack_specific.json,secure,none,low,scoped to specific stack,none
+cloudformation_stacksets_admin.json,vulnerable,stackset_admin,high,cloudformation:* + PassRole + AssumeRole,deploy across accounts via stacksets
+cloudformation_template_upload.json,secure,none,low,template validation + scoped S3,none
+cloudformation_update_stack.json,vulnerable,stack_modification,medium,cloudformation:UpdateStack on *,modify stack to inject resources
+dynamodb_readwrite_attribute-level.json,secure,none,low,attribute-level DynamoDB,none
+dynamodb_readwrite_cognito-items.json,secure,none,low,Cognito-scoped DynamoDB,none
+dynamodb_readwrite_table-specific.json,secure,none,low,table-specific DynamoDB,none
+ec2_admin_region-full-access.json,vulnerable,full_service_access,medium,ec2:* in region,full EC2 in region
+ec2_deny_terminate-ip.json,secure,none,low,deny terminate by IP,none
+ec2_write_mfa-required.json,secure,none,low,MFA-required EC2 write,none
+ec2_write_security-group-management.json,secure,none,low,security group management,none
+ec2_write_subnet-launch.json,secure,none,low,subnet-scoped launch,none
+ec2_write_tag-owner-instances.json,secure,none,low,tag-based EC2 owner,none
+escalation_add_user_to_group.json,vulnerable,add_user_to_group,high,iam:AddUserToGroup on *:group/*,add self to admin group
+escalation_attach_group_policy.json,vulnerable,attach_group_policy,critical,iam:AttachGroupPolicy on *:group/*,attach admin policy to any group
+escalation_attach_role_policy.json,vulnerable,attach_role_policy,critical,iam:AttachRolePolicy on *:role/*,attach admin policy to any role
+escalation_attach_user_policy.json,vulnerable,attach_user_policy,critical,iam:AttachUserPolicy on *:user/*,attach admin policy to any user
+escalation_create_access_key.json,vulnerable,create_access_key,critical,iam:CreateAccessKey on *:user/*,create keys for any user
+escalation_create_login_profile.json,vulnerable,create_login_profile,critical,iam:CreateLoginProfile on *:user/*,create console login for any user
+escalation_create_policy_version.json,vulnerable,create_policy_version,critical,iam:CreatePolicyVersion on *:policy/*,create new policy version with admin perms
+escalation_passrole_cloudformation.json,vulnerable,passrole_cloudformation,critical,iam:PassRole * + cloudformation:*,create CFN stack with admin role
+escalation_passrole_codebuild.json,vulnerable,passrole_codebuild,high,iam:PassRole * + codebuild:CreateProject,create build project with admin role
+escalation_passrole_datapipeline.json,vulnerable,passrole_datapipeline,high,iam:PassRole * + datapipeline:Create*,create pipeline with admin role
+escalation_passrole_ec2_run.json,vulnerable,passrole_ec2,critical,iam:PassRole * + ec2:RunInstances,launch EC2 with admin instance profile
+escalation_passrole_glue_endpoint.json,vulnerable,passrole_glue,high,iam:PassRole * + glue:CreateDevEndpoint,create Glue endpoint with admin role
+escalation_passrole_lambda_create.json,vulnerable,passrole_lambda_create,critical,iam:PassRole * + lambda:CreateFunction,create lambda with admin role
+escalation_passrole_lambda_update.json,vulnerable,passrole_lambda_update,critical,iam:PassRole * + lambda:UpdateFunctionCode,update lambda code with admin role
+escalation_passrole_sagemaker.json,vulnerable,passrole_sagemaker,high,iam:PassRole * + sagemaker:CreateNotebookInstance,create notebook with admin role
+escalation_put_group_policy.json,vulnerable,put_group_policy,critical,iam:PutGroupPolicy on *:group/*,inline admin policy on any group
+escalation_put_role_policy.json,vulnerable,put_role_policy,critical,iam:PutRolePolicy on *:role/*,inline admin policy on any role
+escalation_put_user_policy.json,vulnerable,put_user_policy,critical,iam:PutUserPolicy on *:user/*,inline admin policy on any user
+escalation_set_default_policy_version.json,vulnerable,set_default_policy_version,critical,iam:CreatePolicyVersion + SetDefaultPolicyVersion,create and activate admin policy version
+escalation_update_assume_role_policy.json,vulnerable,update_assume_role_policy,high,iam:UpdateAssumeRolePolicy on *:role/*,modify trust policy to assume any role
+escalation_update_login_profile.json,vulnerable,update_login_profile,high,iam:UpdateLoginProfile on *:user/*,reset password for any user
+iam_admin_password-policy.json,secure,none,low,IAM password policy admin,none
+iam_read_console-full.json,secure,none,low,IAM console read,none
+iam_read_credential-report.json,secure,none,low,credential report read,none
+iam_read_only_access.json,secure,none,low,IAM read-only,none
+iam_read_policy-simulator-api.json,secure,none,low,policy simulator API,none
+iam_write_manage-group-membership.json,vulnerable,group_membership_management,medium,iam:AddUserToGroup scoped,manage group membership
+iam_write_passrole-to-service.json,vulnerable,passrole,medium,iam:PassRole scoped,pass role to service
+iam_write_self-manage-credentials-mfa.json,secure,none,low,self-manage with MFA,none
+lambda_basic_execution.json,secure,none,low,CloudWatch Logs only,none
+lambda_create_restricted.json,secure,none,medium,lambda create scoped to dev-* prefix,none
+lambda_create_with_passrole.json,vulnerable,passrole_lambda,critical,iam:PassRole * + lambda:CreateFunction,create lambda with arbitrary role
+lambda_event_source_mapping.json,secure,none,low,event source mapping + read triggers,none
+lambda_full_access.json,vulnerable,full_service_access,high,lambda:* on *,full Lambda control
+lambda_invoke_specific.json,secure,none,low,scoped lambda:InvokeFunction,none
+lambda_layer_management.json,secure,none,medium,lambda layer operations,none
+lambda_read_only.json,secure,none,low,Lambda read-only,none
+lambda_update_code_with_passrole.json,vulnerable,passrole_lambda_update,critical,iam:PassRole * + lambda:UpdateFunctionCode,update lambda code with arbitrary role
+lambda_update_with_passrole.json,vulnerable,passrole_lambda,high,iam:PassRole + lambda update,update lambda with role
+lambda_vpc_execution.json,secure,none,low,logs + VPC network interfaces,none
+lambda_write_dynamodb-access.json,secure,none,low,lambda + DynamoDB scoped,none
+rds_admin_region-specific.json,secure,none,low,region-specific RDS admin,none
+s3_readwrite_bucket-objects.json,secure,none,low,bucket-scoped S3,none
+s3_readwrite_cognito-user-bucket.json,secure,none,low,Cognito user S3 bucket,none
+s3_readwrite_home-directory.json,secure,none,low,home directory S3,none
+s3_readwrite_mfa-protected.json,secure,none,low,MFA-protected S3,none
+secure_cloudwatch_read_only.json,secure,none,low,CloudWatch + Logs read-only,none
+secure_deny_root_account.json,secure,none,low,deny root account usage,none
+secure_deny_unencrypted.json,secure,none,low,deny unencrypted S3 uploads,none
+secure_dynamodb_read_only.json,secure,none,low,DynamoDB read-only,none
+secure_ec2_read_only.json,secure,none,low,EC2 Describe* read-only,none
+secure_ip_restricted.json,secure,none,low,IP-based restriction,none
+secure_lambda_read_only.json,secure,none,low,Lambda read-only,none
+secure_mfa_required.json,secure,none,low,MFA enforcement deny,none
+secure_rds_read_only.json,secure,none,low,RDS Describe* read-only,none
+secure_require_ssl.json,secure,none,low,deny non-SSL S3 access,none
+secure_resource_specific.json,secure,none,low,multi-service resource-scoped,none
+secure_s3_least_privilege.json,secure,none,low,scoped S3 read on specific bucket,none
+secure_tag_based_access.json,secure,none,low,tag-based ABAC,none
+secure_time_restricted.json,secure,none,low,time-based condition,none
+secure_vpc_read_only.json,secure,none,low,VPC read-only,none
+sts_assume_role_chaining.json,vulnerable,role_chaining,high,sts:AssumeRole * + GetSessionToken,chain role assumptions for escalation
+sts_assume_role_cross_account.json,vulnerable,cross_account_access,medium,cross-account sts:AssumeRole,pivot to external account
+sts_assume_role_specific.json,secure,none,low,scoped_sts_assume,none
+sts_assume_role_wildcard.json,vulnerable,wildcard_assume_role,high,sts:AssumeRole on *,assume any role in account
+sts_assume_role_with_conditions.json,secure,none,low,conditioned_assume_role,none
+sts_decode_authorization_message.json,secure,none,low,sts:DecodeAuthorizationMessage,none
+sts_get_caller_identity.json,secure,none,low,sts:GetCallerIdentity,none
+sts_get_federation_token.json,vulnerable,federation_token,medium,sts:GetFederationToken on *,obtain federated credentials
+sts_get_session_token.json,secure,none,low,sts:GetSessionToken,none
+sts_tag_session.json,secure,none,low,conditioned_tag_session,none
+vulnerable/iam_full_access.json,vulnerable,full_iam_access,critical,iam:* on *,full IAM control - admin escalation

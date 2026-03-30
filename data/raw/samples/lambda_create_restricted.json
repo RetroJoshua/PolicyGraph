@@ -1,0 +1,19 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "lambda:CreateFunction",
+        "lambda:GetFunction",
+        "lambda:ListFunctions"
+      ],
+      "Resource": "arn:aws:lambda:us-east-1:123456789012:function:dev-*",
+      "Condition": {
+        "StringEquals": {
+          "lambda:FunctionArn": "arn:aws:lambda:us-east-1:123456789012:function:dev-*"
+        }
+      }
+    }
+  ]
+}
