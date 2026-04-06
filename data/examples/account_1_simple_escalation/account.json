@@ -1,0 +1,85 @@
+{
+  "account_id": "111111111111",
+  "account_alias": "dev-sandbox",
+  "description": "Simple privilege escalation via PassRole + Lambda",
+  "users": [
+    {
+      "username": "dev-user",
+      "arn": "arn:aws:iam::111111111111:user/dev-user",
+      "policies": [
+        "DevLambdaPolicy"
+      ],
+      "groups": [
+        "Developers"
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "role_name": "AdminLambdaExecutionRole",
+      "arn": "arn:aws:iam::111111111111:role/AdminLambdaExecutionRole",
+      "trust_policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "Service": "lambda.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "attached_policies": [
+        "arn:aws:iam::aws:policy/AdministratorAccess"
+      ]
+    }
+  ],
+  "policies": [
+    {
+      "policy_name": "DevLambdaPolicy",
+      "arn": "arn:aws:iam::111111111111:policy/DevLambdaPolicy",
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": "*"
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "lambda:CreateFunction",
+              "lambda:InvokeFunction"
+            ],
+            "Resource": "*"
+          }
+        ]
+      }
+    }
+  ],
+  "groups": [
+    {
+      "group_name": "Developers",
+      "arn": "arn:aws:iam::111111111111:group/Developers",
+      "attached_policies": [
+        "arn:aws:iam::111111111111:policy/DevLambdaPolicy"
+      ]
+    }
+  ],
+  "attack_paths": [
+    {
+      "name": "PassRole to Lambda Admin Escalation",
+      "severity": "critical",
+      "steps": [
+        "dev-user creates a Lambda function with malicious code",
+        "dev-user passes AdminLambdaExecutionRole to the function",
+        "dev-user invokes the function",
+        "Function executes with AdministratorAccess privileges",
+        "Function creates new admin user or exfiltrates credentials"
+      ],
+      "impact": "Full account compromise via Lambda execution role"
+    }
+  ]
+}

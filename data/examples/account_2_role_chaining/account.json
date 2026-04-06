@@ -1,0 +1,129 @@
+{
+  "account_id": "222222222222",
+  "account_alias": "staging-env",
+  "description": "Multi-step role chaining privilege escalation",
+  "users": [
+    {
+      "username": "ci-deploy",
+      "arn": "arn:aws:iam::222222222222:user/ci-deploy",
+      "policies": [
+        "CIDeployPolicy"
+      ],
+      "groups": []
+    }
+  ],
+  "roles": [
+    {
+      "role_name": "DeployRole",
+      "arn": "arn:aws:iam::222222222222:role/DeployRole",
+      "trust_policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": "arn:aws:iam::222222222222:user/ci-deploy"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "attached_policies": [
+        "arn:aws:iam::222222222222:policy/DeployPermissions"
+      ],
+      "inline_policies": {
+        "AssumeOpsRole": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": "sts:AssumeRole",
+              "Resource": "arn:aws:iam::222222222222:role/OpsRole"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "role_name": "OpsRole",
+      "arn": "arn:aws:iam::222222222222:role/OpsRole",
+      "trust_policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": "arn:aws:iam::222222222222:role/DeployRole"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "attached_policies": [
+        "arn:aws:iam::222222222222:policy/OpsPermissions"
+      ],
+      "inline_policies": {
+        "AssumeAdminRole": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": "sts:AssumeRole",
+              "Resource": "arn:aws:iam::222222222222:role/AdminRole"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "role_name": "AdminRole",
+      "arn": "arn:aws:iam::222222222222:role/AdminRole",
+      "trust_policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": "arn:aws:iam::222222222222:role/OpsRole"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "attached_policies": [
+        "arn:aws:iam::aws:policy/AdministratorAccess"
+      ]
+    }
+  ],
+  "policies": [
+    {
+      "policy_name": "CIDeployPolicy",
+      "arn": "arn:aws:iam::222222222222:policy/CIDeployPolicy",
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Resource": "arn:aws:iam::222222222222:role/DeployRole"
+          }
+        ]
+      }
+    }
+  ],
+  "groups": [],
+  "attack_paths": [
+    {
+      "name": "Three-Hop Role Chaining Escalation",
+      "severity": "critical",
+      "steps": [
+        "ci-deploy assumes DeployRole (direct trust)",
+        "DeployRole has inline policy to assume OpsRole",
+        "OpsRole has inline policy to assume AdminRole",
+        "AdminRole has AdministratorAccess attached",
+        "ci-deploy achieves admin access through 3 role hops"
+      ],
+      "impact": "Full account compromise via role chaining"
+    }
+  ]
+}

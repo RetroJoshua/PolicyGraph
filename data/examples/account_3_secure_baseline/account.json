@@ -1,0 +1,156 @@
+{
+  "account_id": "333333333333",
+  "account_alias": "prod-secure",
+  "description": "Properly configured production account following AWS security best practices",
+  "users": [
+    {
+      "username": "prod-readonly",
+      "arn": "arn:aws:iam::333333333333:user/prod-readonly",
+      "policies": [],
+      "groups": [
+        "ReadOnlyTeam"
+      ],
+      "mfa_enabled": true
+    },
+    {
+      "username": "prod-deployer",
+      "arn": "arn:aws:iam::333333333333:user/prod-deployer",
+      "policies": [],
+      "groups": [
+        "Deployers"
+      ],
+      "mfa_enabled": true
+    }
+  ],
+  "roles": [
+    {
+      "role_name": "LambdaExecutionRole",
+      "arn": "arn:aws:iam::333333333333:role/LambdaExecutionRole",
+      "trust_policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "Service": "lambda.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "attached_policies": [
+        "arn:aws:iam::333333333333:policy/LambdaMinimalPolicy"
+      ],
+      "permissions_boundary": "arn:aws:iam::333333333333:policy/LambdaBoundary"
+    }
+  ],
+  "policies": [
+    {
+      "policy_name": "ReadOnlyPolicy",
+      "arn": "arn:aws:iam::333333333333:policy/ReadOnlyPolicy",
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "ec2:Describe*",
+              "s3:GetObject",
+              "s3:ListBucket",
+              "rds:Describe*",
+              "lambda:GetFunction",
+              "lambda:ListFunctions"
+            ],
+            "Resource": "*",
+            "Condition": {
+              "StringEquals": {
+                "aws:RequestedRegion": "us-east-1"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "policy_name": "DeployerPolicy",
+      "arn": "arn:aws:iam::333333333333:policy/DeployerPolicy",
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "lambda:UpdateFunctionCode",
+              "lambda:PublishVersion"
+            ],
+            "Resource": "arn:aws:lambda:us-east-1:333333333333:function:prod-*",
+            "Condition": {
+              "Bool": {
+                "aws:MultiFactorAuthPresent": "true"
+              }
+            }
+          },
+          {
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": "arn:aws:iam::333333333333:role/LambdaExecutionRole",
+            "Condition": {
+              "StringEquals": {
+                "iam:PassedToService": "lambda.amazonaws.com"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "policy_name": "LambdaMinimalPolicy",
+      "arn": "arn:aws:iam::333333333333:policy/LambdaMinimalPolicy",
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "logs:CreateLogGroup",
+              "logs:CreateLogStream",
+              "logs:PutLogEvents"
+            ],
+            "Resource": "arn:aws:logs:us-east-1:333333333333:log-group:/aws/lambda/prod-*"
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "dynamodb:GetItem",
+              "dynamodb:PutItem"
+            ],
+            "Resource": "arn:aws:dynamodb:us-east-1:333333333333:table/prod-data"
+          }
+        ]
+      }
+    }
+  ],
+  "groups": [
+    {
+      "group_name": "ReadOnlyTeam",
+      "attached_policies": [
+        "arn:aws:iam::333333333333:policy/ReadOnlyPolicy"
+      ]
+    },
+    {
+      "group_name": "Deployers",
+      "attached_policies": [
+        "arn:aws:iam::333333333333:policy/DeployerPolicy"
+      ]
+    }
+  ],
+  "attack_paths": [],
+  "security_features": [
+    "MFA enforced for all users",
+    "Permission boundaries on Lambda roles",
+    "Region-scoped permissions",
+    "Resource-specific ARNs (no wildcards)",
+    "iam:PassRole restricted to specific role and service",
+    "Separate read-only and deployer groups"
+  ]
+}

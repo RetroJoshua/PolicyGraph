@@ -1,0 +1,174 @@
+{
+  "description": "Graph representation of Account 4 \u2014 Complex Multi-Vector Attack",
+  "nodes": [
+    {
+      "id": 0,
+      "type": "principal",
+      "name": "analyst",
+      "attributes": {
+        "principal_type": "IAMUser"
+      }
+    },
+    {
+      "id": 1,
+      "type": "principal",
+      "name": "developer",
+      "attributes": {
+        "principal_type": "IAMUser"
+      }
+    },
+    {
+      "id": 2,
+      "type": "role",
+      "name": "DataPipelineRole",
+      "attributes": {
+        "has_admin": true
+      }
+    },
+    {
+      "id": 3,
+      "type": "role",
+      "name": "GlueRole",
+      "attributes": {
+        "has_admin": false
+      }
+    },
+    {
+      "id": 4,
+      "type": "role",
+      "name": "CrossAccountRole",
+      "attributes": {
+        "has_admin": true
+      }
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "name": "iam:PassRole",
+      "attributes": {
+        "service": "IAM",
+        "access_level": "write"
+      }
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "name": "glue:CreateDevEndpoint",
+      "attributes": {
+        "service": "Glue",
+        "access_level": "write"
+      }
+    },
+    {
+      "id": 7,
+      "type": "action",
+      "name": "datapipeline:CreatePipeline",
+      "attributes": {
+        "service": "DataPipeline",
+        "access_level": "write"
+      }
+    },
+    {
+      "id": 8,
+      "type": "action",
+      "name": "iam:CreatePolicyVersion",
+      "attributes": {
+        "service": "IAM",
+        "access_level": "write"
+      }
+    },
+    {
+      "id": 9,
+      "type": "action",
+      "name": "iam:AttachUserPolicy",
+      "attributes": {
+        "service": "IAM",
+        "access_level": "write"
+      }
+    },
+    {
+      "id": 10,
+      "type": "resource",
+      "name": "*",
+      "attributes": {
+        "resource_type": "wildcard"
+      }
+    },
+    {
+      "id": 11,
+      "type": "policy",
+      "name": "AdministratorAccess",
+      "attributes": {
+        "aws_managed": true
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": 0,
+      "target": 5,
+      "type": "has_permission",
+      "weight": 1.0
+    },
+    {
+      "source": 0,
+      "target": 6,
+      "type": "has_permission",
+      "weight": 1.0
+    },
+    {
+      "source": 0,
+      "target": 7,
+      "type": "has_permission",
+      "weight": 1.0
+    },
+    {
+      "source": 5,
+      "target": 10,
+      "type": "applies_to",
+      "weight": 1.0
+    },
+    {
+      "source": 5,
+      "target": 2,
+      "type": "can_pass",
+      "weight": 1.0
+    },
+    {
+      "source": 2,
+      "target": 11,
+      "type": "has_attached",
+      "weight": 1.0
+    },
+    {
+      "source": 1,
+      "target": 8,
+      "type": "has_permission",
+      "weight": 1.0
+    },
+    {
+      "source": 1,
+      "target": 9,
+      "type": "has_permission",
+      "weight": 1.0
+    },
+    {
+      "source": 0,
+      "target": 2,
+      "type": "escalation_path",
+      "weight": 1.0
+    },
+    {
+      "source": 1,
+      "target": 11,
+      "type": "escalation_path",
+      "weight": 1.0
+    }
+  ],
+  "metadata": {
+    "num_nodes": 12,
+    "num_edges": 10,
+    "has_escalation": true,
+    "num_attack_vectors": 4
+  }
+}

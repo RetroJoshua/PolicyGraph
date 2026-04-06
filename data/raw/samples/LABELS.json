@@ -1,0 +1,1741 @@
+{
+  "description": "Ground-truth labels for PolicyGraph IAM policy samples",
+  "version": "1.0.0",
+  "total_policies": 108,
+  "vulnerable_count": 41,
+  "secure_count": 67,
+  "severity_distribution": {
+    "critical": 18,
+    "high": 13,
+    "medium": 12,
+    "low": 65
+  },
+  "labels": [
+    {
+      "filename": "aws_admin_region-management.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "region-scoped deny",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_code_commit_power_user.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "CodeCommit power user",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_code_deploy_deployer_access.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "CodeDeploy deployer",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_code_deploy_full_access.json",
+      "label": "vulnerable",
+      "severity": "medium",
+      "vulnerability_type": "full_service_access",
+      "risk_score": 7,
+      "attack_path": [
+        "Attacker gains access to principal with full service permissions",
+        "Enumerate all resources within the service",
+        "Create, modify, or delete any resource",
+        "Potentially pivot to other services via service-linked roles"
+      ],
+      "remediation": "Replace wildcard actions with specific required actions. Scope resources to specific ARNs. Add conditions (e.g., aws:RequestedRegion, aws:ResourceTag).",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "codedeploy:* on *",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_code_deploy_role.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "CodeDeploy service role",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_code_deploy_role_for_ecs.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "CodeDeploy ECS role",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_code_pipeline_full_access.json",
+      "label": "vulnerable",
+      "severity": "medium",
+      "vulnerability_type": "full_service_access",
+      "risk_score": 7,
+      "attack_path": [
+        "Attacker gains access to principal with full service permissions",
+        "Enumerate all resources within the service",
+        "Create, modify, or delete any resource",
+        "Potentially pivot to other services via service-linked roles"
+      ],
+      "remediation": "Replace wildcard actions with specific required actions. Scope resources to specific ARNs. Add conditions (e.g., aws:RequestedRegion, aws:ResourceTag).",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "codepipeline:* on *",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_code_star_full_access.json",
+      "label": "vulnerable",
+      "severity": "medium",
+      "vulnerability_type": "full_service_access",
+      "risk_score": 7,
+      "attack_path": [
+        "Attacker gains access to principal with full service permissions",
+        "Enumerate all resources within the service",
+        "Create, modify, or delete any resource",
+        "Potentially pivot to other services via service-linked roles"
+      ],
+      "remediation": "Replace wildcard actions with specific required actions. Scope resources to specific ARNs. Add conditions (e.g., aws:RequestedRegion, aws:ResourceTag).",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "codestar:* on *",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_code_star_service_role.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "CodeStar service role",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_compromised_key_quarantine.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "deny actions for quarantine",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_conditional_date-range-access.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "date-range condition",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_config_multi_account_setup_policy.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Config"
+      ],
+      "risk_patterns": "Config multi-account",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_config_remediation_service_role_policy.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Config"
+      ],
+      "risk_patterns": "Config remediation role",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_config_service_role_policy.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Config"
+      ],
+      "risk_patterns": "Config service role",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_connector.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "AWS connector",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_control_tower_account_service_role_policy.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "Control Tower role",
+      "secure_alternative": null
+    },
+    {
+      "filename": "aws_deny_ip-based.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "IP-based deny",
+      "secure_alternative": null
+    },
+    {
+      "filename": "cloudformation_create_changeset.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "CloudFormation"
+      ],
+      "risk_patterns": "scoped changeset on specific stack",
+      "secure_alternative": null
+    },
+    {
+      "filename": "cloudformation_create_with_passrole.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "passrole_cloudformation",
+      "risk_score": 9,
+      "attack_path": [
+        "Attacker has iam:PassRole and cloudformation:CreateStack permissions",
+        "Create a CloudFormation template that provisions IAM resources",
+        "Pass an admin role to CloudFormation as the service role",
+        "CloudFormation executes with admin privileges, creating backdoor resources",
+        "Attacker gains admin-equivalent access through the provisioned resources"
+      ],
+      "remediation": "Restrict iam:PassRole to specific role ARNs. Limit cloudformation actions to specific stacks. Add aws:ResourceTag conditions.",
+      "affected_services": [
+        "CloudFormation",
+        "IAM"
+      ],
+      "risk_patterns": "cloudformation:* + iam:PassRole *",
+      "secure_alternative": null
+    },
+    {
+      "filename": "cloudformation_delete_stack.json",
+      "label": "vulnerable",
+      "severity": "medium",
+      "vulnerability_type": "stack_deletion",
+      "risk_score": 6,
+      "attack_path": [
+        "Attacker has cloudformation:DeleteStack on wildcard",
+        "Delete critical infrastructure stacks",
+        "Cause service disruption and potential data loss"
+      ],
+      "remediation": "Enable stack termination protection. Restrict DeleteStack to specific stack ARNs.",
+      "affected_services": [
+        "CloudFormation"
+      ],
+      "risk_patterns": "cloudformation:DeleteStack on *",
+      "secure_alternative": null
+    },
+    {
+      "filename": "cloudformation_drift_detection.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "CloudFormation"
+      ],
+      "risk_patterns": "drift detection read-only",
+      "secure_alternative": null
+    },
+    {
+      "filename": "cloudformation_full_access.json",
+      "label": "vulnerable",
+      "severity": "high",
+      "vulnerability_type": "full_service_access",
+      "risk_score": 7,
+      "attack_path": [
+        "Attacker gains access to principal with full service permissions",
+        "Enumerate all resources within the service",
+        "Create, modify, or delete any resource",
+        "Potentially pivot to other services via service-linked roles"
+      ],
+      "remediation": "Replace wildcard actions with specific required actions. Scope resources to specific ARNs. Add conditions (e.g., aws:RequestedRegion, aws:ResourceTag).",
+      "affected_services": [
+        "CloudFormation"
+      ],
+      "risk_patterns": "cloudformation:* on *",
+      "secure_alternative": "cloudformation_read_only.json"
+    },
+    {
+      "filename": "cloudformation_read_only.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "CloudFormation"
+      ],
+      "risk_patterns": "cloudformation read-only",
+      "secure_alternative": null
+    },
+    {
+      "filename": "cloudformation_stack_specific.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "CloudFormation"
+      ],
+      "risk_patterns": "scoped to specific stack",
+      "secure_alternative": null
+    },
+    {
+      "filename": "cloudformation_stacksets_admin.json",
+      "label": "vulnerable",
+      "severity": "high",
+      "vulnerability_type": "stackset_admin",
+      "risk_score": 9,
+      "attack_path": [
+        "Attacker has CloudFormation StackSets admin with PassRole and AssumeRole",
+        "Create a StackSet with malicious templates",
+        "Deploy across multiple accounts in the organization",
+        "Gain access to all target accounts simultaneously"
+      ],
+      "remediation": "Restrict StackSet operations to specific admin roles. Limit target accounts and regions.",
+      "affected_services": [
+        "CloudFormation"
+      ],
+      "risk_patterns": "cloudformation:* + PassRole + AssumeRole",
+      "secure_alternative": null
+    },
+    {
+      "filename": "cloudformation_template_upload.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "CloudFormation"
+      ],
+      "risk_patterns": "template validation + scoped S3",
+      "secure_alternative": null
+    },
+    {
+      "filename": "cloudformation_update_stack.json",
+      "label": "vulnerable",
+      "severity": "medium",
+      "vulnerability_type": "stack_modification",
+      "risk_score": 6,
+      "attack_path": [
+        "Attacker has cloudformation:UpdateStack on wildcard",
+        "Modify existing stack templates to inject malicious resources",
+        "Updated stack provisions backdoor access"
+      ],
+      "remediation": "Restrict UpdateStack to specific stacks. Enable change sets for approval workflows.",
+      "affected_services": [
+        "CloudFormation"
+      ],
+      "risk_patterns": "cloudformation:UpdateStack on *",
+      "secure_alternative": null
+    },
+    {
+      "filename": "dynamodb_readwrite_attribute-level.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "DynamoDB"
+      ],
+      "risk_patterns": "attribute-level DynamoDB",
+      "secure_alternative": null
+    },
+    {
+      "filename": "dynamodb_readwrite_cognito-items.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "DynamoDB"
+      ],
+      "risk_patterns": "Cognito-scoped DynamoDB",
+      "secure_alternative": null
+    },
+    {
+      "filename": "dynamodb_readwrite_table-specific.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "DynamoDB"
+      ],
+      "risk_patterns": "table-specific DynamoDB",
+      "secure_alternative": null
+    },
+    {
+      "filename": "ec2_admin_region-full-access.json",
+      "label": "vulnerable",
+      "severity": "medium",
+      "vulnerability_type": "full_service_access",
+      "risk_score": 7,
+      "attack_path": [
+        "Attacker gains access to principal with full service permissions",
+        "Enumerate all resources within the service",
+        "Create, modify, or delete any resource",
+        "Potentially pivot to other services via service-linked roles"
+      ],
+      "remediation": "Replace wildcard actions with specific required actions. Scope resources to specific ARNs. Add conditions (e.g., aws:RequestedRegion, aws:ResourceTag).",
+      "affected_services": [
+        "EC2"
+      ],
+      "risk_patterns": "ec2:* in region",
+      "secure_alternative": "secure_ec2_read_only.json"
+    },
+    {
+      "filename": "ec2_deny_terminate-ip.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "EC2"
+      ],
+      "risk_patterns": "deny terminate by IP",
+      "secure_alternative": null
+    },
+    {
+      "filename": "ec2_write_mfa-required.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "EC2"
+      ],
+      "risk_patterns": "MFA-required EC2 write",
+      "secure_alternative": null
+    },
+    {
+      "filename": "ec2_write_security-group-management.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "EC2"
+      ],
+      "risk_patterns": "security group management",
+      "secure_alternative": null
+    },
+    {
+      "filename": "ec2_write_subnet-launch.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "EC2"
+      ],
+      "risk_patterns": "subnet-scoped launch",
+      "secure_alternative": null
+    },
+    {
+      "filename": "ec2_write_tag-owner-instances.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "EC2"
+      ],
+      "risk_patterns": "tag-based EC2 owner",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_add_user_to_group.json",
+      "label": "vulnerable",
+      "severity": "high",
+      "vulnerability_type": "add_user_to_group",
+      "risk_score": 8,
+      "attack_path": [
+        "Attacker has iam:AddUserToGroup on wildcard group resources",
+        "List IAM groups to find the admin group",
+        "Add their own user to the admin group",
+        "Inherit all admin group policies"
+      ],
+      "remediation": "Restrict iam:AddUserToGroup to specific non-admin groups. Use SCPs to protect admin groups.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:AddUserToGroup on *:group/*",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_attach_group_policy.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "attach_group_policy",
+      "risk_score": 10,
+      "attack_path": [
+        "Attacker has iam:AttachGroupPolicy on wildcard group resources",
+        "Attach AdministratorAccess to a group they belong to",
+        "Immediately gain full admin access through group membership"
+      ],
+      "remediation": "Remove iam:AttachGroupPolicy. Use permission boundaries and SCPs.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:AttachGroupPolicy on *:group/*",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_attach_role_policy.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "attach_role_policy",
+      "risk_score": 10,
+      "attack_path": [
+        "Attacker has iam:AttachRolePolicy on wildcard role resources",
+        "Attach AdministratorAccess to a role they can assume",
+        "Assume the role to gain full admin access"
+      ],
+      "remediation": "Remove iam:AttachRolePolicy. Restrict to specific role ARNs if required.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:AttachRolePolicy on *:role/*",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_attach_user_policy.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "attach_user_policy",
+      "risk_score": 10,
+      "attack_path": [
+        "Attacker has iam:AttachUserPolicy on wildcard user resources",
+        "Attach the AdministratorAccess managed policy to their own user",
+        "Immediately gain full admin access to the account"
+      ],
+      "remediation": "Remove iam:AttachUserPolicy. Use service control policies (SCPs) to prevent policy attachment. Implement permission boundaries.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:AttachUserPolicy on *:user/*",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_create_access_key.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "create_access_key",
+      "risk_score": 9,
+      "attack_path": [
+        "Attacker has iam:CreateAccessKey on wildcard user resources",
+        "List IAM users to find admin accounts",
+        "Create a new access key for an admin user",
+        "Use the access key for persistent admin access"
+      ],
+      "remediation": "Restrict iam:CreateAccessKey to the user's own ARN (${aws:username}). Implement MFA conditions.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:CreateAccessKey on *:user/*",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_create_login_profile.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "create_login_profile",
+      "risk_score": 9,
+      "attack_path": [
+        "Attacker has iam:CreateLoginProfile on wildcard user resources",
+        "Identify an admin user without console access",
+        "Create a login profile (console password) for that user",
+        "Log in to the console as the admin user"
+      ],
+      "remediation": "Restrict iam:CreateLoginProfile to self. Add MFA requirements.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:CreateLoginProfile on *:user/*",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_create_policy_version.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "create_policy_version",
+      "risk_score": 10,
+      "attack_path": [
+        "Attacker has iam:CreatePolicyVersion on wildcard policy resources",
+        "Create a new version of an existing policy with admin permissions",
+        "Set the new version as the default",
+        "All principals using that policy now have admin access"
+      ],
+      "remediation": "Remove iam:CreatePolicyVersion. Use AWS Organizations SCPs to prevent policy modification.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:CreatePolicyVersion on *:policy/*",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_passrole_cloudformation.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "passrole_cloudformation",
+      "risk_score": 9,
+      "attack_path": [
+        "Attacker has iam:PassRole and cloudformation:CreateStack permissions",
+        "Create a CloudFormation template that provisions IAM resources",
+        "Pass an admin role to CloudFormation as the service role",
+        "CloudFormation executes with admin privileges, creating backdoor resources",
+        "Attacker gains admin-equivalent access through the provisioned resources"
+      ],
+      "remediation": "Restrict iam:PassRole to specific role ARNs. Limit cloudformation actions to specific stacks. Add aws:ResourceTag conditions.",
+      "affected_services": [
+        "CloudFormation",
+        "IAM"
+      ],
+      "risk_patterns": "iam:PassRole * + cloudformation:*",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_passrole_codebuild.json",
+      "label": "vulnerable",
+      "severity": "high",
+      "vulnerability_type": "passrole_codebuild",
+      "risk_score": 8,
+      "attack_path": [
+        "Attacker has iam:PassRole and codebuild:CreateProject permissions",
+        "Create a CodeBuild project with a malicious buildspec",
+        "Pass an admin service role to the project",
+        "Start a build \u2014 the build environment runs with admin privileges",
+        "Exfiltrate credentials from the build environment"
+      ],
+      "remediation": "Restrict iam:PassRole to specific CodeBuild service role ARNs. Limit codebuild:CreateProject with conditions.",
+      "affected_services": [
+        "CodeBuild",
+        "IAM"
+      ],
+      "risk_patterns": "iam:PassRole * + codebuild:CreateProject",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_passrole_datapipeline.json",
+      "label": "vulnerable",
+      "severity": "high",
+      "vulnerability_type": "passrole_datapipeline",
+      "risk_score": 8,
+      "attack_path": [
+        "Attacker has iam:PassRole and datapipeline:CreatePipeline permissions",
+        "Create a Data Pipeline with a malicious activity definition",
+        "Pass an admin role to the pipeline",
+        "Activate the pipeline \u2014 activities execute with admin privileges"
+      ],
+      "remediation": "Restrict iam:PassRole to specific Data Pipeline role ARNs. Limit datapipeline:CreatePipeline.",
+      "affected_services": [
+        "DataPipeline",
+        "IAM"
+      ],
+      "risk_patterns": "iam:PassRole * + datapipeline:Create*",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_passrole_ec2_run.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "passrole_ec2",
+      "risk_score": 10,
+      "attack_path": [
+        "Attacker has iam:PassRole and ec2:RunInstances permissions",
+        "Create an instance profile with an admin role",
+        "Launch an EC2 instance with the admin instance profile",
+        "SSH into the instance and access the instance metadata service",
+        "Retrieve temporary admin credentials from IMDS"
+      ],
+      "remediation": "Restrict iam:PassRole to specific instance profile role ARNs. Limit ec2:RunInstances by subnet, AMI, or instance type conditions.",
+      "affected_services": [
+        "EC2",
+        "IAM"
+      ],
+      "risk_patterns": "iam:PassRole * + ec2:RunInstances",
+      "secure_alternative": "secure_ec2_read_only.json"
+    },
+    {
+      "filename": "escalation_passrole_glue_endpoint.json",
+      "label": "vulnerable",
+      "severity": "high",
+      "vulnerability_type": "passrole_glue",
+      "risk_score": 8,
+      "attack_path": [
+        "Attacker has iam:PassRole and glue:CreateDevEndpoint permissions",
+        "Create a Glue development endpoint",
+        "Pass an admin role to the endpoint",
+        "Connect to the endpoint and execute code with admin privileges"
+      ],
+      "remediation": "Restrict iam:PassRole to specific Glue role ARNs. Limit glue:CreateDevEndpoint.",
+      "affected_services": [
+        "Glue",
+        "IAM"
+      ],
+      "risk_patterns": "iam:PassRole * + glue:CreateDevEndpoint",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_passrole_lambda_create.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "passrole_lambda_create",
+      "risk_score": 10,
+      "attack_path": [
+        "Attacker has iam:PassRole and lambda:CreateFunction permissions",
+        "Create a Lambda function with malicious code",
+        "Pass an admin execution role to the function",
+        "Invoke the function \u2014 it runs with admin privileges",
+        "Exfiltrate credentials or modify IAM from within the Lambda"
+      ],
+      "remediation": "Restrict iam:PassRole to specific Lambda execution role ARNs. Limit lambda:CreateFunction to specific function name patterns. Require resource tags.",
+      "affected_services": [
+        "Lambda",
+        "IAM"
+      ],
+      "risk_patterns": "iam:PassRole * + lambda:CreateFunction",
+      "secure_alternative": "secure_lambda_read_only.json"
+    },
+    {
+      "filename": "escalation_passrole_lambda_update.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "passrole_lambda_update",
+      "risk_score": 10,
+      "attack_path": [
+        "Attacker has iam:PassRole and lambda:UpdateFunctionCode permissions",
+        "Identify an existing Lambda function with a privileged execution role",
+        "Update the function code with malicious payload",
+        "Optionally pass a more privileged role via UpdateFunctionConfiguration",
+        "Invoke the function to execute code with elevated privileges"
+      ],
+      "remediation": "Restrict lambda:UpdateFunctionCode to specific function ARNs. Restrict iam:PassRole to specific role ARNs. Separate update and invoke permissions.",
+      "affected_services": [
+        "Lambda",
+        "IAM"
+      ],
+      "risk_patterns": "iam:PassRole * + lambda:UpdateFunctionCode",
+      "secure_alternative": "secure_lambda_read_only.json"
+    },
+    {
+      "filename": "escalation_passrole_sagemaker.json",
+      "label": "vulnerable",
+      "severity": "high",
+      "vulnerability_type": "passrole_sagemaker",
+      "risk_score": 8,
+      "attack_path": [
+        "Attacker has iam:PassRole and sagemaker:CreateNotebookInstance permissions",
+        "Create a SageMaker notebook instance",
+        "Pass an admin execution role to the notebook",
+        "Open the notebook and execute code with admin privileges"
+      ],
+      "remediation": "Restrict iam:PassRole to specific SageMaker role ARNs. Add VPC and tag conditions.",
+      "affected_services": [
+        "SageMaker",
+        "IAM"
+      ],
+      "risk_patterns": "iam:PassRole * + sagemaker:CreateNotebookInstance",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_put_group_policy.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "put_group_policy",
+      "risk_score": 10,
+      "attack_path": [
+        "Attacker has iam:PutGroupPolicy on wildcard group resources",
+        "Create an inline admin policy on a group they belong to",
+        "Gain full admin access through group membership"
+      ],
+      "remediation": "Remove iam:PutGroupPolicy. Use managed policies only.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:PutGroupPolicy on *:group/*",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_put_role_policy.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "put_role_policy",
+      "risk_score": 10,
+      "attack_path": [
+        "Attacker has iam:PutRolePolicy on wildcard role resources",
+        "Create an inline admin policy on a role they can assume",
+        "Assume the role to gain full admin access"
+      ],
+      "remediation": "Remove iam:PutRolePolicy. Restrict inline policy creation.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:PutRolePolicy on *:role/*",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_put_user_policy.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "put_user_policy",
+      "risk_score": 10,
+      "attack_path": [
+        "Attacker has iam:PutUserPolicy on wildcard user resources",
+        "Create an inline policy granting admin access on their own user",
+        "Immediately gain full admin access"
+      ],
+      "remediation": "Remove iam:PutUserPolicy. Use managed policies with strict version control.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:PutUserPolicy on *:user/*",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_set_default_policy_version.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "set_default_policy_version",
+      "risk_score": 10,
+      "attack_path": [
+        "Attacker has iam:CreatePolicyVersion and iam:SetDefaultPolicyVersion",
+        "Create a new policy version with admin permissions",
+        "Set it as the default version",
+        "All principals using that policy are now admins"
+      ],
+      "remediation": "Remove both iam:CreatePolicyVersion and iam:SetDefaultPolicyVersion. Implement change management for policies.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:CreatePolicyVersion + SetDefaultPolicyVersion",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_update_assume_role_policy.json",
+      "label": "vulnerable",
+      "severity": "high",
+      "vulnerability_type": "update_assume_role_policy",
+      "risk_score": 8,
+      "attack_path": [
+        "Attacker has iam:UpdateAssumeRolePolicy on wildcard role resources",
+        "Modify the trust policy of an admin role",
+        "Add their own principal as a trusted entity",
+        "Assume the admin role"
+      ],
+      "remediation": "Remove iam:UpdateAssumeRolePolicy. Protect trust policies with SCPs.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:UpdateAssumeRolePolicy on *:role/*",
+      "secure_alternative": null
+    },
+    {
+      "filename": "escalation_update_login_profile.json",
+      "label": "vulnerable",
+      "severity": "high",
+      "vulnerability_type": "update_login_profile",
+      "risk_score": 8,
+      "attack_path": [
+        "Attacker has iam:UpdateLoginProfile on wildcard user resources",
+        "Reset the password for an admin user",
+        "Log in to the console as the admin user"
+      ],
+      "remediation": "Restrict iam:UpdateLoginProfile to self (${aws:username}). Require MFA.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:UpdateLoginProfile on *:user/*",
+      "secure_alternative": null
+    },
+    {
+      "filename": "iam_admin_password-policy.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "IAM password policy admin",
+      "secure_alternative": null
+    },
+    {
+      "filename": "iam_read_console-full.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "IAM console read",
+      "secure_alternative": null
+    },
+    {
+      "filename": "iam_read_credential-report.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "credential report read",
+      "secure_alternative": null
+    },
+    {
+      "filename": "iam_read_only_access.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "IAM read-only",
+      "secure_alternative": null
+    },
+    {
+      "filename": "iam_read_policy-simulator-api.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "policy simulator API",
+      "secure_alternative": null
+    },
+    {
+      "filename": "iam_write_manage-group-membership.json",
+      "label": "vulnerable",
+      "severity": "medium",
+      "vulnerability_type": "group_membership_management",
+      "risk_score": 5,
+      "attack_path": [
+        "Attacker has scoped iam:AddUserToGroup permissions",
+        "Add users to groups to grant additional permissions",
+        "Potential for privilege escalation if admin groups are accessible"
+      ],
+      "remediation": "Scope AddUserToGroup to specific non-privileged groups. Monitor group membership changes.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:AddUserToGroup scoped",
+      "secure_alternative": null
+    },
+    {
+      "filename": "iam_write_passrole-to-service.json",
+      "label": "vulnerable",
+      "severity": "medium",
+      "vulnerability_type": "passrole",
+      "risk_score": 6,
+      "attack_path": [
+        "Attacker has scoped iam:PassRole permissions",
+        "Pass a role to an AWS service",
+        "Service operates with the passed role's permissions"
+      ],
+      "remediation": "Restrict iam:PassRole to specific role ARNs and services via iam:PassedToService condition.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:PassRole scoped",
+      "secure_alternative": null
+    },
+    {
+      "filename": "iam_write_self-manage-credentials-mfa.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "self-manage with MFA",
+      "secure_alternative": null
+    },
+    {
+      "filename": "lambda_basic_execution.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Lambda"
+      ],
+      "risk_patterns": "CloudWatch Logs only",
+      "secure_alternative": null
+    },
+    {
+      "filename": "lambda_create_restricted.json",
+      "label": "secure",
+      "severity": "medium",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Lambda"
+      ],
+      "risk_patterns": "lambda create scoped to dev-* prefix",
+      "secure_alternative": null
+    },
+    {
+      "filename": "lambda_create_with_passrole.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "passrole_lambda",
+      "risk_score": 9,
+      "attack_path": [
+        "Attacker has iam:PassRole and lambda create/update permissions",
+        "Create or modify a Lambda function",
+        "Pass a privileged execution role to the function",
+        "Invoke the function to run code with elevated privileges"
+      ],
+      "remediation": "Restrict iam:PassRole to specific role ARNs. Limit Lambda operations to specific functions.",
+      "affected_services": [
+        "Lambda",
+        "IAM"
+      ],
+      "risk_patterns": "iam:PassRole * + lambda:CreateFunction",
+      "secure_alternative": "secure_lambda_read_only.json"
+    },
+    {
+      "filename": "lambda_event_source_mapping.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Lambda"
+      ],
+      "risk_patterns": "event source mapping + read triggers",
+      "secure_alternative": null
+    },
+    {
+      "filename": "lambda_full_access.json",
+      "label": "vulnerable",
+      "severity": "high",
+      "vulnerability_type": "full_service_access",
+      "risk_score": 7,
+      "attack_path": [
+        "Attacker gains access to principal with full service permissions",
+        "Enumerate all resources within the service",
+        "Create, modify, or delete any resource",
+        "Potentially pivot to other services via service-linked roles"
+      ],
+      "remediation": "Replace wildcard actions with specific required actions. Scope resources to specific ARNs. Add conditions (e.g., aws:RequestedRegion, aws:ResourceTag).",
+      "affected_services": [
+        "Lambda"
+      ],
+      "risk_patterns": "lambda:* on *",
+      "secure_alternative": "secure_lambda_read_only.json"
+    },
+    {
+      "filename": "lambda_invoke_specific.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Lambda"
+      ],
+      "risk_patterns": "scoped lambda:InvokeFunction",
+      "secure_alternative": null
+    },
+    {
+      "filename": "lambda_layer_management.json",
+      "label": "secure",
+      "severity": "medium",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Lambda"
+      ],
+      "risk_patterns": "lambda layer operations",
+      "secure_alternative": null
+    },
+    {
+      "filename": "lambda_read_only.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Lambda"
+      ],
+      "risk_patterns": "Lambda read-only",
+      "secure_alternative": null
+    },
+    {
+      "filename": "lambda_update_code_with_passrole.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "passrole_lambda_update",
+      "risk_score": 10,
+      "attack_path": [
+        "Attacker has iam:PassRole and lambda:UpdateFunctionCode permissions",
+        "Identify an existing Lambda function with a privileged execution role",
+        "Update the function code with malicious payload",
+        "Optionally pass a more privileged role via UpdateFunctionConfiguration",
+        "Invoke the function to execute code with elevated privileges"
+      ],
+      "remediation": "Restrict lambda:UpdateFunctionCode to specific function ARNs. Restrict iam:PassRole to specific role ARNs. Separate update and invoke permissions.",
+      "affected_services": [
+        "Lambda",
+        "IAM"
+      ],
+      "risk_patterns": "iam:PassRole * + lambda:UpdateFunctionCode",
+      "secure_alternative": "secure_lambda_read_only.json"
+    },
+    {
+      "filename": "lambda_update_with_passrole.json",
+      "label": "vulnerable",
+      "severity": "high",
+      "vulnerability_type": "passrole_lambda",
+      "risk_score": 9,
+      "attack_path": [
+        "Attacker has iam:PassRole and lambda create/update permissions",
+        "Create or modify a Lambda function",
+        "Pass a privileged execution role to the function",
+        "Invoke the function to run code with elevated privileges"
+      ],
+      "remediation": "Restrict iam:PassRole to specific role ARNs. Limit Lambda operations to specific functions.",
+      "affected_services": [
+        "Lambda",
+        "IAM"
+      ],
+      "risk_patterns": "iam:PassRole + lambda update",
+      "secure_alternative": "secure_lambda_read_only.json"
+    },
+    {
+      "filename": "lambda_vpc_execution.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Lambda",
+        "VPC"
+      ],
+      "risk_patterns": "logs + VPC network interfaces",
+      "secure_alternative": null
+    },
+    {
+      "filename": "lambda_write_dynamodb-access.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Lambda",
+        "DynamoDB"
+      ],
+      "risk_patterns": "lambda + DynamoDB scoped",
+      "secure_alternative": null
+    },
+    {
+      "filename": "rds_admin_region-specific.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "RDS"
+      ],
+      "risk_patterns": "region-specific RDS admin",
+      "secure_alternative": null
+    },
+    {
+      "filename": "s3_readwrite_bucket-objects.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "S3"
+      ],
+      "risk_patterns": "bucket-scoped S3",
+      "secure_alternative": null
+    },
+    {
+      "filename": "s3_readwrite_cognito-user-bucket.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "S3"
+      ],
+      "risk_patterns": "Cognito user S3 bucket",
+      "secure_alternative": null
+    },
+    {
+      "filename": "s3_readwrite_home-directory.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "S3"
+      ],
+      "risk_patterns": "home directory S3",
+      "secure_alternative": null
+    },
+    {
+      "filename": "s3_readwrite_mfa-protected.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "S3"
+      ],
+      "risk_patterns": "MFA-protected S3",
+      "secure_alternative": null
+    },
+    {
+      "filename": "secure_cloudwatch_read_only.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "CloudWatch"
+      ],
+      "risk_patterns": "CloudWatch + Logs read-only",
+      "secure_alternative": null
+    },
+    {
+      "filename": "secure_deny_root_account.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "deny root account usage",
+      "secure_alternative": null
+    },
+    {
+      "filename": "secure_deny_unencrypted.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "deny unencrypted S3 uploads",
+      "secure_alternative": null
+    },
+    {
+      "filename": "secure_dynamodb_read_only.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "DynamoDB"
+      ],
+      "risk_patterns": "DynamoDB read-only",
+      "secure_alternative": null
+    },
+    {
+      "filename": "secure_ec2_read_only.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "EC2"
+      ],
+      "risk_patterns": "EC2 Describe* read-only",
+      "secure_alternative": null
+    },
+    {
+      "filename": "secure_ip_restricted.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "IP-based restriction",
+      "secure_alternative": null
+    },
+    {
+      "filename": "secure_lambda_read_only.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Lambda"
+      ],
+      "risk_patterns": "Lambda read-only",
+      "secure_alternative": null
+    },
+    {
+      "filename": "secure_mfa_required.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "MFA enforcement deny",
+      "secure_alternative": null
+    },
+    {
+      "filename": "secure_rds_read_only.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "RDS"
+      ],
+      "risk_patterns": "RDS Describe* read-only",
+      "secure_alternative": null
+    },
+    {
+      "filename": "secure_require_ssl.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "deny non-SSL S3 access",
+      "secure_alternative": null
+    },
+    {
+      "filename": "secure_resource_specific.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "multi-service resource-scoped",
+      "secure_alternative": null
+    },
+    {
+      "filename": "secure_s3_least_privilege.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "S3"
+      ],
+      "risk_patterns": "scoped S3 read on specific bucket",
+      "secure_alternative": null
+    },
+    {
+      "filename": "secure_tag_based_access.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "tag-based ABAC",
+      "secure_alternative": null
+    },
+    {
+      "filename": "secure_time_restricted.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Multiple"
+      ],
+      "risk_patterns": "time-based condition",
+      "secure_alternative": null
+    },
+    {
+      "filename": "secure_vpc_read_only.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "VPC"
+      ],
+      "risk_patterns": "VPC read-only",
+      "secure_alternative": null
+    },
+    {
+      "filename": "sts_assume_role_chaining.json",
+      "label": "vulnerable",
+      "severity": "high",
+      "vulnerability_type": "role_chaining",
+      "risk_score": 8,
+      "attack_path": [
+        "Attacker has sts:AssumeRole and sts:GetSessionToken on wildcard",
+        "Assume an initial role with limited privileges",
+        "From that role, assume another role with higher privileges",
+        "Chain multiple role assumptions to reach admin access"
+      ],
+      "remediation": "Limit sts:AssumeRole to specific role ARNs. Implement session duration limits. Use aws:PrincipalTag conditions.",
+      "affected_services": [
+        "STS"
+      ],
+      "risk_patterns": "sts:AssumeRole * + GetSessionToken",
+      "secure_alternative": "sts_assume_role_with_conditions.json"
+    },
+    {
+      "filename": "sts_assume_role_cross_account.json",
+      "label": "vulnerable",
+      "severity": "medium",
+      "vulnerability_type": "cross_account_access",
+      "risk_score": 7,
+      "attack_path": [
+        "Attacker has cross-account sts:AssumeRole permissions",
+        "Assume a role in an external AWS account",
+        "Pivot laterally to access resources in the target account",
+        "Potentially chain further cross-account role assumptions"
+      ],
+      "remediation": "Restrict to specific external account IDs. Add ExternalId conditions. Implement session policies.",
+      "affected_services": [
+        "STS"
+      ],
+      "risk_patterns": "cross-account sts:AssumeRole",
+      "secure_alternative": null
+    },
+    {
+      "filename": "sts_assume_role_specific.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "risk_patterns": "scoped_sts_assume",
+      "secure_alternative": null
+    },
+    {
+      "filename": "sts_assume_role_wildcard.json",
+      "label": "vulnerable",
+      "severity": "high",
+      "vulnerability_type": "wildcard_assume_role",
+      "risk_score": 8,
+      "attack_path": [
+        "Attacker has sts:AssumeRole on wildcard resources",
+        "Enumerate all roles in the account",
+        "Assume the most privileged role available",
+        "Gain elevated access through role assumption"
+      ],
+      "remediation": "Restrict sts:AssumeRole to specific role ARNs. Add ExternalId or MFA conditions.",
+      "affected_services": [
+        "STS"
+      ],
+      "risk_patterns": "sts:AssumeRole on *",
+      "secure_alternative": "sts_assume_role_specific.json"
+    },
+    {
+      "filename": "sts_assume_role_with_conditions.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "risk_patterns": "conditioned_assume_role",
+      "secure_alternative": null
+    },
+    {
+      "filename": "sts_decode_authorization_message.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "risk_patterns": "sts:DecodeAuthorizationMessage",
+      "secure_alternative": null
+    },
+    {
+      "filename": "sts_get_caller_identity.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "risk_patterns": "sts:GetCallerIdentity",
+      "secure_alternative": null
+    },
+    {
+      "filename": "sts_get_federation_token.json",
+      "label": "vulnerable",
+      "severity": "medium",
+      "vulnerability_type": "federation_token",
+      "risk_score": 6,
+      "attack_path": [
+        "Attacker has sts:GetFederationToken on wildcard",
+        "Generate federated credentials with a permissive session policy",
+        "Use federated credentials for access that bypasses normal controls"
+      ],
+      "remediation": "Restrict sts:GetFederationToken to specific named sessions. Implement session policy restrictions.",
+      "affected_services": [
+        "STS"
+      ],
+      "risk_patterns": "sts:GetFederationToken on *",
+      "secure_alternative": null
+    },
+    {
+      "filename": "sts_get_session_token.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "risk_patterns": "sts:GetSessionToken",
+      "secure_alternative": null
+    },
+    {
+      "filename": "sts_tag_session.json",
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 0,
+      "attack_path": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "risk_patterns": "conditioned_tag_session",
+      "secure_alternative": null
+    },
+    {
+      "filename": "vulnerable/iam_full_access.json",
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "full_iam_access",
+      "risk_score": 10,
+      "attack_path": [
+        "Attacker has iam:* on all resources",
+        "Create new admin users, roles, and policies at will",
+        "Modify any existing IAM configuration",
+        "Complete control over the account's identity and access management"
+      ],
+      "remediation": "Never grant iam:* to non-admin users. Use least-privilege IAM permissions. Implement permission boundaries and SCPs.",
+      "affected_services": [
+        "IAM"
+      ],
+      "risk_patterns": "iam:* on *",
+      "secure_alternative": "iam_read_only_access.json"
+    }
+  ]
+}

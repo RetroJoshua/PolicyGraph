@@ -1,0 +1,134 @@
+{
+  "description": "Graph representation of Account 3 \u2014 Secure Baseline (no escalation paths)",
+  "nodes": [
+    {
+      "id": 0,
+      "type": "principal",
+      "name": "prod-readonly",
+      "attributes": {
+        "principal_type": "IAMUser",
+        "mfa": true
+      }
+    },
+    {
+      "id": 1,
+      "type": "principal",
+      "name": "prod-deployer",
+      "attributes": {
+        "principal_type": "IAMUser",
+        "mfa": true
+      }
+    },
+    {
+      "id": 2,
+      "type": "role",
+      "name": "LambdaExecutionRole",
+      "attributes": {
+        "has_admin": false,
+        "has_boundary": true
+      }
+    },
+    {
+      "id": 3,
+      "type": "action",
+      "name": "ec2:Describe*",
+      "attributes": {
+        "service": "EC2",
+        "access_level": "read"
+      }
+    },
+    {
+      "id": 4,
+      "type": "action",
+      "name": "lambda:UpdateFunctionCode",
+      "attributes": {
+        "service": "Lambda",
+        "access_level": "write"
+      }
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "name": "iam:PassRole",
+      "attributes": {
+        "service": "IAM",
+        "access_level": "write"
+      }
+    },
+    {
+      "id": 6,
+      "type": "resource",
+      "name": "prod-*",
+      "attributes": {
+        "resource_type": "scoped"
+      }
+    },
+    {
+      "id": 7,
+      "type": "condition",
+      "name": "MFA Required",
+      "attributes": {
+        "condition_type": "Bool",
+        "key": "aws:MultiFactorAuthPresent"
+      }
+    },
+    {
+      "id": 8,
+      "type": "condition",
+      "name": "Region Lock",
+      "attributes": {
+        "condition_type": "StringEquals",
+        "key": "aws:RequestedRegion"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": 0,
+      "target": 3,
+      "type": "has_permission",
+      "weight": 1.0
+    },
+    {
+      "source": 3,
+      "target": 8,
+      "type": "requires_condition",
+      "weight": 1.0
+    },
+    {
+      "source": 1,
+      "target": 4,
+      "type": "has_permission",
+      "weight": 1.0
+    },
+    {
+      "source": 1,
+      "target": 5,
+      "type": "has_permission",
+      "weight": 1.0
+    },
+    {
+      "source": 4,
+      "target": 6,
+      "type": "applies_to",
+      "weight": 1.0
+    },
+    {
+      "source": 4,
+      "target": 7,
+      "type": "requires_condition",
+      "weight": 1.0
+    },
+    {
+      "source": 5,
+      "target": 2,
+      "type": "can_pass",
+      "weight": 1.0
+    }
+  ],
+  "metadata": {
+    "num_nodes": 9,
+    "num_edges": 7,
+    "has_escalation": false
+  }
+}

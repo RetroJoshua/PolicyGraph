@@ -1,0 +1,92 @@
+{
+  "description": "Graph representation of Account 2 \u2014 Role Chaining Escalation",
+  "nodes": [
+    {
+      "id": 0,
+      "type": "principal",
+      "name": "ci-deploy",
+      "attributes": {
+        "principal_type": "IAMUser"
+      }
+    },
+    {
+      "id": 1,
+      "type": "role",
+      "name": "DeployRole",
+      "attributes": {
+        "has_admin": false
+      }
+    },
+    {
+      "id": 2,
+      "type": "role",
+      "name": "OpsRole",
+      "attributes": {
+        "has_admin": false
+      }
+    },
+    {
+      "id": 3,
+      "type": "role",
+      "name": "AdminRole",
+      "attributes": {
+        "has_admin": true
+      }
+    },
+    {
+      "id": 4,
+      "type": "action",
+      "name": "sts:AssumeRole",
+      "attributes": {
+        "service": "STS",
+        "access_level": "write"
+      }
+    },
+    {
+      "id": 5,
+      "type": "policy",
+      "name": "AdministratorAccess",
+      "attributes": {
+        "aws_managed": true
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": 0,
+      "target": 1,
+      "type": "can_assume",
+      "weight": 1.0
+    },
+    {
+      "source": 1,
+      "target": 2,
+      "type": "can_assume",
+      "weight": 1.0
+    },
+    {
+      "source": 2,
+      "target": 3,
+      "type": "can_assume",
+      "weight": 1.0
+    },
+    {
+      "source": 3,
+      "target": 5,
+      "type": "has_attached",
+      "weight": 1.0
+    },
+    {
+      "source": 0,
+      "target": 3,
+      "type": "escalation_path",
+      "weight": 1.0
+    }
+  ],
+  "metadata": {
+    "num_nodes": 6,
+    "num_edges": 5,
+    "has_escalation": true,
+    "chain_length": 3
+  }
+}

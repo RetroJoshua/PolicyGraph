@@ -1,0 +1,198 @@
+{
+  "account_id": "444444444444",
+  "account_alias": "shared-services",
+  "description": "Complex account with multiple privilege escalation vectors",
+  "users": [
+    {
+      "username": "analyst",
+      "arn": "arn:aws:iam::444444444444:user/analyst",
+      "policies": [
+        "AnalystPolicy"
+      ],
+      "groups": [
+        "DataTeam"
+      ]
+    },
+    {
+      "username": "developer",
+      "arn": "arn:aws:iam::444444444444:user/developer",
+      "policies": [
+        "DeveloperPolicy"
+      ],
+      "groups": [
+        "DevTeam"
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "role_name": "DataPipelineRole",
+      "arn": "arn:aws:iam::444444444444:role/DataPipelineRole",
+      "trust_policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "Service": "datapipeline.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "attached_policies": [
+        "arn:aws:iam::aws:policy/AdministratorAccess"
+      ]
+    },
+    {
+      "role_name": "GlueRole",
+      "arn": "arn:aws:iam::444444444444:role/GlueRole",
+      "trust_policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "Service": "glue.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "attached_policies": [
+        "arn:aws:iam::444444444444:policy/GlueFullAccess"
+      ]
+    },
+    {
+      "role_name": "CrossAccountRole",
+      "arn": "arn:aws:iam::444444444444:role/CrossAccountRole",
+      "trust_policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": "arn:aws:iam::555555555555:root"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "attached_policies": [
+        "arn:aws:iam::aws:policy/AdministratorAccess"
+      ]
+    }
+  ],
+  "policies": [
+    {
+      "policy_name": "AnalystPolicy",
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": "*"
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "glue:CreateDevEndpoint",
+              "glue:GetDevEndpoint*"
+            ],
+            "Resource": "*"
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "datapipeline:CreatePipeline",
+              "datapipeline:PutPipelineDefinition",
+              "datapipeline:ActivatePipeline"
+            ],
+            "Resource": "*"
+          }
+        ]
+      }
+    },
+    {
+      "policy_name": "DeveloperPolicy",
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "iam:CreatePolicyVersion",
+              "iam:SetDefaultPolicyVersion"
+            ],
+            "Resource": "arn:aws:iam::444444444444:policy/*"
+          },
+          {
+            "Effect": "Allow",
+            "Action": "iam:AttachUserPolicy",
+            "Resource": "arn:aws:iam::444444444444:user/*"
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "lambda:*"
+            ],
+            "Resource": "*"
+          }
+        ]
+      }
+    }
+  ],
+  "groups": [
+    {
+      "group_name": "DataTeam",
+      "attached_policies": [
+        "arn:aws:iam::444444444444:policy/AnalystPolicy"
+      ]
+    },
+    {
+      "group_name": "DevTeam",
+      "attached_policies": [
+        "arn:aws:iam::444444444444:policy/DeveloperPolicy"
+      ]
+    }
+  ],
+  "attack_paths": [
+    {
+      "name": "Analyst \u2192 Glue Endpoint Escalation",
+      "severity": "high",
+      "steps": [
+        "analyst has iam:PassRole (*) + glue:CreateDevEndpoint",
+        "Creates Glue dev endpoint, passing DataPipelineRole (admin)",
+        "Connects to the endpoint and executes code with admin privileges"
+      ]
+    },
+    {
+      "name": "Analyst \u2192 Data Pipeline Escalation",
+      "severity": "critical",
+      "steps": [
+        "analyst creates a Data Pipeline with malicious activities",
+        "Passes DataPipelineRole (admin) to the pipeline",
+        "Pipeline activities execute with admin privileges"
+      ]
+    },
+    {
+      "name": "Developer \u2192 Policy Version Escalation",
+      "severity": "critical",
+      "steps": [
+        "developer has iam:CreatePolicyVersion + SetDefaultPolicyVersion",
+        "Creates new version of any policy with admin permissions",
+        "Sets it as default \u2014 all users of that policy become admin"
+      ]
+    },
+    {
+      "name": "Developer \u2192 Attach Policy Escalation",
+      "severity": "critical",
+      "steps": [
+        "developer has iam:AttachUserPolicy on all users",
+        "Attaches AdministratorAccess to their own user",
+        "Immediately gains full admin access"
+      ]
+    }
+  ]
+}

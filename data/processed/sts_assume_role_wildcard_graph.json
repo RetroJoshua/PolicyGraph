@@ -1,0 +1,123 @@
+{
+  "metadata": {
+    "source_policy": "sts_assume_role_wildcard.json",
+    "label": "vulnerable",
+    "vulnerability_type": "wildcard_assume_role",
+    "severity": "high",
+    "risk_score": 8,
+    "framework_compatibility": [
+      "DGL",
+      "PyTorch Geometric",
+      "NetworkX"
+    ]
+  },
+  "nodes": [
+    {
+      "id": 0,
+      "type": "principal",
+      "name": "policy_holder",
+      "features": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1,
+      "type": "action",
+      "name": "sts:AssumeRole",
+      "features": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "type": "resource",
+      "name": "*",
+      "features": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": 3,
+      "type": "effect",
+      "name": "Allow",
+      "features": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "src": 0,
+      "dst": 1,
+      "type": "has_permission",
+      "features": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "src": 1,
+      "dst": 2,
+      "type": "applies_to",
+      "features": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "src": 1,
+      "dst": 3,
+      "type": "has_effect",
+      "features": [
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "node_feature_names": [
+    "is_principal",
+    "is_action",
+    "is_resource",
+    "is_effect",
+    "is_iam_related",
+    "is_compute_related"
+  ],
+  "edge_feature_names": [
+    "is_permission_grant",
+    "is_resource_binding",
+    "is_effect_binding"
+  ],
+  "adjacency_list": {
+    "0": [
+      1
+    ],
+    "1": [
+      2,
+      3
+    ]
+  },
+  "graph_label": 1
+}

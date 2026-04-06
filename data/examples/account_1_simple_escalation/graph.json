@@ -1,0 +1,125 @@
+{
+  "description": "Graph representation of Account 1 \u2014 Simple PassRole + Lambda Escalation",
+  "nodes": [
+    {
+      "id": 0,
+      "type": "principal",
+      "name": "dev-user",
+      "attributes": {
+        "principal_type": "IAMUser"
+      }
+    },
+    {
+      "id": 1,
+      "type": "action",
+      "name": "iam:PassRole",
+      "attributes": {
+        "service": "IAM",
+        "access_level": "write"
+      }
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "name": "lambda:CreateFunction",
+      "attributes": {
+        "service": "Lambda",
+        "access_level": "write"
+      }
+    },
+    {
+      "id": 3,
+      "type": "action",
+      "name": "lambda:InvokeFunction",
+      "attributes": {
+        "service": "Lambda",
+        "access_level": "write"
+      }
+    },
+    {
+      "id": 4,
+      "type": "resource",
+      "name": "*",
+      "attributes": {
+        "resource_type": "wildcard"
+      }
+    },
+    {
+      "id": 5,
+      "type": "role",
+      "name": "AdminLambdaExecutionRole",
+      "attributes": {
+        "has_admin": true
+      }
+    },
+    {
+      "id": 6,
+      "type": "policy",
+      "name": "AdministratorAccess",
+      "attributes": {
+        "aws_managed": true
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": 0,
+      "target": 1,
+      "type": "has_permission",
+      "weight": 1.0
+    },
+    {
+      "source": 0,
+      "target": 2,
+      "type": "has_permission",
+      "weight": 1.0
+    },
+    {
+      "source": 0,
+      "target": 3,
+      "type": "has_permission",
+      "weight": 1.0
+    },
+    {
+      "source": 1,
+      "target": 4,
+      "type": "applies_to",
+      "weight": 1.0
+    },
+    {
+      "source": 2,
+      "target": 4,
+      "type": "applies_to",
+      "weight": 1.0
+    },
+    {
+      "source": 3,
+      "target": 4,
+      "type": "applies_to",
+      "weight": 1.0
+    },
+    {
+      "source": 1,
+      "target": 5,
+      "type": "can_pass",
+      "weight": 1.0
+    },
+    {
+      "source": 5,
+      "target": 6,
+      "type": "has_attached",
+      "weight": 1.0
+    },
+    {
+      "source": 0,
+      "target": 5,
+      "type": "escalation_path",
+      "weight": 1.0
+    }
+  ],
+  "metadata": {
+    "num_nodes": 7,
+    "num_edges": 9,
+    "has_escalation": true
+  }
+}

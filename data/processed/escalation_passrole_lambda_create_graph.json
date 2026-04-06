@@ -1,0 +1,219 @@
+{
+  "metadata": {
+    "source_policy": "escalation_passrole_lambda_create.json",
+    "label": "vulnerable",
+    "vulnerability_type": "passrole_lambda_create",
+    "severity": "critical",
+    "risk_score": 10,
+    "framework_compatibility": [
+      "DGL",
+      "PyTorch Geometric",
+      "NetworkX"
+    ]
+  },
+  "nodes": [
+    {
+      "id": 0,
+      "type": "principal",
+      "name": "policy_holder",
+      "features": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1,
+      "type": "action",
+      "name": "iam:PassRole",
+      "features": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "name": "lambda:CreateFunction",
+      "features": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "type": "action",
+      "name": "lambda:InvokeFunction",
+      "features": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "type": "resource",
+      "name": "*",
+      "features": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": 5,
+      "type": "effect",
+      "name": "Allow",
+      "features": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "src": 0,
+      "dst": 1,
+      "type": "has_permission",
+      "features": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "src": 0,
+      "dst": 2,
+      "type": "has_permission",
+      "features": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "src": 0,
+      "dst": 3,
+      "type": "has_permission",
+      "features": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "src": 1,
+      "dst": 4,
+      "type": "applies_to",
+      "features": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "src": 2,
+      "dst": 4,
+      "type": "applies_to",
+      "features": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "src": 3,
+      "dst": 4,
+      "type": "applies_to",
+      "features": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "src": 1,
+      "dst": 5,
+      "type": "has_effect",
+      "features": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "src": 2,
+      "dst": 5,
+      "type": "has_effect",
+      "features": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "src": 3,
+      "dst": 5,
+      "type": "has_effect",
+      "features": [
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "node_feature_names": [
+    "is_principal",
+    "is_action",
+    "is_resource",
+    "is_effect",
+    "is_iam_related",
+    "is_compute_related"
+  ],
+  "edge_feature_names": [
+    "is_permission_grant",
+    "is_resource_binding",
+    "is_effect_binding"
+  ],
+  "adjacency_list": {
+    "0": [
+      1,
+      2,
+      3
+    ],
+    "1": [
+      4,
+      5
+    ],
+    "2": [
+      4,
+      5
+    ],
+    "3": [
+      4,
+      5
+    ]
+  },
+  "graph_label": 1
+}
