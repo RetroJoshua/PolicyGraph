@@ -1,0 +1,32 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: cloudformation_update_stack.json
+# Label: vulnerable
+# Vulnerability: stack_modification
+# Generated: 2026-05-17T08:15:42.393587+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - cloudformation_update_stack.json (label:
+  vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: cloudformation_update_stack.json
+    Label: vulnerable
+    VulnerabilityType: stack_modification
+    Severity: medium
+    GeneratedAt: '2026-05-17T08:15:42.393557+00:00'
+Resources:
+  CloudformationUpdateStack:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: cloudformation_update_stack
+      Description: IAM Policy from cloudformation_update_stack.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - cloudformation:UpdateStack
+          - cloudformation:DescribeStacks
+          - cloudformation:DescribeStackEvents
+          - cloudformation:GetTemplate
+          Resource: '*'

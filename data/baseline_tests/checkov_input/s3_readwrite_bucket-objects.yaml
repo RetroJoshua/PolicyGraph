@@ -1,0 +1,36 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: s3_readwrite_bucket-objects.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.439377+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - s3_readwrite_bucket-objects.json (label:
+  secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: s3_readwrite_bucket-objects.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.438727+00:00'
+Resources:
+  S3ReadwriteBucketObjects:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: s3_readwrite_bucket-objects
+      Description: IAM Policy from s3_readwrite_bucket-objects.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Sid: ListObjectsInBucket
+          Effect: Allow
+          Action:
+          - s3:ListBucket
+          Resource:
+          - arn:aws:s3:::bucket-name
+        - Sid: AllObjectActions
+          Effect: Allow
+          Action: s3:*Object
+          Resource:
+          - arn:aws:s3:::bucket-name/*

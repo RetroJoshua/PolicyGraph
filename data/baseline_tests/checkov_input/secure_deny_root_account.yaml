@@ -1,0 +1,30 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: secure_deny_root_account.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.444356+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - secure_deny_root_account.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: secure_deny_root_account.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.444304+00:00'
+Resources:
+  SecureDenyRootAccount:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: secure_deny_root_account
+      Description: IAM Policy from secure_deny_root_account.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Deny
+          Action: '*'
+          Resource: '*'
+          Condition:
+            StringLike:
+              aws:PrincipalArn: arn:aws:iam::*:root

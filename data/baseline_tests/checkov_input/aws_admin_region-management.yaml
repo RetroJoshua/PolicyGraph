@@ -1,0 +1,33 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: aws_admin_region-management.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.325738+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - aws_admin_region-management.json (label:
+  secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: aws_admin_region-management.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.325128+00:00'
+Resources:
+  AwsAdminRegionManagement:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: aws_admin_region-management
+      Description: IAM Policy from aws_admin_region-management.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          Effect: Deny
+          Action: '*'
+          Resource: '*'
+          Condition:
+            NotIpAddress:
+              aws:SourceIp:
+              - 192.0.2.0/24
+              - 203.0.113.0/24

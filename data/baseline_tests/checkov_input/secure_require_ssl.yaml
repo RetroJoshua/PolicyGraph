@@ -1,0 +1,32 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: secure_require_ssl.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.450011+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - secure_require_ssl.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: secure_require_ssl.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.449991+00:00'
+Resources:
+  SecureRequireSsl:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: secure_require_ssl
+      Description: IAM Policy from secure_require_ssl.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Deny
+          Action: s3:*
+          Resource:
+          - arn:aws:s3:::secure-bucket
+          - arn:aws:s3:::secure-bucket/*
+          Condition:
+            Bool:
+              aws:SecureTransport: 'false'

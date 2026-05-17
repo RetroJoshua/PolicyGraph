@@ -1,0 +1,40 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: secure_ip_restricted.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.447182+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - secure_ip_restricted.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: secure_ip_restricted.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.447160+00:00'
+Resources:
+  SecureIpRestricted:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: secure_ip_restricted
+      Description: IAM Policy from secure_ip_restricted.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: '*'
+          Resource: '*'
+          Condition:
+            IpAddress:
+              aws:SourceIp:
+              - 10.0.0.0/8
+              - 172.16.0.0/12
+        - Effect: Deny
+          Action: '*'
+          Resource: '*'
+          Condition:
+            NotIpAddress:
+              aws:SourceIp:
+              - 10.0.0.0/8
+              - 172.16.0.0/12

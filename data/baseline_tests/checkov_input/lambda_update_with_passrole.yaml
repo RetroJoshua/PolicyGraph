@@ -1,0 +1,33 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: lambda_update_with_passrole.json
+# Label: vulnerable
+# Vulnerability: passrole_lambda
+# Generated: 2026-05-17T08:15:42.434875+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - lambda_update_with_passrole.json (label:
+  vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: lambda_update_with_passrole.json
+    Label: vulnerable
+    VulnerabilityType: passrole_lambda
+    Severity: high
+    GeneratedAt: '2026-05-17T08:15:42.434240+00:00'
+Resources:
+  LambdaUpdateWithPassrole:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: lambda_update_with_passrole
+      Description: IAM Policy from lambda_update_with_passrole.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: iam:PassRole
+          Resource: '*'
+        - Effect: Allow
+          Action:
+          - lambda:UpdateFunctionCode
+          - lambda:UpdateFunctionConfiguration
+          Resource: '*'

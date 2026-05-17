@@ -1,0 +1,33 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: escalation_passrole_sagemaker.json
+# Label: vulnerable
+# Vulnerability: passrole_sagemaker
+# Generated: 2026-05-17T08:15:42.411411+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - escalation_passrole_sagemaker.json (label:
+  vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: escalation_passrole_sagemaker.json
+    Label: vulnerable
+    VulnerabilityType: passrole_sagemaker
+    Severity: high
+    GeneratedAt: '2026-05-17T08:15:42.411389+00:00'
+Resources:
+  EscalationPassroleSagemaker:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: escalation_passrole_sagemaker
+      Description: IAM Policy from escalation_passrole_sagemaker.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: iam:PassRole
+          Resource: '*'
+        - Effect: Allow
+          Action:
+          - sagemaker:CreateNotebookInstance
+          - sagemaker:CreatePresignedNotebookInstanceUrl
+          Resource: '*'

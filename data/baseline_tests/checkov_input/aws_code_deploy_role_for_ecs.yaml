@@ -1,0 +1,50 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: aws_code_deploy_role_for_ecs.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.335022+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - aws_code_deploy_role_for_ecs.json (label:
+  secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: aws_code_deploy_role_for_ecs.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.334990+00:00'
+Resources:
+  AwsCodeDeployRoleForEcs:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: aws_code_deploy_role_for_ecs
+      Description: IAM Policy from aws_code_deploy_role_for_ecs.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Action:
+          - ecs:DescribeServices
+          - ecs:CreateTaskSet
+          - ecs:UpdateServicePrimaryTaskSet
+          - ecs:DeleteTaskSet
+          - elasticloadbalancing:DescribeTargetGroups
+          - elasticloadbalancing:DescribeListeners
+          - elasticloadbalancing:ModifyListener
+          - elasticloadbalancing:DescribeRules
+          - elasticloadbalancing:ModifyRule
+          - lambda:InvokeFunction
+          - cloudwatch:DescribeAlarms
+          - sns:Publish
+          - s3:GetObject
+          - s3:GetObjectVersion
+          Resource: '*'
+          Effect: Allow
+        - Action:
+          - iam:PassRole
+          Effect: Allow
+          Resource: '*'
+          Condition:
+            StringLike:
+              iam:PassedToService:
+              - ecs-tasks.amazonaws.com

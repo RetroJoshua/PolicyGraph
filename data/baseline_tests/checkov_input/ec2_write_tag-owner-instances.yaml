@@ -1,0 +1,36 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: ec2_write_tag-owner-instances.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.401279+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - ec2_write_tag-owner-instances.json (label:
+  secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: ec2_write_tag-owner-instances.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.401257+00:00'
+Resources:
+  Ec2WriteTagOwnerInstances:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: ec2_write_tag-owner-instances
+      Description: IAM Policy from ec2_write_tag-owner-instances.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - ec2:StartInstances
+          - ec2:StopInstances
+          Resource: arn:aws:ec2:*:*:instance/*
+          Condition:
+            StringEquals:
+              aws:ResourceTag/Owner: ${aws:username}
+        - Effect: Allow
+          Action: ec2:DescribeInstances
+          Resource: '*'

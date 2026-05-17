@@ -1,0 +1,30 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: iam_read_console-full.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.416561+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - iam_read_console-full.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: iam_read_console-full.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.416531+00:00'
+Resources:
+  IamReadConsoleFull:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: iam_read_console-full
+      Description: IAM Policy from iam_read_console-full.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          Effect: Allow
+          Action:
+          - iam:Get*
+          - iam:List*
+          - iam:Generate*
+          Resource: '*'

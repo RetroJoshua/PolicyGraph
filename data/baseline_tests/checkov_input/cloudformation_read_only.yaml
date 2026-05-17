@@ -1,0 +1,33 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: cloudformation_read_only.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.390664+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - cloudformation_read_only.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: cloudformation_read_only.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.390642+00:00'
+Resources:
+  CloudformationReadOnly:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: cloudformation_read_only
+      Description: IAM Policy from cloudformation_read_only.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - cloudformation:DescribeStacks
+          - cloudformation:DescribeStackEvents
+          - cloudformation:DescribeStackResources
+          - cloudformation:GetTemplate
+          - cloudformation:ListStacks
+          - cloudformation:ListStackResources
+          Resource: '*'

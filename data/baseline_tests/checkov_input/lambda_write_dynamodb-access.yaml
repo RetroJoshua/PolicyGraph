@@ -1,0 +1,50 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: lambda_write_dynamodb-access.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.436984+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - lambda_write_dynamodb-access.json (label:
+  secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: lambda_write_dynamodb-access.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.436298+00:00'
+Resources:
+  LambdaWriteDynamodbAccess:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: lambda_write_dynamodb-access
+      Description: IAM Policy from lambda_write_dynamodb-access.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Sid: ReadWriteTable
+          Effect: Allow
+          Action:
+          - dynamodb:BatchGetItem
+          - dynamodb:GetItem
+          - dynamodb:Query
+          - dynamodb:Scan
+          - dynamodb:BatchWriteItem
+          - dynamodb:PutItem
+          - dynamodb:UpdateItem
+          Resource: arn:aws:dynamodb:*:*:table/SampleTable
+        - Sid: GetStreamRecords
+          Effect: Allow
+          Action: dynamodb:GetRecords
+          Resource: 'arn:aws:dynamodb:*:*:table/SampleTable/stream/* '
+        - Sid: WriteLogStreamsAndGroups
+          Effect: Allow
+          Action:
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          Resource: '*'
+        - Sid: CreateLogGroup
+          Effect: Allow
+          Action: logs:CreateLogGroup
+          Resource: '*'

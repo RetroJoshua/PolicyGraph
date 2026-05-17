@@ -1,0 +1,28 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: escalation_add_user_to_group.json
+# Label: vulnerable
+# Vulnerability: add_user_to_group
+# Generated: 2026-05-17T08:15:42.402187+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - escalation_add_user_to_group.json (label:
+  vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: escalation_add_user_to_group.json
+    Label: vulnerable
+    VulnerabilityType: add_user_to_group
+    Severity: high
+    GeneratedAt: '2026-05-17T08:15:42.402162+00:00'
+Resources:
+  EscalationAddUserToGroup:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: escalation_add_user_to_group
+      Description: IAM Policy from escalation_add_user_to_group.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: iam:AddUserToGroup
+          Resource: arn:aws:iam::*:group/*

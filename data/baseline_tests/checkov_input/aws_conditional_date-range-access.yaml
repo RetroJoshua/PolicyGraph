@@ -1,0 +1,33 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: aws_conditional_date-range-access.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.343879+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - aws_conditional_date-range-access.json (label:
+  secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: aws_conditional_date-range-access.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.343850+00:00'
+Resources:
+  AwsConditionalDateRangeAccess:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: aws_conditional_date-range-access
+      Description: IAM Policy from aws_conditional_date-range-access.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: service-prefix:action-name
+          Resource: '*'
+          Condition:
+            DateGreaterThan:
+              aws:CurrentTime: '2020-04-01T00:00:00Z'
+            DateLessThan:
+              aws:CurrentTime: '2020-06-30T23:59:59Z'
