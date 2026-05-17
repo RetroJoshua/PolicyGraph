@@ -1,0 +1,23 @@
+data:
+  samples_dir: data/raw/samples
+  labels_file: data/raw/samples/LABELS.json
+
+model:
+  in_dim: 6
+  hidden_dim: 64
+  num_layers: 3
+  num_heads: 4
+  dropout: 0.2
+
+training:
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  epochs: 100
+  batch_size: 32
+  early_stopping_patience: 15
+  device: cpu
+  checkpoint_dir: checkpoints
+
+evaluation:
+  threshold: 0.5
+  report_path: results/evaluation_report.json
