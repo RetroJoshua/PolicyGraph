@@ -1,0 +1,33 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: secure_dynamodb_read_only.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.445837+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - secure_dynamodb_read_only.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: secure_dynamodb_read_only.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.445810+00:00'
+Resources:
+  SecureDynamodbReadOnly:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: secure_dynamodb_read_only
+      Description: IAM Policy from secure_dynamodb_read_only.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - dynamodb:GetItem
+          - dynamodb:BatchGetItem
+          - dynamodb:Query
+          - dynamodb:Scan
+          - dynamodb:DescribeTable
+          - dynamodb:ListTables
+          Resource: '*'

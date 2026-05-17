@@ -1,0 +1,27 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: sts_get_session_token.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.459407+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - sts_get_session_token.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: sts_get_session_token.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.459379+00:00'
+Resources:
+  StsGetSessionToken:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: sts_get_session_token
+      Description: IAM Policy from sts_get_session_token.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: sts:GetSessionToken
+          Resource: '*'

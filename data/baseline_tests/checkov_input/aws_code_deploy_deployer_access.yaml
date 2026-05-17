@@ -1,0 +1,63 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: aws_code_deploy_deployer_access.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.330908+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - aws_code_deploy_deployer_access.json (label:
+  secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: aws_code_deploy_deployer_access.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.330854+00:00'
+Resources:
+  AwsCodeDeployDeployerAccess:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: aws_code_deploy_deployer_access
+      Description: IAM Policy from aws_code_deploy_deployer_access.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Action:
+          - codedeploy:Batch*
+          - codedeploy:CreateDeployment
+          - codedeploy:Get*
+          - codedeploy:List*
+          - codedeploy:RegisterApplicationRevision
+          Effect: Allow
+          Resource: '*'
+        - Sid: CodeStarNotificationsReadWriteAccess
+          Effect: Allow
+          Action:
+          - codestar-notifications:CreateNotificationRule
+          - codestar-notifications:DescribeNotificationRule
+          - codestar-notifications:UpdateNotificationRule
+          - codestar-notifications:Subscribe
+          - codestar-notifications:Unsubscribe
+          Resource: '*'
+          Condition:
+            ArnLike:
+              codestar-notifications:NotificationsForResource: arn:aws:codedeploy:*:*:application:*
+        - Sid: CodeStarNotificationsListAccess
+          Effect: Allow
+          Action:
+          - codestar-notifications:ListNotificationRules
+          - codestar-notifications:ListTargets
+          - codestar-notifications:ListTagsforResource
+          - codestar-notifications:ListEventTypes
+          Resource: '*'
+        - Sid: CodeStarNotificationsChatbotAccess
+          Effect: Allow
+          Action:
+          - chatbot:DescribeSlackChannelConfigurations
+          Resource: '*'
+        - Sid: SNSTopicListAccess
+          Effect: Allow
+          Action:
+          - sns:ListTopics
+          Resource: '*'

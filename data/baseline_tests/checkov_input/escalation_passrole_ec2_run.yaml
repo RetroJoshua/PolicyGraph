@@ -1,0 +1,31 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: escalation_passrole_ec2_run.json
+# Label: vulnerable
+# Vulnerability: passrole_ec2
+# Generated: 2026-05-17T08:15:42.408643+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - escalation_passrole_ec2_run.json (label:
+  vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: escalation_passrole_ec2_run.json
+    Label: vulnerable
+    VulnerabilityType: passrole_ec2
+    Severity: critical
+    GeneratedAt: '2026-05-17T08:15:42.408619+00:00'
+Resources:
+  EscalationPassroleEc2Run:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: escalation_passrole_ec2_run
+      Description: IAM Policy from escalation_passrole_ec2_run.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: iam:PassRole
+          Resource: '*'
+        - Effect: Allow
+          Action: ec2:RunInstances
+          Resource: '*'

@@ -1,0 +1,30 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: escalation_set_default_policy_version.json
+# Label: vulnerable
+# Vulnerability: set_default_policy_version
+# Generated: 2026-05-17T08:15:42.413909+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - escalation_set_default_policy_version.json
+  (label: vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: escalation_set_default_policy_version.json
+    Label: vulnerable
+    VulnerabilityType: set_default_policy_version
+    Severity: critical
+    GeneratedAt: '2026-05-17T08:15:42.413885+00:00'
+Resources:
+  EscalationSetDefaultPolicyVersion:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: escalation_set_default_policy_version
+      Description: IAM Policy from escalation_set_default_policy_version.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - iam:CreatePolicyVersion
+          - iam:SetDefaultPolicyVersion
+          Resource: arn:aws:iam::*:policy/*

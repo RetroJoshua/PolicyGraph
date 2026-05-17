@@ -1,0 +1,31 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: iam_write_passrole-to-service.json
+# Label: vulnerable
+# Vulnerability: passrole
+# Generated: 2026-05-17T08:15:42.421326+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - iam_write_passrole-to-service.json (label:
+  vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: iam_write_passrole-to-service.json
+    Label: vulnerable
+    VulnerabilityType: passrole
+    Severity: medium
+    GeneratedAt: '2026-05-17T08:15:42.420654+00:00'
+Resources:
+  IamWritePassroleToService:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: iam_write_passrole-to-service
+      Description: IAM Policy from iam_write_passrole-to-service.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: iam:PassRole
+          Resource: '*'
+          Condition:
+            StringEquals:
+              iam:PassedToService: cloudwatch.amazonaws.com

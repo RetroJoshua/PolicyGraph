@@ -1,0 +1,37 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: ec2_write_mfa-required.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.398694+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - ec2_write_mfa-required.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: ec2_write_mfa-required.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.398669+00:00'
+Resources:
+  Ec2WriteMfaRequired:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: ec2_write_mfa-required
+      Description: IAM Policy from ec2_write_mfa-required.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Sid: AllowAllActionsForEC2
+          Effect: Allow
+          Action: ec2:*
+          Resource: '*'
+        - Sid: DenyStopAndTerminateWhenMFAIsNotPresent
+          Effect: Deny
+          Action:
+          - ec2:StopInstances
+          - ec2:TerminateInstances
+          Resource: '*'
+          Condition:
+            BoolIfExists:
+              aws:MultiFactorAuthPresent: false

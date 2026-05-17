@@ -1,0 +1,35 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: s3_readwrite_mfa-protected.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.442903+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - s3_readwrite_mfa-protected.json (label:
+  secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: s3_readwrite_mfa-protected.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.442875+00:00'
+Resources:
+  S3ReadwriteMfaProtected:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: s3_readwrite_mfa-protected
+      Description: IAM Policy from s3_readwrite_mfa-protected.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: s3:*
+          Resource:
+          - arn:aws:s3:::bucket-name
+          - arn:aws:s3:::bucket-name/*
+        - Effect: Deny
+          NotAction: s3:*
+          NotResource:
+          - arn:aws:s3:::bucket-name
+          - arn:aws:s3:::bucket-name/*

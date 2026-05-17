@@ -1,0 +1,31 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: ec2_admin_region-full-access.json
+# Label: vulnerable
+# Vulnerability: full_service_access
+# Generated: 2026-05-17T08:15:42.396807+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - ec2_admin_region-full-access.json (label:
+  vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: ec2_admin_region-full-access.json
+    Label: vulnerable
+    VulnerabilityType: full_service_access
+    Severity: medium
+    GeneratedAt: '2026-05-17T08:15:42.396776+00:00'
+Resources:
+  Ec2AdminRegionFullAccess:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: ec2_admin_region-full-access
+      Description: IAM Policy from ec2_admin_region-full-access.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Action: ec2:*
+          Resource: '*'
+          Effect: Allow
+          Condition:
+            StringEquals:
+              ec2:Region: us-east-2

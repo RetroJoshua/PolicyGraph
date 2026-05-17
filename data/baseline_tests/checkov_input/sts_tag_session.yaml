@@ -1,0 +1,32 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: sts_tag_session.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.459996+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - sts_tag_session.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: sts_tag_session.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.459974+00:00'
+Resources:
+  StsTagSession:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: sts_tag_session
+      Description: IAM Policy from sts_tag_session.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - sts:AssumeRole
+          - sts:TagSession
+          Resource: arn:aws:iam::123456789012:role/TaggedRole
+          Condition:
+            StringEquals:
+              aws:RequestTag/Project: MyProject

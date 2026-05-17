@@ -1,0 +1,39 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: ec2_deny_terminate-ip.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.397496+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - ec2_deny_terminate-ip.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: ec2_deny_terminate-ip.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.397472+00:00'
+Resources:
+  Ec2DenyTerminateIp:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: ec2_deny_terminate-ip
+      Description: IAM Policy from ec2_deny_terminate-ip.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - ec2:TerminateInstances
+          Resource:
+          - '*'
+        - Effect: Deny
+          Action:
+          - ec2:TerminateInstances
+          Condition:
+            NotIpAddress:
+              aws:SourceIp:
+              - 192.0.2.0/24
+              - 203.0.113.0/24
+          Resource:
+          - '*'

@@ -1,0 +1,34 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: secure_time_restricted.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.452806+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - secure_time_restricted.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: secure_time_restricted.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.452779+00:00'
+Resources:
+  SecureTimeRestricted:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: secure_time_restricted
+      Description: IAM Policy from secure_time_restricted.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - s3:GetObject
+          - s3:PutObject
+          Resource: arn:aws:s3:::work-bucket/*
+          Condition:
+            DateGreaterThan:
+              aws:CurrentTime: '2026-01-01T09:00:00Z'
+            DateLessThan:
+              aws:CurrentTime: '2026-12-31T17:00:00Z'

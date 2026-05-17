@@ -1,0 +1,38 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: dynamodb_readwrite_cognito-items.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.395145+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - dynamodb_readwrite_cognito-items.json (label:
+  secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: dynamodb_readwrite_cognito-items.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.395122+00:00'
+Resources:
+  DynamodbReadwriteCognitoItems:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: dynamodb_readwrite_cognito-items
+      Description: IAM Policy from dynamodb_readwrite_cognito-items.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - dynamodb:DeleteItem
+          - dynamodb:GetItem
+          - dynamodb:PutItem
+          - dynamodb:Query
+          - dynamodb:UpdateItem
+          Resource:
+          - arn:aws:dynamodb:*:*:table/MyTable
+          Condition:
+            ForAllValues:StringEquals:
+              dynamodb:LeadingKeys:
+              - ${cognito-identity.amazonaws.com:sub}

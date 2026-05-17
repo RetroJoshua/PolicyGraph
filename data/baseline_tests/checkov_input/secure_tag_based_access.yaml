@@ -1,0 +1,34 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: secure_tag_based_access.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.452090+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - secure_tag_based_access.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: secure_tag_based_access.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.452068+00:00'
+Resources:
+  SecureTagBasedAccess:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: secure_tag_based_access
+      Description: IAM Policy from secure_tag_based_access.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - ec2:StartInstances
+          - ec2:StopInstances
+          - ec2:RebootInstances
+          Resource: '*'
+          Condition:
+            StringEquals:
+              ec2:ResourceTag/Environment: development
+              aws:PrincipalTag/Department: ${ec2:ResourceTag/Department}

@@ -1,0 +1,42 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: aws_code_star_full_access.json
+# Label: vulnerable
+# Vulnerability: full_service_access
+# Generated: 2026-05-17T08:15:42.338727+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - aws_code_star_full_access.json (label: vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: aws_code_star_full_access.json
+    Label: vulnerable
+    VulnerabilityType: full_service_access
+    Severity: medium
+    GeneratedAt: '2026-05-17T08:15:42.338686+00:00'
+Resources:
+  AwsCodeStarFullAccess:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: aws_code_star_full_access
+      Description: IAM Policy from aws_code_star_full_access.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Sid: CodeStarEC2
+          Effect: Allow
+          Action:
+          - codestar:*
+          - ec2:DescribeKeyPairs
+          - ec2:DescribeVpcs
+          - ec2:DescribeSubnets
+          - cloud9:DescribeEnvironment*
+          - cloud9:ValidateEnvironmentName
+          Resource: '*'
+        - Sid: CodeStarCF
+          Effect: Allow
+          Action:
+          - cloudformation:DescribeStack*
+          - cloudformation:ListStacks*
+          - cloudformation:GetTemplateSummary
+          Resource:
+          - arn:aws:cloudformation:*:*:stack/awscodestar-*

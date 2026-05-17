@@ -1,0 +1,31 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: cloudformation_delete_stack.json
+# Label: vulnerable
+# Vulnerability: stack_deletion
+# Generated: 2026-05-17T08:15:42.388700+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - cloudformation_delete_stack.json (label:
+  vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: cloudformation_delete_stack.json
+    Label: vulnerable
+    VulnerabilityType: stack_deletion
+    Severity: medium
+    GeneratedAt: '2026-05-17T08:15:42.388015+00:00'
+Resources:
+  CloudformationDeleteStack:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: cloudformation_delete_stack
+      Description: IAM Policy from cloudformation_delete_stack.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - cloudformation:DeleteStack
+          - cloudformation:DescribeStacks
+          - cloudformation:DescribeStackEvents
+          Resource: '*'

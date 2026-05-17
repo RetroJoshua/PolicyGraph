@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+*.pt
+checkpoints/
+results/
+# But keep baseline comparison template and docs
+!results/baseline_comparison_template.md
+.venv/
+.env
+*.log
+.pytest_cache/
+.abacus.donotdelete

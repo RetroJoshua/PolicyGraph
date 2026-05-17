@@ -1,0 +1,27 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: lambda_full_access.json
+# Label: vulnerable
+# Vulnerability: full_service_access
+# Generated: 2026-05-17T08:15:42.430352+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - lambda_full_access.json (label: vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: lambda_full_access.json
+    Label: vulnerable
+    VulnerabilityType: full_service_access
+    Severity: high
+    GeneratedAt: '2026-05-17T08:15:42.428240+00:00'
+Resources:
+  LambdaFullAccess:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: lambda_full_access
+      Description: IAM Policy from lambda_full_access.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: lambda:*
+          Resource: '*'

@@ -1,0 +1,28 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: sts_decode_authorization_message.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.457545+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - sts_decode_authorization_message.json (label:
+  secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: sts_decode_authorization_message.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.457514+00:00'
+Resources:
+  StsDecodeAuthorizationMessage:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: sts_decode_authorization_message
+      Description: IAM Policy from sts_decode_authorization_message.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: sts:DecodeAuthorizationMessage
+          Resource: '*'

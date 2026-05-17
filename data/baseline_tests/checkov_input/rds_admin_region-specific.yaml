@@ -1,0 +1,33 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: rds_admin_region-specific.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.438033+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - rds_admin_region-specific.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: rds_admin_region-specific.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.438001+00:00'
+Resources:
+  RdsAdminRegionSpecific:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: rds_admin_region-specific
+      Description: IAM Policy from rds_admin_region-specific.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: rds:*
+          Resource:
+          - arn:aws:rds:us-east-1:*:*
+        - Effect: Allow
+          Action:
+          - rds:Describe*
+          Resource:
+          - '*'

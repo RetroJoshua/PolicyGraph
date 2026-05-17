@@ -1,0 +1,30 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: lambda_basic_execution.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.424651+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - lambda_basic_execution.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: lambda_basic_execution.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.424624+00:00'
+Resources:
+  LambdaBasicExecution:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: lambda_basic_execution
+      Description: IAM Policy from lambda_basic_execution.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - logs:CreateLogGroup
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          Resource: arn:aws:logs:*:*:*

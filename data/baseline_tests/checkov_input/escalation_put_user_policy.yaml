@@ -1,0 +1,28 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: escalation_put_user_policy.json
+# Label: vulnerable
+# Vulnerability: put_user_policy
+# Generated: 2026-05-17T08:15:42.413293+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - escalation_put_user_policy.json (label:
+  vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: escalation_put_user_policy.json
+    Label: vulnerable
+    VulnerabilityType: put_user_policy
+    Severity: critical
+    GeneratedAt: '2026-05-17T08:15:42.413271+00:00'
+Resources:
+  EscalationPutUserPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: escalation_put_user_policy
+      Description: IAM Policy from escalation_put_user_policy.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: iam:PutUserPolicy
+          Resource: arn:aws:iam::*:user/*

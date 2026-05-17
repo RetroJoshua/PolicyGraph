@@ -1,0 +1,31 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: secure_s3_least_privilege.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.451480+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - secure_s3_least_privilege.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: secure_s3_least_privilege.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.451458+00:00'
+Resources:
+  SecureS3LeastPrivilege:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: secure_s3_least_privilege
+      Description: IAM Policy from secure_s3_least_privilege.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - s3:GetObject
+          - s3:ListBucket
+          Resource:
+          - arn:aws:s3:::my-specific-bucket
+          - arn:aws:s3:::my-specific-bucket/*

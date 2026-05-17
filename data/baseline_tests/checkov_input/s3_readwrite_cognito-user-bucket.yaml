@@ -1,0 +1,42 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: s3_readwrite_cognito-user-bucket.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.440956+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - s3_readwrite_cognito-user-bucket.json (label:
+  secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: s3_readwrite_cognito-user-bucket.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.440151+00:00'
+Resources:
+  S3ReadwriteCognitoUserBucket:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: s3_readwrite_cognito-user-bucket
+      Description: IAM Policy from s3_readwrite_cognito-user-bucket.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Sid: ListYourObjects
+          Effect: Allow
+          Action: s3:ListBucket
+          Resource:
+          - arn:aws:s3:::bucket-name
+          Condition:
+            StringLike:
+              s3:prefix:
+              - cognito/application-name/${cognito-identity.amazonaws.com:sub}/*
+        - Sid: ReadWriteDeleteYourObjects
+          Effect: Allow
+          Action:
+          - s3:DeleteObject
+          - s3:GetObject
+          - s3:PutObject
+          Resource:
+          - arn:aws:s3:::bucket-name/cognito/application-name/${cognito-identity.amazonaws.com:sub}/*

@@ -1,0 +1,27 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: lambda_invoke_specific.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.430950+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - lambda_invoke_specific.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: lambda_invoke_specific.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.430920+00:00'
+Resources:
+  LambdaInvokeSpecific:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: lambda_invoke_specific
+      Description: IAM Policy from lambda_invoke_specific.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: lambda:InvokeFunction
+          Resource: arn:aws:lambda:us-east-1:123456789012:function:MySpecificFunction

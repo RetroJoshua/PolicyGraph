@@ -1,0 +1,32 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: cloudformation_create_changeset.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.386642+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - cloudformation_create_changeset.json (label:
+  secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: cloudformation_create_changeset.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.386616+00:00'
+Resources:
+  CloudformationCreateChangeset:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: cloudformation_create_changeset
+      Description: IAM Policy from cloudformation_create_changeset.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - cloudformation:CreateChangeSet
+          - cloudformation:DescribeChangeSet
+          - cloudformation:ListChangeSets
+          - cloudformation:ExecuteChangeSet
+          Resource: arn:aws:cloudformation:us-east-1:123456789012:stack/MyStack/*

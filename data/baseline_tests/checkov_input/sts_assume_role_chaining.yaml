@@ -1,0 +1,33 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: sts_assume_role_chaining.json
+# Label: vulnerable
+# Vulnerability: role_chaining
+# Generated: 2026-05-17T08:15:42.454220+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - sts_assume_role_chaining.json (label: vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: sts_assume_role_chaining.json
+    Label: vulnerable
+    VulnerabilityType: role_chaining
+    Severity: high
+    GeneratedAt: '2026-05-17T08:15:42.454197+00:00'
+Resources:
+  StsAssumeRoleChaining:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: sts_assume_role_chaining
+      Description: IAM Policy from sts_assume_role_chaining.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: sts:AssumeRole
+          Resource: '*'
+        - Effect: Allow
+          Action: sts:GetCallerIdentity
+          Resource: '*'
+        - Effect: Allow
+          Action: sts:GetSessionToken
+          Resource: '*'

@@ -1,0 +1,34 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: secure_vpc_read_only.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.453540+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - secure_vpc_read_only.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: secure_vpc_read_only.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.453516+00:00'
+Resources:
+  SecureVpcReadOnly:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: secure_vpc_read_only
+      Description: IAM Policy from secure_vpc_read_only.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - ec2:DescribeVpcs
+          - ec2:DescribeSubnets
+          - ec2:DescribeSecurityGroups
+          - ec2:DescribeNetworkAcls
+          - ec2:DescribeRouteTables
+          - ec2:DescribeInternetGateways
+          - ec2:DescribeNatGateways
+          Resource: '*'

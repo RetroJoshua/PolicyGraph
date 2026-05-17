@@ -1,0 +1,38 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: secure_mfa_required.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.448638+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - secure_mfa_required.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: secure_mfa_required.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.448616+00:00'
+Resources:
+  SecureMfaRequired:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: secure_mfa_required
+      Description: IAM Policy from secure_mfa_required.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: '*'
+          Resource: '*'
+          Condition:
+            Bool:
+              aws:MultiFactorAuthPresent: 'true'
+        - Effect: Deny
+          Action:
+          - iam:*
+          - sts:*
+          Resource: '*'
+          Condition:
+            BoolIfExists:
+              aws:MultiFactorAuthPresent: 'false'

@@ -1,0 +1,28 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: escalation_create_login_profile.json
+# Label: vulnerable
+# Vulnerability: create_login_profile
+# Generated: 2026-05-17T08:15:42.405273+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - escalation_create_login_profile.json (label:
+  vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: escalation_create_login_profile.json
+    Label: vulnerable
+    VulnerabilityType: create_login_profile
+    Severity: critical
+    GeneratedAt: '2026-05-17T08:15:42.405250+00:00'
+Resources:
+  EscalationCreateLoginProfile:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: escalation_create_login_profile
+      Description: IAM Policy from escalation_create_login_profile.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: iam:CreateLoginProfile
+          Resource: arn:aws:iam::*:user/*

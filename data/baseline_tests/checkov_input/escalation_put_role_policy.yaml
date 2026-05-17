@@ -1,0 +1,28 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: escalation_put_role_policy.json
+# Label: vulnerable
+# Vulnerability: put_role_policy
+# Generated: 2026-05-17T08:15:42.412690+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - escalation_put_role_policy.json (label:
+  vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: escalation_put_role_policy.json
+    Label: vulnerable
+    VulnerabilityType: put_role_policy
+    Severity: critical
+    GeneratedAt: '2026-05-17T08:15:42.412669+00:00'
+Resources:
+  EscalationPutRolePolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: escalation_put_role_policy
+      Description: IAM Policy from escalation_put_role_policy.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: iam:PutRolePolicy
+          Resource: arn:aws:iam::*:role/*

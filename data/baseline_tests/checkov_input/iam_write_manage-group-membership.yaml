@@ -1,0 +1,40 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: iam_write_manage-group-membership.json
+# Label: vulnerable
+# Vulnerability: group_membership_management
+# Generated: 2026-05-17T08:15:42.419859+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - iam_write_manage-group-membership.json (label:
+  vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: iam_write_manage-group-membership.json
+    Label: vulnerable
+    VulnerabilityType: group_membership_management
+    Severity: medium
+    GeneratedAt: '2026-05-17T08:15:42.419172+00:00'
+Resources:
+  IamWriteManageGroupMembership:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: iam_write_manage-group-membership
+      Description: IAM Policy from iam_write_manage-group-membership.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Sid: ViewGroups
+          Effect: Allow
+          Action:
+          - iam:ListGroups
+          - iam:ListUsers
+          - iam:GetUser
+          - iam:ListGroupsForUser
+          Resource: '*'
+        - Sid: ViewEditThisGroup
+          Effect: Allow
+          Action:
+          - iam:AddUserToGroup
+          - iam:RemoveUserFromGroup
+          - iam:GetGroup
+          Resource: arn:aws:iam::*:group/MarketingTeam

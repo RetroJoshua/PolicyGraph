@@ -1,0 +1,28 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: sts_assume_role_cross_account.json
+# Label: vulnerable
+# Vulnerability: cross_account_access
+# Generated: 2026-05-17T08:15:42.454983+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - sts_assume_role_cross_account.json (label:
+  vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: sts_assume_role_cross_account.json
+    Label: vulnerable
+    VulnerabilityType: cross_account_access
+    Severity: medium
+    GeneratedAt: '2026-05-17T08:15:42.454956+00:00'
+Resources:
+  StsAssumeRoleCrossAccount:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: sts_assume_role_cross_account
+      Description: IAM Policy from sts_assume_role_cross_account.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: sts:AssumeRole
+          Resource: arn:aws:iam::987654321098:role/CrossAccountRole

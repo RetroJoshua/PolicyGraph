@@ -1,0 +1,48 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: dynamodb_readwrite_table-specific.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.395903+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - dynamodb_readwrite_table-specific.json (label:
+  secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: dynamodb_readwrite_table-specific.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.395881+00:00'
+Resources:
+  DynamodbReadwriteTableSpecific:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: dynamodb_readwrite_table-specific
+      Description: IAM Policy from dynamodb_readwrite_table-specific.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Sid: ListAndDescribe
+          Effect: Allow
+          Action:
+          - dynamodb:List*
+          - dynamodb:DescribeReservedCapacity*
+          - dynamodb:DescribeLimits
+          - dynamodb:DescribeTimeToLive
+          Resource: '*'
+        - Sid: SpecificTable
+          Effect: Allow
+          Action:
+          - dynamodb:BatchGet*
+          - dynamodb:DescribeStream
+          - dynamodb:DescribeTable
+          - dynamodb:Get*
+          - dynamodb:Query
+          - dynamodb:Scan
+          - dynamodb:BatchWrite*
+          - dynamodb:CreateTable
+          - dynamodb:Delete*
+          - dynamodb:Update*
+          - dynamodb:PutItem
+          Resource: arn:aws:dynamodb:*:*:table/MyTable

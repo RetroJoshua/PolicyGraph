@@ -1,0 +1,32 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: lambda_layer_management.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.431583+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - lambda_layer_management.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: lambda_layer_management.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: medium
+    GeneratedAt: '2026-05-17T08:15:42.431558+00:00'
+Resources:
+  LambdaLayerManagement:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: lambda_layer_management
+      Description: IAM Policy from lambda_layer_management.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - lambda:PublishLayerVersion
+          - lambda:GetLayerVersion
+          - lambda:ListLayers
+          - lambda:ListLayerVersions
+          - lambda:DeleteLayerVersion
+          Resource: '*'

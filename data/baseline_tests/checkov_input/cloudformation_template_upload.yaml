@@ -1,0 +1,36 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: cloudformation_template_upload.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.392747+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - cloudformation_template_upload.json (label:
+  secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: cloudformation_template_upload.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.392724+00:00'
+Resources:
+  CloudformationTemplateUpload:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: cloudformation_template_upload
+      Description: IAM Policy from cloudformation_template_upload.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - cloudformation:ValidateTemplate
+          - cloudformation:EstimateTemplateCost
+          - cloudformation:GetTemplateSummary
+          Resource: '*'
+        - Effect: Allow
+          Action:
+          - s3:PutObject
+          - s3:GetObject
+          Resource: arn:aws:s3:::cf-templates-bucket/*

@@ -1,0 +1,33 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: secure_lambda_read_only.json
+# Label: secure
+# Vulnerability: none
+# Generated: 2026-05-17T08:15:42.447977+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - secure_lambda_read_only.json (label: secure)'
+Metadata:
+  PolicyGraph:
+    SourceFile: secure_lambda_read_only.json
+    Label: secure
+    VulnerabilityType: none
+    Severity: low
+    GeneratedAt: '2026-05-17T08:15:42.447954+00:00'
+Resources:
+  SecureLambdaReadOnly:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: secure_lambda_read_only
+      Description: IAM Policy from secure_lambda_read_only.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - lambda:GetFunction
+          - lambda:ListFunctions
+          - lambda:GetPolicy
+          - lambda:ListVersionsByFunction
+          - lambda:ListAliases
+          - lambda:GetFunctionConfiguration
+          Resource: '*'

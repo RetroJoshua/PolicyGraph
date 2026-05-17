@@ -1,0 +1,27 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: sts_assume_role_wildcard.json
+# Label: vulnerable
+# Vulnerability: wildcard_assume_role
+# Generated: 2026-05-17T08:15:42.456167+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - sts_assume_role_wildcard.json (label: vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: sts_assume_role_wildcard.json
+    Label: vulnerable
+    VulnerabilityType: wildcard_assume_role
+    Severity: high
+    GeneratedAt: '2026-05-17T08:15:42.456147+00:00'
+Resources:
+  StsAssumeRoleWildcard:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: sts_assume_role_wildcard
+      Description: IAM Policy from sts_assume_role_wildcard.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: sts:AssumeRole
+          Resource: '*'

@@ -1,0 +1,28 @@
+# PolicyGraph Baseline Test - CloudFormation Wrapper
+# Source: escalation_update_login_profile.json
+# Label: vulnerable
+# Vulnerability: update_login_profile
+# Generated: 2026-05-17T08:15:42.415161+00:00
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'PolicyGraph baseline test - escalation_update_login_profile.json (label:
+  vulnerable)'
+Metadata:
+  PolicyGraph:
+    SourceFile: escalation_update_login_profile.json
+    Label: vulnerable
+    VulnerabilityType: update_login_profile
+    Severity: high
+    GeneratedAt: '2026-05-17T08:15:42.415140+00:00'
+Resources:
+  EscalationUpdateLoginProfile:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: escalation_update_login_profile
+      Description: IAM Policy from escalation_update_login_profile.json
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: iam:UpdateLoginProfile
+          Resource: arn:aws:iam::*:user/*
