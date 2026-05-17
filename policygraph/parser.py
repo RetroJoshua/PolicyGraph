@@ -1,68 +1,52 @@
+"""Lightweight NetworkX parser for IAM policies (legacy utility)."""
+
+from __future__ import annotations
+
 import json
+from pathlib import Path
+from typing import Any, Dict, List
+
 import networkx as nx
 
+
 class IAMPolicyParser:
-    def __init__(self):
+    """Convert IAM policy JSON documents into NetworkX directed graphs."""
+
+    def __init__(self) -> None:
         self.graph = nx.DiGraph()
 
-    def parse_policy(self, policy_path):
-        """Convert IAM policy JSON to graph"""
-        with open(policy_path, 'r') as f:
-            policy = json.load(f)
+    @staticmethod
+    def _to_list(value: Any) -> List[Any]:
+        if value is None:
+            return []
+        if isinstance(value, list):
+            return value
+        return [value]
+
+    def parse_policy(self, policy_path: str) -> nx.DiGraph:
+        """Parse policy from disk and return a directed graph."""
+        path = Path(policy_path)
+        if not path.exists():
+            raise FileNotFoundError(f"Policy file not found: {path}")
+
+        with path.open("r", encoding="utf-8") as handle:
+            policy: Dict[str, Any] = json.load(handle)
+
+        statements = policy.get("Statement", [])
+        if isinstance(statements, dict):
+            statements = [statements]
 
         self.graph.clear()
 
-        for i, statement in enumerate(policy.get('Statement', [])):
-            effect = statement.get('Effect', 'Allow')
-            actions = statement.get('Action', [])
-            resources = statement.get('Resource', [])
+        for i, statement in enumerate(statements):
+            effect = statement.get("Effect", "Allow")
+            actions = [str(v) for v in self._to_list(statement.get("Action"))]
+            resources = [str(v) for v in self._to_list(statement.get("Resource", "*"))]
 
-            # Ensure lists
-            if isinstance(actions, str):
-                actions = [actions]
-            if isinstance(resources, str):
-                resources = [resources]
-
-            # Create nodes and edges
             for action in actions:
                 for resource in resources:
-                    # Add nodes
-                    self.graph.add_node(
-                        action,
-                        type='action',
-                        effect=effect
-                    )
-                    self.graph.add_node(
-                        resource,
-                        type='resource'
-                    )
-
-                    # Add edge
-                    self.graph.add_edge(
-                        action,
-                        resource,
-                        effect=effect,
-                        statement_id=i
-                    )
+                    self.graph.add_node(action, type="action", effect=effect)
+                    self.graph.add_node(resource, type="resource")
+                    self.graph.add_edge(action, resource, effect=effect, statement_id=i)
 
         return self.graph
-
-    def visualize(self, output_path='policy_graph.png'):
-        """Quick visualization"""
-        import matplotlib.pyplot as plt
-
-        pos = nx.spring_layout(self.graph)
-        nx.draw(self.graph, pos, with_labels=True,
-                node_color='lightblue',
-                node_size=1500,
-                font_size=8,
-                arrows=True)
-        plt.savefig(output_path)
-        print(f"✅ Graph saved to {output_path}")
-
-# Test it
-if __name__ == "__main__":
-    parser = IAMPolicyParser()
-    graph = parser.parse_policy("C:\\Users\\user\\Documents\\CMRIT\\projects\\PolicyGraph\\data\\raw\\samples\\s3_readwrite_bucket-objects.json")
-    print(f"✅ Parsed policy: {graph.number_of_nodes()} nodes, {graph.number_of_edges()} edges")
-    parser.visualize()

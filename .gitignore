@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+*.pt
+checkpoints/
+results/
+.venv/
+.env
+*.log
+.pytest_cache/
+.abacus.donotdelete
