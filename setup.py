@@ -1,6 +1,24 @@
+import sys
 from pathlib import Path
 
 from setuptools import find_packages, setup
+
+# Check Python version
+if sys.version_info[:2] not in [(3, 9), (3, 10), (3, 11)]:
+    print("=" * 60)
+    print("ERROR: PolicyGraph requires Python 3.9, 3.10, or 3.11")
+    print(f"You are using Python {sys.version_info.major}.{sys.version_info.minor}")
+    print("")
+    print("DGL (Deep Graph Library) doesn't support Python 3.12+ yet.")
+    print("")
+    print("Please install Python 3.11:")
+    print("  Windows: https://www.python.org/downloads/")
+    print("  Linux: sudo apt install python3.11")
+    print("  Mac: brew install python@3.11")
+    print("")
+    print("See WINDOWS_SETUP.md for detailed Windows instructions.")
+    print("=" * 60)
+    sys.exit(1)
 
 ROOT = Path(__file__).parent
 README = (ROOT / "README.md").read_text(encoding="utf-8")
