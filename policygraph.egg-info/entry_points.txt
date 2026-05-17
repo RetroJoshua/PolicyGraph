@@ -1,0 +1,2 @@
+[console_scripts]
+policygraph = policygraph.__main__:main
