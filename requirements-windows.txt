@@ -5,13 +5,18 @@
 # Install PyTorch FIRST (CPU version):
 #   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 #
-# Install DGL separately:
-#   pip install dgl==1.1.3 -f https://data.dgl.ai/wheels/repo.html
+# Install DGL separately (1.1.3 does NOT exist on the wheel server;
+# 1.1.2 is the latest 1.1.x release):
+#   pip install dgl==1.1.2 -f https://data.dgl.ai/wheels/repo.html
+# Or, equivalent range form:
+#   pip install 'dgl>=1.1.0,<1.2.0' -f https://data.dgl.ai/wheels/repo.html
 #
 # Then install remaining dependencies:
 #   pip install -r requirements-windows.txt
 
-# Core ML dependencies (torch and dgl installed separately above)
+# Core ML dependencies (torch and dgl are installed separately above with the
+# DGL wheel index, but the supported DGL spec is documented here for reference):
+#   dgl>=1.1.0,<1.2.0
 networkx>=3.0
 scikit-learn>=1.2.0
 numpy>=1.24.0

@@ -88,8 +88,10 @@ policygraph analyze data/raw/samples/escalation_passrole_lambda_create.json
 ### Issue: DGL installation fails
 **Solution:**
 ```bash
-# Install DGL manually
-pip install dgl==1.1.3 -f https://data.dgl.ai/wheels/repo.html
+# Install DGL manually (1.1.3 does NOT exist; use the 1.1.x range or pin 1.1.2)
+pip install 'dgl>=1.1.0,<1.2.0' -f https://data.dgl.ai/wheels/repo.html
+# Or pin to the latest 1.1.x release explicitly:
+# pip install dgl==1.1.2 -f https://data.dgl.ai/wheels/repo.html
 ```
 
 ### Issue: "policygraph: command not found"

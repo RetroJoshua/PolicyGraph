@@ -25,7 +25,11 @@ README = (ROOT / "README.md").read_text(encoding="utf-8")
 
 INSTALL_REQUIRES = [
     "torch>=2.0.0",
-    "dgl>=1.1.0,<2.0.0",
+    # DGL 1.1.x is the supported range. Note: 1.1.3 does NOT exist on the
+    # DGL wheel server (https://data.dgl.ai/wheels/repo.html); the latest
+    # available 1.1.x is 1.1.2. DGL 2.x introduces a graphbolt dependency
+    # that we don't support yet, so cap below 1.2.0.
+    "dgl>=1.1.0,<1.2.0",
     "networkx>=3.0",
     "pyyaml>=6.0",
     "scikit-learn>=1.2.0",
@@ -78,3 +82,30 @@ setup(
         "Issues": "https://github.com/RetroJoshua/PolicyGraph/issues",
     },
 )
+
+
+# ---------------------------------------------------------------------------
+# Post-install / post-build DGL version sanity check.
+#
+# When setup.py is executed directly (e.g. `python setup.py develop` or the
+# post-install hook in `pip install -e .` environments), surface a clear
+# warning if the installed DGL is outside the 1.1.x supported range. This is
+# best-effort: we never raise here, because setup.py is also imported by
+# tooling that doesn't have DGL on the path.
+# ---------------------------------------------------------------------------
+try:
+    import dgl  # type: ignore
+
+    _dgl_version = getattr(dgl, "__version__", "unknown")
+    print(f"DGL version: {_dgl_version}")
+    if not str(_dgl_version).startswith("1.1"):
+        print(
+            "Warning: Recommended DGL version is 1.1.x (currently using "
+            f"{_dgl_version}). Install the supported version with:\n"
+            "    pip install 'dgl>=1.1.0,<1.2.0' "
+            "-f https://data.dgl.ai/wheels/repo.html"
+        )
+except ImportError:
+    # DGL not yet installed (e.g. first-time install). The pip resolver will
+    # pull it from INSTALL_REQUIRES.
+    pass

@@ -58,7 +58,8 @@ python -m pip install --upgrade pip
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
 # Install DGL (from DGL wheel server)
-pip install dgl==1.1.3 -f https://data.dgl.ai/wheels/repo.html
+# Note: 1.1.3 does NOT exist; 1.1.2 is the latest 1.1.x release.
+pip install dgl==1.1.2 -f https://data.dgl.ai/wheels/repo.html
 
 # Install other dependencies
 pip install scikit-learn pyyaml matplotlib pandas seaborn
@@ -130,7 +131,7 @@ pip install torch --index-url https://download.pytorch.org/whl/cpu
 **Cause:** Building from source
 **Solution:** Use pre-built wheels:
 ```cmd
-pip install dgl==1.1.3 -f https://data.dgl.ai/wheels/repo.html
+pip install dgl==1.1.2 -f https://data.dgl.ai/wheels/repo.html
 ```
 
 ---
@@ -163,5 +164,5 @@ If you have an NVIDIA GPU:
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
 # Install GPU version of DGL:
-pip install dgl-cu118==1.1.3 -f https://data.dgl.ai/wheels/repo.html
+pip install dgl-cu118==1.1.2 -f https://data.dgl.ai/wheels/repo.html
 ```
