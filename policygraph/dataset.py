@@ -55,9 +55,48 @@ class PolicyDataset(Dataset):
     def _load_labels_payload(self) -> Dict[str, Any]:
         with self.labels_file.open("r", encoding="utf-8") as handle:
             payload = json.load(handle)
-        if "labels" not in payload or not isinstance(payload["labels"], list):
-            raise ValueError("Invalid LABELS.json structure: expected top-level 'labels' list")
-        return payload
+
+        # Support both formats:
+        # Format A (canonical): {"total_policies": N, "labels": [{...}, ...]}
+        # Format B (flat dict):  {"policy_001.json": {"label": "vulnerable"}, ...}
+        if "labels" in payload and isinstance(payload["labels"], list):
+            return payload  # Format A — already correct
+
+        # Convert Format B → Format A
+        entries = []
+        for filename, meta in payload.items():
+            if not isinstance(meta, dict):
+                continue
+            entry = {"filename": filename}
+            entry.update(meta)
+            entries.append(entry)
+
+        return {"total_policies": len(entries), "labels": entries}
+
+    def _resolve_label(self, entry: Dict[str, Any]) -> tuple[str, int]:
+        """
+        Resolve label from an entry dict, handling all known formats:
+          - {"label": "vulnerable"} or {"label": "safe"}
+          - {"vulnerable": true} or {"vulnerable": false}
+          - {"label": "secure"}  (legacy typo — treated as safe)
+        Returns (label_text, label_int) where label_text is "vulnerable" or "safe".
+        """
+        if "label" in entry:
+            raw = str(entry["label"]).strip().lower()
+            if raw == "vulnerable":
+                return "vulnerable", 1
+            return "safe", 0  # covers "safe", "secure", anything else
+
+        if "vulnerable" in entry:
+            is_vuln = entry["vulnerable"]
+            # Handle bool, int, or string representations
+            if isinstance(is_vuln, bool):
+                return ("vulnerable", 1) if is_vuln else ("safe", 0)
+            if str(is_vuln).strip().lower() in {"true", "1", "yes", "vulnerable"}:
+                return "vulnerable", 1
+            return "safe", 0
+
+        return "safe", 0  # default
 
     def _load_samples(self) -> List[PolicySample]:
         samples: List[PolicySample] = []
@@ -68,19 +107,20 @@ class PolicyDataset(Dataset):
 
             policy_path = self.data_dir / filename
             if not policy_path.exists():
-                raise FileNotFoundError(f"Policy file referenced in labels not found: {policy_path}")
+                raise FileNotFoundError(
+                    f"Policy file referenced in labels not found: {policy_path}"
+                )
 
             with policy_path.open("r", encoding="utf-8") as handle:
                 policy_obj = json.load(handle)
 
-            # Read the vulnerable boolean field
-            vulnerable = entry.get("vulnerable", False)
-            label_text = "vulnerable" if vulnerable else "secure"
-            label = 1 if vulnerable else 0
+            label_text, label = self._resolve_label(entry)
 
             graph_result = self.builder.build_graph_from_policy(policy_obj)
             graph = graph_result.graph
-            graph.ndata["filename_hash"] = torch.full((graph.num_nodes(),), hash(filename) % (10**9), dtype=torch.int64)
+            graph.ndata["filename_hash"] = torch.full(
+                (graph.num_nodes(),), hash(filename) % (10**9), dtype=torch.int64
+            )
 
             samples.append(
                 PolicySample(
@@ -95,10 +135,11 @@ class PolicyDataset(Dataset):
                 )
             )
 
-        if len(samples) != int(self._labels_payload.get("total_policies", len(samples))):
+        expected = int(self._labels_payload.get("total_policies", len(samples)))
+        if len(samples) != expected:
             raise ValueError(
-                "Mismatch between loaded sample count and total_policies in labels file: "
-                f"{len(samples)} vs {self._labels_payload.get('total_policies')}"
+                f"Mismatch between loaded sample count and total_policies: "
+                f"{len(samples)} vs {expected}"
             )
         return samples
 
@@ -130,16 +171,22 @@ class PolicyDataset(Dataset):
 
     def get_split(self, split: str) -> List[PolicySample]:
         if split not in self._splits:
-            raise ValueError(f"Unsupported split '{split}'. Expected one of {list(self._splits)}")
+            raise ValueError(
+                f"Unsupported split '{split}'. Expected one of {list(self._splits)}"
+            )
         return [self.samples[idx] for idx in self._splits[split]]
 
-    def iter_batches(self, split: str, batch_size: int = 32) -> Iterator[List[PolicySample]]:
+    def iter_batches(
+        self, split: str, batch_size: int = 32
+    ) -> Iterator[List[PolicySample]]:
         """Yield batched samples from a split for non-DGL workflows."""
         split_samples = self.get_split(split)
         for i in range(0, len(split_samples), batch_size):
             yield split_samples[i : i + batch_size]
 
-    def get_dgl_dataloader(self, split: str, batch_size: int = 32, shuffle: bool = False):
+    def get_dgl_dataloader(
+        self, split: str, batch_size: int = 32, shuffle: bool = False
+    ):
         """Return a DGL GraphDataLoader for a split."""
         from dgl.dataloading import GraphDataLoader
 
@@ -157,12 +204,16 @@ class PolicyDataset(Dataset):
             label_tensor = torch.stack(list(labels)).view(-1)
             return batched_graph, label_tensor, list(metadata)
 
-        return GraphDataLoader(subset, batch_size=batch_size, shuffle=shuffle, collate_fn=collate_fn)
+        return GraphDataLoader(
+            subset, batch_size=batch_size, shuffle=shuffle, collate_fn=collate_fn
+        )
 
     def __len__(self) -> int:
         return len(self.samples)
 
-    def __getitem__(self, index: int) -> Tuple[Any, torch.Tensor, Dict[str, Any]]:
+    def __getitem__(
+        self, index: int
+    ) -> Tuple[Any, torch.Tensor, Dict[str, Any]]:
         sample = self.samples[index]
         metadata = {
             "filename": sample.filename,

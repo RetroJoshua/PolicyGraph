@@ -256,7 +256,7 @@ def scrape(pages: int, out_dir: Path) -> None:
                             continue
                         seen.add(fp)
                         out_file = out_dir / f"raw_{fp[:12]}.tf"
-                        out_file.write_text(snippet)
+                        out_file.write_text(snippet, encoding='utf-8')
                         total_saved += 1
 
                 for entry in policies:
@@ -265,7 +265,7 @@ def scrape(pages: int, out_dir: Path) -> None:
                         continue
                     seen.add(fp)
                     out_file = out_dir / f"policy_{fp[:12]}.json"
-                    out_file.write_text(json.dumps(entry, indent=2))
+                    out_file.write_text(json.dumps(entry, indent=2), encoding='utf-8')
                     total_saved += 1
 
             # Respect secondary rate limit

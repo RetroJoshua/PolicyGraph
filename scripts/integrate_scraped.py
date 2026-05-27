@@ -132,7 +132,7 @@ def generate_labels_template():
 
     rows = []
     for f in sorted(SCRAPED_DIR.glob("raw_*.tf")):
-        content = f.read_text()
+        content = f.read_text(encoding='utf-8')
         label, vuln_type, severity = auto_label_tf_block(content)
 
         # Extract a brief description
@@ -199,7 +199,7 @@ def integrate_policies(use_auto_labels: bool = False):
     skipped = 0
 
     for f in sorted(SCRAPED_DIR.glob("raw_*.tf")):
-        content = f.read_text()
+        content = f.read_text(encoding='utf-8')
 
         if use_auto_labels:
             label, vuln_type, severity = auto_label_tf_block(content)
