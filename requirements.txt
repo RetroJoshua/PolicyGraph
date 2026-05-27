@@ -1,5 +1,5 @@
 torch>=2.0.0
-dgl>=1.1.0,<2.0.0
+dgl>=1.1.0,<1.2.0
 networkx>=3.0
 pyyaml>=6.0
 matplotlib>=3.7.0

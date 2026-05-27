@@ -73,8 +73,10 @@ class PolicyDataset(Dataset):
             with policy_path.open("r", encoding="utf-8") as handle:
                 policy_obj = json.load(handle)
 
-            label_text = str(entry.get("label", "secure")).lower()
-            label = 1 if label_text == "vulnerable" else 0
+            # Read the vulnerable boolean field
+            vulnerable = entry.get("vulnerable", False)
+            label_text = "vulnerable" if vulnerable else "secure"
+            label = 1 if vulnerable else 0
 
             graph_result = self.builder.build_graph_from_policy(policy_obj)
             graph = graph_result.graph

@@ -15,3 +15,5 @@ results/
 *.log
 .pytest_cache/
 .abacus.donotdelete
+# Scraped data (too large for git, re-generate with scripts/scrape_iam_terraform.py)
+data/scraped_policies/
