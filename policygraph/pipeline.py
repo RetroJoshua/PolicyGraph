@@ -203,11 +203,11 @@ def run_evaluation(config: Dict[str, Any], model_path: str) -> Dict[str, Any]:
     for sample in test_samples:
         result = analyzer.analyze_policy(sample.policy)
         y_true.append(sample.label)
-        y_prob.append(result["risk_score"])
+        y_prob.append(result["model_risk_score"])
 
         category = _category_from_vuln_type(sample.vulnerability_type)
         by_category[category]["y_true"].append(sample.label)
-        by_category[category]["y_prob"].append(result["risk_score"])
+        by_category[category]["y_prob"].append(result["model_risk_score"])
 
     metrics = calculate_classification_metrics(y_true, y_prob)
     cm = confusion_matrix(np.asarray(y_true), (np.asarray(y_prob) >= eval_cfg["threshold"]).astype(int)).tolist()
