@@ -1,0 +1,29 @@
+{
+  "source": "raw_96c55397e2a6.tf",
+  "resource_type": "unknown",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": [
+          "cloudwatch:PutMetricData",
+          "cloudwatch:GetMetricData",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
+      },
+      {
+        "Action": [
+          "s3:PutObject",
+          "s3:GetObject",
+          "s3:DeleteObject"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:s3:::${aws_s3_bucket.private_bucket.bucket}/*"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "source": "raw_94306d44cb1c.tf",
+  "resource_type": "jsonencode",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "VisualEditor",
+        "Effect": "Allow",
+        "Action": "*",
+        "Resource": "*"
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "source": "raw_79733e77ee54.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "forCloudwatch",
+        "Effect": "Allow",
+        "Action": [
+          "logs:CreateLogGroup",
+          "logs:CreateLogDelivery",
+          "logs:GetLogDelivery",
+          "logs:UpdateLogDelivery",
+          "logs:ListLogDeliveries",
+          "logs:PutResourcePolicy",
+          "logs:DescribeResourcePolicies",
+          "logs:DescribeLogGroups"
+        ],
+        "Resource": "arn:aws:logs:${var.region}:${local.account_id}:*"
+      },
+      {
+        "Sid": "forCloudtrail",
+        "Effect": "Allow",
+        "Action": [
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ],
+        "Resource": "arn:aws:logs:${var.region}:${local.account_id}:log-group:/aws/lambda/ga_sb_${var.env}*"
+      },
+      {
+        "Sid": "GAS3ReadWrite",
+        "Action": [
+          "s3:Get*",
+          "s3:List*",
+          "s3:PutObj*"
+        ],
+        "Resource": "*",
+        "Effect": "Allow"
+      },
+      {
+        "Sid": "StartStopEc2Lambda",
+        "Effect": "Allow",
+        "Action": [
+          "ec2:StartInstances",
+          "ec2:StopInstances",
+          "ec2:CreateTags",
+          "ssm:SendCommand"
+        ],
+        "Resource": "arn:aws:ec2:${var.region}:${local.account_id}:instance/*"
+      },
+      {
+        "Sid": "SSMRunCommands",
+        "Effect": "Allow",
+        "Action": [
+          "ssm:*"
+        ],
+        "Resource": "arn:aws:ssm:${var.region}::document/AWS-*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "ssm:UpdateInstanceInformation",
+          "ssm:ListCommands",
+          "ssm:ListCommandInvocations",
+          "ssm:GetDocument",
+          "ssm:GetParametersByPath",
+          "ssm:GetParameter"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "states:SendTaskSuccess"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Sid": "StartStopEc2LambdaFindInstance",
+        "Effect": "Allow",
+        "Action": [
+          "ec2:DescribeInstances"
+        ],
+        "Resource": "*"
+      }
+    ]
+  }
+}

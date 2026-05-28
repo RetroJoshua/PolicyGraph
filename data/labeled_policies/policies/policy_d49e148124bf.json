@@ -1,0 +1,26 @@
+{
+  "source": "raw_06c471a4ea7e.tf",
+  "resource_type": "jsonencode",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "efsmount",
+        "Effect": "Allow",
+        "Action": [
+          "ssm:DescribeParameters",
+          "ssm:GetParameterHistory",
+          "ssm:DescribeDocumentParameters",
+          "ssm:GetParametersByPath",
+          "ssm:GetParameters",
+          "ssm:GetParameter",
+          "ec2:DescribeTags",
+          "iam:PassRole",
+          "ec2:*"
+        ],
+        "Resource": "*"
+      }
+    ]
+  }
+}

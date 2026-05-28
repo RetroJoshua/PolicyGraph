@@ -1,0 +1,22 @@
+{
+  "source": "raw_366613cac8db.tf",
+  "resource_type": "unknown",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:PutObject",
+          "s3:ListBucket",
+          "s3:GetObject"
+        ],
+        "Resource": [
+          "arn:aws:s3:::shebl-test-2216",
+          "arn:aws:s3:::shebl-test-2216/*"
+        ]
+      }
+    ]
+  }
+}

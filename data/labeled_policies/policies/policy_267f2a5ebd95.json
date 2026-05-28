@@ -1,0 +1,37 @@
+{
+  "source": "raw_7184df45f4da.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "forCloudtrail",
+        "Effect": "Allow",
+        "Action": [
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ],
+        "Resource": "arn:aws:logs:${var.region}:${local.account_id}:log-group:/aws/lambda/getResumeFromStep:*"
+      },
+      {
+        "Sid": "forStepFunctions",
+        "Effect": "Allow",
+        "Action": [
+          "states:ListStateMachines",
+          "states:ListActivities",
+          "states:ListExecutions",
+          "states:GetExecutionHistory",
+          "states:*"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Sid": "forCloudwatch",
+        "Effect": "Allow",
+        "Action": "logs:CreateLogGroup",
+        "Resource": "arn:aws:logs:${var.region}:${local.account_id}:*"
+      }
+    ]
+  }
+}

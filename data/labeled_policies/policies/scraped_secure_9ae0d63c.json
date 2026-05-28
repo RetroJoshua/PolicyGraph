@@ -1,0 +1,17 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "kinesis:DescribeStreamSummary",
+        "kinesis:DescribeStream",
+        "kinesis:PutRecord",
+        "kinesis:PutRecords"
+      ],
+      "Resource": [
+        "*"
+      ]
+    }
+  ]
+}

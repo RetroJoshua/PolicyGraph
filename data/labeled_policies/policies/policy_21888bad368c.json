@@ -1,0 +1,35 @@
+{
+  "source": "raw_60ab7aa63af1.tf",
+  "resource_type": "unknown",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "ec2:DescribeInstances",
+          "ec2:DescribeRegions",
+          "ec2:DescribeIamInstanceProfileAssociations",
+          "ec2:AssociateIamInstanceProfile",
+          "ec2:DisassociateIamInstanceProfile",
+          "iam:GetInstanceProfile",
+          "iam:ListAttachedRolePolicies",
+          "iam:AttachRolePolicy",
+          "iam:PassRole",
+          "iam:AddRoleToInstanceProfile",
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents",
+          "ssm:GetServiceSetting"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": "lambda:DeleteFunction",
+        "Resource": "arn:aws:lambda:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:function:EC2SSMIAMRoleAutoAssignmentFunction"
+      }
+    ]
+  }
+}

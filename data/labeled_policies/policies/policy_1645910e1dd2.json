@@ -1,0 +1,84 @@
+{
+  "source": "raw_4b1ed8e66df4.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "forCloudwatch",
+        "Effect": "Allow",
+        "Action": [
+          "logs:CreateLogGroup",
+          "logs:CreateLogDelivery",
+          "logs:GetLogDelivery",
+          "logs:UpdateLogDelivery",
+          "logs:ListLogDeliveries",
+          "logs:PutResourcePolicy",
+          "logs:DescribeResourcePolicies",
+          "logs:DescribeLogGroups"
+        ],
+        "Resource": "arn:aws:logs:${var.region}:${local.account_id}:*"
+      },
+      {
+        "Sid": "forCloudtrail",
+        "Effect": "Allow",
+        "Action": [
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ],
+        "Resource": "arn:aws:logs:${var.region}:${local.account_id}:log-group:/aws/lambda/ga_sb_${var.env}*"
+      },
+      {
+        "Sid": "forStepFunctions",
+        "Effect": "Allow",
+        "Action": [
+          "states:ListStateMachines",
+          "states:ListActivities",
+          "states:ListExecutions",
+          "states:GetExecutionHistory",
+          "states:*"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Sid": "GAS3Read",
+        "Action": [
+          "s3:Get*",
+          "s3:List*"
+        ],
+        "Resource": "*",
+        "Effect": "Allow"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "secretsmanager:GetResourcePolicy",
+          "secretsmanager:GetSecretValue",
+          "secretsmanager:DescribeSecret",
+          "secretsmanager:ListSecretVersionIds"
+        ],
+        "Resource": [
+          "arn:aws:secretsmanager:${var.region}:${local.account_id}:secret:wh-infra.auto.tfvars*"
+        ]
+      },
+      {
+        "Sid": "StartStopEc2Lambda",
+        "Effect": "Allow",
+        "Action": [
+          "ec2:StartInstances",
+          "ec2:StopInstances"
+        ],
+        "Resource": "arn:aws:ec2:${var.region}:${local.account_id}:instance/*"
+      },
+      {
+        "Sid": "StartStopEc2LambdaFindInstance",
+        "Effect": "Allow",
+        "Action": [
+          "ec2:DescribeInstances"
+        ],
+        "Resource": "*"
+      }
+    ]
+  }
+}

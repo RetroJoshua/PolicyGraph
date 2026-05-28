@@ -1,0 +1,41 @@
+{
+  "source": "raw_7c67e38c5027.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "logs:CreateLogGroup",
+          "logs:CreateLogRetail",
+          "logs:PutLogEvents"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:*"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "elasticmapreduce:*"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Action": "iam:PassRole",
+        "Resource": [
+          "arn:aws:iam::ACCOUNT_ID:role/EMR_DefaultRole",
+          "arn:aws:iam::ACCOUNT_ID:role/EMR_EC2_DefaultRole"
+        ],
+        "Effect": "Allow"
+      }
+    ]
+  }
+}

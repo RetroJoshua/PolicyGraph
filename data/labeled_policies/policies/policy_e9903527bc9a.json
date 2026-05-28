@@ -1,0 +1,18 @@
+{
+  "source": "raw_e61b414cdc28.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": "s3:PutObject",
+        "Resource": [
+          "${aws_s3_bucket.openmind-data.arn}/*"
+        ],
+        "Effect": "Allow",
+        "Sid": "S3Access"
+      }
+    ]
+  }
+}

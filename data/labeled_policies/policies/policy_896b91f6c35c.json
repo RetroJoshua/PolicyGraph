@@ -1,0 +1,66 @@
+{
+  "source": "raw_997018a59aa7.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "GAS3ReadWrite",
+        "Action": [
+          "s3:Get*",
+          "s3:List*",
+          "s3:PutObj*"
+        ],
+        "Resource": "*",
+        "Effect": "Allow"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "ecr:GetAuthorizationToken",
+          "ecr:BatchCheckLayerAvailability",
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:BatchGetImage",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Sid": "VisualEditor0",
+        "Effect": "Allow",
+        "Action": [
+          "secretsmanager:GetResourcePolicy",
+          "secretsmanager:GetSecretValue",
+          "secretsmanager:DescribeSecret",
+          "secretsmanager:ListSecretVersionIds"
+        ],
+        "Resource": "arn:aws:secretsmanager:${var.region}:${local.account_id}:secret:caris_batch_secret-OMZKQN"
+      },
+      {
+        "Sid": "VisualEditor1",
+        "Effect": "Allow",
+        "Action": "secretsmanager:GetRandomPassword",
+        "Resource": "*"
+      },
+      {
+        "Sid": "startstopec2",
+        "Effect": "Allow",
+        "Action": [
+          "ec2:StartInstances",
+          "ec2:StopInstances"
+        ],
+        "Resource": "arn:aws:ec2:${var.region}:${local.account_id}:instance/*"
+      },
+      {
+        "Sid": "startstopec2FindInstance",
+        "Effect": "Allow",
+        "Action": [
+          "ec2:DescribeInstances"
+        ],
+        "Resource": "*"
+      }
+    ]
+  }
+}

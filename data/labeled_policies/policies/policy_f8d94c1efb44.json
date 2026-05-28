@@ -1,0 +1,27 @@
+{
+  "source": "raw_b5f219c1e2fa.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "eks:*"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": "iam:PassRole",
+        "Resource": "*",
+        "Condition": {
+          "StringEquals": {
+            "iam:PassedToService": "eks.amazonaws.com"
+          }
+        }
+      }
+    ]
+  }
+}

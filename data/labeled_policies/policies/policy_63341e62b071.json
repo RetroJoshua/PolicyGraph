@@ -1,0 +1,21 @@
+{
+  "source": "raw_75beecbdc8f6.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "ssm:GetParameters",
+          "secretsmanager:GetSecretValue"
+        ],
+        "Resource": [
+          "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/${aws_secretsmanager_secret.jenkins_user.name}",
+          "arn:aws:secretsmanager:${var.aws_region}:${data.aws_caller_identity.current.account_id}:secret:${aws_secretsmanager_secret.jenkins_user.name}*"
+        ]
+      }
+    ]
+  }
+}

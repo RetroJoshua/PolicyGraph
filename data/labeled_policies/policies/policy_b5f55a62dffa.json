@@ -1,0 +1,17 @@
+{
+  "source": "raw_463e96758fd9.tf",
+  "resource_type": "jsonencode",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": "sts:AssumeRole",
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "iot.amazonaws.com"
+        }
+      }
+    ]
+  }
+}

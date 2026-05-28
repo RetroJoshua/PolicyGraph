@@ -1,0 +1,73 @@
+{
+  "source": "raw_e47db85937be.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": [
+          "ecs:RegisterTaskDefinition",
+          "ecs:ListClusters",
+          "ecs:DescribeContainerInstances",
+          "ecs:ListTaskDefinitions",
+          "ecs:DescribeTaskDefinition",
+          "ecs:DeregisterTaskDefinition"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
+      },
+      {
+        "Action": [
+          "ecs:ListContainerInstances"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:ecs:${var.aws_region}:${data.aws_caller_identity.current.account_id}:cluster/${var.ecs-cluster_name}"
+      },
+      {
+        "Action": [
+          "ecs:RunTask"
+        ],
+        "Effect": "Allow",
+        "Condition": {
+          "ArnEquals": {
+            "ecs:cluster": "arn:aws:ecs:${var.aws_region}:${data.aws_caller_identity.current.account_id}:cluster/${var.ecs-cluster_name}"
+          }
+        },
+        "Resource": "arn:aws:ecs:${var.aws_region}:${data.aws_caller_identity.current.account_id}:task-definition/*"
+      },
+      {
+        "Action": [
+          "ecs:StopTask"
+        ],
+        "Effect": "Allow",
+        "Condition": {
+          "ArnEquals": {
+            "ecs:cluster": "arn:aws:ecs:${var.aws_region}:${data.aws_caller_identity.current.account_id}:cluster/${var.ecs-cluster_name}"
+          }
+        },
+        "Resource": "arn:aws:ecs:${var.aws_region}:${data.aws_caller_identity.current.account_id}:task/*"
+      },
+      {
+        "Action": [
+          "ecs:DescribeTasks"
+        ],
+        "Effect": "Allow",
+        "Condition": {
+          "ArnEquals": {
+            "ecs:cluster": "arn:aws:ecs:${var.aws_region}:${data.aws_caller_identity.current.account_id}:cluster/${var.ecs-cluster_name}"
+          }
+        },
+        "Resource": "arn:aws:ecs:${var.aws_region}:${data.aws_caller_identity.current.account_id}:task/*"
+      },
+      {
+        "Action": [
+          "iam:GetRole",
+          "iam:PassRole"
+        ],
+        "Effect": "Allow",
+        "Resource": "${aws_iam_role.jenkins_execution_role.arn}"
+      }
+    ]
+  }
+}

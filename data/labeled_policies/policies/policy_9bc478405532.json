@@ -1,0 +1,17 @@
+{
+  "source": "raw_c51962e77c5b.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "sts:AssumeRole"
+        ],
+        "Resource": "${aws_iam_role.eks_admin.arn}"
+      }
+    ]
+  }
+}

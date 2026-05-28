@@ -1,0 +1,23 @@
+{
+  "source": "raw_bb741c78acf9.tf",
+  "resource_type": "jsonencode",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": [
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:ListBucket",
+          "s3:DeleteObject"
+        ],
+        "Effect": "Allow",
+        "Resource": [
+          "${aws_s3_bucket.target_bucket.arn}",
+          "${aws_s3_bucket.target_bucket.arn}/*"
+        ]
+      }
+    ]
+  }
+}

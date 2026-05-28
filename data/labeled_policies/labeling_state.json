@@ -1,0 +1,823 @@
+{
+  "reviewed": {
+    "raw_0012a8150a4a.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 3,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "CloudWatch"
+      ],
+      "output_filename": "scraped_secure_fb742810.json"
+    },
+    "raw_00465bbc1ebc.tf": {
+      "label": "vulnerable",
+      "severity": "critical",
+      "vulnerability_type": "admin_wildcard",
+      "risk_score": 9,
+      "risk_patterns": "admin_wildcard",
+      "escalation_path": "Wildcard action on all resources \u2192 Unrestricted access to all AWS services",
+      "attack_paths": [
+        "Wildcard action on all resources \u2192 Unrestricted access to all AWS services"
+      ],
+      "remediation": "Replace wildcard actions with specific required actions. Scope resources to specific ARNs.",
+      "affected_services": [
+        "Unknown"
+      ],
+      "output_filename": "scraped_escalation_admin_wildcard_96128511.json"
+    },
+    "raw_018663a0e9ee.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 3,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "S3",
+        "ECS",
+        "CloudWatch"
+      ],
+      "output_filename": "scraped_secure_5c76dfcb.json"
+    },
+    "raw_01bab7bdcef4.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_5c56fe4e.json"
+    },
+    "raw_02aff1d9a9eb.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 3,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "EC2"
+      ],
+      "output_filename": "scraped_secure_75675a5b.json"
+    },
+    "raw_02fd6b0421f4.tf": {
+      "label": "vulnerable",
+      "severity": "medium",
+      "vulnerability_type": "needs_review",
+      "risk_score": 7,
+      "risk_patterns": "needs_review",
+      "escalation_path": "none",
+      "attack_paths": [
+        "none"
+      ],
+      "remediation": "Review and restrict permissions following least-privilege principle.",
+      "affected_services": [
+        "IAM",
+        "EC2",
+        "Lambda",
+        "CloudFormation",
+        "CloudWatch",
+        "KMS"
+      ],
+      "output_filename": "scraped_vulnerable_needs_review_acb95139.json"
+    },
+    "raw_032bb48a1365.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 1,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "S3"
+      ],
+      "output_filename": "scraped_secure_06b6a9b7.json"
+    },
+    "raw_0338e4eba687.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_7eb46e74.json"
+    },
+    "raw_03bde7ceda8c.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_1c2b971c.json"
+    },
+    "raw_04463dcbf94a.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Unknown"
+      ],
+      "output_filename": "scraped_secure_4055b697.json"
+    },
+    "raw_04d9139e2861.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 1,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "CloudWatch"
+      ],
+      "output_filename": "scraped_secure_6ada2b48.json"
+    },
+    "raw_04f34ac10693.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 1,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "S3"
+      ],
+      "output_filename": "scraped_secure_5e5cc483.json"
+    },
+    "scraped_secure_fb742810.json": {
+      "label": "secure",
+      "severity": "low",
+      "source": "auto_label"
+    },
+    "scraped_escalation_admin_wildcard_96128511.json": {
+      "label": "vulnerable",
+      "severity": "critical",
+      "source": "auto_label"
+    },
+    "scraped_secure_5c76dfcb.json": {
+      "label": "secure",
+      "severity": "low",
+      "source": "auto_label"
+    },
+    "scraped_secure_5c56fe4e.json": {
+      "label": "secure",
+      "severity": "low",
+      "source": "auto_label"
+    },
+    "scraped_secure_75675a5b.json": {
+      "label": "secure",
+      "severity": "low",
+      "source": "auto_label"
+    },
+    "scraped_vulnerable_needs_review_acb95139.json": {
+      "label": "vulnerable",
+      "severity": "medium",
+      "source": "auto_label"
+    },
+    "scraped_secure_06b6a9b7.json": {
+      "label": "secure",
+      "severity": "low",
+      "source": "auto_label"
+    },
+    "scraped_secure_7eb46e74.json": {
+      "label": "secure",
+      "severity": "low",
+      "source": "auto_label"
+    },
+    "scraped_secure_1c2b971c.json": {
+      "label": "secure",
+      "severity": "low",
+      "source": "auto_label"
+    },
+    "scraped_secure_4055b697.json": {
+      "label": "secure",
+      "severity": "low",
+      "source": "auto_label"
+    },
+    "scraped_secure_6ada2b48.json": {
+      "label": "secure",
+      "severity": "low",
+      "source": "auto_label"
+    },
+    "scraped_secure_5e5cc483.json": {
+      "label": "secure",
+      "severity": "low",
+      "source": "auto_label"
+    },
+    "raw_05329621ccee.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_4bd84a68.json"
+    },
+    "raw_05ed0c0485bd.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 3,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "IAM",
+        "S3",
+        "Lambda",
+        "ECS",
+        "SNS",
+        "CloudWatch",
+        "KMS",
+        "ElasticLoadBalancing"
+      ],
+      "output_filename": "scraped_secure_9abba428.json"
+    },
+    "raw_06c471a4ea7e.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 6,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "IAM",
+        "EC2",
+        "SSM"
+      ],
+      "output_filename": "scraped_secure_38183dd9.json"
+    },
+    "raw_07b41b39f3b1.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 3,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Unknown"
+      ],
+      "output_filename": "scraped_secure_8489907b.json"
+    },
+    "raw_08c93fabee73.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_9507daef.json"
+    },
+    "raw_08e3b2f0eabc.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 5,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "IAM",
+        "EC2"
+      ],
+      "output_filename": "scraped_secure_a35f61f1.json"
+    },
+    "raw_09c508fe472e.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_7a91ff2f.json"
+    },
+    "raw_0a6e05773cb2.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_7b2bcc6b.json"
+    },
+    "raw_0a7555d1a1e2.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_86debe25.json"
+    },
+    "raw_0a7d458e58ab.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_5565e70a.json"
+    },
+    "raw_0ab841a359be.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_1624187b.json"
+    },
+    "raw_0b33b88ec478.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 6,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "S3",
+        "ECS",
+        "SNS",
+        "CloudWatch"
+      ],
+      "output_filename": "scraped_secure_e32e0ccc.json"
+    },
+    "raw_0b568cd19dc4.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_d1eabdbd.json"
+    },
+    "raw_0ba2b42e8181.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Unknown"
+      ],
+      "output_filename": "scraped_secure_9ae0d63c.json"
+    },
+    "raw_0bbfbe0e882a.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_fe8aa458.json"
+    },
+    "raw_0c03b41d04ab.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_30fd680b.json"
+    },
+    "raw_0cf88d703f51.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "IAM",
+        "S3",
+        "CodeBuild"
+      ],
+      "output_filename": "scraped_secure_5afff193.json"
+    },
+    "raw_0cff34c6f621.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "IAM",
+        "STS"
+      ],
+      "output_filename": "scraped_secure_8d5ab351.json"
+    },
+    "raw_0d38f8ac04ea.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 4,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "S3",
+        "CloudWatch",
+        "SSM",
+        "ElasticLoadBalancing"
+      ],
+      "output_filename": "scraped_secure_84cf7063.json"
+    },
+    "raw_1231b8e25db2.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 1,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "S3",
+        "SQS",
+        "KMS"
+      ],
+      "output_filename": "scraped_secure_6ba7b41d.json"
+    },
+    "raw_13b1750028f9.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 1,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "S3"
+      ],
+      "output_filename": "scraped_secure_da9ff500.json"
+    },
+    "raw_13c420948d06.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_a3f3707a.json"
+    },
+    "raw_14c07233c3ce.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "IAM",
+        "STS"
+      ],
+      "output_filename": "scraped_secure_70371dea.json"
+    },
+    "raw_14efb504da2c.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 1,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Lambda",
+        "SQS",
+        "CloudWatch"
+      ],
+      "output_filename": "scraped_secure_279434a4.json"
+    },
+    "raw_181ad3565867.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_58f14a26.json"
+    },
+    "raw_183f6089f2c0.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "EC2"
+      ],
+      "output_filename": "scraped_secure_32fe4e05.json"
+    },
+    "raw_1a7a26f48394.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_4c81be3f.json"
+    },
+    "raw_1ab3c3de3239.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "EC2"
+      ],
+      "output_filename": "scraped_secure_f665e23f.json"
+    },
+    "raw_1b1242e4c8ff.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_93470810.json"
+    },
+    "raw_1b5eb0ee2cd6.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "Unknown"
+      ],
+      "output_filename": "scraped_secure_0ed563db.json"
+    },
+    "raw_1c58810988ab.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_dec78213.json"
+    },
+    "raw_1cd2206f4df3.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_a1b3ee53.json"
+    },
+    "raw_1cfb7dacd8e1.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 1,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "S3"
+      ],
+      "output_filename": "scraped_secure_f62c53ec.json"
+    },
+    "raw_1e6a1f49b055.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 1,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_2a34256e.json"
+    },
+    "raw_1e848c076d56.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_8a1c727e.json"
+    },
+    "raw_1f0b03e91ba6.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "CloudWatch"
+      ],
+      "output_filename": "scraped_secure_d0c90b09.json"
+    },
+    "raw_1f3f5efada6b.tf": {
+      "label": "secure",
+      "severity": "low",
+      "vulnerability_type": "none",
+      "risk_score": 2,
+      "risk_patterns": "none",
+      "escalation_path": "none",
+      "attack_paths": [],
+      "remediation": "N/A \u2014 this policy follows security best practices.",
+      "affected_services": [
+        "STS"
+      ],
+      "output_filename": "scraped_secure_8a11980c.json"
+    }
+  },
+  "skipped": [
+    "raw_00cb602f3504.tf"
+  ],
+  "last_index": 107,
+  "total_scored": 1075,
+  "total_reviewed": 61,
+  "session_history": [
+    {
+      "timestamp": "2026-05-28 10:27:14",
+      "reviewed": 2,
+      "elapsed_seconds": 379
+    },
+    {
+      "timestamp": "2026-05-28 10:32:59",
+      "reviewed": 0,
+      "elapsed_seconds": 181
+    },
+    {
+      "timestamp": "2026-05-28 10:46:25",
+      "reviewed": 9,
+      "elapsed_seconds": 648
+    },
+    {
+      "timestamp": "2026-05-28 10:54:25",
+      "reviewed": 0,
+      "elapsed_seconds": 115
+    },
+    {
+      "timestamp": "2026-05-28 10:57:08",
+      "reviewed": 1,
+      "elapsed_seconds": 64
+    },
+    {
+      "timestamp": "2026-05-28 11:03:27",
+      "reviewed": 37,
+      "elapsed_seconds": 95
+    }
+  ]
+}

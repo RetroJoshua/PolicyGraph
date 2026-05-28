@@ -1,0 +1,57 @@
+{
+  "source": "raw_565a77528f39.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "VisualEditor0",
+        "Effect": "Allow",
+        "Action": [
+          "s3:*",
+          "cloudwatch:*",
+          "ecr:GetAuthorizationToken",
+          "ecr:BatchCheckLayerAvailability",
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:BatchGetImage",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents",
+          "iam:PassRole",
+          "iam:ListAttachedUserPolicies",
+          "iam:GetRole",
+          "iam:GetRolePolicy",
+          "ec2:DescribeInstances",
+          "ec2:CreateKeyPair",
+          "ec2:RunInstances",
+          "ec2:TerminateInstances",
+          "iam:ListRoles",
+          "iam:ListInstanceProfiles",
+          "iam:ListAttachedRolePolicies",
+          "iam:GetPolicyVersion",
+          "iam:GetPolicy",
+          "ec2:AssociateIamInstanceProfile"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "lambda:ListProvisionedConcurrencyConfigs",
+          "lambda:ListFunctionEventInvokeConfigs",
+          "lambda:ListFunctions",
+          "lambda:ListFunctionsByCodeSigningConfig",
+          "lambda:InvokeFunction",
+          "lambda:ListVersionsByFunction",
+          "lambda:ListAliases",
+          "lambda:ListEventSourceMappings",
+          "lambda:ListFunctionUrlConfigs",
+          "lambda:ListLayerVersions",
+          "lambda:ListLayers",
+          "lambda:ListCodeSigningConfigs"
+        ],
+        "Resource": "*"
+      }
+    ]
+  }
+}

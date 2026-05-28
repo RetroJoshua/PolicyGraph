@@ -1,0 +1,21 @@
+{
+  "source": "raw_d5b9d641ecaa.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": "sts:AssumeRole",
+        "Principal": {
+          "Service": [
+            "ecs.amazonaws.com",
+            "ecs-tasks.amazonaws.com"
+          ]
+        },
+        "Effect": "Allow",
+        "Sid": ""
+      }
+    ]
+  }
+}

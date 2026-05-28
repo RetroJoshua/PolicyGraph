@@ -1,0 +1,23 @@
+{
+  "source": "raw_e889277a24a7.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Id": "SqsAllowManagement",
+    "Statement": [
+      {
+        "Sid": "SqsAllowAll",
+        "Effect": "Allow",
+        "Action": "sqs:*",
+        "Resource": "${module.inbound_queue.sqs_queue_arn}"
+      },
+      {
+        "Sid": "SnsAllowAll",
+        "Effect": "Allow",
+        "Action": "sns:*",
+        "Resource": "${module.inbound_queue.sns_topic_arn}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "source": "raw_2f0c74ac9f64.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "GAS3ReadWrite",
+        "Action": [
+          "s3:Get*",
+          "s3:List*",
+          "s3:PutObj*",
+          "s3:DeleteObj"
+        ],
+        "Resource": "*",
+        "Effect": "Allow"
+      }
+    ]
+  }
+}

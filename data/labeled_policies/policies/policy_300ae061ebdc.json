@@ -1,0 +1,19 @@
+{
+  "source": "raw_60b3513c1b75.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:GetObject"
+        ],
+        "Resource": [
+          "${aws_s3_bucket.upload_bucket.arn}/*"
+        ]
+      }
+    ]
+  }
+}

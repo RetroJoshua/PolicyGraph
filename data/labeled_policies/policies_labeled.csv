@@ -1,0 +1,62 @@
+filename,label,vulnerability_type,severity,risk_patterns,escalation_path,attack_path,risk_score,remediation,affected_services,secure_alternative
+scraped_secure_fb742810.json,secure,none,low,none,none,[],3,N/A — this policy follows security best practices.,CloudWatch,none
+scraped_escalation_admin_wildcard_96128511.json,vulnerable,admin_wildcard,critical,admin_wildcard,Wildcard action on all resources → Unrestricted access to all AWS services,"[""Wildcard action on all resources \u2192 Unrestricted access to all AWS services""]",9,Replace wildcard actions with specific required actions. Scope resources to specific ARNs.,Unknown,none
+scraped_secure_5c76dfcb.json,secure,none,low,none,none,[],3,N/A — this policy follows security best practices.,"S3,ECS,CloudWatch",none
+scraped_secure_5c56fe4e.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_75675a5b.json,secure,none,low,none,none,[],3,N/A — this policy follows security best practices.,EC2,none
+scraped_vulnerable_needs_review_acb95139.json,vulnerable,needs_review,medium,needs_review,none,"[""none""]",7,Review and restrict permissions following least-privilege principle.,"IAM,EC2,Lambda,CloudFormation,CloudWatch,KMS",none
+scraped_secure_06b6a9b7.json,secure,none,low,none,none,[],1,N/A — this policy follows security best practices.,S3,none
+scraped_secure_7eb46e74.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_1c2b971c.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_4055b697.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,Unknown,none
+scraped_secure_6ada2b48.json,secure,none,low,none,none,[],1,N/A — this policy follows security best practices.,CloudWatch,none
+scraped_secure_5e5cc483.json,secure,none,low,none,none,[],1,N/A — this policy follows security best practices.,S3,none
+scraped_secure_fb742810.json,secure,none,low,,none,[],0,,,none
+scraped_escalation_admin_wildcard_96128511.json,vulnerable,none,critical,,none,[],0,,,none
+scraped_secure_5c76dfcb.json,secure,none,low,,none,[],0,,,none
+scraped_secure_5c56fe4e.json,secure,none,low,,none,[],0,,,none
+scraped_secure_75675a5b.json,secure,none,low,,none,[],0,,,none
+scraped_vulnerable_needs_review_acb95139.json,vulnerable,none,medium,,none,[],0,,,none
+scraped_secure_06b6a9b7.json,secure,none,low,,none,[],0,,,none
+scraped_secure_7eb46e74.json,secure,none,low,,none,[],0,,,none
+scraped_secure_1c2b971c.json,secure,none,low,,none,[],0,,,none
+scraped_secure_4055b697.json,secure,none,low,,none,[],0,,,none
+scraped_secure_6ada2b48.json,secure,none,low,,none,[],0,,,none
+scraped_secure_5e5cc483.json,secure,none,low,,none,[],0,,,none
+scraped_secure_4bd84a68.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_9abba428.json,secure,none,low,none,none,[],3,N/A — this policy follows security best practices.,"IAM,S3,Lambda,ECS,SNS,CloudWatch,KMS,ElasticLoadBalancing",none
+scraped_secure_38183dd9.json,secure,none,low,none,none,[],6,N/A — this policy follows security best practices.,"IAM,EC2,SSM",none
+scraped_secure_8489907b.json,secure,none,low,none,none,[],3,N/A — this policy follows security best practices.,Unknown,none
+scraped_secure_9507daef.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_a35f61f1.json,secure,none,low,none,none,[],5,N/A — this policy follows security best practices.,"IAM,EC2",none
+scraped_secure_7a91ff2f.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_7b2bcc6b.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_86debe25.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_5565e70a.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_1624187b.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_e32e0ccc.json,secure,none,low,none,none,[],6,N/A — this policy follows security best practices.,"S3,ECS,SNS,CloudWatch",none
+scraped_secure_d1eabdbd.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_9ae0d63c.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,Unknown,none
+scraped_secure_fe8aa458.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_30fd680b.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_5afff193.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,"IAM,S3,CodeBuild",none
+scraped_secure_8d5ab351.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,"IAM,STS",none
+scraped_secure_84cf7063.json,secure,none,low,none,none,[],4,N/A — this policy follows security best practices.,"S3,CloudWatch,SSM,ElasticLoadBalancing",none
+scraped_secure_6ba7b41d.json,secure,none,low,none,none,[],1,N/A — this policy follows security best practices.,"S3,SQS,KMS",none
+scraped_secure_da9ff500.json,secure,none,low,none,none,[],1,N/A — this policy follows security best practices.,S3,none
+scraped_secure_a3f3707a.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_70371dea.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,"IAM,STS",none
+scraped_secure_279434a4.json,secure,none,low,none,none,[],1,N/A — this policy follows security best practices.,"Lambda,SQS,CloudWatch",none
+scraped_secure_58f14a26.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_32fe4e05.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,EC2,none
+scraped_secure_4c81be3f.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_f665e23f.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,EC2,none
+scraped_secure_93470810.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_0ed563db.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,Unknown,none
+scraped_secure_dec78213.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_a1b3ee53.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_f62c53ec.json,secure,none,low,none,none,[],1,N/A — this policy follows security best practices.,S3,none
+scraped_secure_2a34256e.json,secure,none,low,none,none,[],1,N/A — this policy follows security best practices.,STS,none
+scraped_secure_8a1c727e.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none
+scraped_secure_d0c90b09.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,CloudWatch,none
+scraped_secure_8a11980c.json,secure,none,low,none,none,[],2,N/A — this policy follows security best practices.,STS,none

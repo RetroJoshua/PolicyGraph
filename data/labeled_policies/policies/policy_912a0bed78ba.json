@@ -1,0 +1,83 @@
+{
+  "source": "raw_4f2a048d5cf8.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "ecs:RunTask"
+        ],
+        "Resource": [
+          "arn:aws:ecs:${var.region}:${local.account_id}:task-definition/*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "lambda:InvokeFunction"
+        ],
+        "Resource": [
+          "arn:aws:lambda:${var.region}:${local.account_id}:function:getResumeFromStep:$LATEST",
+          "arn:aws:lambda:${var.region}:${local.account_id}:function:ga_sb_${var.env}_identify_instrument_files:$LATEST",
+          "arn:aws:lambda:${var.region}:${local.account_id}:function:ga_sb_${var.env}_identify_unprocessed_grids:$LATEST",
+          "arn:aws:lambda:${var.region}:${local.account_id}:function:ga_sb_${var.env}-process-l2-functions:$LATEST"
+        ]
+      },
+      {
+        "Sid": "forCloudWatch",
+        "Effect": "Allow",
+        "Action": [
+          "logs:CreateLogDelivery",
+          "logs:GetLogDelivery",
+          "logs:UpdateLogDelivery",
+          "logs:ListLogDeliveries",
+          "logs:PutResourcePolicy",
+          "logs:DescribeResourcePolicies",
+          "logs:DescribeLogGroups",
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "states:StartExecution"
+        ],
+        "Resource": [
+          "arn:aws:states:${var.region}:${local.account_id}:stateMachine:ga-sb-${var.env}-ausseabed-processing-pipeline-l3",
+          "arn:aws:states:${var.region}:${local.account_id}:stateMachine:ga-sb-${var.env}-update-survey-zip"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "ecs:StopTask",
+          "ecs:DescribeTasks"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "events:PutTargets",
+          "events:PutRule",
+          "events:DescribeRule"
+        ],
+        "Resource": [
+          "*"
+        ]
+      },
+      {
+        "Sid": "VisualEditor0",
+        "Effect": "Allow",
+        "Action": "iam:PassRole",
+        "Resource": "*"
+      }
+    ]
+  }
+}

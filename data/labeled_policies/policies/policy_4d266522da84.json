@@ -1,0 +1,23 @@
+{
+  "source": "raw_d3938fef1379.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "Sid1",
+        "Effect": "Allow",
+        "Action": [
+          "logs:CreateLogStream",
+          "logs:CreateLogGroup",
+          "logs:PutLogEvents"
+        ],
+        "Resource": [
+          "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/aws-lakeformation-acceleration/*",
+          "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/aws-lakeformation-acceleration/*:log-stream:*"
+        ]
+      }
+    ]
+  }
+}

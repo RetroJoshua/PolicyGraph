@@ -1,0 +1,17 @@
+{
+  "source": "raw_20d09dec4372.tf",
+  "resource_type": "jsonencode",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": "sts:AssumeRole",
+        "Principal": {
+          "Service": "firehose.amazonaws.com"
+        },
+        "Effect": "Allow"
+      }
+    ]
+  }
+}

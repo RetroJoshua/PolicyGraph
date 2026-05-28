@@ -1,0 +1,24 @@
+{
+  "source": "raw_db2c1de65a6d.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": "iam:PassRole",
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "states:StartExecution"
+        ],
+        "Resource": [
+          "arn:aws:states:${var.region}:${local.account_id}:stateMachine:ausseabed-processing-pipeline"
+        ]
+      }
+    ]
+  }
+}

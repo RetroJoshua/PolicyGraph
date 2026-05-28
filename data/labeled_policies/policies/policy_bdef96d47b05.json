@@ -1,0 +1,29 @@
+{
+  "source": "raw_2e556d16d614.tf",
+  "resource_type": "jsonencode",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "",
+        "Effect": "Allow",
+        "Action": [
+          "ecs:ListClusters",
+          "ecs:ListTaskDefinitions",
+          "ecs:ListContainerInstances",
+          "ecs:RunTask",
+          "ecs:StopTask",
+          "ecs:DescribeTasks",
+          "ecs:DescribeContainerInstances",
+          "ecs:DescribeTaskDefinition",
+          "ecs:RegisterTaskDefinition",
+          "ecs:DeregisterTaskDefinition",
+          "iam:GetRole",
+          "iam:PassRole"
+        ],
+        "Resource": "*"
+      }
+    ]
+  }
+}

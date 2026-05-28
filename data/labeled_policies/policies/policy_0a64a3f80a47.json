@@ -1,0 +1,30 @@
+{
+  "source": "raw_4d6ce0eb97b7.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "Statement1",
+        "Effect": "Allow",
+        "Action": [
+          "eks:*",
+          "eks:DescribeCluster",
+          "eks:ListClusters"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": "iam:PassRole",
+        "Resource": "*",
+        "Condition": {
+          "StringEquals": {
+            "iam:PassedToService": "eks.amazonaws.com"
+          }
+        }
+      }
+    ]
+  }
+}

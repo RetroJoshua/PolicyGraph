@@ -248,7 +248,21 @@ class LabelingState:
             "session_history": [],
         })
         self.scores = self._load_json(self.scores_file, {})
-
+        # Sync auto-labeled entries from LABELS.json into reviewed state
+        if self.labels_json.exists():
+            try:
+                labels_data = json.loads(self.labels_json.read_text(encoding="utf-8"))
+                entries = labels_data.get("labels", [])
+                for entry in entries:
+                    fname = entry.get("filename") or entry.get("output_filename")
+                    if fname and fname not in self.state["reviewed"]:
+                        self.state["reviewed"][fname] = {
+                            "label": entry.get("label", "secure"),
+                            "severity": entry.get("severity", "low"),
+                            "source": entry.get("source", "auto_label"),
+                        }
+            except Exception:
+                pass
     def _load_json(self, path: Path, default: Any) -> Any:
         if path.exists():
             with path.open("r") as f:
@@ -350,7 +364,7 @@ class LabelingState:
             "risk_score", "remediation", "affected_services", "secure_alternative",
         ]
 
-        with self.labels_csv.open("w", newline="") as f:
+        with self.labels_csv.open("w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             for filename, info in reviewed.items():
@@ -412,11 +426,13 @@ class PolicyScorer:
         if policy_json and self.model_available and self.analyzer:
             try:
                 analysis = self.analyzer.analyze_policy(policy_json)
+                model_score = analysis.get("model_risk_score", 0)
+                threshold = analysis.get("threshold", 0.3)
                 result.update({
                     "risk_score": analysis["risk_score"],
-                    "model_risk_score": analysis.get("model_risk_score", 0),
+                    "model_risk_score": model_score,
                     "heuristic_risk_score": analysis.get("heuristic_risk_score", 0),
-                    "prediction_label": analysis["prediction_label"],
+                    "prediction_label": "vulnerable" if model_score >= threshold else "secure",
                     "vulnerabilities_detected": analysis.get("vulnerabilities_detected", []),
                     "attack_paths": [p["description"] for p in analysis.get("attack_paths", [])],
                     "method": "model",
@@ -596,6 +612,11 @@ def interactive_review(
 
         # Get score data
         score_data = state.scores.get(filename, {})
+
+        # Auto-skip reference-only files (no extractable JSON policy, heuristic only)
+        if not score_data.get("has_json_policy", True) and score_data.get("method") == "heuristic":
+            i += 1
+            continue
         risk_score = score_data.get("risk_score", 0.5)
         predicted_label = score_data.get("prediction_label", "unknown")
         vulns = score_data.get("vulnerabilities_detected", [])

@@ -1,0 +1,21 @@
+{
+  "source": "raw_9684e4ffd895.tf",
+  "resource_type": "unknown",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "AllowGlueCloudWatchLogsWrite",
+        "Effect": "Allow",
+        "Action": [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:DescribeLogStreams",
+          "logs:PutLogEvents"
+        ],
+        "Resource": "arn:aws:logs:${var.aws_region}:${var.aws_account_id}:log-group:/aws-glue/crawlers:*"
+      }
+    ]
+  }
+}

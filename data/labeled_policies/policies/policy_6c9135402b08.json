@@ -1,0 +1,22 @@
+{
+  "source": "raw_aa497136fafe.tf",
+  "resource_type": "unknown",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": [
+          "s3:ListBucket",
+          "s3:GetObject",
+          "s3:PutObject"
+        ],
+        "Effect": "Allow",
+        "Resource": [
+          "arn:aws:s3:::depi-qal-project-s3",
+          "arn:aws:s3:::depi-qal-project-s3/*"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "source": "raw_d7b3fb3cfe86.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "",
+        "Action": [
+          "ec2:DescribeInstances",
+          "ec2:DescribeSpotPriceHistory",
+          "pricing:GetProducts",
+          "iam:GetRole"
+        ],
+        "Effect": "Allow",
+        "Resource": [
+          "*"
+        ]
+      }
+    ]
+  }
+}

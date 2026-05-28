@@ -1,0 +1,7 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [],
+  "_source": "terraform_hcl",
+  "_note": "Could not fully parse HCL to JSON. Original file preserved.",
+  "_original_filename": "raw_0012a8150a4a.tf"
+}

@@ -1,0 +1,17 @@
+{
+  "source": "raw_48c0da07a060.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": [
+          "s3:*"
+        ],
+        "Resource": "*",
+        "Effect": "Allow"
+      }
+    ]
+  }
+}

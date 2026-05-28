@@ -1,0 +1,13 @@
+{
+  "source": "raw_9b9de93f796d.tf",
+  "resource_type": "heredoc",
+  "resource_name": "unknown",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": {
+      "Effect": "Allow",
+      "Action": "kms:Decrypt",
+      "Resource": "${var.kms_key_arn}"
+    }
+  }
+}
