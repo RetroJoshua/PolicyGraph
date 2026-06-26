@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "# Roles and Groups to attach\nresource \"aws_iam_group_policy\" \"ec2admin\" {\n  name  = \"ec2admin-group-policy\"\n  group = \"${aws_iam_group.ec2admin.id}\"\n\n  policy = \"${data.aws_iam_policy_document.ec2admin_group_assume.json}\"\n}\n\nresource \"aws_iam_role\" \"ec2admin\" {\n  name               = \"ec2admin-role\"\n  description        = \"The role to be assumed by the EC2 Admin\"\n  assume_role_policy = \"${data.aws_iam_policy_document.assume_role_policy.json}\"\n\n  tags = {\n    Description = \"EC2 Admin with access to related policies\"\n  }\n}\n\ndata \"aws_iam_policy_document\" \"ec2admin_group_assume\" {\n  statement {\n    effect = \"Allow\"\n\n    actions = [\n      \"sts:AssumeRole\",\n    ]\n\n    resources = [\n      \"${aws_iam_role.ec2admin.arn}\",\n    ]\n  }\n}\n\n# Policies\ndata \"template_file\" \"ec2main\" {\n  template = \"${file(\"${path.module}/policy/ec2admin/main.json\")}\"\n\n  vars = {\n    region = \"${var.region}\"\n  }\n}\n\nresource \"aws_iam_policy\" \"ec2main\" {\n  name        = \"ec2main-policy\"\n  description = \"EC2 main policy\"\n  path        = \"/\"\n  policy      = \"${data.template_file.ec2main.rendered}\"\n}\n",
+  "metadata": {
+    "original_filename": "ec2admin.tf",
+    "source_repo": "ik-cloud-iam/iam-by-role",
+    "source_path": "ec2admin.tf",
+    "scraped_date": "2026-06-14 20:05:03",
+    "conversion_date": "2026-06-15T11:31:04.868483"
+  }
+}

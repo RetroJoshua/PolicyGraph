@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"ec2:Describe*\",\n                \"ec2:GetConsole*\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": \"ec2:RunInstances\",\n            \"Resource\": [\n                \"arn:aws:ec2:*:*:subnet/subnet-subnet-id\",\n                \"arn:aws:ec2:*:*:network-interface/*\",\n                \"arn:aws:ec2:*:*:instance/*\",\n                \"arn:aws:ec2:*:*:volume/*\",\n                \"arn:aws:ec2:*::image/ami-*\",\n                \"arn:aws:ec2:*:*:key-pair/*\",\n                \"arn:aws:ec2:*:*:security-group/*\"\n            ]\n        }\n    ]\n}\n",
+  "metadata": {
+    "original_filename": "ec2_write_subnet-launch.json",
+    "source_repo": "original_samples",
+    "source_path": "ec2_write_subnet-launch.json",
+    "scraped_date": "2026-01-01 00:00:00",
+    "conversion_date": "2026-06-15T11:31:05.053385"
+  }
+}

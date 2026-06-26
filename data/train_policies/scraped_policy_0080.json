@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "data \"aws_iam_policy_document\" \"pipeline_role\" {\n  statement {\n    actions   = [\"lambda:InvokeFunction\", \"logs:FilterLogEvents\"]\n    resources = [\"*\"]\n  }\n}\n\n# Create the IAM provider with one role\nmodule \"bitbucket_oidc\" {\n  source = \"../.\"\n\n  workspace_name = \"FaridN\"\n  workspace_uuid = \"c95b4694-9b82-4fe5-9e2f-00ffac14cf93\"\n  #  You can get in the repository settings in the OpenID connect provider.\n\n  roles = {\n    role1 = {\n      name                 = \"BitbucketPipelineRepo1\"\n      allowed_subjects     = [\"{573817ba-2f91-4ae3-8384-ff2cbc4caaa1}*\"]\n      inline_policies_json = [data.aws_iam_policy_document.pipeline_role.json]\n    }\n  }\n\n  tags = {\n    exampleTag = \"exampleValue\"\n  }\n}\n\noutput \"role_arn\" {\n  description = \"Use this as AWS_ROLE_ARN environmental variable in your pipeline.\"\n  value       = module.bitbucket_oidc.roles.role1.arn\n}\n",
+  "metadata": {
+    "original_filename": "main.tf",
+    "source_repo": "helecloud/terraform-aws-bitbucket-oidc",
+    "source_path": "example\\main.tf",
+    "scraped_date": "2026-06-14 20:04:51",
+    "conversion_date": "2026-06-15T11:31:04.852864"
+  }
+}

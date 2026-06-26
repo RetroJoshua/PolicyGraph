@@ -1,0 +1,2154 @@
+{
+  "scraped_policy_0000.json": {
+    "label": "vulnerable",
+    "source": "Bzahirpour/iac-pipeline-template",
+    "source_path": "bootstrap\\main.tf",
+    "confidence": "High",
+    "notes": "Attaches AdministratorAccess managed policy",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0001.json": {
+    "label": "safe",
+    "source": "bryan-rhm/terraform-aws-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0002.json": {
+    "label": "vulnerable",
+    "source": "devops-workflow/terraform-aws-iam_role",
+    "source_path": "main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0003.json": {
+    "label": "safe",
+    "source": "vijayan1985/terraform-aws-finops-costreview-access",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0004.json": {
+    "label": "safe",
+    "source": "BotTech/terraform-aws-role",
+    "source_path": "main.tf",
+    "confidence": "High",
+    "notes": "Scoped actions with MFA condition; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0005.json": {
+    "label": "vulnerable",
+    "source": "BotTech/terraform-aws-role",
+    "source_path": "examples\\amplify\\main.tf",
+    "confidence": "Medium",
+    "notes": "Service-level wildcard but resources appear scoped",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0006.json": {
+    "label": "safe",
+    "source": "BotTech/terraform-aws-role",
+    "source_path": "examples\\billing\\main.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0007.json": {
+    "label": "safe",
+    "source": "jetbrains-infra/terraform-aws-assume-role-with-trust-to-account",
+    "source_path": "iam.tf",
+    "confidence": "High",
+    "notes": "Scoped actions with MFA condition; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0008.json": {
+    "label": "vulnerable",
+    "source": "kelseymok/aws-init-roles",
+    "source_path": "iam\\adminstrator.tf",
+    "confidence": "Medium",
+    "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0009.json": {
+    "label": "vulnerable",
+    "source": "kelseymok/aws-init-roles",
+    "source_path": "iam\\developer.tf",
+    "confidence": "Medium",
+    "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0010.json": {
+    "label": "safe",
+    "source": "kelseymok/aws-init-roles",
+    "source_path": "user\\list-iam-users.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0011.json": {
+    "label": "safe",
+    "source": "kelseymok/aws-init-roles",
+    "source_path": "user\\manage-access-keys.tf",
+    "confidence": "High",
+    "notes": "Scoped actions with MFA condition; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0012.json": {
+    "label": "safe",
+    "source": "kelseymok/aws-init-roles",
+    "source_path": "user\\manage-mfa.tf",
+    "confidence": "High",
+    "notes": "Scoped actions with MFA condition; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0013.json": {
+    "label": "safe",
+    "source": "JousP/terraform-aws-iam-assumeRole",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0014.json": {
+    "label": "safe",
+    "source": "JousP/terraform-aws-iam-assumeRole",
+    "source_path": "examples\\custom-role\\main_custom_assumeRole.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0015.json": {
+    "label": "safe",
+    "source": "JousP/terraform-aws-iam-assumeRole",
+    "source_path": "examples\\custom-role\\main_custom_policies.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0016.json": {
+    "label": "safe",
+    "source": "JousP/terraform-aws-iam-assumeRole",
+    "source_path": "examples\\custom-role\\main_custom_policies_strict.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0017.json": {
+    "label": "safe",
+    "source": "scott-thomas/AWS-Atlas-PrivateLink",
+    "source_path": "modules\\aws\\lambda.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0018.json": {
+    "label": "safe",
+    "source": "StratusGrid/terraform-aws-iam-role-cross-account-trusting",
+    "source_path": "main.tf",
+    "confidence": "High",
+    "notes": "Scoped actions with MFA condition; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0019.json": {
+    "label": "safe",
+    "source": "StratusGrid/terraform-aws-iam-role-cross-account-trusting",
+    "source_path": "iam-policy-document-abstraction\\-outputs.tf",
+    "confidence": "High",
+    "notes": "Scoped actions with MFA condition; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0020.json": {
+    "label": "safe",
+    "source": "StratusGrid/terraform-aws-iam-role-cross-account-trusting",
+    "source_path": "iam-policy-document-abstraction\\policy.tf",
+    "confidence": "High",
+    "notes": "Scoped actions with MFA condition; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0021.json": {
+    "label": "safe",
+    "source": "tinfoilcipher/terraform-aws-eks-service-account-with-oidc-iam-role",
+    "source_path": "data.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0022.json": {
+    "label": "safe",
+    "source": "tinfoilcipher/terraform-aws-eks-service-account-with-oidc-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0023.json": {
+    "label": "safe",
+    "source": "ucopacme/terraform-aws-assume-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0024.json": {
+    "label": "vulnerable",
+    "source": "dod-iac/terraform-aws-iam-billing-roles",
+    "source_path": "iam_policies.tf",
+    "confidence": "Medium",
+    "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0025.json": {
+    "label": "safe",
+    "source": "dod-iac/terraform-aws-iam-billing-roles",
+    "source_path": "iam_roles.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0026.json": {
+    "label": "safe",
+    "source": "npalm/terraform-aws-dockercloud-swarm-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0027.json": {
+    "label": "safe",
+    "source": "sourcefuse/terraform-aws-arc-github-runner",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0028.json": {
+    "label": "safe",
+    "source": "johnmccuk/aws-iam-roles-anywhere-public-demo",
+    "source_path": "terraform\\iam.tf",
+    "confidence": "High",
+    "notes": "Scoped resources with conditions; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0029.json": {
+    "label": "vulnerable",
+    "source": "amitsaha/aws-assume-role-demo",
+    "source_path": "terraform_configuration\\problem_demo\\iam.tf",
+    "confidence": "Medium",
+    "notes": "Service-level wildcard but resources appear scoped",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0030.json": {
+    "label": "vulnerable",
+    "source": "amitsaha/aws-assume-role-demo",
+    "source_path": "terraform_configuration\\solution_demo\\iam.tf",
+    "confidence": "Medium",
+    "notes": "Service-level wildcard but resources appear scoped",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0031.json": {
+    "label": "vulnerable",
+    "source": "amitsaha/aws-assume-role-demo",
+    "source_path": "terraform_configuration\\solution_demo_root_user\\iam.tf",
+    "confidence": "Medium",
+    "notes": "Service-level wildcard but resources appear scoped",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0032.json": {
+    "label": "vulnerable",
+    "source": "cloudposse/terraform-aws-ssm-iam-role",
+    "source_path": "main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0033.json": {
+    "label": "safe",
+    "source": "cloudposse/terraform-aws-ssm-iam-role",
+    "source_path": "output.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0034.json": {
+    "label": "safe",
+    "source": "yukihira1992/terraform-aws-iam-service-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0035.json": {
+    "label": "vulnerable",
+    "source": "ShubhamTatvamasi/terraform-aws-iam-role-admin",
+    "source_path": "iam_role.tf",
+    "confidence": "High",
+    "notes": "Attaches AdministratorAccess managed policy",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0036.json": {
+    "label": "vulnerable",
+    "source": "mockingbirdconsulting/terraform-aws-datadog-aws-integration",
+    "source_path": "policies.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0037.json": {
+    "label": "safe",
+    "source": "mockingbirdconsulting/terraform-aws-datadog-aws-integration",
+    "source_path": "roles.tf",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0038.json": {
+    "label": "safe",
+    "source": "adamwshero/terraform-aws-ssm-activations",
+    "source_path": "main.tf",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0039.json": {
+    "label": "safe",
+    "source": "cytopia/terraform-aws-iam-roles",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0040.json": {
+    "label": "safe",
+    "source": "dod-iac/terraform-aws-glue-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0041.json": {
+    "label": "safe",
+    "source": "Applied-Field-Engineering-Demo/terraform-snowflake-wif-aws-iam-ec2",
+    "source_path": "iam.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0042.json": {
+    "label": "safe",
+    "source": "baikonur-oss/terraform-aws-iam-nofile",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0043.json": {
+    "label": "safe",
+    "source": "anonymint/terraform-aws-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0044.json": {
+    "label": "safe",
+    "source": "anonymint/terraform-aws-iam-role",
+    "source_path": "variables.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0045.json": {
+    "label": "vulnerable",
+    "source": "anonymint/terraform-aws-iam-role",
+    "source_path": "example\\iam_role_ec2\\main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0046.json": {
+    "label": "safe",
+    "source": "anonymint/terraform-aws-iam-role",
+    "source_path": "example\\iam_role_lambda\\main.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0047.json": {
+    "label": "vulnerable",
+    "source": "anonymint/terraform-aws-iam-role",
+    "source_path": "example\\iam_role_s3\\main.tf",
+    "confidence": "High",
+    "notes": "Service-level wildcard (e.g. iam:*) with resources=[\"*\"]",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0048.json": {
+    "label": "safe",
+    "source": "tmknom/terraform-aws-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0049.json": {
+    "label": "vulnerable",
+    "source": "tmknom/terraform-aws-iam-role",
+    "source_path": "examples\\complete\\main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0050.json": {
+    "label": "vulnerable",
+    "source": "tmknom/terraform-aws-iam-role",
+    "source_path": "examples\\minimal\\main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0051.json": {
+    "label": "safe",
+    "source": "clouddrove/terraform-aws-cross-account-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0052.json": {
+    "label": "vulnerable",
+    "source": "omerbsezer/Fast-Terraform",
+    "source_path": "labs\\iamuser-metaargs-count-for-foreach-map\\count\\main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0053.json": {
+    "label": "vulnerable",
+    "source": "omerbsezer/Fast-Terraform",
+    "source_path": "labs\\iamuser-metaargs-count-for-foreach-map\\for_each\\main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0054.json": {
+    "label": "safe",
+    "source": "omerbsezer/Fast-Terraform",
+    "source_path": "labs\\template\\main.tf",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0055.json": {
+    "label": "vulnerable",
+    "source": "omerbsezer/Fast-Terraform",
+    "source_path": "samples\\codecommit-codepipeline-codebuild-codedeploy-lambda-container\\lambda_bootstrap\\main.tf",
+    "confidence": "Medium",
+    "notes": "Service-level wildcard but resources appear scoped",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0056.json": {
+    "label": "vulnerable",
+    "source": "omerbsezer/Fast-Terraform",
+    "source_path": "samples\\codecommit-codepipeline-codebuild-codedeploy-lambda-container\\modules\\codepipeline\\roles.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0057.json": {
+    "label": "safe",
+    "source": "omerbsezer/Fast-Terraform",
+    "source_path": "samples\\ecr-ecs-elb-vpc-ecsservice-container\\2_ecs.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0058.json": {
+    "label": "safe",
+    "source": "omerbsezer/Fast-Terraform",
+    "source_path": "samples\\lambda-container-apigateway-flaskapp\\1_lambda.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0059.json": {
+    "label": "safe",
+    "source": "omerbsezer/Fast-Terraform",
+    "source_path": "samples\\lambda-role-policy-apigateway-python\\lambda.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0060.json": {
+    "label": "vulnerable",
+    "source": "omerbsezer/Fast-Terraform",
+    "source_path": "samples\\mlops-sagemaker-github-codepipeline-codebuild-codedeploy\\terraform\\iam_roles.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0061.json": {
+    "label": "safe",
+    "source": "omerbsezer/Fast-Terraform",
+    "source_path": "samples\\s3-cloudfront-static-website\\s3.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0062.json": {
+    "label": "vulnerable",
+    "source": "stealthllama/terraform-aws-prisma-cloud",
+    "source_path": "main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0063.json": {
+    "label": "safe",
+    "source": "ravindrasinghh/Kubernetes-Playlist",
+    "source_path": "Lesson1\\eks.tf",
+    "confidence": "High",
+    "notes": "Scoped resources with conditions; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0064.json": {
+    "label": "safe",
+    "source": "ravindrasinghh/Kubernetes-Playlist",
+    "source_path": "Lesson7\\eks.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0065.json": {
+    "label": "safe",
+    "source": "sailthru/terraform-aws-ec2-instance-base",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0066.json": {
+    "label": "safe",
+    "source": "JesterCloud/aml-fraud-detection-aws",
+    "source_path": "terraform\\main.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0067.json": {
+    "label": "vulnerable",
+    "source": "rhythmictech/terraform-aws-rhythmic-iam-roles",
+    "source_path": "main.tf",
+    "confidence": "High",
+    "notes": "Attaches AdministratorAccess managed policy",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0068.json": {
+    "label": "safe",
+    "source": "cloudposse/terraform-aws-eks-iam-role",
+    "source_path": "main.tf",
+    "confidence": "High",
+    "notes": "Scoped resources with conditions; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0069.json": {
+    "label": "safe",
+    "source": "cloudposse/terraform-aws-eks-iam-role",
+    "source_path": "variables.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0070.json": {
+    "label": "vulnerable",
+    "source": "cloudposse/terraform-aws-eks-iam-role",
+    "source_path": "examples\\complete\\main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0071.json": {
+    "label": "safe",
+    "source": "AheadAviation/terraform-aws-eks-2.0",
+    "source_path": "iam_roles.tf",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0072.json": {
+    "label": "safe",
+    "source": "bijubayarea/terraform-eks-s3-irsa",
+    "source_path": "modules\\eks_irsa\\iam.tf",
+    "confidence": "High",
+    "notes": "Scoped resources with conditions; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0073.json": {
+    "label": "vulnerable",
+    "source": "bijubayarea/terraform-eks-s3-irsa",
+    "source_path": "src\\irsa.tf",
+    "confidence": "Medium",
+    "notes": "Service-level wildcard but resources appear scoped",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0074.json": {
+    "label": "safe",
+    "source": "mineiros-io/terraform-aws-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0075.json": {
+    "label": "safe",
+    "source": "hashicorp-education/learn-terraform-aws-assume-role-iam",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0076.json": {
+    "label": "vulnerable",
+    "source": "godleon/aws-lab-001-assume-role",
+    "source_path": "source\\iam-policy.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0077.json": {
+    "label": "safe",
+    "source": "godleon/aws-lab-001-assume-role",
+    "source_path": "source\\iam-role.tf",
+    "confidence": "High",
+    "notes": "Scoped resources with conditions; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0078.json": {
+    "label": "safe",
+    "source": "godleon/aws-lab-001-assume-role",
+    "source_path": "source\\iam-user.tf",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0079.json": {
+    "label": "safe",
+    "source": "helecloud/terraform-aws-bitbucket-oidc",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0080.json": {
+    "label": "vulnerable",
+    "source": "helecloud/terraform-aws-bitbucket-oidc",
+    "source_path": "example\\main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0081.json": {
+    "label": "safe",
+    "source": "apparentlymart/terraform-aws-service-roles",
+    "source_path": "iam.tf",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0082.json": {
+    "label": "safe",
+    "source": "dean6969/Streaming-data-on-AWS-kinesis-Data-stream-Lambda-S3-IAM-roles-Cloudwatch-",
+    "source_path": "modules\\IAM.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0083.json": {
+    "label": "safe",
+    "source": "resizes/platform-terraform-module-github-oidc-aws-role",
+    "source_path": "main.tf",
+    "confidence": "High",
+    "notes": "Scoped resources with conditions; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0084.json": {
+    "label": "safe",
+    "source": "cloudposse-archives/terraform-aws-iam-chamber-s3-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0085.json": {
+    "label": "safe",
+    "source": "ik-cloud-iam/iam-by-role",
+    "source_path": "admin.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0086.json": {
+    "label": "safe",
+    "source": "ik-cloud-iam/iam-by-role",
+    "source_path": "auditor.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0087.json": {
+    "label": "safe",
+    "source": "ik-cloud-iam/iam-by-role",
+    "source_path": "devops.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0088.json": {
+    "label": "safe",
+    "source": "ik-cloud-iam/iam-by-role",
+    "source_path": "ec2admin.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0089.json": {
+    "label": "safe",
+    "source": "ik-cloud-iam/iam-by-role",
+    "source_path": "groups.tf",
+    "confidence": "High",
+    "notes": "Scoped actions with MFA condition; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0090.json": {
+    "label": "safe",
+    "source": "ik-cloud-iam/iam-by-role",
+    "source_path": "iamadmin.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0091.json": {
+    "label": "safe",
+    "source": "LozanoMatheus/eks-oidc",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0092.json": {
+    "label": "safe",
+    "source": "Basillica/roles-terraform-module",
+    "source_path": "roles.tf",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0093.json": {
+    "label": "vulnerable",
+    "source": "bpineau/aws-iam-mfa",
+    "source_path": "admin-role.tf",
+    "confidence": "High",
+    "notes": "Attaches AdministratorAccess managed policy",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0094.json": {
+    "label": "vulnerable",
+    "source": "bpineau/aws-iam-mfa",
+    "source_path": "mfa.tf",
+    "confidence": "Medium",
+    "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0095.json": {
+    "label": "safe",
+    "source": "bpineau/aws-iam-mfa",
+    "source_path": "readonly-role.tf",
+    "confidence": "High",
+    "notes": "Scoped actions with MFA condition; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0096.json": {
+    "label": "safe",
+    "source": "charlottemach/cross-account-aws-iam-roles",
+    "source_path": "iam.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0097.json": {
+    "label": "vulnerable",
+    "source": "hendrixroa/terraform-aws-iam-role-ecs",
+    "source_path": "main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0098.json": {
+    "label": "safe",
+    "source": "sailthru/terraform-aws-asg-base",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0099.json": {
+    "label": "safe",
+    "source": "cirocosta/sample-docker-registry-aws",
+    "source_path": "permissions.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0100.json": {
+    "label": "vulnerable",
+    "source": "squasta/Terraform-RolePermissions-for-NC2onAWS",
+    "source_path": "aws_cf_clusters_high-terraform.tf",
+    "confidence": "Medium",
+    "notes": "Service-level wildcard but resources appear scoped",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0101.json": {
+    "label": "safe",
+    "source": "babbel/terraform-aws-iam-role-for-github-repository",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0102.json": {
+    "label": "safe",
+    "source": "tkskwn/terraform-aws-ec2-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0103.json": {
+    "label": "safe",
+    "source": "aledivu/terraforming-opsman-securely",
+    "source_path": "modules\\ops_manager\\iam.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0104.json": {
+    "label": "safe",
+    "source": "aledivu/terraforming-opsman-securely",
+    "source_path": "modules\\pas\\iam.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0105.json": {
+    "label": "safe",
+    "source": "aledivu/terraforming-opsman-securely",
+    "source_path": "modules\\pks\\iam.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0106.json": {
+    "label": "safe",
+    "source": "offensive-terraform/terraform-aws-cross-account-persistence",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0107.json": {
+    "label": "safe",
+    "source": "abbashussainz/IRSA-EKS-Terraform",
+    "source_path": "Manifest Files\\eks-cluster-iam.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0108.json": {
+    "label": "safe",
+    "source": "abbashussainz/IRSA-EKS-Terraform",
+    "source_path": "Manifest Files\\eks-nodegroup-iam.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0109.json": {
+    "label": "safe",
+    "source": "abbashussainz/IRSA-EKS-Terraform",
+    "source_path": "Manifest Files\\irsa-iam.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0110.json": {
+    "label": "vulnerable",
+    "source": "cloudposse-archives/terraform-aws-kops-aws-alb-ingress",
+    "source_path": "main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0111.json": {
+    "label": "vulnerable",
+    "source": "KyMidd/AWS_EC2_IAM_Authentication",
+    "source_path": "terraform-iam-roles\\terraform-iam-ec2.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0112.json": {
+    "label": "safe",
+    "source": "sourcefuse/terraform-aws-arc-ecs",
+    "source_path": "modules\\ecs-service\\iam.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0113.json": {
+    "label": "safe",
+    "source": "dod-iac/terraform-aws-kinesis-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0114.json": {
+    "label": "vulnerable",
+    "source": "cloudposse/terraform-aws-iam-assumed-roles",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0115.json": {
+    "label": "vulnerable",
+    "source": "StratusGrid/terraform-aws-iam-role-vmimport",
+    "source_path": "iam-role-vmimport.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0116.json": {
+    "label": "vulnerable",
+    "source": "annegl/101_terraform",
+    "source_path": "infrastructure\\iam-policies.tf",
+    "confidence": "Medium",
+    "notes": "Service-level wildcard but resources appear scoped",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0117.json": {
+    "label": "safe",
+    "source": "annegl/101_terraform",
+    "source_path": "infrastructure\\iam-roles.tf",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0118.json": {
+    "label": "safe",
+    "source": "cloudposse/terraform-aws-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0119.json": {
+    "label": "safe",
+    "source": "cloudposse/terraform-aws-iam-role",
+    "source_path": "outputs.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0120.json": {
+    "label": "safe",
+    "source": "cloudposse/terraform-aws-iam-role",
+    "source_path": "examples\\complete\\main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0121.json": {
+    "label": "safe",
+    "source": "StratusGrid/terraform-aws-iam-group-restricted-read-only",
+    "source_path": "iam-group.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0122.json": {
+    "label": "safe",
+    "source": "StratusGrid/terraform-aws-iam-group-restricted-read-only",
+    "source_path": "iam-policy.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0123.json": {
+    "label": "safe",
+    "source": "StratusGrid/terraform-aws-iam-group-restricted-read-only",
+    "source_path": "iam-role.tf",
+    "confidence": "High",
+    "notes": "Scoped actions with MFA condition; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0124.json": {
+    "label": "safe",
+    "source": "StratusGrid/terraform-aws-iam-group-restricted-read-only",
+    "source_path": "iamdata.tf",
+    "confidence": "High",
+    "notes": "Scoped actions with MFA condition; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0125.json": {
+    "label": "safe",
+    "source": "clutchsecurity/AWSKeyLockdown",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0126.json": {
+    "label": "safe",
+    "source": "baka126/terraform-k8s-irsa-iam",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0127.json": {
+    "label": "safe",
+    "source": "baka126/terraform-k8s-irsa-iam",
+    "source_path": "examples\\complete\\iam.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0128.json": {
+    "label": "safe",
+    "source": "thanhbn87/terraform-aws-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0129.json": {
+    "label": "safe",
+    "source": "MaheshShukla1/aws-devsecops-infra",
+    "source_path": "modules\\ec2\\iam.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0130.json": {
+    "label": "safe",
+    "source": "clouddrove/terraform-aws-iam-role",
+    "source_path": "data.tf",
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0131.json": {
+    "label": "safe",
+    "source": "clouddrove/terraform-aws-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0132.json": {
+    "label": "vulnerable",
+    "source": "clouddrove/terraform-aws-iam-role",
+    "source_path": "examples\\complete\\main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0133.json": {
+    "label": "safe",
+    "source": "clouddrove/terraform-aws-iam-role",
+    "source_path": "modules\\aws_github_oidc_role\\main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0134.json": {
+    "label": "safe",
+    "source": "dod-iac/terraform-aws-sagemaker-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0135.json": {
+    "label": "safe",
+    "source": "cloudposse-terraform-components/aws-iam-role",
+    "source_path": "src\\eks-assume-role-policy.tf",
+    "confidence": "High",
+    "notes": "Scoped resources with conditions; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0136.json": {
+    "label": "safe",
+    "source": "cloudposse-terraform-components/aws-iam-role",
+    "source_path": "src\\github-assume-role-policy.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0137.json": {
+    "label": "safe",
+    "source": "cloudposse-terraform-components/aws-iam-role",
+    "source_path": "src\\main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0138.json": {
+    "label": "safe",
+    "source": "jslopes8/terraform-aws-iam-roles",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0139.json": {
+    "label": "safe",
+    "source": "Smartbrood/terraform-aws-ec2-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0140.json": {
+    "label": "safe",
+    "source": "cloudposse/terraform-aws-eks-workers",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0141.json": {
+    "label": "vulnerable",
+    "source": "Spandan-Malpani/Organizational_Account-Infra-Automation",
+    "source_path": "modules\\IAM\\main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0142.json": {
+    "label": "safe",
+    "source": "anthunt/terraform-aws-iam-assume-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0143.json": {
+    "label": "vulnerable",
+    "source": "lucidsoftware/terraform-aws-lucid-aws-import",
+    "source_path": "modules\\bastion-role\\main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0144.json": {
+    "label": "safe",
+    "source": "lucidsoftware/terraform-aws-lucid-aws-import",
+    "source_path": "modules\\import-role\\main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0145.json": {
+    "label": "vulnerable",
+    "source": "lucidsoftware/terraform-aws-lucid-aws-import",
+    "source_path": "modules\\org-read-delegation\\main.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0146.json": {
+    "label": "safe",
+    "source": "jsallis/terraform-packer-iam-policy",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0147.json": {
+    "label": "safe",
+    "source": "yrahul05/terraform-aws-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0148.json": {
+    "label": "vulnerable",
+    "source": "yrahul05/terraform-aws-iam-role",
+    "source_path": "_example\\complete\\example.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0149.json": {
+    "label": "safe",
+    "source": "cloudposse/terraform-aws-helm-release",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0150.json": {
+    "label": "safe",
+    "source": "cloudposse/terraform-aws-helm-release",
+    "source_path": "variables.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0151.json": {
+    "label": "safe",
+    "source": "cloudposse/terraform-aws-helm-release",
+    "source_path": "examples\\complete\\main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0152.json": {
+    "label": "safe",
+    "source": "spirius/terraform-aws-iam-role",
+    "source_path": "role.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0153.json": {
+    "label": "safe",
+    "source": "Cloud-42/terraform-aws-ec2-iam-role",
+    "source_path": "data.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0154.json": {
+    "label": "safe",
+    "source": "Cloud-42/terraform-aws-ec2-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0155.json": {
+    "label": "safe",
+    "source": "tierratelematics/terraform-aws-iam",
+    "source_path": "modules\\role\\main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0156.json": {
+    "label": "safe",
+    "source": "autoclouddev/terraform-aws-autocloud-access-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0157.json": {
+    "label": "safe",
+    "source": "dod-iac/terraform-aws-api-gateway-cloudwatch-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0158.json": {
+    "label": "safe",
+    "source": "spotify/gcp-aws-iam-federation-webidentity",
+    "source_path": "terraform\\modules\\aws_resources\\roles_config.tf",
+    "confidence": "High",
+    "notes": "Scoped resources with conditions; follows least-privilege",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0159.json": {
+    "label": "safe",
+    "source": "opsstation/terraform-aws-iam-role",
+    "source_path": "main.tf",
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0160.json": {
+    "label": "vulnerable",
+    "source": "opsstation/terraform-aws-iam-role",
+    "source_path": "_example\\complete\\example.tf",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed"
+  },
+  "scraped_policy_0161.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "aws_admin_region-management.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0162.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "aws_code_commit_power_user.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0163.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "aws_code_deploy_deployer_access.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0164.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "aws_code_deploy_full_access.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: medium, Risk: 7"
+  },
+  "scraped_policy_0165.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "aws_code_deploy_role.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0166.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "aws_code_deploy_role_for_ecs.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0167.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "aws_code_pipeline_full_access.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: medium, Risk: 7"
+  },
+  "scraped_policy_0168.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "aws_code_star_full_access.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: medium, Risk: 7"
+  },
+  "scraped_policy_0169.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "aws_code_star_service_role.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0170.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "aws_compromised_key_quarantine.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0171.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "aws_conditional_date-range-access.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0172.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "aws_config_multi_account_setup_policy.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0173.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "aws_config_remediation_service_role_policy.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0174.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "aws_config_service_role_policy.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0175.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "aws_connector.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0176.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "aws_control_tower_account_service_role_policy.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0177.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "aws_deny_ip-based.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0178.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "cloudformation_create_changeset.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0179.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "cloudformation_create_with_passrole.json",
+    "confidence": "High",
+    "notes": "Service-level wildcard (e.g. iam:*) with resources=[\"*\"]",
+    "checkov_findings": "Severity: critical, Risk: 9"
+  },
+  "scraped_policy_0180.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "cloudformation_delete_stack.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: medium, Risk: 6"
+  },
+  "scraped_policy_0181.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "cloudformation_drift_detection.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0182.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "cloudformation_full_access.json",
+    "confidence": "High",
+    "notes": "Service-level wildcard (e.g. iam:*) with resources=[\"*\"]",
+    "checkov_findings": "Severity: high, Risk: 7"
+  },
+  "scraped_policy_0183.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "cloudformation_read_only.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0184.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "cloudformation_stack_specific.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0185.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "cloudformation_stacksets_admin.json",
+    "confidence": "High",
+    "notes": "Service-level wildcard (e.g. iam:*) with resources=[\"*\"]",
+    "checkov_findings": "Severity: high, Risk: 9"
+  },
+  "scraped_policy_0186.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "cloudformation_template_upload.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0187.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "cloudformation_update_stack.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: medium, Risk: 6"
+  },
+  "scraped_policy_0188.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "dynamodb_readwrite_attribute-level.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0189.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "dynamodb_readwrite_cognito-items.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0190.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "dynamodb_readwrite_table-specific.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0191.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "ec2_admin_region-full-access.json",
+    "confidence": "Medium",
+    "notes": "Service-level wildcard (e.g. iam:*) with resources=[\"*\"]; condition present but scope still too broad",
+    "checkov_findings": "Severity: medium, Risk: 7"
+  },
+  "scraped_policy_0192.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "ec2_deny_terminate-ip.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0193.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "ec2_write_mfa-required.json",
+    "confidence": "Medium",
+    "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0194.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "ec2_write_security-group-management.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0195.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "ec2_write_subnet-launch.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0196.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "ec2_write_tag-owner-instances.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0197.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "escalation_add_user_to_group.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: high, Risk: 8"
+  },
+  "scraped_policy_0198.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "escalation_attach_group_policy.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: critical, Risk: 10"
+  },
+  "scraped_policy_0199.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "escalation_attach_role_policy.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: critical, Risk: 10"
+  },
+  "scraped_policy_0200.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "escalation_attach_user_policy.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: critical, Risk: 10"
+  },
+  "scraped_policy_0201.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "escalation_create_access_key.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: critical, Risk: 9"
+  },
+  "scraped_policy_0202.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "escalation_create_login_profile.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: critical, Risk: 9"
+  },
+  "scraped_policy_0203.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "escalation_create_policy_version.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: critical, Risk: 10"
+  },
+  "scraped_policy_0204.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "escalation_passrole_cloudformation.json",
+    "confidence": "High",
+    "notes": "Service-level wildcard (e.g. iam:*) with resources=[\"*\"]",
+    "checkov_findings": "Severity: critical, Risk: 9"
+  },
+  "scraped_policy_0205.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "escalation_passrole_codebuild.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: high, Risk: 8"
+  },
+  "scraped_policy_0206.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "escalation_passrole_datapipeline.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: high, Risk: 8"
+  },
+  "scraped_policy_0207.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "escalation_passrole_ec2_run.json",
+    "confidence": "Medium",
+    "notes": "Sensitive IAM write actions (e.g. iam:PassRole) on wildcard resource with no conditions",
+    "checkov_findings": "Severity: critical, Risk: 10"
+  },
+  "scraped_policy_0208.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "escalation_passrole_glue_endpoint.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: high, Risk: 8"
+  },
+  "scraped_policy_0209.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "escalation_passrole_lambda_create.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: critical, Risk: 10"
+  },
+  "scraped_policy_0210.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "escalation_passrole_lambda_update.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: critical, Risk: 10"
+  },
+  "scraped_policy_0211.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "escalation_passrole_sagemaker.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: high, Risk: 8"
+  },
+  "scraped_policy_0212.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "escalation_put_group_policy.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: critical, Risk: 10"
+  },
+  "scraped_policy_0213.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "escalation_put_role_policy.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: critical, Risk: 10"
+  },
+  "scraped_policy_0214.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "escalation_put_user_policy.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: critical, Risk: 10"
+  },
+  "scraped_policy_0215.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "escalation_set_default_policy_version.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: critical, Risk: 10"
+  },
+  "scraped_policy_0216.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "escalation_update_assume_role_policy.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: high, Risk: 8"
+  },
+  "scraped_policy_0217.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "escalation_update_login_profile.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: high, Risk: 8"
+  },
+  "scraped_policy_0218.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "iam_admin_password-policy.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0219.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "iam_read_console-full.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0220.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "iam_read_credential-report.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0221.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "iam_read_only_access.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0222.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "iam_read_policy-simulator-api.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0223.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "iam_write_manage-group-membership.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: medium, Risk: 5"
+  },
+  "scraped_policy_0224.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "iam_write_passrole-to-service.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: medium, Risk: 6"
+  },
+  "scraped_policy_0225.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "iam_write_self-manage-credentials-mfa.json",
+    "confidence": "Medium",
+    "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0226.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "lambda_basic_execution.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0227.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "lambda_create_restricted.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: medium, Risk: 0"
+  },
+  "scraped_policy_0228.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "lambda_create_with_passrole.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: critical, Risk: 9"
+  },
+  "scraped_policy_0229.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "lambda_event_source_mapping.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0230.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "lambda_full_access.json",
+    "confidence": "High",
+    "notes": "Service-level wildcard (e.g. iam:*) with resources=[\"*\"]",
+    "checkov_findings": "Severity: high, Risk: 7"
+  },
+  "scraped_policy_0231.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "lambda_invoke_specific.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0232.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "lambda_layer_management.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: medium, Risk: 0"
+  },
+  "scraped_policy_0233.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "lambda_read_only.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0234.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "lambda_update_code_with_passrole.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: critical, Risk: 10"
+  },
+  "scraped_policy_0235.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "lambda_update_with_passrole.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: high, Risk: 9"
+  },
+  "scraped_policy_0236.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "lambda_vpc_execution.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0237.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "lambda_write_dynamodb-access.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0238.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "rds_admin_region-specific.json",
+    "confidence": "Medium",
+    "notes": "Service-level wildcard but resources appear scoped",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0239.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "s3_readwrite_bucket-objects.json",
+    "confidence": "Medium",
+    "notes": "Service-level wildcard but resources appear scoped",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0240.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "s3_readwrite_cognito-user-bucket.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0241.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "s3_readwrite_home-directory.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0242.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "s3_readwrite_mfa-protected.json",
+    "confidence": "Medium",
+    "notes": "Service-level wildcard but resources appear scoped",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0243.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "secure_cloudwatch_read_only.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0244.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "secure_deny_root_account.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0245.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "secure_deny_unencrypted.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0246.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "secure_dynamodb_read_only.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0247.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "secure_ec2_read_only.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0248.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "secure_ip_restricted.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0249.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "secure_lambda_read_only.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0250.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "secure_mfa_required.json",
+    "confidence": "Medium",
+    "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0251.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "secure_rds_read_only.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0252.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "secure_require_ssl.json",
+    "confidence": "Medium",
+    "notes": "Service-level wildcard but resources appear scoped",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0253.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "secure_resource_specific.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0254.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "secure_s3_least_privilege.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0255.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "secure_tag_based_access.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0256.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "secure_time_restricted.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0257.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "secure_vpc_read_only.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0258.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "sts_assume_role_chaining.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: high, Risk: 8"
+  },
+  "scraped_policy_0259.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "sts_assume_role_cross_account.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: medium, Risk: 7"
+  },
+  "scraped_policy_0260.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "sts_assume_role_specific.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0261.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "sts_assume_role_wildcard.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: high, Risk: 8"
+  },
+  "scraped_policy_0262.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "sts_assume_role_with_conditions.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0263.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "sts_decode_authorization_message.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0264.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "sts_get_caller_identity.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0265.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "sts_get_federation_token.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: medium, Risk: 6"
+  },
+  "scraped_policy_0266.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "sts_get_session_token.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0267.json": {
+    "label": "safe",
+    "source": "original_samples",
+    "source_path": "sts_tag_session.json",
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0"
+  },
+  "scraped_policy_0268.json": {
+    "label": "vulnerable",
+    "source": "original_samples",
+    "source_path": "vulnerable/iam_full_access.json",
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: critical, Risk: 10"
+  }
+}

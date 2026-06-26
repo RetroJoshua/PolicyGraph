@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "resource \"aws_rolesanywhere_trust_anchor\" \"this\" {\n  name    = \"iam-roles-anywhere-demo\"\n  enabled = true\n\n  source {\n    source_type = \"CERTIFICATE_BUNDLE\"\n    source_data {\n      x509_certificate_data = file(\"../root-ca/certs/root-ca.pem\")\n    }\n  }\n\n    tags = {\n      Name     = \"IAM Roles Anywhere Demo\"\n    }\n}\n\nresource \"aws_iam_role\" \"this\" {\n  name        = \"iam-roles-anywhere-demo\"\n  description = \"Role for IAM Roles Anywhere\"\n  assume_role_policy = jsonencode({\n    \"Version\" : \"2012-10-17\",\n    \"Statement\" : [\n      {\n        \"Effect\" : \"Allow\",\n        \"Principal\" : {\n          \"Service\" : \"rolesanywhere.amazonaws.com\"\n        },\n        \"Action\" : [\n          \"sts:AssumeRole\",\n          \"sts:TagSession\",\n          \"sts:SetSourceIdentity\"\n        ],\n        \"Condition\" : {\n          \"StringEquals\" : {\n            \"aws:PrincipalTag/x509Subject/CN\" : \"IAM Anywhere Demo\"\n          },\n          \"ArnEquals\" : {\n            \"aws:SourceArn\" : aws_rolesanywhere_trust_anchor.this.arn\n          }\n        }\n      }\n    ]\n  })\n}\n\nresource \"aws_iam_role_policy_attachment\" \"this\" {\n  role       = aws_iam_role.this.name\n  policy_arn = \"arn:aws:iam::aws:policy/AmazonS3FullAccess\"\n}\n\nresource \"aws_rolesanywhere_profile\" \"this\" {\n  name      = \"iam-roles-anywhere-demo\"\n  role_arns = [aws_iam_role.this.arn]\n  enabled   = true\n  managed_policy_arns = [\n    \"arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess\",\n  ]\n}\n",
+  "metadata": {
+    "original_filename": "iam.tf",
+    "source_repo": "johnmccuk/aws-iam-roles-anywhere-public-demo",
+    "source_path": "terraform\\iam.tf",
+    "scraped_date": "2026-06-14 20:03:38",
+    "conversion_date": "2026-06-15T11:31:04.783832"
+  }
+}

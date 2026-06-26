@@ -1,0 +1,114 @@
+name: Bug Report
+description: Report a bug or unexpected behavior
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug! Please provide as much detail as possible to help us reproduce and fix the issue.
+
+  - type: input
+    id: title
+    attributes:
+      label: Brief description
+      placeholder: e.g., "PolicyAnalyzer crashes when analyzing empty policy"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: How can we reproduce this bug?
+      placeholder: |
+        1. Create a policy with...
+        2. Run command...
+        3. Observe error...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should happen instead?
+      placeholder: The analyzer should handle empty policies gracefully
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What actually happened?
+      placeholder: |
+        Traceback (most recent call last):
+          File "policygraph/analyzer.py", line XX, in analyze_policy
+            ...
+        IndexError: list index out of range
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: PolicyGraph version
+      placeholder: "0.1.0"
+    validations:
+      required: true
+
+  - type: input
+    id: python_version
+    attributes:
+      label: Python version
+      placeholder: "3.11"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      options:
+        - Linux
+        - macOS
+        - Windows
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment details
+      description: |
+        Output of: pip list | grep -E 'torch|dgl|policygraph'
+      placeholder: |
+        torch==2.1.0
+        dgl==1.1.2
+        policygraph==0.1.0
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Any other relevant information?
+      placeholder: Error occurs only when using GPU, works fine on CPU
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I've searched existing issues for duplicates
+          required: true
+        - label: I've provided all necessary information
+          required: true
+        - label: I can provide a minimal reproduction case
+          required: true

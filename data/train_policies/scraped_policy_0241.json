@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": [\n        {\n            \"Sid\": \"S3ConsoleAccess\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"s3:GetAccountPublicAccessBlock\",\n                \"s3:GetBucketAcl\",\n                \"s3:GetBucketLocation\",\n                \"s3:GetBucketPolicyStatus\",\n                \"s3:GetBucketPublicAccessBlock\",\n                \"s3:ListAccessPoints\",\n                \"s3:ListAllMyBuckets\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"ListObjectsInBucket\",\n            \"Effect\": \"Allow\",\n            \"Action\": \"s3:ListBucket\",\n            \"Resource\": \"arn:aws:s3:::amzn-s3-demo-bucket\",\n            \"Condition\": {\n                \"StringLike\": {\n                    \"s3:prefix\": [\n                        \"\",\n                        \"home/\",\n                        \"home/${aws:username}/*\"\n                    ]\n                }\n            }\n        },\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": \"s3:*\",\n            \"Resource\": [\n                \"arn:aws:s3:::amzn-s3-demo-bucket/home/${aws:username}\",\n                \"arn:aws:s3:::amzn-s3-demo-bucket/home/${aws:username}/*\"\n            ]\n        }\n    ]\n}\n",
+  "metadata": {
+    "original_filename": "s3_readwrite_home-directory.json",
+    "source_repo": "original_samples",
+    "source_path": "s3_readwrite_home-directory.json",
+    "scraped_date": "2026-01-01 00:00:00",
+    "conversion_date": "2026-06-15T11:31:05.138031"
+  }
+}

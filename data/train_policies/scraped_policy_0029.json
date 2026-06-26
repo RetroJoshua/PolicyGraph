@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "resource \"aws_iam_instance_profile\" \"iam_profile1\" {\n  name  = \"test_profile1\"\n  role = \"${aws_iam_role.role1.name}\"\n}\n\nresource \"aws_iam_role\" \"role1\" {\n  name = \"test_profile1_role\"\n  path = \"/\"\n\n  assume_role_policy = <<EOF\n{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Action\": \"sts:AssumeRole\",\n            \"Principal\": {\n               \"Service\": \"ec2.amazonaws.com\"\n            },\n            \"Effect\": \"Allow\",\n            \"Sid\": \"\"\n        }\n    ]\n}\nEOF\n}\n\nresource \"aws_iam_instance_profile\" \"iam_profile2\" {\n  name  = \"test_profile2\"\n  role = \"${aws_iam_role.role2.name}\"\n}\n\nresource \"aws_iam_role\" \"role2\" {\n  name = \"test_profile2_role\"\n  path = \"/\"\n\n  assume_role_policy = <<EOF\n{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Action\": \"sts:AssumeRole\",\n            \"Principal\": {\n               \"Service\": \"ec2.amazonaws.com\"\n            },\n            \"Effect\": \"Allow\",\n            \"Sid\": \"\"\n        }\n    ]\n}\nEOF\n}\n\ndata \"aws_iam_policy_document\" \"conf_bucket_access\" {\n  statement {\n    actions = [\n      \"s3:ListBucket\",\n    ]\n\n    resources = [\n      \"${aws_s3_bucket.conf_bucket.arn}\",\n    ]\n\n  }\n\n  statement {\n    actions = [\n      \"s3:*\",\n    ]\n\n    resources = [\n      \"${aws_s3_bucket.conf_bucket.arn}\",\n      \"${aws_s3_bucket.conf_bucket.arn}/*\",\n    ]\n  }\n}\n\nresource \"aws_iam_role_policy\" \"conf_bucket_access_policy\" {\n  name   = \"AccessConfigurationBucket\"\n  role = \"${aws_iam_role.role2.name}\"\n  policy = \"${data.aws_iam_policy_document.conf_bucket_access.json}\"\n}\n",
+  "metadata": {
+    "original_filename": "iam.tf",
+    "source_repo": "amitsaha/aws-assume-role-demo",
+    "source_path": "terraform_configuration\\problem_demo\\iam.tf",
+    "scraped_date": "2026-06-14 20:03:40",
+    "conversion_date": "2026-06-15T11:31:04.783832"
+  }
+}

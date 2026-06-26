@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "provider \"aws\" {\n  region = \"eu-west-1\"\n}\n\n##-----------------------------------------------------------------------------\n## IAM role module call.\n##-----------------------------------------------------------------------------\nmodule \"iam-role\" {\n  source             = \"./../../.\"\n  name               = \"iam\"\n  environment        = \"test\"\n  assume_role_policy = data.aws_iam_policy_document.default.json\n  policy_enabled     = true\n  policy             = data.aws_iam_policy_document.iam-policy.json\n}\n\n##-----------------------------------------------------------------------------\n## Data block to create IAM policy.\n##-----------------------------------------------------------------------------\ndata \"aws_iam_policy_document\" \"default\" {\n  statement {\n    effect  = \"Allow\"\n    actions = [\"sts:AssumeRole\"]\n    principals {\n      type        = \"Service\"\n      identifiers = [\"ec2.amazonaws.com\"]\n    }\n  }\n}\n\n##-----------------------------------------------------------------------------\n## Data block to create IAM policy.\n##-----------------------------------------------------------------------------\ndata \"aws_iam_policy_document\" \"iam-policy\" {\n  statement {\n    actions = [\n      \"ssm:UpdateInstanceInformation\",\n      \"ssmmessages:CreateControlChannel\",\n      \"ssmmessages:CreateDataChannel\",\n      \"ssmmessages:OpenControlChannel\",\n    \"ssmmessages:OpenDataChannel\"]\n    effect    = \"Allow\"\n    resources = [\"*\"]\n  }\n}\n",
+  "metadata": {
+    "original_filename": "example.tf",
+    "source_repo": "opsstation/terraform-aws-iam-role",
+    "source_path": "_example\\complete\\example.tf",
+    "scraped_date": "2026-06-14 20:07:08",
+    "conversion_date": "2026-06-15T11:31:04.999990"
+  }
+}

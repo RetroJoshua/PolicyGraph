@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "resource \"aws_iam_policy\" \"packer_policy\" {\n  name = \"RunPacker\"\n  path = \"/\"\n  description = \"Allows access to run packer\"\n  policy = \"${file(\"${path.module}/policy.json\")}\"\n}\n",
+  "metadata": {
+    "original_filename": "main.tf",
+    "source_repo": "jsallis/terraform-packer-iam-policy",
+    "source_path": "main.tf",
+    "scraped_date": "2026-06-14 20:06:43",
+    "conversion_date": "2026-06-15T11:31:04.984368"
+  }
+}

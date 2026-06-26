@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "#Deploy the EBS CSI Driver Addon In your EKS module’s addons map:\ncluster_addons = {\n  aws-ebs-csi-driver = {\n   most_recent                 = true\n   service_account_role_arn    = aws_iam_role.ebs_csi.arn\n   resolve_conflicts_on_create = \"OVERWRITE\"\n   resolve_conflicts_on_update = \"OVERWRITE\"\n }\n# … other addons …\n}\n\n# Role for EBS CSI driver\nresource \"aws_iam_role\" \"ebs_csi\" {\n  name               = \"${local.prefix}-ebs-csi\"\n  assume_role_policy = jsonencode({\n    Version = \"2012-10-17\"\n    Statement = [\n      {\n        Effect = \"Allow\"\n        Principal = {\n          Federated = module.eks.oidc_provider_arn\n        }\n        Action = \"sts:AssumeRoleWithWebIdentity\"\n        Condition = {\n          StringEquals = {\n            \"${module.eks.oidc_provider}:aud\" = \"sts.amazonaws.com\"\n            \"${module.eks.oidc_provider}:sub\" = \"system:serviceaccount:kube-system:ebs-csi-controller-sa\"\n          }\n        }\n      }\n    ]\n  })\n\n  tags = local.default_tags\n}\n\nresource \"aws_iam_role_policy_attachment\" \"ebs_csi\" {\n  role       = aws_iam_role.ebs_csi.name\n  policy_arn = \"arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy\"\n}\n",
+  "metadata": {
+    "original_filename": "eks.tf",
+    "source_repo": "ravindrasinghh/Kubernetes-Playlist",
+    "source_path": "Lesson7\\eks.tf",
+    "scraped_date": "2026-06-14 20:04:23",
+    "conversion_date": "2026-06-15T11:31:04.837242"
+  }
+}

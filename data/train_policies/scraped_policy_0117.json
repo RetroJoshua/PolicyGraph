@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "# Create roles\n\n# Glue crawler\nresource \"aws_iam_role\" \"glue_crawler_role\" {\n  name = \"GlueCrawlerRole\"\n\n  assume_role_policy = <<EOF\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": \"sts:AssumeRole\",\n      \"Effect\": \"Allow\",\n      \"Principal\": {\n        \"Service\": \"glue.amazonaws.com\"\n      }\n    }\n  ]\n}\nEOF\n}\n\n# Athena\nresource \"aws_iam_role\" \"athena_role\" {\n  name = \"AthenaRole\"\n\n  assume_role_policy = <<EOF\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"athena.amazonaws.com\"\n      },\n      \"Effect\": \"Allow\",\n      \"Sid\": \"\"\n    }\n  ]\n}\nEOF\n}\n",
+  "metadata": {
+    "original_filename": "iam-roles.tf",
+    "source_repo": "annegl/101_terraform",
+    "source_path": "infrastructure\\iam-roles.tf",
+    "scraped_date": "2026-06-14 20:05:56",
+    "conversion_date": "2026-06-15T11:31:04.918369"
+  }
+}

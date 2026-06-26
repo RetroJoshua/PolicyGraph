@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "data \"aws_iam_policy_document\" \"assume_role_policy\" {\n\n  statement {\n\n    actions = [\"sts:AssumeRole\"]\n\n    principals {\n      type        = \"AWS\"\n      identifiers = [\"${local.trusted_account_arns}\"]\n    }\n\n    condition {\n      test     = \"Bool\"\n      values   = [\"${local.mfa}\"]\n      variable = \"aws:MultiFactorAuthPresent\"\n    }\n\n  }\n\n}\n\nresource \"aws_iam_role\" \"admin\" {\n  name               = \"${local.role_name}\"\n  assume_role_policy = \"${data.aws_iam_policy_document.assume_role_policy.json}\"\n}\n\nresource \"aws_iam_role_policy_attachment\" \"admin_policy\" {\n  role       = \"${aws_iam_role.admin.name}\"\n  policy_arn = \"${local.policy_arn}\"\n}",
+  "metadata": {
+    "original_filename": "iam.tf",
+    "source_repo": "jetbrains-infra/terraform-aws-assume-role-with-trust-to-account",
+    "source_path": "iam.tf",
+    "scraped_date": "2026-06-14 20:03:13",
+    "conversion_date": "2026-06-15T11:31:04.752587"
+  }
+}

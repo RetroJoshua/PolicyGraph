@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "resource \"aws_iam_role\" \"this\" {\n  name               = \"${var.role_name}\"\n  assume_role_policy = \"${var.iam_role_policy_document_json}\"\n}\n\nresource \"aws_iam_role_policy_attachment\" \"attachment\" {\n  count      = \"${var.policy_arns_count}\"\n  role       = \"${aws_iam_role.this.name}\"\n  policy_arn = \"${var.policy_arns[count.index]}\"\n}\n\nresource \"aws_iam_instance_profile\" \"instance_profile\" {\n  count = \"${var.create_instance_role}\"\n  name  = \"${aws_iam_role.this.name}\"\n  role  = \"${aws_iam_role.this.name}\"\n}\n",
+  "metadata": {
+    "original_filename": "main.tf",
+    "source_repo": "anonymint/terraform-aws-iam-role",
+    "source_path": "main.tf",
+    "scraped_date": "2026-06-14 20:04:07",
+    "conversion_date": "2026-06-15T11:31:04.818105"
+  }
+}

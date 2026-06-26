@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Deny\",\n      \"Action\": \"s3:PutObject\",\n      \"Resource\": \"arn:aws:s3:::encrypted-bucket/*\",\n      \"Condition\": {\n        \"StringNotEquals\": {\n          \"s3:x-amz-server-side-encryption\": \"AES256\"\n        }\n      }\n    },\n    {\n      \"Effect\": \"Deny\",\n      \"Action\": \"s3:PutObject\",\n      \"Resource\": \"arn:aws:s3:::encrypted-bucket/*\",\n      \"Condition\": {\n        \"Null\": {\n          \"s3:x-amz-server-side-encryption\": \"true\"\n        }\n      }\n    }\n  ]\n}",
+  "metadata": {
+    "original_filename": "secure_deny_unencrypted.json",
+    "source_repo": "original_samples",
+    "source_path": "secure_deny_unencrypted.json",
+    "scraped_date": "2026-01-01 00:00:00",
+    "conversion_date": "2026-06-15T11:31:05.138031"
+  }
+}

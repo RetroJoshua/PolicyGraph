@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": [\n        {\n            \"Sid\": \"ListObjectsInBucket\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\"s3:ListBucket\"],\n            \"Resource\": [\"arn:aws:s3:::bucket-name\"]\n        },\n        {\n            \"Sid\": \"AllObjectActions\",\n            \"Effect\": \"Allow\",\n            \"Action\": \"s3:*Object\",\n            \"Resource\": [\"arn:aws:s3:::bucket-name/*\"]\n        }\n    ]\n}\n",
+  "metadata": {
+    "original_filename": "s3_readwrite_bucket-objects.json",
+    "source_repo": "original_samples",
+    "source_path": "s3_readwrite_bucket-objects.json",
+    "scraped_date": "2026-01-01 00:00:00",
+    "conversion_date": "2026-06-15T11:31:05.138031"
+  }
+}

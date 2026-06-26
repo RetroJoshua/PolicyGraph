@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "resource \"aws_iam_policy\" \"s3_management\" {\n  name = \"s3_management\"\n  path = \"/storage/\"\n\n  policy = <<-EOF\n  {\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n      {\n        \"Action\": [\n          \"s3:*\"\n        ],\n        \"Effect\": \"Allow\",\n        \"Resource\": \"*\"\n      }\n    ]\n  }\n  EOF\n}",
+  "metadata": {
+    "original_filename": "iam-policy.tf",
+    "source_repo": "godleon/aws-lab-001-assume-role",
+    "source_path": "source\\iam-policy.tf",
+    "scraped_date": "2026-06-14 20:04:48",
+    "conversion_date": "2026-06-15T11:31:04.852864"
+  }
+}

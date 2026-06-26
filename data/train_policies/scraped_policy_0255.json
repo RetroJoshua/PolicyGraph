@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"ec2:StartInstances\",\n        \"ec2:StopInstances\",\n        \"ec2:RebootInstances\"\n      ],\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"StringEquals\": {\n          \"ec2:ResourceTag/Environment\": \"development\",\n          \"aws:PrincipalTag/Department\": \"${ec2:ResourceTag/Department}\"\n        }\n      }\n    }\n  ]\n}",
+  "metadata": {
+    "original_filename": "secure_tag_based_access.json",
+    "source_repo": "original_samples",
+    "source_path": "secure_tag_based_access.json",
+    "scraped_date": "2026-01-01 00:00:00",
+    "conversion_date": "2026-06-15T11:31:05.153652"
+  }
+}

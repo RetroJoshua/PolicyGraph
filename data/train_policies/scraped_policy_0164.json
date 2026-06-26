@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "{\n  \"Version\" : \"2012-10-17\",\n  \"Statement\" : [\n    {\n      \"Action\" : \"codedeploy:*\",\n      \"Effect\" : \"Allow\",\n      \"Resource\" : \"*\"\n    },\n    {\n      \"Sid\" : \"CodeStarNotificationsReadWriteAccess\",\n      \"Effect\" : \"Allow\",\n      \"Action\" : [\n        \"codestar-notifications:CreateNotificationRule\",\n        \"codestar-notifications:DescribeNotificationRule\",\n        \"codestar-notifications:UpdateNotificationRule\",\n        \"codestar-notifications:DeleteNotificationRule\",\n        \"codestar-notifications:Subscribe\",\n        \"codestar-notifications:Unsubscribe\"\n      ],\n      \"Resource\" : \"*\",\n      \"Condition\" : {\n        \"ArnLike\" : {\n          \"codestar-notifications:NotificationsForResource\" : \"arn:aws:codedeploy:*:*:application:*\"\n        }\n      }\n    },\n    {\n      \"Sid\" : \"CodeStarNotificationsListAccess\",\n      \"Effect\" : \"Allow\",\n      \"Action\" : [\n        \"codestar-notifications:ListNotificationRules\",\n        \"codestar-notifications:ListTargets\",\n        \"codestar-notifications:ListTagsforResource\",\n        \"codestar-notifications:ListEventTypes\"\n      ],\n      \"Resource\" : \"*\"\n    },\n    {\n      \"Sid\" : \"CodeStarNotificationsSNSTopicCreateAccess\",\n      \"Effect\" : \"Allow\",\n      \"Action\" : [\n        \"sns:CreateTopic\",\n        \"sns:SetTopicAttributes\"\n      ],\n      \"Resource\" : \"arn:aws:sns:*:*:codestar-notifications*\"\n    },\n    {\n      \"Sid\" : \"CodeStarNotificationsChatbotAccess\",\n      \"Effect\" : \"Allow\",\n      \"Action\" : [\n        \"chatbot:DescribeSlackChannelConfigurations\"\n      ],\n      \"Resource\" : \"*\"\n    },\n    {\n      \"Sid\" : \"SNSTopicListAccess\",\n      \"Effect\" : \"Allow\",\n      \"Action\" : [\n        \"sns:ListTopics\"\n      ],\n      \"Resource\" : \"*\"\n    }\n  ]\n}",
+  "metadata": {
+    "original_filename": "aws_code_deploy_full_access.json",
+    "source_repo": "original_samples",
+    "source_path": "aws_code_deploy_full_access.json",
+    "scraped_date": "2026-01-01 00:00:00",
+    "conversion_date": "2026-06-15T11:31:05.015610"
+  }
+}

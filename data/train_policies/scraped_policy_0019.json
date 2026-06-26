@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "output \"iam_policy_json\" {\n  description = \"Permissions attached to the policy\"\n  value = join(\n    \",\",\n    concat(\n      data.aws_iam_policy_document.cross_account_assume_role_policy[*].json,\n      data.aws_iam_policy_document.cross_account_assume_role_policy_mfa[*].json,\n    ),\n  )\n}",
+  "metadata": {
+    "original_filename": "-outputs.tf",
+    "source_repo": "StratusGrid/terraform-aws-iam-role-cross-account-trusting",
+    "source_path": "iam-policy-document-abstraction\\-outputs.tf",
+    "scraped_date": "2026-06-14 20:03:23",
+    "conversion_date": "2026-06-15T11:31:04.768209"
+  }
+}

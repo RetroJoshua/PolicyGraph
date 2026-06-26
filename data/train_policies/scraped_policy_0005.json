@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "module \"amplify_role\" {\n  source  = \"BotTech/role/aws\"\n  version = \"1.0.0\"\n\n  account_ids = [\n    data.aws_caller_identity.current.account_id\n  ]\n  description = \"Provides developer access to Amplify resources.\"\n  groups      = [\n    var.group\n  ]\n  name        = \"Developer\"\n  policies    = {\n    resources = aws_iam_policy.amplify_developer.arn\n    ecr       = \"arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser\"\n  }\n}\n\ndata \"aws_caller_identity\" \"current\" {}\n\nresource \"aws_iam_policy\" \"amplify_developer\" {\n  description = \"Allow a user to develop applications using AWS Amplify.\"\n  name        = \"AWSAmplifyDeveloper\"\n  policy      = data.aws_iam_policy_document.amplify_developer.json\n}\n\ndata \"aws_iam_policy_document\" \"amplify_developer\" {\n  statement {\n    sid       = \"AmplifyFullAccess\"\n    actions   = [\n      \"amplify:*\",\n      \"apigateway:*\",\n      \"appsync:*\",\n      \"cloudformation:*\",\n      \"cognito-identity:*\",\n      \"cognito-idp:*\",\n      \"dynamodb:*\",\n      \"iam:*\",\n      \"lambda:*\",\n      \"route53:*\",\n      \"s3:*\"\n    ]\n    resources = [\n      \"*\"\n    ]\n  }\n}\n",
+  "metadata": {
+    "original_filename": "main.tf",
+    "source_repo": "BotTech/terraform-aws-role",
+    "source_path": "examples\\amplify\\main.tf",
+    "scraped_date": "2026-06-14 20:03:10",
+    "conversion_date": "2026-06-15T11:31:04.752587"
+  }
+}

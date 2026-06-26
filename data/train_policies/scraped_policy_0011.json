@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "data \"aws_iam_policy_document\" \"access-key-self-service\" {\n  statement {\n    actions = [\n      \"iam:CreateAccessKey\",\n      \"iam:DeleteAccessKey\",\n      \"iam:ListAccessKeys\",\n      \"iam:UpdateAccessKey\",\n      \"iam:GetAccessKeyLastUsed\"\n    ]\n\n    effect = \"Allow\"\n\n    condition {\n      test     = \"Bool\"\n      variable = \"aws:MultiFactorAuthPresent\"\n      values   = [\"true\"]\n    }\n\n    condition {\n      test     = \"NumericLessThan\"\n      variable = \"aws:MultiFactorAuthAge\"\n      values   = [local.max_session_duration]\n    }\n\n    resources = [\n      \"arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/$${aws:username}\",\n    ]\n  }\n}\n\nresource \"aws_iam_policy\" \"aws_access_key_self_service\" {\n  path        = \"/\"\n  description = \"Policy for access key self service\"\n\n  policy = data.aws_iam_policy_document.access-key-self-service.json\n}\n\nresource \"aws_iam_user_policy_attachment\" \"access-key-self-service\" {\n  user = aws_iam_user.this.id\n  policy_arn = aws_iam_policy.aws_access_key_self_service.arn\n}\n",
+  "metadata": {
+    "original_filename": "manage-access-keys.tf",
+    "source_repo": "kelseymok/aws-init-roles",
+    "source_path": "user\\manage-access-keys.tf",
+    "scraped_date": "2026-06-14 20:03:15",
+    "conversion_date": "2026-06-15T11:31:04.768209"
+  }
+}

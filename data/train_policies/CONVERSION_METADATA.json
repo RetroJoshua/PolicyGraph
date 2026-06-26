@@ -1,0 +1,8 @@
+{
+  "conversion_date": "2026-06-15T11:31:05.200518",
+  "input_file": "data\\labeled_policies_merged.xlsx",
+  "output_directory": "data\\train_policies",
+  "statistics": {
+    "total_rows": 269,
+    "labeled_rows": 269,
+    "vulnerable_count": 

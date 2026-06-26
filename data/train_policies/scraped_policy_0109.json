@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "resource \"aws_iam_role\" \"irsa_iam_role\" {\n  name = \"irsa-iam-role\"\n\n  # Terraform's \"jsonencode\" function converts a Terraform expression result to valid JSON syntax.\n  assume_role_policy = jsonencode({\n    Version = \"2012-10-17\"\n    Statement = [\n      {\n        Action = \"sts:AssumeRoleWithWebIdentity\"\n        Effect = \"Allow\"\n        Sid    = \"\"\n        Principal = {\n          Federated = \"${aws_iam_openid_connect_provider.oidc_provider.arn }\"\n        }\n        Condition = {\n          StringEquals = {            \n            \"${local.aws_iam_oidc_connect_provider_extract_from_arn}:sub\": \"system:serviceaccount:default:irsa-demo-sa\"\n          }\n        }        \n\n      },\n    ]\n  })\n\n}\n\n# Associate IAM Role and Policy\nresource \"aws_iam_role_policy_attachment\" \"irsa_iam_role_policy_attach\" {\n  policy_arn = \"arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess\"\n  role       = aws_iam_role.irsa_iam_role.name\n}\n\noutput \"irsa_iam_role_arn\" {\n  description = \"IRSA Demo IAM Role ARN\"\n  value = aws_iam_role.irsa_iam_role.arn\n}",
+  "metadata": {
+    "original_filename": "irsa-iam.tf",
+    "source_repo": "abbashussainz/IRSA-EKS-Terraform",
+    "source_path": "Manifest Files\\irsa-iam.tf",
+    "scraped_date": "2026-06-14 20:05:39",
+    "conversion_date": "2026-06-15T11:31:04.899728"
+  }
+}

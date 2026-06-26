@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "data \"aws_partition\" \"current\" {}\n\ndata \"aws_iam_policy_document\" \"assume_role_policy\" {\n  statement {\n    actions = [\"sts:AssumeRole\"]\n    effect  = \"Allow\"\n    principals {\n      type        = \"AWS\"\n      identifiers = [\"arn:${data.aws_partition.current.partition}:iam::${var.assume_role_account_id}:root\"]\n    }\n    dynamic \"condition\" {\n      for_each = var.non_org_import ? [\"1\"] : []\n      content {\n        test     = \"StringEquals\"\n        variable = \"sts:ExternalId\"\n        values   = [var.external_id]\n      }\n    }\n  }\n}\n\nresource \"aws_iam_role\" \"import_role\" {\n  name               = var.role_name\n  assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json\n}\n\nresource \"aws_iam_role_policy_attachment\" \"read_only_policy_attachment\" {\n  role       = aws_iam_role.import_role.name\n  policy_arn = \"arn:${data.aws_partition.current.partition}:iam::aws:policy/ReadOnlyAccess\"\n}\n",
+  "metadata": {
+    "original_filename": "main.tf",
+    "source_repo": "lucidsoftware/terraform-aws-lucid-aws-import",
+    "source_path": "modules\\import-role\\main.tf",
+    "scraped_date": "2026-06-14 20:06:41",
+    "conversion_date": "2026-06-15T11:31:04.968746"
+  }
+}

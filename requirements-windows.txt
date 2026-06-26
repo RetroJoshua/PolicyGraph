@@ -25,6 +25,11 @@ numpy>=1.24.0
 pandas>=2.0.0
 pyyaml>=6.0
 
+# Scraper / Excel workflow dependencies
+openpyxl>=3.0.0
+PyGithub>=2.0.0
+checkov>=2.0.0  # Optional: for security scanning
+
 # Visualization
 matplotlib>=3.7.0
 seaborn>=0.12.0

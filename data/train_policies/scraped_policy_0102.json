@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "data \"aws_iam_policy_document\" \"this\" {\n  statement {\n    actions = [\"sts:AssumeRole\"]\n\n    principals {\n      type        = \"Service\"\n      identifiers = [\"ec2.amazonaws.com\"]\n    }\n  }\n}\n\nresource \"aws_iam_role\" \"this\" {\n  name                  = \"${var.name}\"\n  assume_role_policy    = \"${var.assume_role_policy == \"\" ? data.aws_iam_policy_document.this.json : var.assume_role_policy}\"\n  force_detach_policies = \"${var.force_detach_policies}\"\n  path                  = \"${var.path}\"\n  description           = \"${var.description}\"\n}\n\nresource \"aws_iam_instance_profile\" \"this\" {\n  name       = \"${format(\"%s-%s\", var.name, \"instance-profile\")}\"\n  path       = \"${var.path}\"\n  role       = \"${aws_iam_role.this.name}\"\n  depends_on = [\"aws_iam_role.this\"]\n}\n\nresource \"aws_iam_role_policy_attachment\" \"this\" {\n  count      = \"${length(var.policy_arn)}\"\n  role       = \"${aws_iam_role.this.name}\"\n  policy_arn = \"${var.policy_arn[count.index]}\"\n}\n",
+  "metadata": {
+    "original_filename": "main.tf",
+    "source_repo": "tkskwn/terraform-aws-ec2-iam-role",
+    "source_path": "main.tf",
+    "scraped_date": "2026-06-14 20:05:27",
+    "conversion_date": "2026-06-15T11:31:04.884105"
+  }
+}

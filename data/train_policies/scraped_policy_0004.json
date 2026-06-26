@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "resource \"aws_iam_role\" \"role\" {\n  name               = var.name\n  description        = var.description\n  assume_role_policy = data.aws_iam_policy_document.account_assume_role.json\n}\n\ndata \"aws_iam_policy_document\" \"account_assume_role\" {\n  statement {\n    actions = [\n      \"sts:AssumeRole\"\n    ]\n    principals {\n      type        = \"AWS\"\n      identifiers = [\n      for account_id in var.account_ids :\n      // Specifying the root account is the same as just using the account id but this is what\n      // we get from using the console so use this format so that it doesn't cause a change.\n      \"arn:aws:iam::${account_id}:root\"\n      ]\n    }\n    condition {\n      test     = \"BoolIfExists\"\n      variable = \"aws:MultiFactorAuthPresent\"\n      values   = [\n        \"true\"\n      ]\n    }\n  }\n}\n\nresource \"aws_iam_policy\" \"assume_role\" {\n  name        = \"${var.name}AssumeRole\"\n  description = \"Assume the ${var.name} role.\"\n  policy      = data.aws_iam_policy_document.assume_role.json\n}\n\ndata \"aws_iam_policy_document\" \"assume_role\" {\n  statement {\n    actions   = [\n      \"sts:AssumeRole\"\n    ]\n    resources = [\n      aws_iam_role.role.arn\n    ]\n  }\n}\n\nresource \"aws_iam_group_policy_attachment\" \"assume_role\" {\n  for_each   = var.groups\n  group      = each.value\n  policy_arn = aws_iam_policy.assume_role.arn\n}\n\nresource \"aws_iam_role_policy_attachment\" \"policy\" {\n  for_each   = var.policies\n  role       = aws_iam_role.role.name\n  policy_arn = each.value\n}\n",
+  "metadata": {
+    "original_filename": "main.tf",
+    "source_repo": "BotTech/terraform-aws-role",
+    "source_path": "main.tf",
+    "scraped_date": "2026-06-14 20:03:10",
+    "conversion_date": "2026-06-15T11:31:04.752587"
+  }
+}

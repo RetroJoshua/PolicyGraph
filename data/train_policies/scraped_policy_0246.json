@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"dynamodb:GetItem\",\n        \"dynamodb:BatchGetItem\",\n        \"dynamodb:Query\",\n        \"dynamodb:Scan\",\n        \"dynamodb:DescribeTable\",\n        \"dynamodb:ListTables\"\n      ],\n      \"Resource\": \"*\"\n    }\n  ]\n}",
+  "metadata": {
+    "original_filename": "secure_dynamodb_read_only.json",
+    "source_repo": "original_samples",
+    "source_path": "secure_dynamodb_read_only.json",
+    "scraped_date": "2026-01-01 00:00:00",
+    "conversion_date": "2026-06-15T11:31:05.138031"
+  }
+}

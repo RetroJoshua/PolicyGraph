@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"*\",\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"Bool\": {\n          \"aws:MultiFactorAuthPresent\": \"true\"\n        }\n      }\n    },\n    {\n      \"Effect\": \"Deny\",\n      \"Action\": [\n        \"iam:*\",\n        \"sts:*\"\n      ],\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"BoolIfExists\": {\n          \"aws:MultiFactorAuthPresent\": \"false\"\n        }\n      }\n    }\n  ]\n}",
+  "metadata": {
+    "original_filename": "secure_mfa_required.json",
+    "source_repo": "original_samples",
+    "source_path": "secure_mfa_required.json",
+    "scraped_date": "2026-01-01 00:00:00",
+    "conversion_date": "2026-06-15T11:31:05.153652"
+  }
+}

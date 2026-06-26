@@ -14,9 +14,30 @@ training:
   weight_decay: 0.0001
   epochs: 200
   batch_size: 16
-  early_stopping_patience: 40
   device: cpu
   checkpoint_dir: checkpoints
+
+  # ---------------------------------------------------------------------------
+  # Early stopping
+  # ---------------------------------------------------------------------------
+  # WHY THESE SETTINGS: the validation split is tiny (~16 graphs), so val_f1 is
+  # very coarse — it only takes a handful of discrete values and plateaus
+  # easily. Monitoring val_f1 (the old default) caused training to stop at
+  # epoch 52 even though val_loss was still steadily decreasing (the model was
+  # still learning). We now monitor val_loss, which is smooth and a far more
+  # reliable convergence signal.
+  early_stopping_enabled: true
+  early_stopping_metric: val_loss      # "val_loss" (recommended) | "val_f1" | "val_accuracy"
+  early_stopping_patience: 50          # epochs with no val_loss improvement before stopping
+  early_stopping_min_delta: 0.0005     # min decrease in val_loss to count as an improvement
+  early_stopping_min_epochs: 60        # never stop before this many epochs (warmup)
+
+  # The best model is ALWAYS checkpointed by val_f1 regardless of the metric
+  # monitored for early stopping, so you still get the best classifier.
+  #
+  # To force the FULL 200 epochs (no early stopping at all), either set
+  #   early_stopping_enabled: false
+  # or set early_stopping_patience to a value >= epochs.
 
 evaluation:
   threshold: 0.3

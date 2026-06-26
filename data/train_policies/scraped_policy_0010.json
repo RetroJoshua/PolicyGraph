@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "data \"aws_iam_policy_document\" \"list-iam-users\" {\n  statement {\n    effect = \"Allow\"\n\n    actions = [\n      \"iam:GetAccountSummary\",\n      \"iam:ListAccountAliases\",\n      \"iam:ListGroupsForUser\",\n      \"iam:ListUsers\",\n    ]\n\n    resources = [\n      \"arn:aws:iam::${data.aws_caller_identity.current.account_id}:*\",\n    ]\n  }\n\n  statement {\n    actions = [\"iam:GetUser\"]\n\n    resources = [\n      \"arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/$${aws:username}\",\n    ]\n\n    effect = \"Allow\"\n  }\n}\n\nresource \"aws_iam_policy\" \"list-iam-users\" {\n  path        = \"/\"\n  description = \"Lets users see the list of users\"\n\n  policy = data.aws_iam_policy_document.list-iam-users.json\n}\n\n\nresource \"aws_iam_user_policy_attachment\" \"list-iam-users\" {\n  user = aws_iam_user.this.id\n  policy_arn = aws_iam_policy.list-iam-users.arn\n}",
+  "metadata": {
+    "original_filename": "list-iam-users.tf",
+    "source_repo": "kelseymok/aws-init-roles",
+    "source_path": "user\\list-iam-users.tf",
+    "scraped_date": "2026-06-14 20:03:15",
+    "conversion_date": "2026-06-15T11:31:04.768209"
+  }
+}

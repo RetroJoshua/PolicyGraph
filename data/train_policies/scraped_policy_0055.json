@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "data \"aws_ecr_image\" \"lambda_image_latest\" {\n  repository_name = split(\"/\", var.ecr_repo_url)[1]\n  image_tag       = \"latest\"\n}\n\nresource \"aws_iam_role\" \"iam_for_lambda\" {\n  name               = \"${var.env_namespace}_lambda_role\"\n  assume_role_policy = <<EOF\n{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n                \"Service\": \"lambda.amazonaws.com\"\n            },\n            \"Action\": \"sts:AssumeRole\"\n        }\n    ]\n}\nEOF\n}\n\nresource \"aws_iam_role_policy\" \"iam_policy_for_lambda\" {\n  role   = aws_iam_role.iam_for_lambda.name\n  policy = <<POLICY\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Resource\": [\n        \"${var.ecr_repo_arn}\"\n      ],\n      \"Action\": [\n        \"ecr:*\"\n      ]\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Resource\": [\n        \"*\"\n      ],\n      \"Action\": [\n        \"ecr:GetAuthorizationToken\"\n      ]\n    }\n  ]\n}\nPOLICY\n}\nresource \"aws_lambda_function\" \"main\" {\n  function_name    = \"${var.env_namespace}_lambda\"\n  image_uri        = \"${var.ecr_repo_url}:latest\"\n  package_type     = \"Image\"\n  role             = aws_iam_role.iam_for_lambda.arn\n  source_code_hash = data.aws_ecr_image.lambda_image_latest.id\n}",
+  "metadata": {
+    "original_filename": "main.tf",
+    "source_repo": "omerbsezer/Fast-Terraform",
+    "source_path": "samples\\codecommit-codepipeline-codebuild-codedeploy-lambda-container\\lambda_bootstrap\\main.tf",
+    "scraped_date": "2026-06-14 20:04:18",
+    "conversion_date": "2026-06-15T11:31:04.821613"
+  }
+}

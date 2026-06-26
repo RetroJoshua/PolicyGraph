@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"cloudformation:DescribeStacks\",\n        \"cloudformation:DescribeStackEvents\",\n        \"cloudformation:GetTemplate\",\n        \"cloudformation:UpdateStack\"\n      ],\n      \"Resource\": \"arn:aws:cloudformation:us-east-1:123456789012:stack/MyStack/*\"\n    }\n  ]\n}",
+  "metadata": {
+    "original_filename": "cloudformation_stack_specific.json",
+    "source_repo": "original_samples",
+    "source_path": "cloudformation_stack_specific.json",
+    "scraped_date": "2026-01-01 00:00:00",
+    "conversion_date": "2026-06-15T11:31:05.037765"
+  }
+}

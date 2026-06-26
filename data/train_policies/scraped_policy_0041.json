@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "# iam.tf\n\n# Trust policy: allow EC2 to assume this role\ndata \"aws_iam_policy_document\" \"ec2_trust\" {\n  statement {\n    actions = [\"sts:AssumeRole\"]\n    principals {\n      type        = \"Service\"\n      identifiers = [\"ec2.amazonaws.com\"]\n    }\n  }\n}\n\nresource \"aws_iam_role\" \"ec2\" {\n  name               = \"${var.name_prefix}-role\"\n  assume_role_policy = data.aws_iam_policy_document.ec2_trust.json\n  tags               = local.common_tags\n}\n\n# Attach SSM core so you can use Session Manager (no inbound SSH needed)\nresource \"aws_iam_role_policy_attachment\" \"ssm_core\" {\n  role       = aws_iam_role.ec2.name\n  policy_arn = \"arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore\"\n}\n\n\n# Instance profile to attach the role to the EC2 instance\nresource \"aws_iam_instance_profile\" \"this\" {\n  name = \"${var.name_prefix}-profile\"\n  role = aws_iam_role.ec2.name\n  tags = local.common_tags\n}\n",
+  "metadata": {
+    "original_filename": "iam.tf",
+    "source_repo": "Applied-Field-Engineering-Demo/terraform-snowflake-wif-aws-iam-ec2",
+    "source_path": "iam.tf",
+    "scraped_date": "2026-06-14 20:04:02",
+    "conversion_date": "2026-06-15T11:31:04.815072"
+  }
+}

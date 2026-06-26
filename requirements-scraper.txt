@@ -1,0 +1,23 @@
+# PolicyGraph - Scraper-only Requirements
+# =======================================
+# Minimal dependencies for running ONLY the data scraping / Excel workflow
+# scripts (scripts/scrape_iam_to_excel.py, scripts/build_excel_v2.py,
+# scripts/excel_to_training_data.py, etc.) WITHOUT installing the heavy
+# ML stack (torch, dgl, ...) needed to train the model.
+#
+# Install:
+#   pip install -r requirements-scraper.txt
+
+# Data handling
+pandas>=2.0.0
+
+# Excel read/write
+openpyxl>=3.0.0      # read existing .xlsx files
+XlsxWriter>=3.0.0    # write maximally Excel-compatible .xlsx files
+
+# GitHub API access for scraping Terraform IAM policies
+PyGithub>=2.0.0
+
+# Optional: Checkov security scanner (enriches scraped policies with findings).
+# Comment out if you do not need security scanning.
+checkov>=2.0.0

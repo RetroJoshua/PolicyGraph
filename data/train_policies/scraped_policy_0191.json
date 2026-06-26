@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": [\n        {\n            \"Action\": \"ec2:*\",\n            \"Resource\": \"*\",\n            \"Effect\": \"Allow\",\n            \"Condition\": {\n                \"StringEquals\": {\n                    \"ec2:Region\": \"us-east-2\"\n                }\n            }\n        }\n    ]\n}\n",
+  "metadata": {
+    "original_filename": "ec2_admin_region-full-access.json",
+    "source_repo": "original_samples",
+    "source_path": "ec2_admin_region-full-access.json",
+    "scraped_date": "2026-01-01 00:00:00",
+    "conversion_date": "2026-06-15T11:31:05.053385"
+  }
+}

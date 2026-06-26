@@ -1,0 +1,75 @@
+name: Feature Request
+description: Suggest a new feature or enhancement
+title: "[FEATURE] "
+labels: ["enhancement", "needs-triage"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Great ideas are welcome! Please describe your feature request in detail.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What problem does this solve? What's the use case?
+      placeholder: |
+        Currently PolicyGraph only supports AWS IAM policies. We need support for GCP IAM policies to analyze multi-cloud environments...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How should this feature work?
+      placeholder: |
+        Add a new module `policygraph.gcp` with:
+        - GCPGraphBuilder class (similar to IAMGraphBuilder)
+        - Support for GCP IAM policy JSON format
+        - Custom vulnerability patterns for GCP...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative solutions
+      description: Are there other ways to solve this?
+      placeholder: |
+        - Alternative 1: Use a generic graph builder...
+        - Alternative 2: Create a policy adapter layer...
+    validations:
+      required: false
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact & benefits
+      description: What's the benefit? Who needs this?
+      placeholder: |
+        This would enable organizations with multi-cloud deployments to use PolicyGraph across all their cloud providers, improving security posture...
+    validations:
+      required: true
+
+  - type: input
+    id: priority
+    attributes:
+      label: Priority
+      description: How urgent is this?
+      placeholder: "Medium (nice to have, no urgent use case)"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I've searched existing issues/discussions for similar requests
+          required: true
+        - label: This feature aligns with PolicyGraph's goals
+          required: true
+        - label: I'm willing to help implement this
+          required: false

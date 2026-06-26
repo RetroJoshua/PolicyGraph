@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": [\n        {\n            \"Sid\": \"ListAndDescribe\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"dynamodb:List*\",\n                \"dynamodb:DescribeReservedCapacity*\",\n                \"dynamodb:DescribeLimits\",\n                \"dynamodb:DescribeTimeToLive\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"SpecificTable\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"dynamodb:BatchGet*\",\n                \"dynamodb:DescribeStream\",\n                \"dynamodb:DescribeTable\",\n                \"dynamodb:Get*\",\n                \"dynamodb:Query\",\n                \"dynamodb:Scan\",\n                \"dynamodb:BatchWrite*\",\n                \"dynamodb:CreateTable\",\n                \"dynamodb:Delete*\",\n                \"dynamodb:Update*\",\n                \"dynamodb:PutItem\"\n            ],\n            \"Resource\": \"arn:aws:dynamodb:*:*:table/MyTable\"\n        }\n    ]\n}\n",
+  "metadata": {
+    "original_filename": "dynamodb_readwrite_table-specific.json",
+    "source_repo": "original_samples",
+    "source_path": "dynamodb_readwrite_table-specific.json",
+    "scraped_date": "2026-01-01 00:00:00",
+    "conversion_date": "2026-06-15T11:31:05.053385"
+  }
+}

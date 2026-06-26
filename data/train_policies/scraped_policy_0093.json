@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "// Role\n\nresource \"aws_iam_role\" \"admin-role\" {\n  assume_role_policy = \"${data.aws_iam_policy_document.assume-from-mfa.json}\"\n  name               = \"admin-role\"\n}\n\nresource \"aws_iam_role_policy_attachment\" \"admin-role-grants\" {\n  role       = \"${aws_iam_role.admin-role.name}\"\n  policy_arn = \"arn:aws:iam::aws:policy/AdministratorAccess\"\n}\n\n// A policy we'll attach to selected groups to allow them using this role\n\ndata \"aws_iam_policy_document\" \"assume-admin-role\" {\n  statement {\n    sid       = \"TfCustomPolicyAssumeAdminRole\"\n    effect    = \"Allow\"\n    actions   = [\"sts:AssumeRole\"]\n    resources = [\"${aws_iam_role.admin-role.arn}\"]\n  }\n}\n\nresource \"aws_iam_policy\" \"assume-admin-role\" {\n  name        = \"tf-assume-admin-role\"\n  description = \"Allow to assume the admin-role\"\n  policy      = \"${data.aws_iam_policy_document.assume-admin-role.json}\"\n}\n\n// Groups bindings\n\nresource \"aws_iam_group_policy_attachment\" \"attach-admin-to-admin-group\" {\n  group      = \"${aws_iam_group.admin-group.name}\"\n  policy_arn = \"${aws_iam_policy.assume-admin-role.arn}\"\n}\n",
+  "metadata": {
+    "original_filename": "admin-role.tf",
+    "source_repo": "bpineau/aws-iam-mfa",
+    "source_path": "admin-role.tf",
+    "scraped_date": "2026-06-14 20:05:10",
+    "conversion_date": "2026-06-15T11:31:04.884105"
+  }
+}

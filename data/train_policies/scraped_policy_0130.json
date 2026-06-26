@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "data \"aws_caller_identity\" \"current\" {\n  provider = aws\n}\n\ndata \"aws_iam_policy_document\" \"default_assume_role\" {\n  count = var.enabled ? 1 : 0\n  statement {\n    effect = \"Allow\"\n\n    principals {\n      type        = \"AWS\"\n      identifiers = [\"arn:aws:iam::${data.aws_caller_identity.current.account_id}:root\"]\n    }\n\n    actions = [\"sts:AssumeRole\"]\n  }\n}\n",
+  "metadata": {
+    "original_filename": "data.tf",
+    "source_repo": "clouddrove/terraform-aws-iam-role",
+    "source_path": "data.tf",
+    "scraped_date": "2026-06-14 20:06:19",
+    "conversion_date": "2026-06-15T11:31:04.937505"
+  }
+}

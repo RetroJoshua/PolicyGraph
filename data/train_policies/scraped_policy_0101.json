@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "locals {\n  context_subject_prefix = var.context == null ? null : {\n    environment = \"environment:\"\n    branch      = \"ref:refs/heads/\"\n    tag         = \"ref:refs/tags/\"\n  }\n\n  contexts = (\n    var.context == null\n    ? [\"*\"]\n    : var.context.type == \"pull_request\" ? [\"pull_request\"]\n    : [for v in var.context.values : \"${local.context_subject_prefix[var.context.type]}${v}\"]\n  )\n}\n\nresource \"aws_iam_role\" \"this\" {\n  name        = var.iam_role_name_prefix == null ? coalesce(var.iam_role_name, \"github-actions-${md5(data.aws_iam_policy_document.this.json)}\") : null\n  name_prefix = var.iam_role_name_prefix\n\n  assume_role_policy   = data.aws_iam_policy_document.this.json\n  max_session_duration = var.max_session_duration\n\n  tags = merge(var.default_tags, var.iam_role_tags)\n}\n\ndata \"aws_iam_policy_document\" \"this\" {\n  statement {\n    principals {\n      type        = \"Federated\"\n      identifiers = [var.iam_openid_connect_provider.arn]\n    }\n\n    actions = [\"sts:AssumeRoleWithWebIdentity\"]\n\n    condition {\n      variable = \"token.actions.githubusercontent.com:aud\"\n      test     = \"StringEquals\"\n      values   = [var.openid_audience]\n    }\n\n    condition {\n      variable = \"token.actions.githubusercontent.com:sub\"\n      test     = \"StringLike\"\n      values = [\n        for c in local.contexts : \"repo:${var.github_repository.full_name}:${c}\"\n      ]\n    }\n  }\n}\n",
+  "metadata": {
+    "original_filename": "main.tf",
+    "source_repo": "babbel/terraform-aws-iam-role-for-github-repository",
+    "source_path": "main.tf",
+    "scraped_date": "2026-06-14 20:05:25",
+    "conversion_date": "2026-06-15T11:31:04.884105"
+  }
+}

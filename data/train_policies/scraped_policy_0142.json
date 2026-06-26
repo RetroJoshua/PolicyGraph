@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "locals {\n    policy_arns = flatten([\n        for role_name, role in var.assumeRoles: [\n            for policy_key, policy_arns in role.attach_policy_arns: {\n                role_name = role_name\n                policy_key = policy_key\n                policy_arns = policy_arns\n            }\n        ]\n    ])\n\n    inline_policies = flatten([\n        for role_name, role in var.assumeRoles: [\n            for policy_key, inline_policy in role.inline_policies: {\n                role_name = role_name\n                policy_key = policy_key\n                inline_policy = inline_policy\n            }\n        ]\n    ])\n}\n\ndata \"aws_iam_policy_document\" \"role-document\" {    \n    for_each = var.assumeRoles\n    policy_id = each.key\n    statement {\n        effect = \"Allow\"\n        actions = [\"sts:AssumeRole\"]\n        principals {\n            type = \"AWS\"\n            identifiers = each.value.trusted_arns\n        }\n    }\n}\n\nresource aws_iam_role assume_role {\n    for_each = var.assumeRoles\n    name = each.key\n    description = each.value.description\n    assume_role_policy = data.aws_iam_policy_document.role-document[each.key].json\n}\n\nresource aws_iam_role_policy_attachment \"policy_attachments\" {\n    for_each = {\n        for policy in local.policy_arns : \"${policy.role_name}.${policy.policy_key}\" => policy\n    }\n    role = aws_iam_role.assume_role[each.value.role_name].name\n    policy_arn = each.value.policy_arns\n}\n\nresource \"aws_iam_role_policy\" \"inline_policy\" {\n    for_each = {\n          for policy in local.inline_policies : \"${policy.role_name}.${policy.policy_key}\" => policy\n    }\n    name = each.value.policy_key\n    role = aws_iam_role.assume_role[each.value.role_name].name\n    policy = each.value.inline_policy\n}",
+  "metadata": {
+    "original_filename": "main.tf",
+    "source_repo": "anthunt/terraform-aws-iam-assume-role",
+    "source_path": "main.tf",
+    "scraped_date": "2026-06-14 20:06:39",
+    "conversion_date": "2026-06-15T11:31:04.968746"
+  }
+}

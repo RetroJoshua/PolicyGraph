@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "resource \"aws_iam_role\" \"service_groups\" {\n  for_each = var.service_groups\n\n  name_prefix          = \"${var.role_name_prefix}${each.key}\"\n  path                 = var.role_path\n  max_session_duration = var.role_max_session_duration\n  tags = merge(\n    var.tags,\n    var.service_group_tag_key != null ? { \"${var.service_group_tag_key}\" : each.key } : {},\n  )\n\n  assume_role_policy = jsonencode({\n    \"Version\" : \"2012-10-17\",\n    \"Statement\" : {\n      \"Effect\" : \"Allow\",\n      \"Principal\" : {\n        \"Service\" : sort(each.value),\n      },\n      \"Action\" : \"sts:AssumeRole\",\n    },\n  })\n}\n",
+  "metadata": {
+    "original_filename": "iam.tf",
+    "source_repo": "apparentlymart/terraform-aws-service-roles",
+    "source_path": "iam.tf",
+    "scraped_date": "2026-06-14 20:04:53",
+    "conversion_date": "2026-06-15T11:31:04.868483"
+  }
+}

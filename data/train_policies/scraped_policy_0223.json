@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": [\n        {\n            \"Sid\": \"ViewGroups\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"iam:ListGroups\",\n                \"iam:ListUsers\",\n                \"iam:GetUser\",\n                \"iam:ListGroupsForUser\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"ViewEditThisGroup\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"iam:AddUserToGroup\",\n                \"iam:RemoveUserFromGroup\",\n                \"iam:GetGroup\"\n            ],\n            \"Resource\": \"arn:aws:iam::*:group/MarketingTeam\"\n        }\n    ]\n}\n",
+  "metadata": {
+    "original_filename": "iam_write_manage-group-membership.json",
+    "source_repo": "original_samples",
+    "source_path": "iam_write_manage-group-membership.json",
+    "scraped_date": "2026-01-01 00:00:00",
+    "conversion_date": "2026-06-15T11:31:05.115871"
+  }
+}

@@ -4,25 +4,45 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
+import sys
 from pathlib import Path
 
 from policygraph.analyzer import PolicyAnalyzer
+from policygraph.exceptions import PolicyGraphError
 from policygraph.pipeline import run_evaluation, run_training
 from policygraph.utils import load_config
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
+
 
 def cmd_analyze(args: argparse.Namespace) -> None:
-    analyzer = PolicyAnalyzer(model_path=args.model)
-    result = analyzer.analyze_policy(args.policy)
-    print(json.dumps(result, indent=2))
+    try:
+        logger.info(f"Analyzing policy: {args.policy}")
+        analyzer = PolicyAnalyzer(model_path=args.model)
+        result = analyzer.analyze_policy(args.policy)
+        print(json.dumps(result, indent=2))
+    except PolicyGraphError as e:
+        logger.error(f"Analysis failed: {e}")
+        raise
 
 
 def cmd_batch(args: argparse.Namespace) -> None:
-    analyzer = PolicyAnalyzer(model_path=args.model)
-    directory = Path(args.directory)
-    files = sorted(directory.glob("*.json"))
-    results = analyzer.analyze_batch(files)
-    print(json.dumps(results, indent=2))
+    try:
+        logger.info(f"Running batch analysis on directory: {args.directory}")
+        analyzer = PolicyAnalyzer(model_path=args.model)
+        directory = Path(args.directory)
+        files = sorted(directory.glob("*.json"))
+        logger.info(f"Found {len(files)} policy files to analyze")
+        results = analyzer.analyze_batch(files)
+        print(json.dumps(results, indent=2))
+    except PolicyGraphError as e:
+        logger.error(f"Batch analysis failed: {e}")
+        raise
 
 
 def cmd_train(args: argparse.Namespace) -> None:
@@ -65,7 +85,17 @@ def build_parser() -> argparse.ArgumentParser:
 def main() -> None:
     parser = build_parser()
     args = parser.parse_args()
-    args.func(args)
+    try:
+        logger.debug(f"Executing command: {args.command}")
+        args.func(args)
+    except PolicyGraphError as e:
+        logger.error(f"PolicyGraph error in '{args.command}': {e}")
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
+    except Exception as e:
+        logger.error(f"Unexpected error in '{args.command}': {e}", exc_info=True)
+        print(f"Unexpected error: {e}", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":

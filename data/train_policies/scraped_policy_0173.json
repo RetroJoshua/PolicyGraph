@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "{\n  \"Version\" : \"2012-10-17\",\n  \"Statement\" : [\n    {\n      \"Action\" : [\n        \"ssm:GetDocument\",\n        \"ssm:DescribeDocument\",\n        \"ssm:StartAutomationExecution\"\n      ],\n      \"Resource\" : \"*\",\n      \"Effect\" : \"Allow\"\n    },\n    {\n      \"Condition\" : {\n        \"StringEquals\" : {\n          \"iam:PassedToService\" : \"ssm.amazonaws.com\"\n        }\n      },\n      \"Action\" : \"iam:PassRole\",\n      \"Resource\" : \"*\",\n      \"Effect\" : \"Allow\"\n    }\n  ]\n}",
+  "metadata": {
+    "original_filename": "aws_config_remediation_service_role_policy.json",
+    "source_repo": "original_samples",
+    "source_path": "aws_config_remediation_service_role_policy.json",
+    "scraped_date": "2026-01-01 00:00:00",
+    "conversion_date": "2026-06-15T11:31:05.022136"
+  }
+}

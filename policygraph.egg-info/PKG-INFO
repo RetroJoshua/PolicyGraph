@@ -22,7 +22,7 @@ Requires-Python: >=3.9
 Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: torch>=2.0.0
-Requires-Dist: dgl<2.0.0,>=1.1.0
+Requires-Dist: dgl<1.2.0,>=1.1.0
 Requires-Dist: networkx>=3.0
 Requires-Dist: pyyaml>=6.0
 Requires-Dist: scikit-learn>=1.2.0

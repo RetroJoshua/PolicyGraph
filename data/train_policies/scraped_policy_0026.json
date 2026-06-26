@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "terraform {\n  required_version = \"> 0.11.0\"\n}\n\nlocals {\n  resource_prefix = \"${var.prefix == \"\" ? \"\" : \"var.prefix-\"}\"\n}\n\ndata \"aws_iam_policy_document\" \"cross_account_policy\" {\n  statement {\n    effect = \"Allow\"\n\n    principals {\n      type        = \"AWS\"\n      identifiers = [\"${var.principal_arns}\"]\n    }\n\n    actions = [\"sts:AssumeRole\"]\n\n    condition {\n      test     = \"StringEquals\"\n      variable = \"sts:ExternalId\"\n\n      values = [\n        \"npalm\",\n      ]\n    }\n  }\n}\n\nresource \"aws_iam_role\" \"dockercloud_swarm\" {\n  name               = \"${local.resource_prefix}${var.role_name}\"\n  description        = \"A role so that Docker Cloud can provision and manage swarms on your behalf.\"\n  assume_role_policy = \"${data.aws_iam_policy_document.cross_account_policy.json}\"\n}\n\ndata \"template_file\" \"dockercloud_swarm_policy\" {\n  template = \"${file(\"${path.module}/policies/dockercloud-swarm-permissions.json\")}\"\n}\n\nresource \"aws_iam_role_policy\" \"docker_cloud\" {\n  name   = \"${local.resource_prefix}${var.policy_name}\"\n  role   = \"${aws_iam_role.dockercloud_swarm.name}\"\n  policy = \"${data.template_file.dockercloud_swarm_policy.rendered}\"\n}\n",
+  "metadata": {
+    "original_filename": "main.tf",
+    "source_repo": "npalm/terraform-aws-dockercloud-swarm-role",
+    "source_path": "main.tf",
+    "scraped_date": "2026-06-14 20:03:33",
+    "conversion_date": "2026-06-15T11:31:04.783832"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "data \"aws_iam_policy_document\" \"this\" {\n    dynamic \"statement\" {\n        for_each = var.enabled_sts_services\n        iterator = enabled_sts_services\n        content {\n            sid = \"GrantSTS${upper(enabled_sts_services.value)}\"\n            actions = [\"sts:AssumeRole\"]\n            principals {\n                type        = \"Service\"\n                identifiers = [\"${enabled_sts_services.value}.amazonaws.com\"]\n            }\n            effect = \"Allow\"\n        }\n    }\n    statement {\n        sid = \"GrantK8sSAAccessToAWS\"\n        actions = [\"sts:AssumeRoleWithWebIdentity\"]\n        principals {\n            type        = \"Federated\"\n            identifiers = [var.openid_connect_provider_arn]\n        }\n        effect = \"Allow\"    \n        condition {\n            test = \"StringEquals\"\n            variable = \"${replace(var.openid_connect_provider_url, \"https://\", \"\")}:sub\"\n            values = [\n                \"system:serviceaccount:${var.kubernetes_namespace}:${var.service_account_name}\"\n            ]\n        }\n        condition {\n            test = \"StringEquals\"\n            variable = \"${replace(var.openid_connect_provider_url, \"https://\", \"\")}:aud\"\n            values = [\n                \"sts.amazonaws.com\"\n            ]\n        }\n    }\n}\n",
+  "metadata": {
+    "original_filename": "data.tf",
+    "source_repo": "tinfoilcipher/terraform-aws-eks-service-account-with-oidc-iam-role",
+    "source_path": "data.tf",
+    "scraped_date": "2026-06-14 20:03:25",
+    "conversion_date": "2026-06-15T11:31:04.783832"
+  }
+}

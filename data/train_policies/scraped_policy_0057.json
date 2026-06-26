@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "# Getting data existed ECR\ndata \"aws_ecr_repository\" \"flask_app\" {\n  name = \"flask-app\"\n}\n\n# Creating ECS Cluster\nresource \"aws_ecs_cluster\" \"my_cluster\" {\n  name = \"my-cluster\" # Naming the cluster\n}\n\n# Creating ECS Task\nresource \"aws_ecs_task_definition\" \"flask_app_task\" {\n  family                   = \"flask-app-task\" \n  container_definitions    = <<DEFINITION\n  [\n    {\n      \"name\": \"flask-app-task\",\n      \"image\": \"${data.aws_ecr_repository.flask_app.repository_url}\",\n      \"essential\": true,\n      \"portMappings\": [\n        {\n          \"containerPort\": 5000,\n          \"hostPort\": 5000\n        }\n      ],\n      \"memory\": 512,\n      \"cpu\": 256\n    }\n  ]\n  DEFINITION\n  requires_compatibilities = [\"FARGATE\"] # Stating that we are using ECS Fargate\n  network_mode             = \"awsvpc\"    # Using awsvpc as our network mode as this is required for Fargate\n  memory                   = 512         # Specifying the memory our container requires\n  cpu                      = 256         # Specifying the CPU our container requires\n  execution_role_arn       = \"${aws_iam_role.ecsTaskExecutionRole.arn}\"\n}\n\n# Creating Role for ECS\nresource \"aws_iam_role\" \"ecsTaskExecutionRole\" {\n  name               = \"ecsTaskExecutionRole\"\n  assume_role_policy = \"${data.aws_iam_policy_document.assume_role_policy.json}\"\n}\n\ndata \"aws_iam_policy_document\" \"assume_role_policy\" {\n  statement {\n    actions = [\"sts:AssumeRole\"]\n\n    principals {\n      type        = \"Service\"\n      identifiers = [\"ecs-tasks.amazonaws.com\"]\n    }\n  }\n}\n\n# Role - Policy Attachment for ECS\nresource \"aws_iam_role_policy_attachment\" \"ecsTaskExecutionRole_policy\" {\n  role       = \"${aws_iam_role.ecsTaskExecutionRole.name}\"\n  policy_arn = \"arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy\"\n}",
+  "metadata": {
+    "original_filename": "2_ecs.tf",
+    "source_repo": "omerbsezer/Fast-Terraform",
+    "source_path": "samples\\ecr-ecs-elb-vpc-ecsservice-container\\2_ecs.tf",
+    "scraped_date": "2026-06-14 20:04:18",
+    "conversion_date": "2026-06-15T11:31:04.821613"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "resource \"aws_iam_role\" \"datadog\" {\n  name = \"DataDogIntegration\"\n\n  assume_role_policy = <<EOF\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Principal\": {\n        \"AWS\": \"arn:aws:iam::464622532012:root\"\n      },\n      \"Action\": \"sts:AssumeRole\",\n      \"Condition\": {\n        \"StringEquals\": {\n          \"sts:ExternalId\": \"${var.datadog_aws_external_id}\"\n        }\n      }\n    }\n  ]\n}\nEOF\n}\n\nresource \"aws_iam_role\" \"datadog_lambda_kms_grant_role\" {\n  name = \"datadog-lambda-kms-grant\"\n\n  assume_role_policy = <<EOF\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"lambda.amazonaws.com\"\n      },\n      \"Effect\": \"Allow\",\n      \"Sid\": \"\"\n    }\n ]\n}\nEOF\n}\n\nresource \"aws_iam_role\" \"datadog_log_lambda_role\" {\n  name = \"datadog_logging_lambda\"\n  assume_role_policy = <<EOF\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"lambda.amazonaws.com\"\n      },\n      \"Effect\": \"Allow\",\n      \"Sid\": \"\"\n    }\n ]\n}\nEOF\n}\n\n",
+  "metadata": {
+    "original_filename": "roles.tf",
+    "source_repo": "mockingbirdconsulting/terraform-aws-datadog-aws-integration",
+    "source_path": "roles.tf",
+    "scraped_date": "2026-06-14 20:03:53",
+    "conversion_date": "2026-06-15T11:31:04.799451"
+  }
+}

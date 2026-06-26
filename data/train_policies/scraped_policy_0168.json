@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "{\n  \"Version\" : \"2012-10-17\",\n  \"Statement\" : [\n    {\n      \"Sid\" : \"CodeStarEC2\",\n      \"Effect\" : \"Allow\",\n      \"Action\" : [\n        \"codestar:*\",\n        \"ec2:DescribeKeyPairs\",\n        \"ec2:DescribeVpcs\",\n        \"ec2:DescribeSubnets\",\n        \"cloud9:DescribeEnvironment*\",\n        \"cloud9:ValidateEnvironmentName\"\n      ],\n      \"Resource\" : \"*\"\n    },\n    {\n      \"Sid\" : \"CodeStarCF\",\n      \"Effect\" : \"Allow\",\n      \"Action\" : [\n        \"cloudformation:DescribeStack*\",\n        \"cloudformation:ListStacks*\",\n        \"cloudformation:GetTemplateSummary\"\n      ],\n      \"Resource\" : [\n        \"arn:aws:cloudformation:*:*:stack/awscodestar-*\"\n      ]\n    }\n  ]\n}",
+  "metadata": {
+    "original_filename": "aws_code_star_full_access.json",
+    "source_repo": "original_samples",
+    "source_path": "aws_code_star_full_access.json",
+    "scraped_date": "2026-01-01 00:00:00",
+    "conversion_date": "2026-06-15T11:31:05.022136"
+  }
+}

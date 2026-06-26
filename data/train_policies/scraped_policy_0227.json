@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"lambda:CreateFunction\",\n        \"lambda:GetFunction\",\n        \"lambda:ListFunctions\"\n      ],\n      \"Resource\": \"arn:aws:lambda:us-east-1:123456789012:function:dev-*\",\n      \"Condition\": {\n        \"StringEquals\": {\n          \"lambda:FunctionArn\": \"arn:aws:lambda:us-east-1:123456789012:function:dev-*\"\n        }\n      }\n    }\n  ]\n}",
+  "metadata": {
+    "original_filename": "lambda_create_restricted.json",
+    "source_repo": "original_samples",
+    "source_path": "lambda_create_restricted.json",
+    "scraped_date": "2026-01-01 00:00:00",
+    "conversion_date": "2026-06-15T11:31:05.122403"
+  }
+}

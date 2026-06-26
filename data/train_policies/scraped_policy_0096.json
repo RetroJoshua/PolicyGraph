@@ -1,0 +1,11 @@
+{
+  "type": "terraform",
+  "content": "### PROD ACCOUNT ###\n\nresource \"aws_iam_role\" \"prod_list_s3\" {\n  name = \"s3-list-role\"\n  assume_role_policy = jsonencode({\n    Version = \"2012-10-17\",\n    Statement = [\n      {\n        Effect    = \"Allow\",\n        Action    = \"sts:AssumeRole\",\n        Principal = { \"AWS\" : \"arn:aws:iam::${data.aws_caller_identity.utils.account_id}:root\" }\n    }]\n  })\n  provider = aws.prod\n}\n\nresource \"aws_iam_policy\" \"s3_list_all\" {\n  name        = \"s3_list_all\"\n  description = \"allows listing all s3 buckets\"\n  policy      = file(\"role_permissions_policy.json\")\n\n  provider = aws.prod\n}\n\nresource \"aws_iam_policy_attachment\" \"s3_list_all\" {\n  name       = \"list s3 buckets policy to role\"\n  roles      = [\"${aws_iam_role.prod_list_s3.name}\"]\n  policy_arn = aws_iam_policy.s3_list_all.arn\n  provider   = aws.prod\n}\n\n### UTILS ACCOUNT ###\nresource \"aws_iam_user\" \"random\" {\n  name = \"random_user\"\n\n  tags = {\n    name = \"random\"\n  }\n}\n\nresource \"aws_iam_policy\" \"prod_s3\" {\n  name        = \"prod_s3\"\n  description = \"allow assuming prod_s3 role\"\n  policy = jsonencode({\n    Version = \"2012-10-17\",\n    Statement = [\n      {\n        Effect   = \"Allow\",\n        Action   = \"sts:AssumeRole\",\n        Resource = \"arn:aws:iam::${data.aws_caller_identity.prod.account_id}:role/${aws_iam_role.prod_list_s3.name}\"\n    }]\n  })\n}\n\nresource \"aws_iam_user_policy_attachment\" \"prod_s3\" {\n  user       = aws_iam_user.random.name\n  policy_arn = aws_iam_policy.prod_s3.arn\n}\n",
+  "metadata": {
+    "original_filename": "iam.tf",
+    "source_repo": "charlottemach/cross-account-aws-iam-roles",
+    "source_path": "iam.tf",
+    "scraped_date": "2026-06-14 20:05:13",
+    "conversion_date": "2026-06-15T11:31:04.884105"
+  }
+}
