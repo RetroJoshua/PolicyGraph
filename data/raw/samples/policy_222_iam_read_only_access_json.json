@@ -1,0 +1,14 @@
+{
+  "id": "policy_222",
+  "filename": "iam_read_only_access.json",
+  "source_repo": "original_samples",
+  "source_path": "iam_read_only_access.json",
+  "content": "{\n  \"Version\" : \"2012-10-17\",\n  \"Statement\" : [\n    {\n      \"Effect\" : \"Allow\",\n      \"Action\" : [\n        \"iam:GenerateCredentialReport\",\n        \"iam:GenerateServiceLastAccessedDetails\",\n        \"iam:Get*\",\n        \"iam:List*\",\n        \"iam:SimulateCustomPolicy\",\n        \"iam:SimulatePrincipalPolicy\"\n      ],\n      \"Resource\" : \"*\"\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

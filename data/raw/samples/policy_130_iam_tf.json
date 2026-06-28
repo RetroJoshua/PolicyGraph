@@ -1,0 +1,14 @@
+{
+  "id": "policy_130",
+  "filename": "iam.tf",
+  "source_repo": "MaheshShukla1/aws-devsecops-infra",
+  "source_path": "modules\\ec2\\iam.tf",
+  "content": "resource \"aws_iam_role\" \"ec2_role\" {\n  name = \"ec2-s3-readonly-role\"\n\n  assume_role_policy = jsonencode({\n    Version = \"2012-10-17\"\n    Statement = [{\n      Action    = \"sts:AssumeRole\"\n      Effect    = \"Allow\"\n      Principal = {\n        Service = \"ec2.amazonaws.com\"\n      }\n    }]\n  })\n}\n\nresource \"aws_iam_policy\" \"s3_readonly\" {\n  name   = \"S3ReadOnlyPolicy\"\n  policy = jsonencode({\n    Version = \"2012-10-17\"\n    Statement = [{\n      Action   = [\"s3:GetObject\",\"s3:ListBucket\"]\n      Effect   = \"Allow\"\n      Resource = [\n        \"arn:aws:s3:::${var.s3_bucket_name}\",\n        \"arn:aws:s3:::${var.s3_bucket_name}/*\"\n      ]\n    }]\n  })\n}\n\nresource \"aws_iam_role_policy_attachment\" \"attach\" {\n  role       = aws_iam_role.ec2_role.name\n  policy_arn = aws_iam_policy.s3_readonly.arn\n}\n\nresource \"aws_iam_instance_profile\" \"ec2_profile\" {\n  name = \"ec2_instance_profile\"\n  role = aws_iam_role.ec2_role.name\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:06:16"
+  }
+}

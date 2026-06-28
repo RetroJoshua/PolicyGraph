@@ -1,0 +1,14 @@
+{
+  "id": "policy_084",
+  "filename": "main.tf",
+  "source_repo": "resizes/platform-terraform-module-github-oidc-aws-role",
+  "source_path": "main.tf",
+  "content": "data \"aws_caller_identity\" \"current\" {}\n\ndata \"aws_iam_policy_document\" \"assume_role_policy\" {\n  statement {\n    actions = [\"sts:AssumeRoleWithWebIdentity\"]\n\n    principals {\n      type        = \"Federated\"\n      identifiers = [\"arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/token.actions.githubusercontent.com\"]\n    }\n    condition {\n      test     = \"StringEquals\"\n      variable = \"token.actions.githubusercontent.com:aud\"\n      values   = [\"sts.amazonaws.com\"]\n    }\n    condition {\n      test     = var.condition_test\n      variable = \"token.actions.githubusercontent.com:sub\"\n      values   = length(var.assume_role_policy_condition_values) > 0 ? var.assume_role_policy_condition_values : [\"repo:${var.org_name}/${var.repo_path}:ref:refs/heads/${var.ref}\"]\n    }\n  }\n}\n\nresource \"aws_iam_policy\" \"policy\" {\n  count = length(var.actions) > 0 ? 1 : 0\n  name  = \"${var.name}-policy\"\n\n  policy = jsonencode({\n    Version = \"2012-10-17\"\n    Statement = [\n      {\n        Action   = var.actions\n        Effect   = \"Allow\"\n        Resource = \"*\"\n      },\n    ]\n  })\n}\n\nresource \"aws_iam_role\" \"role\" {\n  name                = var.name\n  assume_role_policy  = data.aws_iam_policy_document.assume_role_policy.json\n  managed_policy_arns = length(var.actions) > 0 || length(var.managed_policy_arns) > 0 ? concat(var.managed_policy_arns, flatten(aws_iam_policy.policy[*].arn)) : []\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "Scoped resources with conditions; follows least-privilege",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:04:58"
+  }
+}

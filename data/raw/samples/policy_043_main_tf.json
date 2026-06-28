@@ -1,0 +1,14 @@
+{
+  "id": "policy_043",
+  "filename": "main.tf",
+  "source_repo": "baikonur-oss/terraform-aws-iam-nofile",
+  "source_path": "main.tf",
+  "content": "resource \"aws_iam_instance_profile\" \"instance_role\" {\n  name = \"${var.type}_${var.name}\"\n  role = aws_iam_role.iam_role.name\n}\n\nresource \"aws_iam_role_policy\" \"role_policy\" {\n  name   = \"${var.type}_${var.name}\"\n  role   = aws_iam_role.iam_role.id\n  policy = var.policy_json\n}\n\nresource \"aws_iam_role\" \"iam_role\" {\n  name = \"${var.type}_${var.name}\"\n\n  assume_role_policy = <<EOF\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"${var.type}.amazonaws.com\"\n      },\n      \"Effect\": \"Allow\"\n    }\n  ]\n}\nEOF\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:04:05"
+  }
+}

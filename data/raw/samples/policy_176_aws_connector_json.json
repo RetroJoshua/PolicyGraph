@@ -1,0 +1,14 @@
+{
+  "id": "policy_176",
+  "filename": "aws_connector.json",
+  "source_repo": "original_samples",
+  "source_path": "aws_connector.json",
+  "content": "{\n  \"Version\" : \"2012-10-17\",\n  \"Statement\" : [\n    {\n      \"Effect\" : \"Allow\",\n      \"Action\" : \"iam:GetUser\",\n      \"Resource\" : \"*\"\n    },\n    {\n      \"Effect\" : \"Allow\",\n      \"Action\" : [\n        \"s3:ListAllMyBuckets\"\n      ],\n      \"Resource\" : \"*\"\n    },\n    {\n      \"Effect\" : \"Allow\",\n      \"Action\" : [\n        \"s3:CreateBucket\",\n        \"s3:DeleteBucket\",\n        \"s3:DeleteObject\",\n        \"s3:GetBucketLocation\",\n        \"s3:GetObject\",\n        \"s3:ListBucket\",\n        \"s3:PutObject\",\n        \"s3:PutObjectAcl\",\n        \"s3:AbortMultipartUpload\",\n        \"s3:ListBucketMultipartUploads\",\n        \"s3:ListMultipartUploadParts\"\n      ],\n      \"Resource\" : \"arn:aws:s3:::import-to-ec2-*\"\n    },\n    {\n      \"Effect\" : \"Allow\",\n      \"Action\" : [\n        \"ec2:CancelConversionTask\",\n        \"ec2:CancelExportTask\",\n        \"ec2:CreateImage\",\n        \"ec2:CreateInstanceExportTask\",\n        \"ec2:CreateTags\",\n        \"ec2:CreateVolume\",\n        \"ec2:DeleteTags\",\n        \"ec2:DeleteVolume\",\n        \"ec2:DescribeConversionTasks\",\n        \"ec2:DescribeExportTasks\",\n        \"ec2:DescribeImages\",\n        \"ec2:DescribeInstanceAttribute\",\n        \"ec2:DescribeInstanceStatus\",\n        \"ec2:DescribeInstances\",\n        \"ec2:DescribeRegions\",\n        \"ec2:DescribeTags\",\n        \"ec2:DetachVolume\",\n        \"ec2:ImportInstance\",\n        \"ec2:ImportVolume\",\n        \"ec2:ModifyInstanceAttribute\",\n        \"ec2:RunInstances\",\n        \"ec2:StartInstances\",\n        \"ec2:StopInstances\",\n        \"ec2:TerminateInstances\",\n        \"ec2:ImportImage\",\n        \"ec2:DescribeImportImageTasks\",\n        \"ec2:DeregisterImage\",\n        \"ec2:DescribeSnapshots\",\n        \"ec2:DeleteSnapshot\",\n        \"ec2:CancelImportTask\",\n        \"ec2:ImportSnapshot\",\n        \"ec2:DescribeImportSnapshotTasks\"\n      ],\n      \"Resource\" : \"*\"\n    },\n    {\n      \"Effect\" : \"Allow\",\n      \"Action\" : [\n        \"SNS:Publish\"\n      ],\n      \"Resource\" : \"arn:aws:sns:*:*:metrics-sns-topic-for-*\"\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

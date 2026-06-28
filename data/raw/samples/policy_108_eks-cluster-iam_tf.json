@@ -1,0 +1,14 @@
+{
+  "id": "policy_108",
+  "filename": "eks-cluster-iam.tf",
+  "source_repo": "abbashussainz/IRSA-EKS-Terraform",
+  "source_path": "Manifest Files\\eks-cluster-iam.tf",
+  "content": "resource \"aws_iam_role\" \"eks_master_role\" {\n  name = \"eks-cluster-role\"\n  assume_role_policy = <<POLICY\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Principal\": {\n        \"Service\": \"eks.amazonaws.com\"\n      },\n      \"Action\": \"sts:AssumeRole\"\n    }\n  ]\n}\nPOLICY\n}\n\nresource \"aws_iam_role_policy_attachment\" \"eks-AmazonEKSClusterPolicy\" {\n  policy_arn = \"arn:aws:iam::aws:policy/AmazonEKSClusterPolicy\"\n  role       = aws_iam_role.eks_master_role.name\n}\n\nresource \"aws_iam_role_policy_attachment\" \"eks-AmazonEKSVPCResourceController\" {\n  policy_arn = \"arn:aws:iam::aws:policy/AmazonEKSVPCResourceController\"\n  role       = aws_iam_role.eks_master_role.name\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:05:39"
+  }
+}

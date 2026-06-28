@@ -1,0 +1,14 @@
+{
+  "id": "policy_236",
+  "filename": "lambda_update_with_passrole.json",
+  "source_repo": "original_samples",
+  "source_path": "lambda_update_with_passrole.json",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iam:PassRole\",\n      \"Resource\": \"*\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"lambda:UpdateFunctionCode\",\n        \"lambda:UpdateFunctionConfiguration\"\n      ],\n      \"Resource\": \"*\"\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: high, Risk: 9",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

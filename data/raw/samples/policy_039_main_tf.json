@@ -1,0 +1,14 @@
+{
+  "id": "policy_039",
+  "filename": "main.tf",
+  "source_repo": "adamwshero/terraform-aws-ssm-activations",
+  "source_path": "main.tf",
+  "content": "resource \"aws_ssm_activation\" \"this\" {\n  for_each = {\n    for key in var.ssm_activations : key.name => {\n      name               = key.name\n      description        = key.description\n      expiration_date    = key.expiration_date\n      iam_role           = key.iam_role != null ? key.iam_role : (var.create_iam_role ? aws_iam_role.this[0].name : null)\n      registration_limit = key.registration_limit\n    }\n  }\n  name               = each.value.name\n  description        = each.value.description\n  expiration_date    = each.value.expiration_date\n  iam_role           = each.value.iam_role\n  registration_limit = each.value.registration_limit\n  tags               = var.tags\n}\n\nresource \"aws_iam_role\" \"this\" {\n  count = var.create_iam_role ? 1 : 0\n\n  name = var.iam_role_name\n\n  assume_role_policy = <<EOF\n  {\n    \"Version\": \"2012-10-17\",\n    \"Statement\": {\n      \"Effect\": \"Allow\",\n      \"Principal\": {\"Service\": \"ssm.amazonaws.com\"},\n      \"Action\": \"sts:AssumeRole\"\n    }\n  }\nEOF\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:03:55"
+  }
+}

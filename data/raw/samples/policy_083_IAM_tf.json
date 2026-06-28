@@ -1,0 +1,14 @@
+{
+  "id": "policy_083",
+  "filename": "IAM.tf",
+  "source_repo": "dean6969/Streaming-data-on-AWS-kinesis-Data-stream-Lambda-S3-IAM-roles-Cloudwatch-",
+  "source_path": "modules\\IAM.tf",
+  "content": "resource \"aws_iam_role\" \"KP1ConsumerRole\" {\n  name = \"KP1ConsumerRole\"\n\n  assume_role_policy = jsonencode({\n    Version = \"2012-10-17\"\n    Statement = [\n      {\n        Action = \"sts:AssumeRole\"\n        Effect = \"Allow\"\n        Principal = {\n          Service = \"lambda.amazonaws.com\"\n        }\n      },\n    ]\n  })\n\n  managed_policy_arns = [\n    \"arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole\"\n  ]\n}\n\nresource \"aws_iam_role_policy\" \"KP1ConsumerPolicy\" {\n  name   = \"KP1ConsumerPolicy\"\n  role   = aws_iam_role.KP1ConsumerRole.id\n  policy = jsonencode({\n    Version = \"2012-10-17\"\n    Statement = [\n      {\n        Effect = \"Allow\"\n        Action = [\n          \"kinesis:DescribeStream\",\n          \"kinesis:DescribeStreamSummary\",\n          \"kinesis:GetRecords\",\n          \"kinesis:GetShardIterator\",\n          \"kinesis:ListShards\",\n          \"kinesis:ListStreams\",\n          \"kinesis:SubscribeToShard\"\n        ]\n        Resource = aws_kinesis_stream.KP1DataStream.arn\n      },\n      {\n        Effect = \"Allow\"\n        Action = [\n          \"s3:PutObject\",\n          \"s3:GetObject\",\n          \"s3:DeleteObject\",\n          \"s3:ListBucket\"\n        ]\n        Resource = [\n          \"${aws_s3_bucket.KP1DataBucket.arn}\",\n          \"${aws_s3_bucket.KP1DataBucket.arn}/*\"\n        ]\n      },\n    ]\n  })\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:04:55"
+  }
+}

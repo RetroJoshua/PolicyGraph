@@ -1,0 +1,14 @@
+{
+  "id": "policy_052",
+  "filename": "main.tf",
+  "source_repo": "clouddrove/terraform-aws-cross-account-role",
+  "source_path": "main.tf",
+  "content": "# Managed By : CloudDrove\n# Description : This Script is used to Create iam Role and Policy.\n# Copyright @ CloudDrove. All Right Reserved.\n\n#Module      : Label\n#Description : This terraform module is designed to generate consistent label names and\n#              tags for resources. You can use terraform-labels to implement a strict\n#              naming convention.\nmodule \"labels\" {\n  source  = \"clouddrove/labels/aws\"\n  version = \"1.3.1\"\n\n  enabled     = var.enabled\n  name        = var.name\n  repository  = var.repository\n  environment = var.environment\n  managedby   = var.managedby\n  attributes  = var.attributes\n  label_order = var.label_order\n}\n\ndata \"aws_iam_policy_document\" \"assume_role\" {\n  statement {\n    actions = [\n      \"sts:AssumeRole\",\n    ]\n    principals {\n      type        = \"AWS\"\n      identifiers = [var.master_account_user]\n    }\n    effect = \"Allow\"\n  }\n}\n\n#Module      : AWS IAM ROLE\n#Description : Provides an IAM role.\nresource \"aws_iam_role\" \"default\" {\n  count                 = var.enabled ? 1 : 0\n  name                  = module.labels.id\n  assume_role_policy    = data.aws_iam_policy_document.assume_role.json\n  description           = var.description\n  tags                  = module.labels.tags\n  force_detach_policies = var.force_detach_policies\n  max_session_duration  = var.max_session_duration\n}\n\n#Module      : AWS IAM ROLE POLICY ATTACHMENT\n#Description : PAttaches a Managed IAM Policy to an IAM role.\nresource \"aws_iam_role_policy_attachment\" \"default\" {\n  count      = var.enabled ? length(var.policy_arn) : 0\n  role       = join(\"\", aws_iam_role.default.*.name)\n  policy_arn = element(distinct(compact(concat(var.policy_arn))), count.index)\n}\n\nresource \"aws_iam_role_policy\" \"default\" {\n  count  = var.enabled && var.policy_enabled && var.policy_arn == \"\" ? 1 : 0\n  name   = format(\"%s-policy\", module.labels.id)\n  role   = join(\"\", aws_iam_role.default.*.name)\n  policy = var.policy\n}\n\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:04:12"
+  }
+}

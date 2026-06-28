@@ -1,0 +1,14 @@
+{
+  "id": "policy_146",
+  "filename": "main.tf",
+  "source_repo": "lucidsoftware/terraform-aws-lucid-aws-import",
+  "source_path": "modules\\org-read-delegation\\main.tf",
+  "content": "data \"aws_partition\" \"current\" {}\n\nlocals {\n  bastion_account_id = var.account_id != null ? var.account_id : aws_organizations_account.bastion_account[0].id\n}\n\nresource \"aws_organizations_account\" \"bastion_account\" {\n  count = var.account_id == null ? 1 : 0\n\n  name      = var.account_name\n  email     = var.account_email\n  parent_id = var.parent_id\n}\n\ndata \"aws_iam_policy_document\" \"read_organization_access_policy_document\" {\n  statement {\n    effect = \"Allow\"\n    actions = [\n      \"organizations:DescribeAccount\",\n      \"organizations:DescribeOrganization\",\n      \"organizations:DescribeOrganizationalUnit\",\n      \"organizations:ListAccounts\",\n      \"organizations:ListAccountsForParent\",\n      \"organizations:ListChildren\",\n      \"organizations:ListOrganizationalUnitsForParent\",\n      \"organizations:ListParents\",\n      \"organizations:ListRoots\",\n    ]\n    principals {\n      type        = \"AWS\"\n      identifiers = [\"arn:${data.aws_partition.current.partition}:iam::${local.bastion_account_id}:root\"]\n    }\n    resources = [\"*\"]\n  }\n}\n\nresource \"aws_organizations_resource_policy\" \"read_organization_access_policy\" {\n  content = data.aws_iam_policy_document.read_organization_access_policy_document.json\n}\n",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:06:41"
+  }
+}

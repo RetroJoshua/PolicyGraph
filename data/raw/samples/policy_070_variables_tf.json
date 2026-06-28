@@ -1,0 +1,14 @@
+{
+  "id": "policy_070",
+  "filename": "variables.tf",
+  "source_repo": "cloudposse/terraform-aws-eks-iam-role",
+  "source_path": "variables.tf",
+  "content": "variable \"service_account_name\" {\n  type        = string\n  description = <<-EOT\n    Kubernetes ServiceAccount name.\n    Leave empty or set to \"*\" to indicate all Service Accounts, or if using `service_account_namespace_name_list`.\n    EOT\n  default     = null\n}\n\nvariable \"service_account_namespace\" {\n  type        = string\n  description = <<-EOT\n    Kubernetes Namespace where service account is deployed. Leave empty or set to \"*\" to indicate all Namespaces,\n    or if using `service_account_namespace_name_list`.\n    EOT\n  default     = null\n}\n\nvariable \"service_account_namespace_name_list\" {\n  type        = list(string)\n  description = <<-EOT\n    List of `namespace:name` for service account assume role IAM policy if you need more than one. May include wildcards.\n    EOT\n  default     = []\n}\n\nvariable \"aws_account_number\" {\n  type        = string\n  default     = null\n  description = \"AWS account number of EKS cluster owner. If an AWS account number is not provided, the current aws provider account number will be used.\"\n}\n\nvariable \"aws_partition\" {\n  type        = string\n  default     = \"aws\"\n  description = \"AWS partition: 'aws', 'aws-cn', or 'aws-us-gov'\"\n}\n\nvariable \"aws_iam_policy_document\" {\n  type        = any\n  default     = []\n  description = <<-EOT\n    JSON string representation of the IAM policy for this service account as list of string (0 or 1 items).\n    If empty, no custom IAM policy document will be used. If the list contains a single document, a custom\n    IAM policy will be created and attached to the IAM role.\n    Can also be a plain string, but that use is DEPRECATED because of Terraform issues.\n    EOT\n}\n\nvariable \"eks_cluster_oidc_issuer_url\" {\n  type        = string\n  description = \"OIDC issuer URL for the EKS cluster (initial \\\"https://\\\" may be omitted)\"\n}\n\nvariable \"permissions_boundary\" {\n  type        = string\n  description = \"ARN of the policy that is used to set the permissions boundary for the role.\"\n  default     = null\n}\n\nvariable \"managed_policy_arns\" {\n  type        = set(string)\n  description = \"List of managed policies to attach to created role\"\n  default     = []\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:04:36"
+  }
+}

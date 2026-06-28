@@ -1,0 +1,14 @@
+{
+  "id": "policy_120",
+  "filename": "outputs.tf",
+  "source_repo": "cloudposse/terraform-aws-iam-role",
+  "source_path": "outputs.tf",
+  "content": "output \"name\" {\n  value       = one(aws_iam_role.default[*].name)\n  description = \"The name of the IAM role created\"\n}\n\noutput \"id\" {\n  value       = one(aws_iam_role.default[*].unique_id)\n  description = \"The stable and unique string identifying the role\"\n}\n\noutput \"arn\" {\n  value       = one(aws_iam_role.default[*].arn)\n  description = \"The Amazon Resource Name (ARN) specifying the role\"\n}\n\noutput \"policy\" {\n  value       = one(data.aws_iam_policy_document.default[*].json)\n  description = \"Role policy document in json format. Outputs always, independent of `enabled` variable\"\n}\n\noutput \"instance_profile\" {\n  value       = one(aws_iam_instance_profile.default[*].name)\n  description = \"Name of the ec2 profile (if enabled)\"\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:05:59"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "policy_237",
+  "filename": "lambda_vpc_execution.json",
+  "source_repo": "original_samples",
+  "source_path": "lambda_vpc_execution.json",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"logs:CreateLogGroup\",\n        \"logs:CreateLogStream\",\n        \"logs:PutLogEvents\"\n      ],\n      \"Resource\": \"arn:aws:logs:*:*:*\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"ec2:CreateNetworkInterface\",\n        \"ec2:DescribeNetworkInterfaces\",\n        \"ec2:DeleteNetworkInterface\",\n        \"ec2:AssignPrivateIpAddresses\",\n        \"ec2:UnassignPrivateIpAddresses\"\n      ],\n      \"Resource\": \"*\"\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

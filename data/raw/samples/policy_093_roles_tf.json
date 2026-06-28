@@ -1,0 +1,14 @@
+{
+  "id": "policy_093",
+  "filename": "roles.tf",
+  "source_repo": "Basillica/roles-terraform-module",
+  "source_path": "roles.tf",
+  "content": "resource \"aws_iam_role\" \"lambda_role\" {\n  count              = var.create_lambda_role ? 1 : 0\n  name               = var.lambda_role_name\n  assume_role_policy = file(var.lambda_policy_file) #file(\"modules/policies/lambda_policy.json\")\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:05:08"
+  }
+}

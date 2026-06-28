@@ -1,0 +1,14 @@
+{
+  "id": "policy_050",
+  "filename": "main.tf",
+  "source_repo": "tmknom/terraform-aws-iam-role",
+  "source_path": "examples\\complete\\main.tf",
+  "content": "module \"iam_role\" {\n  source             = \"../../\"\n  name               = \"complete\"\n  assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json\n  policy             = data.aws_iam_policy_document.policy.json\n\n  path        = \"/ec2/\"\n  description = \"Describe EC2\"\n\n  max_session_duration  = 7200\n  force_detach_policies = true\n}\n\ndata \"aws_iam_policy_document\" \"assume_role_policy\" {\n  statement {\n    effect = \"Allow\"\n\n    principals {\n      type        = \"Service\"\n      identifiers = [\"ec2.amazonaws.com\"]\n    }\n\n    actions = [\n      \"sts:AssumeRole\",\n    ]\n  }\n}\n\ndata \"aws_iam_policy_document\" \"policy\" {\n  statement {\n    effect = \"Allow\"\n\n    actions = [\n      \"ec2:Describe*\",\n    ]\n\n    resources = [\"*\"]\n  }\n}\n",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:04:10"
+  }
+}

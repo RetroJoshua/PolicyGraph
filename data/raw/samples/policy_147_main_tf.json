@@ -1,0 +1,14 @@
+{
+  "id": "policy_147",
+  "filename": "main.tf",
+  "source_repo": "jsallis/terraform-packer-iam-policy",
+  "source_path": "main.tf",
+  "content": "resource \"aws_iam_policy\" \"packer_policy\" {\n  name = \"RunPacker\"\n  path = \"/\"\n  description = \"Allows access to run packer\"\n  policy = \"${file(\"${path.module}/policy.json\")}\"\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:06:43"
+  }
+}

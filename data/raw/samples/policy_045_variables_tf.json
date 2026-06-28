@@ -1,0 +1,14 @@
+{
+  "id": "policy_045",
+  "filename": "variables.tf",
+  "source_repo": "anonymint/terraform-aws-iam-role",
+  "source_path": "variables.tf",
+  "content": "variable \"role_name\" {\n  description = \"Role name\"\n}\n\nvariable \"iam_role_policy_document_json\" {\n  type = \"string\"\n\n  description = <<EOF\n  Valid JSON Policy String\n  this can be constructed from\n  * terraform data.aws_iam_policy_document\n  * terraform file provider\nEOF\n}\n\nvariable \"policy_arns\" {\n  type        = \"list\"\n  description = \"List of policy arns to attach to this role\"\n  default     = []\n}\n\nvariable \"policy_arns_count\" {\n  description = \"number of policy arns due to bug with length of computed value\"\n}\n\nvariable \"create_instance_role\" {\n  description = \"Need to create a same name instance role or not\"\n  default     = false\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:04:07"
+  }
+}

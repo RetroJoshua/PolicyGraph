@@ -1,0 +1,14 @@
+{
+  "id": "policy_254",
+  "filename": "secure_resource_specific.json",
+  "source_repo": "original_samples",
+  "source_path": "secure_resource_specific.json",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"s3:GetObject\",\n        \"s3:PutObject\"\n      ],\n      \"Resource\": \"arn:aws:s3:::app-data-bucket/reports/*\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"dynamodb:GetItem\",\n        \"dynamodb:PutItem\",\n        \"dynamodb:Query\"\n      ],\n      \"Resource\": \"arn:aws:dynamodb:us-east-1:123456789012:table/AppTable\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"lambda:InvokeFunction\",\n      \"Resource\": \"arn:aws:lambda:us-east-1:123456789012:function:ProcessReports\"\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

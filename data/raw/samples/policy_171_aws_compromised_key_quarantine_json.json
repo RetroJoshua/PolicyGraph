@@ -1,0 +1,14 @@
+{
+  "id": "policy_171",
+  "filename": "aws_compromised_key_quarantine.json",
+  "source_repo": "original_samples",
+  "source_path": "aws_compromised_key_quarantine.json",
+  "content": "{\n  \"Version\" : \"2012-10-17\",\n  \"Statement\" : [\n    {\n      \"Effect\" : \"Deny\",\n      \"Action\" : [\n        \"iam:AttachGroupPolicy\",\n        \"iam:AttachRolePolicy\",\n        \"iam:AttachUserPolicy\",\n        \"iam:ChangePassword\",\n        \"iam:CreateAccessKey\",\n        \"iam:CreateInstanceProfile\",\n        \"iam:CreateLoginProfile\",\n        \"iam:CreateRole\",\n        \"iam:CreateUser\",\n        \"iam:DetachUserPolicy\",\n        \"iam:PutUserPermissionsBoundary\",\n        \"iam:PutUserPolicy\",\n        \"iam:UpdateAccessKey\",\n        \"iam:UpdateAccountPasswordPolicy\",\n        \"iam:UpdateUser\",\n        \"ec2:RequestSpotInstances\",\n        \"ec2:RunInstances\",\n        \"ec2:StartInstances\",\n        \"organizations:CreateAccount\",\n        \"organizations:CreateOrganization\",\n        \"organizations:InviteAccountToOrganization\",\n        \"lambda:CreateFunction\",\n        \"lightsail:Create*\",\n        \"lightsail:Start*\",\n        \"lightsail:Delete*\",\n        \"lightsail:Update*\",\n        \"lightsail:GetInstanceAccessDetails\",\n        \"lightsail:DownloadDefaultKeyPair\"\n      ],\n      \"Resource\" : [\n        \"*\"\n      ]\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "policy_238",
+  "filename": "lambda_write_dynamodb-access.json",
+  "source_repo": "original_samples",
+  "source_path": "lambda_write_dynamodb-access.json",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": [\n        {\n            \"Sid\": \"ReadWriteTable\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"dynamodb:BatchGetItem\",\n                \"dynamodb:GetItem\",\n                \"dynamodb:Query\",\n                \"dynamodb:Scan\",\n                \"dynamodb:BatchWriteItem\",\n                \"dynamodb:PutItem\",\n                \"dynamodb:UpdateItem\"\n            ],\n            \"Resource\": \"arn:aws:dynamodb:*:*:table/SampleTable\"\n        },\n        {\n            \"Sid\": \"GetStreamRecords\",\n            \"Effect\": \"Allow\",\n            \"Action\": \"dynamodb:GetRecords\",\n            \"Resource\": \"arn:aws:dynamodb:*:*:table/SampleTable/stream/* \"\n        },\n        {\n            \"Sid\": \"WriteLogStreamsAndGroups\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"logs:CreateLogStream\",\n                \"logs:PutLogEvents\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"CreateLogGroup\",\n            \"Effect\": \"Allow\",\n            \"Action\": \"logs:CreateLogGroup\",\n            \"Resource\": \"*\"\n        }\n    ]\n}\n",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

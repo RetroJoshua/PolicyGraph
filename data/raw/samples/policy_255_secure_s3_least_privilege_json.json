@@ -1,0 +1,14 @@
+{
+  "id": "policy_255",
+  "filename": "secure_s3_least_privilege.json",
+  "source_repo": "original_samples",
+  "source_path": "secure_s3_least_privilege.json",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"s3:GetObject\",\n        \"s3:ListBucket\"\n      ],\n      \"Resource\": [\n        \"arn:aws:s3:::my-specific-bucket\",\n        \"arn:aws:s3:::my-specific-bucket/*\"\n      ]\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

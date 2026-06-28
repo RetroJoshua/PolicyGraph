@@ -1,0 +1,14 @@
+{
+  "id": "policy_129",
+  "filename": "main.tf",
+  "source_repo": "thanhbn87/terraform-aws-iam-role",
+  "source_path": "main.tf",
+  "content": "locals {\n  temp_file_assumerole = var.temp_file_assumerole == \"\" ? \"${path.module}/AssumeRoleService.json.tpl\" : var.temp_file_assumerole \n  temp_file_policy     = var.temp_file_policy == \"\" ? \"${path.module}/Policy.json.tpl\" : var.temp_file_policy \n}\n\ndata \"template_file\" \"assume_role\" {\n  count    = var.enabled ? 1 : 0\n  template = file(local.temp_file_assumerole)\n  vars {\n    identifiers = jsonencode(var.identifiers)\n  }\n}\n\ndata \"template_file\" \"inline\" {\n  count    = var.inline_policy && var.enabled ? 1 : 0\n  template = file(local.temp_file_policy)\n  vars {\n    resources = jsonencode(var.resources)\n  }\n}\n\nresource \"aws_iam_role\" \"this\" {\n  count = var.enabled ? 1 : 0\n  name  = local.name\n  path  = var.path\n  tags  = var.tags\n  description        = var.description\n  assume_role_policy = data.template_file.assume_role.rendered\n}\n\nresource \"aws_iam_role_policy_attachment\" \"arn\" {\n  count      = var.enabled ? length(var.policy_arns) : 0\n  role       = aws_iam_role.this[0].name\n  policy_arn = element(var.policy_arns,count.index)\n}\n\nresource \"aws_iam_role_policy\" \"inline\" {\n  count  = var.inline_policy && var.enabled ? 1 : 0\n  name   = var.inline_policy_name == \"\" ? local.name : var.inline_policy_name\n  role   = aws_iam_role.this.id\n  policy = data.template_file.inline.rendered\n}\n\nresource \"aws_iam_instance_profile\" \"ec2\" {\n  count = contains(var.identifiers, \"ec2.amazonaws.com\") && var.enabled ? 1 : 0\n  name  = var.name\n  role  = aws_iam_role.this[0].name\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:06:14"
+  }
+}

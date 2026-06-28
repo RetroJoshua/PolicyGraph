@@ -1,0 +1,14 @@
+{
+  "id": "policy_079",
+  "filename": "iam-user.tf",
+  "source_repo": "godleon/aws-lab-001-assume-role",
+  "source_path": "source\\iam-user.tf",
+  "content": "resource \"aws_iam_user\" \"robot\" {\n  name = \"robot\"\n  path = \"/auto/\"\n\n  tags = {\n    Name = \"robot\"\n  }\n}\n\n# 設定 AssumeRole 的 IAM Policy\n# 讓 IAM User 可以切換到指定的 IAM Role\nresource \"aws_iam_user_policy\" \"assume_role-robot\" {\n  name = \"assume_role-robot\"\n  user = aws_iam_user.robot.name\n\n  policy = <<-EOF\n  {\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": \"sts:AssumeRole\",\n            \"Resource\": \"${aws_iam_role.robot.arn}\"\n        }\n    ]\n  }\n  EOF\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:04:48"
+  }
+}

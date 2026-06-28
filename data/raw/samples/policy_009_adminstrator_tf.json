@@ -1,0 +1,14 @@
+{
+  "id": "policy_009",
+  "filename": "adminstrator.tf",
+  "source_repo": "kelseymok/aws-init-roles",
+  "source_path": "iam\\adminstrator.tf",
+  "content": "data \"aws_iam_policy_document\" \"administrator\" {\n  statement {\n    sid = \"AllowFullAccessForIAMAccountsAndOrgs\"\n    actions = [\n      \"iam:*\",\n      \"organizations:*\",\n      \"account:*\",\n    ]\n    resources = [\"*\"]\n  }\n}\n\nresource \"aws_iam_policy\" \"administrator\" {\n  name   = var.administrator-role-name\n  path   = \"/${var.org}/\"\n  policy = data.aws_iam_policy_document.administrator.json\n}\n\nresource \"aws_iam_role_policy_attachment\" \"administrator\" {\n  policy_arn = aws_iam_policy.administrator.arn\n  role = aws_iam_role.administrator.id\n}\nresource \"aws_iam_role\" \"administrator\" {\n  name = var.administrator-role-name\n  path                  = \"/${var.org}/\"\n  max_session_duration  = local.max_session_duration\n  description           = \"Administrator Role\"\n  assume_role_policy = data.aws_iam_policy_document.administrator-assume-role-policy.json\n  force_detach_policies = true\n}\n\ndata \"aws_iam_policy_document\" \"administrator-assume-role-policy\" {\n  statement {\n    actions = [\n      \"sts:AssumeRole\",\n    ]\n\n    principals {\n      type        = \"AWS\"\n      identifiers = var.administrator-trusted-entities\n    }\n\n    condition {\n      variable = \"aws:MultiFactorAuthPresent\"\n      test     = \"Bool\"\n      values   = [\"true\"]\n    }\n\n    condition {\n      variable = \"aws:MultiFactorAuthAge\"\n      test     = \"NumericLessThanEquals\"\n      values   = [local.max_session_duration]\n    }\n  }\n}",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "Medium",
+    "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:03:15"
+  }
+}

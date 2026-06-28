@@ -1,0 +1,14 @@
+{
+  "id": "policy_085",
+  "filename": "main.tf",
+  "source_repo": "cloudposse-archives/terraform-aws-iam-chamber-s3-role",
+  "source_path": "main.tf",
+  "content": "locals {\n  resources = formatlist(\"%s/%s/*\", var.bucket_arn, var.services)\n}\n\ndata \"aws_iam_policy_document\" \"resource_readonly_access\" {\n  statement {\n    sid    = \"ReadonlyAccess\"\n    effect = \"Allow\"\n\n    resources = local.resources\n\n    actions = [\n      \"s3:GetObject\",\n      \"s3:ListBucket\",\n      \"s3:ListBucketMultipartUploads\",\n      \"s3:GetBucketLocation\",\n      \"s3:AbortMultipartUpload\"\n    ]\n  }\n}\n\ndata \"aws_iam_policy_document\" \"resource_full_access\" {\n  statement {\n    sid    = \"FullAccess\"\n    effect = \"Allow\"\n\n    resources = local.resources\n\n    actions = [\n      \"s3:PutObject\",\n      \"s3:PutObjectAcl\",\n      \"s3:GetObject\",\n      \"s3:DeleteObject\",\n      \"s3:ListBucket\",\n      \"s3:ListBucketMultipartUploads\",\n      \"s3:GetBucketLocation\",\n      \"s3:AbortMultipartUpload\"\n    ]\n  }\n}\n\ndata \"aws_iam_policy_document\" \"base\" {\n  statement {\n    sid    = \"BaseAccess\"\n    effect = \"Allow\"\n\n    resources = [\n      var.bucket_arn\n    ]\n\n    actions = [\n      \"s3:ListBucket\",\n      \"s3:ListBucketVersions\"\n    ]\n  }\n}\n\nmodule \"role\" {\n  source  = \"cloudposse/iam-role/aws\"\n  version = \"0.13.0\"\n\n  enabled = module.this.enabled && var.role_enabled ? true : false\n\n  principals = {\n    \"AWS\" : var.principals_arns\n  }\n\n  policy_documents = [\n    var.read_only ? data.aws_iam_policy_document.resource_readonly_access.json : data.aws_iam_policy_document.resource_full_access.json,\n    data.aws_iam_policy_document.base.json\n  ]\n\n  max_session_duration = var.max_session_duration\n  role_description     = var.role_description\n  policy_description   = var.policy_description\n\n  context = module.this.context\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:05:01"
+  }
+}

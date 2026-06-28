@@ -1,0 +1,14 @@
+{
+  "id": "policy_046",
+  "filename": "main.tf",
+  "source_repo": "anonymint/terraform-aws-iam-role",
+  "source_path": "example\\iam_role_ec2\\main.tf",
+  "content": "module \"iam_assume_role\" {\n  source                        = \"../../\"\n  role_name                     = \"ec2-container-instance-profile\"\n  policy_arns_count             = \"2\"\n  policy_arns                   = [\"${aws_iam_policy.custom_policy.arn}\", \"arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role\"]\n  create_instance_role          = true\n  iam_role_policy_document_json = \"${data.aws_iam_policy_document.ec2_role_policy.json}\"\n}\n\n# ROLE Policy\ndata \"aws_iam_policy_document\" \"ec2_role_policy\" {\n  statement {\n    actions = [\"sts:AssumeRole\"]\n\n    principals {\n      type = \"Service\"\n\n      identifiers = [\n        \"ec2.amazonaws.com\",\n      ]\n    }\n\n    effect = \"Allow\"\n  }\n}\n\n# IAM Policy\nresource \"aws_iam_policy\" \"custom_policy\" {\n  name   = \"example_custom_ec2_policy\"\n  path   = \"/custom/\"\n  policy = \"${data.aws_iam_policy_document.custom_policy.json}\"\n}\n\n# Policy Document for creating json\ndata \"aws_iam_policy_document\" \"custom_policy\" {\n  statement {\n    sid = \"1\"\n\n    actions = [\n      \"ec2:CreateTags\",\n      \"ec2:DeleteSnapshot\",\n      \"ec2:DescribeImages\",\n      \"ec2:DescribeInstances\",\n      \"ec2:DescribeSnapshots\",\n      \"ec2:DescribeVolumes\",\n      \"ec2:TerminateInstances\",\n      \"ses:SendEmail\",\n      \"elasticloadbalancing:*\",\n    ]\n\n    effect    = \"Allow\"\n    resources = [\"*\"]\n  }\n\n  statement {\n    sid = \"2\"\n\n    actions = [\n      \"autoscaling:DeleteAutoScalingGroup\",\n      \"autoscaling:DescribeAutoScalingGroups\",\n      \"autoscaling:DescribeAutoScalingInstances\",\n      \"autoscaling:DescribeLaunchConfigurations\",\n    ]\n\n    effect    = \"Allow\"\n    resources = [\"*\"]\n  }\n\n  statement {\n    sid = \"3\"\n\n    actions = [\n      \"sdb:BatchDeleteAttributes\",\n      \"sdb:BatchPutAttributes\",\n      \"sdb:DomainMetadata\",\n      \"sdb:GetAttributes\",\n      \"sdb:PutAttributes\",\n      \"sdb:ListDomains\",\n      \"sdb:CreateDomain\",\n      \"sdb:Select\",\n    ]\n\n    effect    = \"Allow\"\n    resources = [\"*\"]\n  }\n}\n",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:04:07"
+  }
+}

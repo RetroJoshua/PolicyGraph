@@ -1,0 +1,14 @@
+{
+  "id": "policy_074",
+  "filename": "irsa.tf",
+  "source_repo": "bijubayarea/terraform-eks-s3-irsa",
+  "source_path": "src\\irsa.tf",
+  "content": "data \"aws_iam_policy_document\" \"s3_policy\" {\n  statement {\n    actions = [\n      \"s3:ListAllMyBuckets\",\n    ]\n\n    resources = [\n      \"*\",\n    ]\n  }\n  statement {\n    actions = [\n      \"s3:*\",\n    ]\n\n    resources = [\n      aws_s3_bucket.irsa_owner.arn,\n      \"${aws_s3_bucket.irsa_owner.arn}/*\"\n    ]\n  }\n}\n\nmodule \"s3_policy_role\" {\n  source                = \"../modules/eks_irsa\"\n  enable_irsa           = true\n  namespace             = \"irsa-s3-ns\"\n  serviceaccount        = \"s3-policy\"\n  create_serviceaccount = true\n  #cluster               = var.cluster_name\n  cluster               = data.aws_eks_cluster.cluster.name\n  #issuer_url            = replace(module.aws_vpc_eks.cluster_oidc_issuer_url, \"https://\", \"\")\n  issuer_arn            = data.aws_iam_openid_connect_provider.eks_oidc_provider.arn\n  issuer_url            = replace(data.aws_iam_openid_connect_provider.eks_oidc_provider.url, \"https://\", \"\")\n  iam_role              = module.s3_policy_role.irsa_role\n  aws_account_id        = var.aws_account_id[var.env]\n  policy                = data.aws_iam_policy_document.s3_policy.json\n}\n",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "Medium",
+    "notes": "Service-level wildcard but resources appear scoped",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:04:41"
+  }
+}

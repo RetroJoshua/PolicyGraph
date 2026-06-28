@@ -1,0 +1,14 @@
+{
+  "id": "policy_131",
+  "filename": "data.tf",
+  "source_repo": "clouddrove/terraform-aws-iam-role",
+  "source_path": "data.tf",
+  "content": "data \"aws_caller_identity\" \"current\" {\n  provider = aws\n}\n\ndata \"aws_iam_policy_document\" \"default_assume_role\" {\n  count = var.enabled ? 1 : 0\n  statement {\n    effect = \"Allow\"\n\n    principals {\n      type        = \"AWS\"\n      identifiers = [\"arn:aws:iam::${data.aws_caller_identity.current.account_id}:root\"]\n    }\n\n    actions = [\"sts:AssumeRole\"]\n  }\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:06:19"
+  }
+}

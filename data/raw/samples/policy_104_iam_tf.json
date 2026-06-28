@@ -1,0 +1,14 @@
+{
+  "id": "policy_104",
+  "filename": "iam.tf",
+  "source_repo": "aledivu/terraforming-opsman-securely",
+  "source_path": "modules\\ops_manager\\iam.tf",
+  "content": "data \"template_file\" \"ops_manager\" {\n  template = \"${file(\"${path.module}/templates/iam_policy.json\")}\"\n\n  vars {\n    iam_instance_profile_arn = \"${aws_iam_instance_profile.ops_manager.arn}\"\n    ops_manager_bucket_arn   = \"${aws_s3_bucket.ops_manager_bucket.arn}\"\n    iam_ops_manager_role_arn = \"${aws_iam_role.ops_manager.arn}\"\n  }\n}\n\ndata \"aws_iam_policy_document\" \"ops_manager\" {\n  source_json = \"${data.template_file.ops_manager.rendered}\"\n\n  statement {\n    sid     = \"AllowToCreateInstanceWithCurrentInstanceProfile\"\n    effect  = \"Allow\"\n    actions = [\"iam:PassRole\"]\n\n    resources = [\n      \"${compact(concat(list(aws_iam_role.ops_manager.arn), var.additional_iam_roles_arn))}\",\n    ]\n  }\n}\n\nresource \"aws_iam_policy\" \"ops_manager_role\" {\n  name   = \"${var.env_name}_ops_manager_role\"\n  policy = \"${data.aws_iam_policy_document.ops_manager.json}\"\n}\n\nresource \"aws_iam_role_policy_attachment\" \"ops_manager_policy\" {\n  role       = \"${aws_iam_role.ops_manager.name}\"\n  policy_arn = \"${aws_iam_policy.ops_manager_role.arn}\"\n}\n\nresource \"aws_iam_policy\" \"ops_manager_user\" {\n  name   = \"${var.env_name}_ops_manager_user\"\n  policy = \"${data.aws_iam_policy_document.ops_manager.json}\"\n}\n\nresource \"aws_iam_role\" \"ops_manager\" {\n  name = \"${var.env_name}_om_role\"\n\n  lifecycle {\n    create_before_destroy = true\n  }\n\n  assume_role_policy = <<EOF\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Principal\": {\n        \"Service\": [\n          \"ec2.amazonaws.com\"\n        ]\n      },\n      \"Action\": [\n        \"sts:AssumeRole\"\n      ]\n    }\n  ]\n}\nEOF\n}\n\nresource \"aws_iam_instance_profile\" \"ops_manager\" {\n  name = \"${var.env_name}_ops_manager\"\n  role = \"${aws_iam_role.ops_manager.name}\"\n\n  lifecycle {\n    ignore_changes = [\"name\"]\n  }\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:05:30"
+  }
+}

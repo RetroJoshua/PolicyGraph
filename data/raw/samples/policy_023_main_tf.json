@@ -1,0 +1,14 @@
+{
+  "id": "policy_023",
+  "filename": "main.tf",
+  "source_repo": "tinfoilcipher/terraform-aws-eks-service-account-with-oidc-iam-role",
+  "source_path": "main.tf",
+  "content": "resource \"aws_iam_role\" \"this\" {\n    name                = var.iam_role_name != \"\" ? var.iam_role_name : \"${var.service_account_name}-role\"\n    assume_role_policy  = data.aws_iam_policy_document.this.json\n}\n\nresource \"aws_iam_role_policy_attachment\" \"this\" {\n    count       = length(var.iam_policy_arns)\n    role        = aws_iam_role.this.name\n    policy_arn  = var.iam_policy_arns[count.index]\n}\n\nresource \"kubernetes_service_account\" \"this\" {\n    count = var.provision_k8s_sa ? 1 : 0\n    metadata {\n        name        = var.service_account_name\n        namespace   = var.kubernetes_namespace\n        annotations = {\n            \"eks.amazonaws.com/role-arn\" = aws_iam_role.this.arn\n        }\n    }\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:03:25"
+  }
+}

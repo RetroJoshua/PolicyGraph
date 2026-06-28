@@ -1,0 +1,14 @@
+{
+  "id": "policy_034",
+  "filename": "output.tf",
+  "source_repo": "cloudposse/terraform-aws-ssm-iam-role",
+  "source_path": "output.tf",
+  "content": "output \"role_name\" {\n  value       = join(\"\", aws_iam_role.default.*.name)\n  description = \"The name of the crated role\"\n}\n\noutput \"role_id\" {\n  value       = join(\"\", aws_iam_role.default.*.unique_id)\n  description = \"The stable and unique string identifying the role\"\n}\n\noutput \"role_arn\" {\n  value       = join(\"\", aws_iam_role.default.*.arn)\n  description = \"The Amazon Resource Name (ARN) specifying the role\"\n}\n\noutput \"role_policy_document\" {\n  value       = data.aws_iam_policy_document.default.json\n  description = \"A copy of the IAM policy document (JSON) that grants permissions to this role.\"\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:03:43"
+  }
+}

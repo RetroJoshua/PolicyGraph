@@ -1,0 +1,14 @@
+{
+  "id": "policy_194",
+  "filename": "ec2_write_mfa-required.json",
+  "source_repo": "original_samples",
+  "source_path": "ec2_write_mfa-required.json",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": [\n        {\n            \"Sid\": \"AllowAllActionsForEC2\",\n            \"Effect\": \"Allow\",\n            \"Action\": \"ec2:*\",\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"DenyStopAndTerminateWhenMFAIsNotPresent\",\n            \"Effect\": \"Deny\",\n            \"Action\": [\n                \"ec2:StopInstances\",\n                \"ec2:TerminateInstances\"\n            ],\n            \"Resource\": \"*\",\n            \"Condition\": {\n                \"BoolIfExists\": {\"aws:MultiFactorAuthPresent\": false}\n            }\n        }\n    ]\n}\n",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "Medium",
+    "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

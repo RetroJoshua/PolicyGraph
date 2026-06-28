@@ -1,0 +1,14 @@
+{
+  "id": "policy_185",
+  "filename": "cloudformation_stack_specific.json",
+  "source_repo": "original_samples",
+  "source_path": "cloudformation_stack_specific.json",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"cloudformation:DescribeStacks\",\n        \"cloudformation:DescribeStackEvents\",\n        \"cloudformation:GetTemplate\",\n        \"cloudformation:UpdateStack\"\n      ],\n      \"Resource\": \"arn:aws:cloudformation:us-east-1:123456789012:stack/MyStack/*\"\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

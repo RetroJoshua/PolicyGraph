@@ -1,0 +1,14 @@
+{
+  "id": "policy_167",
+  "filename": "aws_code_deploy_role_for_ecs.json",
+  "source_repo": "original_samples",
+  "source_path": "aws_code_deploy_role_for_ecs.json",
+  "content": "{\n  \"Version\" : \"2012-10-17\",\n  \"Statement\" : [\n    {\n      \"Action\" : [\n        \"ecs:DescribeServices\",\n        \"ecs:CreateTaskSet\",\n        \"ecs:UpdateServicePrimaryTaskSet\",\n        \"ecs:DeleteTaskSet\",\n        \"elasticloadbalancing:DescribeTargetGroups\",\n        \"elasticloadbalancing:DescribeListeners\",\n        \"elasticloadbalancing:ModifyListener\",\n        \"elasticloadbalancing:DescribeRules\",\n        \"elasticloadbalancing:ModifyRule\",\n        \"lambda:InvokeFunction\",\n        \"cloudwatch:DescribeAlarms\",\n        \"sns:Publish\",\n        \"s3:GetObject\",\n        \"s3:GetObjectVersion\"\n      ],\n      \"Resource\" : \"*\",\n      \"Effect\" : \"Allow\"\n    },\n    {\n      \"Action\" : [\n        \"iam:PassRole\"\n      ],\n      \"Effect\" : \"Allow\",\n      \"Resource\" : \"*\",\n      \"Condition\" : {\n        \"StringLike\" : {\n          \"iam:PassedToService\" : [\n            \"ecs-tasks.amazonaws.com\"\n          ]\n        }\n      }\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

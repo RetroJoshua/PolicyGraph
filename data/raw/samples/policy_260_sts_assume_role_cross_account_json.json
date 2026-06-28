@@ -1,0 +1,14 @@
+{
+  "id": "policy_260",
+  "filename": "sts_assume_role_cross_account.json",
+  "source_repo": "original_samples",
+  "source_path": "sts_assume_role_cross_account.json",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRole\",\n      \"Resource\": \"arn:aws:iam::987654321098:role/CrossAccountRole\"\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: medium, Risk: 7",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "policy_223",
+  "filename": "iam_read_policy-simulator-api.json",
+  "source_repo": "original_samples",
+  "source_path": "iam_read_policy-simulator-api.json",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": [\n        {\n            \"Action\": [\n                \"iam:GetContextKeysForCustomPolicy\",\n                \"iam:GetContextKeysForPrincipalPolicy\",\n                \"iam:SimulateCustomPolicy\",\n                \"iam:SimulatePrincipalPolicy\"\n            ],\n            \"Effect\": \"Allow\",\n            \"Resource\": \"*\"\n        }\n    ]\n}\n",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

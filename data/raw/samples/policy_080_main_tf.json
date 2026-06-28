@@ -1,0 +1,14 @@
+{
+  "id": "policy_080",
+  "filename": "main.tf",
+  "source_repo": "helecloud/terraform-aws-bitbucket-oidc",
+  "source_path": "main.tf",
+  "content": "resource \"aws_iam_openid_connect_provider\" \"bitbucket\" {\n  client_id_list  = [\"ari:cloud:bitbucket::workspace/${var.workspace_uuid}\"]\n  thumbprint_list = [\"a031c46782e6e6c662c2c87c76da9aa62ccabd8e\"]\n  url             = \"https://api.bitbucket.org/2.0/workspaces/${var.workspace_name}/pipelines-config/identity/oidc\"\n  tags            = var.tags\n}\n\ndata \"aws_iam_policy_document\" \"bitbucket_assume_role_policy\" {\n  for_each = var.roles\n  statement {\n    principals {\n      identifiers = [aws_iam_openid_connect_provider.bitbucket.arn]\n      type        = \"Federated\"\n    }\n    actions = [\"sts:AssumeRoleWithWebIdentity\"]\n    condition {\n      test     = \"StringLike\"\n      variable = \"api.bitbucket.org/2.0/workspaces/${var.workspace_name}/pipelines-config/identity/oidc:sub\"\n      values   = each.value.allowed_subjects\n    }\n  }\n}\n\nresource \"aws_iam_role\" \"this\" {\n  for_each           = var.roles\n  name               = each.value.name\n  assume_role_policy = data.aws_iam_policy_document.bitbucket_assume_role_policy[each.key].json\n  dynamic \"inline_policy\" {\n    for_each = each.value.inline_policies_json\n    content {\n      name   = inline_policy.key\n      policy = inline_policy.value\n    }\n  }\n\n  tags = var.tags\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:04:51"
+  }
+}

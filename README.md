@@ -160,7 +160,7 @@ Programmatic access to PolicyGraph for custom analysis workflows:
 from policygraph import PolicyGraph
 from policygraph.data import load_policies
 
-# Load the 108 curated IAM policy dataset
+# Load the 269 curated IAM policy dataset
 policies = load_policies('data/raw/samples/')
 
 # Initialize PolicyGraph
@@ -288,9 +288,9 @@ A Graph Attention Network (GAT) processes the graph to learn node embeddings tha
 │   Policies  │ ──▶ │   Builder   │ ──▶ │   Encoder   │ ──▶ │  Detector   │
 └─────────────┘     └─────────────┘     └─────────────┘     └─────────────┘
       │                   │                   │                   │
-      ▼                   ▼                   ▼                   ▼
-  JSON Policy        Heterogeneous        Node/Edge           Risk Report
-  Files (108)        Graph (DGL)          Embeddings          + Remediation
+       ▼                   ▼                   ▼                   ▼
+   JSON Policy        Heterogeneous        Node/Edge           Risk Report
+   Files (269)        Graph (DGL)          Embeddings          + Remediation
 ```
 
 ### Phase 3: Vulnerability Detection
@@ -304,14 +304,14 @@ The learned embeddings are used for:
 
 ## Dataset
 
-### The 108 Curated IAM Policy Dataset
+### The 269 Curated IAM Policy Dataset
 
-PolicyGraph includes a carefully curated dataset of **108 AWS IAM policies** with expert-verified ground-truth labels. This dataset serves as both a training resource and a benchmark for privilege escalation detection.
+PolicyGraph includes a carefully curated dataset of **269 AWS IAM policies** with expert-verified ground-truth labels. This dataset serves as both a training resource and a benchmark for privilege escalation detection.
 
 **Dataset Composition:**
-- **Total Policies**: 108
-- **Vulnerable Policies**: 41 (38%)
-- **Secure Policies**: 67 (62%)
+- **Total Policies**: 269
+- **Vulnerable Policies**: 110 (41%)
+- **Secure Policies**: 159 (59%)
 
 **Severity Distribution:**
 | Severity | Count | Percentage |
@@ -346,7 +346,7 @@ PolicyGraph includes a carefully curated dataset of **108 AWS IAM policies** wit
 | Secure Baseline | 67 | Well-configured policies following best practices |
 
 **Dataset Location:**
-All 108 policy files are located in `data/raw/samples/` with standardized JSON format. Detailed labels, vulnerability information, and remediation guidance are provided in:
+All 269 policy files are located in `data/raw/samples/` with standardized JSON format. Detailed labels, vulnerability information, and remediation guidance are provided in:
 - `data/raw/samples/LABELS.json` — Comprehensive label metadata
 - `data/raw/policies_labeled.csv` — Tabular overview with attack paths and remediations
 
@@ -366,7 +366,7 @@ Each includes the full account structure, graph representation, and detailed ana
 
 ## Benchmark Results
 
-PolicyGraph was evaluated against leading IAM security tools on the 108-policy dataset:
+PolicyGraph was evaluated against leading IAM security tools on the 269-policy dataset:
 
 | Tool | Precision | Recall | F1 Score | Priv Esc Detection | Avg. Scan Time |
 |------|-----------|--------|----------|-------------------|----------------|
@@ -400,7 +400,7 @@ PolicyGraph was evaluated against leading IAM security tools on the 108-policy d
 
 ### Current Limitations
 
-**Dataset Size**: The current dataset contains 108 curated policies. While carefully selected for quality and diversity, this is limited compared to production environments with thousands of policies.
+**Dataset Size**: The current dataset contains 269 curated policies. While carefully selected for quality and diversity, this can be expanded with more policies from the community.
 
 **Cloud Coverage**: Currently focuses on AWS IAM. GCP and Azure IAM analysis planned for future releases.
 

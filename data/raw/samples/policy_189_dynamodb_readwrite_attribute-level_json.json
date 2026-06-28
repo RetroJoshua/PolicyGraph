@@ -1,0 +1,14 @@
+{
+  "id": "policy_189",
+  "filename": "dynamodb_readwrite_attribute-level.json",
+  "source_repo": "original_samples",
+  "source_path": "dynamodb_readwrite_attribute-level.json",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"dynamodb:GetItem\",\n                \"dynamodb:BatchGetItem\",\n                \"dynamodb:Query\",\n                \"dynamodb:PutItem\",\n                \"dynamodb:UpdateItem\",\n                \"dynamodb:DeleteItem\",\n                \"dynamodb:BatchWriteItem\"\n            ],\n            \"Resource\": [\"arn:aws:dynamodb:*:*:table/table-name\"],\n            \"Condition\": {\n                \"ForAllValues:StringEquals\": {\n                    \"dynamodb:Attributes\": [\n                        \"column-name-1\",\n                        \"column-name-2\",\n                        \"column-name-3\"\n                    ]\n                },\n                \"StringEqualsIfExists\": {\"dynamodb:Select\": \"SPECIFIC_ATTRIBUTES\"}\n            }\n        }\n    ]\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

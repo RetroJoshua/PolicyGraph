@@ -1,0 +1,14 @@
+{
+  "id": "policy_195",
+  "filename": "ec2_write_security-group-management.json",
+  "source_repo": "original_samples",
+  "source_path": "ec2_write_security-group-management.json",
+  "content": "{\n   \"Version\":\"2012-10-17\",\t\t \t \t \n   \"Statement\": [{\n      \"Effect\": \"Allow\",\n      \"Action\": [\n         \"ec2:DescribeSecurityGroups\",\n         \"ec2:DescribeSecurityGroupRules\",\n         \"ec2:DescribeTags\"\n      ],\n      \"Resource\": \"*\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n         \"ec2:AuthorizeSecurityGroupIngress\", \n         \"ec2:RevokeSecurityGroupIngress\", \n         \"ec2:AuthorizeSecurityGroupEgress\", \n         \"ec2:RevokeSecurityGroupEgress\", \n         \"ec2:ModifySecurityGroupRules\",\n         \"ec2:UpdateSecurityGroupRuleDescriptionsIngress\", \n         \"ec2:UpdateSecurityGroupRuleDescriptionsEgress\"\n      ],\n      \"Resource\": [\n         \"arn:aws:ec2:us-east-1:111122223333:security-group/*\"\n      ],\n      \"Condition\": {\n         \"StringEquals\": {\n            \"aws:ResourceTag/Department\": \"Test\"\n         }\n      }\n     },     \n     {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n         \"ec2:ModifySecurityGroupRules\"\n      ],\n      \"Resource\": [\n         \"arn:aws:ec2:us-east-1:111122223333:security-group-rule/*\"\n      ]\n     }\n   ]\n}\n",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

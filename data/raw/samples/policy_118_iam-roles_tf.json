@@ -1,0 +1,14 @@
+{
+  "id": "policy_118",
+  "filename": "iam-roles.tf",
+  "source_repo": "annegl/101_terraform",
+  "source_path": "infrastructure\\iam-roles.tf",
+  "content": "# Create roles\n\n# Glue crawler\nresource \"aws_iam_role\" \"glue_crawler_role\" {\n  name = \"GlueCrawlerRole\"\n\n  assume_role_policy = <<EOF\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": \"sts:AssumeRole\",\n      \"Effect\": \"Allow\",\n      \"Principal\": {\n        \"Service\": \"glue.amazonaws.com\"\n      }\n    }\n  ]\n}\nEOF\n}\n\n# Athena\nresource \"aws_iam_role\" \"athena_role\" {\n  name = \"AthenaRole\"\n\n  assume_role_policy = <<EOF\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"athena.amazonaws.com\"\n      },\n      \"Effect\": \"Allow\",\n      \"Sid\": \"\"\n    }\n  ]\n}\nEOF\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:05:56"
+  }
+}

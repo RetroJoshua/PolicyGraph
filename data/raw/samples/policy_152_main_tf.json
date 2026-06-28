@@ -1,0 +1,14 @@
+{
+  "id": "policy_152",
+  "filename": "main.tf",
+  "source_repo": "cloudposse/terraform-aws-helm-release",
+  "source_path": "examples\\complete\\main.tf",
+  "content": "data \"aws_eks_cluster_auth\" \"kubernetes\" {\n  name = module.eks_cluster.eks_cluster_id\n}\n\nprovider \"helm\" {\n  kubernetes {\n    host                   = module.eks_cluster.eks_cluster_endpoint\n    token                  = data.aws_eks_cluster_auth.kubernetes.token\n    cluster_ca_certificate = base64decode(module.eks_cluster.eks_cluster_certificate_authority_data)\n  }\n}\n\nprovider \"kubernetes\" {\n  host                   = module.eks_cluster.eks_cluster_endpoint\n  token                  = data.aws_eks_cluster_auth.kubernetes.token\n  cluster_ca_certificate = base64decode(module.eks_cluster.eks_cluster_certificate_authority_data)\n}\n\n\nmodule \"helm_release\" {\n  source = \"../../\"\n\n  # source  = \"cloudposse/helm-release/aws\"\n  # Cloud Posse recommends pinning every module to a specific version\n  # version = \"x.x.x\"\n\n  repository    = var.repository\n  chart         = var.chart\n  chart_version = var.chart_version\n\n  create_namespace_with_kubernetes = var.create_namespace\n  kubernetes_namespace             = var.kubernetes_namespace\n  service_account_namespace        = var.kubernetes_namespace\n  service_account_name             = \"aws-node-termination-handler\"\n  iam_role_enabled                 = true\n  iam_source_policy_documents      = [one(data.aws_iam_policy_document.node_termination_handler[*].json)]\n\n  eks_cluster_oidc_issuer_url = module.eks_cluster.eks_cluster_identity_oidc_issuer\n\n  atomic          = var.atomic\n  cleanup_on_fail = var.cleanup_on_fail\n  timeout         = var.timeout\n  wait            = var.wait\n\n  values = [\n    file(\"${path.module}/values.yaml\")\n  ]\n\n  context = module.this.context\n\n  depends_on = [\n    module.eks_cluster,\n    module.eks_node_group,\n  ]\n}\n\ndata \"aws_iam_policy_document\" \"node_termination_handler\" {\n  #bridgecrew:skip=BC_AWS_IAM_57:Skipping `Ensure IAM policies does not allow write access without constraint` because this is a test case\n  statement {\n    sid       = \"\"\n    effect    = \"Allow\"\n    resources = [\"*\"]\n\n    actions = [\n      \"autoscaling:CompleteLifecycleAction\",\n      \"autoscaling:DescribeAutoScalingInstances\",\n      \"autoscaling:DescribeTags\",\n      \"ec2:DescribeInstances\",\n      \"sqs:DeleteMessage\",\n      \"sqs:ReceiveMessage\",\n    ]\n  }\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:06:48"
+  }
+}

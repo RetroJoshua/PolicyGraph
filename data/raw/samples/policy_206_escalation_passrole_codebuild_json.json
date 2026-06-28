@@ -1,0 +1,14 @@
+{
+  "id": "policy_206",
+  "filename": "escalation_passrole_codebuild.json",
+  "source_repo": "original_samples",
+  "source_path": "escalation_passrole_codebuild.json",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iam:PassRole\",\n      \"Resource\": \"*\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"codebuild:CreateProject\",\n        \"codebuild:StartBuild\"\n      ],\n      \"Resource\": \"*\"\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: high, Risk: 8",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

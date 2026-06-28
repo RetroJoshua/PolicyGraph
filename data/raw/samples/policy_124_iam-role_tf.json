@@ -1,0 +1,14 @@
+{
+  "id": "policy_124",
+  "filename": "iam-role.tf",
+  "source_repo": "StratusGrid/terraform-aws-iam-group-restricted-read-only",
+  "source_path": "iam-role.tf",
+  "content": "resource \"aws_iam_role\" \"this\" {\n  name               = \"${var.group_name}-role\"\n  tags               = var.input_tags\n  assume_role_policy = data.aws_iam_policy_document.cross_account_assume_role_policy_mfa.json\n}\n\nresource \"aws_iam_role_policy_attachment\" \"this\" {\n  role       = aws_iam_role.this.name\n  policy_arn = aws_iam_policy.this.arn\n}\n\ndata \"aws_iam_policy_document\" \"cross_account_assume_role_policy_mfa\" {\n  statement {\n    effect = \"Allow\"\n\n    principals {\n      type = \"AWS\"\n      identifiers = [\n        \"arn:aws:iam::${data.aws_caller_identity.current.account_id}:root\"\n      ]\n    }\n\n    actions = [\"sts:AssumeRole\"]\n\n    condition {\n      test     = \"Bool\"\n      variable = \"aws:MultiFactorAuthPresent\"\n      values = [\n        \"true\",\n      ]\n    }\n  }\n}\n\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "Scoped actions with MFA condition; follows least-privilege",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:06:06"
+  }
+}

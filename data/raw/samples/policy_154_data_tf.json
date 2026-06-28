@@ -1,0 +1,14 @@
+{
+  "id": "policy_154",
+  "filename": "data.tf",
+  "source_repo": "Cloud-42/terraform-aws-ec2-iam-role",
+  "source_path": "data.tf",
+  "content": "# ------------------\n# Std Assume Role\n# ------------------\ndata \"aws_iam_policy_document\" \"this\" {\n  statement {\n    actions = [\"sts:AssumeRole\"]\n\n    principals {\n      type        = var.principal_type\n      identifiers = var.principal_identifiers\n    }\n  }\n}\n\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:06:56"
+  }
+}

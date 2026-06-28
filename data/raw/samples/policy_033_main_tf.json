@@ -1,0 +1,14 @@
+{
+  "id": "policy_033",
+  "filename": "main.tf",
+  "source_repo": "cloudposse/terraform-aws-ssm-iam-role",
+  "source_path": "main.tf",
+  "content": "module \"label\" {\n  source     = \"git::https://github.com/cloudposse/terraform-terraform-label.git?ref=0.1.3\"\n  attributes = var.attributes\n  delimiter  = var.delimiter\n  name       = var.name\n  namespace  = var.namespace\n  stage      = var.stage\n  tags       = var.tags\n}\n\nlocals {\n  policy_only = length(var.assume_role_arns) > 0 ? 1 : 0\n}\n\ndata \"aws_kms_key\" \"default\" {\n  key_id = var.kms_key_reference\n}\n\ndata \"aws_iam_policy_document\" \"assume_role\" {\n  count = local.policy_only\n\n  statement {\n    effect  = \"Allow\"\n    actions = [\"sts:AssumeRole\"]\n\n    principals {\n      type        = \"Service\"\n      identifiers = [\"ec2.amazonaws.com\"]\n    }\n  }\n\n  statement {\n    effect  = \"Allow\"\n    actions = [\"sts:AssumeRole\"]\n\n    principals {\n      type        = \"AWS\"\n      identifiers = [\"${var.assume_role_arns}\"]\n    }\n  }\n}\n\ndata \"aws_iam_policy_document\" \"default\" {\n  statement {\n    actions   = [\"ssm:DescribeParameters\"]\n    resources = [\"*\"]\n    effect    = \"Allow\"\n  }\n\n  statement {\n    actions   = [\"${var.ssm_actions}\"]\n    resources = [\"${formatlist(\"arn:aws:ssm:%s:%s:parameter/%s\", var.region, var.account_id, var.ssm_parameters)}\"]\n    effect    = \"Allow\"\n  }\n\n  statement {\n    actions   = [\"kms:Decrypt\"]\n    resources = [\"${data.aws_kms_key.default.arn}\"]\n    effect    = \"Allow\"\n  }\n}\n\nresource \"aws_iam_policy\" \"default\" {\n  name        = module.label.id\n  description = \"Allow SSM actions\"\n  policy      = data.aws_iam_policy_document.default.json\n}\n\nresource \"aws_iam_role\" \"default\" {\n  count = local.policy_only\n\n  name                 = module.label.id\n  assume_role_policy   = join(\"\", data.aws_iam_policy_document.assume_role.*.json)\n  description          = \"IAM Role with permissions to perform actions on SSM resources\"\n  max_session_duration = var.max_session_duration\n}\n\nresource \"aws_iam_role_policy_attachment\" \"default\" {\n  count = local.policy_only\n\n  role       = join(\"\", aws_iam_role.default.*.name)\n  policy_arn = join(\"\", aws_iam_policy.default.*.arn)\n}\n",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:03:43"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "policy_155",
+  "filename": "main.tf",
+  "source_repo": "Cloud-42/terraform-aws-ec2-iam-role",
+  "source_path": "main.tf",
+  "content": "# ------------------\n# Role, Profile and attachment\n# ------------------\nresource \"aws_iam_role\" \"this\" {\n  name                  = var.name != null ? var.name : null\n  name_prefix           = var.name_prefix != null ? substr(var.name_prefix, 0, 22) : null\n  assume_role_policy    = var.assume_role_policy == \"\" ? data.aws_iam_policy_document.this.json : var.assume_role_policy\n  force_detach_policies = var.force_detach_policies\n  path                  = var.path\n  description           = var.description\n}\n\nresource \"aws_iam_instance_profile\" \"this\" {\n  depends_on  = [aws_iam_role.this]\n  name        = var.name != null ? var.name : null\n  name_prefix = var.name_prefix != null ? substr(var.name_prefix, 0, 22) : null\n  path        = var.path\n  role        = aws_iam_role.this.name\n}\n\nresource \"aws_iam_role_policy_attachment\" \"this\" {\n  count      = length(var.policy_arn)\n  role       = aws_iam_role.this.name\n  policy_arn = var.policy_arn[count.index]\n}\n\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:06:56"
+  }
+}

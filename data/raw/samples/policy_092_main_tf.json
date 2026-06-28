@@ -1,0 +1,14 @@
+{
+  "id": "policy_092",
+  "filename": "main.tf",
+  "source_repo": "LozanoMatheus/eks-oidc",
+  "source_path": "main.tf",
+  "content": "####################\n## OpenID Connect ##\n####################\ndata \"tls_certificate\" \"main\" {\n  url = data.terraform_remote_state.eks_cluster.outputs.eks_oidc\n}\n\nresource \"aws_iam_openid_connect_provider\" \"main\" {\n  url = data.terraform_remote_state.eks_cluster.outputs.eks_oidc\n\n  client_id_list = [\n    \"sts.amazonaws.com\",\n  ]\n\n  thumbprint_list = [\n    data.tls_certificate.main.certificates.0.sha1_fingerprint\n  ]\n}\n\n################\n## IAM Policy ##\n################\nresource \"aws_iam_policy\" \"main\" {\n  name        = var.policy_name\n  path        = \"/\"\n  description = \"Allow AWS EKS PODs to get a specify S3 Object\"\n\n  policy = file(\"${path.module}/policies/s3_policy.json\")\n}\n\nresource \"aws_iam_role\" \"main\" {\n  name                  = var.role_name\n  path                  = \"/\"\n  assume_role_policy    = data.template_file.role_trust_relationship.rendered\n  force_detach_policies = false\n}\n\nresource \"aws_iam_role_policy_attachment\" \"main\" {\n  role       = aws_iam_role.main.name\n  policy_arn = aws_iam_policy.main.arn\n}\n\n############\n## K8s SA ##\n############\nresource \"kubernetes_service_account\" \"main\" {\n  metadata {\n    name      = var.role_name\n    namespace = \"matheus\"\n    annotations = {\n      \"eks.amazonaws.com/role-arn\" = aws_iam_role.main.arn\n    }\n  }\n  automount_service_account_token = true\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:05:05"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "policy_121",
+  "filename": "main.tf",
+  "source_repo": "cloudposse/terraform-aws-iam-role",
+  "source_path": "examples\\complete\\main.tf",
+  "content": "locals {\n  enabled = module.this.enabled\n}\n\nprovider \"aws\" {\n  region = var.region\n}\n\nmodule \"kms_key\" {\n  source  = \"cloudposse/kms-key/aws\"\n  version = \"0.12.1\"\n\n  description             = \"Test KMS key\"\n  deletion_window_in_days = 7\n  enable_key_rotation     = false\n\n  context = module.this.context\n}\n\nmodule \"bucket\" {\n  # any version greater than 0.47.0 will require the root module to have required_version >= 1.0 in its versions.tf\n  source  = \"cloudposse/s3-bucket/aws\"\n  version = \"3.1.2\"\n\n  user_enabled                 = false\n  versioning_enabled           = false\n  force_destroy                = true\n  allow_encrypted_uploads_only = true\n  sse_algorithm                = \"aws:kms\"\n  kms_master_key_arn           = module.kms_key.key_arn\n\n  context = module.this.context\n}\n\ndata \"aws_iam_policy_document\" \"resource_full_access\" {\n  count = local.enabled ? 1 : 0\n\n  statement {\n    sid       = \"FullAccess\"\n    effect    = \"Allow\"\n    resources = [\"${module.bucket.bucket_arn}/*\"]\n\n    actions = [\n      \"s3:PutObject\",\n      \"s3:PutObjectAcl\",\n      \"s3:GetObject\",\n      \"s3:DeleteObject\",\n      \"s3:ListBucket\",\n      \"s3:ListBucketMultipartUploads\",\n      \"s3:GetBucketLocation\",\n      \"s3:AbortMultipartUpload\"\n    ]\n  }\n}\n\ndata \"aws_iam_policy_document\" \"base\" {\n  count = local.enabled ? 1 : 0\n\n  statement {\n    sid    = \"BaseAccess\"\n    effect = \"Allow\"\n\n    actions = [\n      \"s3:ListBucket\",\n      \"s3:ListBucketVersions\"\n    ]\n\n    resources = [\n      module.bucket.bucket_arn\n    ]\n  }\n}\n\nresource \"aws_iam_policy\" \"base_as_managed\" {\n  count  = local.enabled ? 1 : 0\n  name   = module.this.id\n  policy = one(data.aws_iam_policy_document.base[*].json)\n}\n\nmodule \"role\" {\n  source = \"../..\"\n\n  principals   = var.principals\n  use_fullname = var.use_fullname\n\n  policy_documents = [\n    one(data.aws_iam_policy_document.resource_full_access[*].json),\n    one(data.aws_iam_policy_document.base[*].json),\n  ]\n\n  managed_policy_arns_map = {\n    \"base\" = one(aws_iam_policy.base_as_managed[*].arn)\n  }\n\n  policy_document_count = 2\n  policy_description    = \"Test IAM policy\"\n  role_description      = \"Test IAM role\"\n  inline_policy_enabled = var.inline_policy_enabled\n\n  assume_role_policy = var.assume_role_policy\n\n  context = module.this.context\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:05:59"
+  }
+}

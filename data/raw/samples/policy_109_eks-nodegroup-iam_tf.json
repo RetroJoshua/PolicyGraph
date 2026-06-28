@@ -1,0 +1,14 @@
+{
+  "id": "policy_109",
+  "filename": "eks-nodegroup-iam.tf",
+  "source_repo": "abbashussainz/IRSA-EKS-Terraform",
+  "source_path": "Manifest Files\\eks-nodegroup-iam.tf",
+  "content": "\nresource \"aws_iam_role\" \"eks_nodegroup_role\" {\n  name = \"eks-nodegroup-role\"\n\n  assume_role_policy = jsonencode({\n    Statement = [{\n      Action = \"sts:AssumeRole\"\n      Effect = \"Allow\"\n      Principal = {\n        Service = \"ec2.amazonaws.com\"\n      }\n    }]\n    Version = \"2012-10-17\"\n  })\n}\n\nresource \"aws_iam_role_policy_attachment\" \"eks-AmazonEKSWorkerNodePolicy\" {\n  policy_arn = \"arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy\"\n  role       = aws_iam_role.eks_nodegroup_role.name\n}\n\nresource \"aws_iam_role_policy_attachment\" \"eks-AmazonEKS_CNI_Policy\" {\n  policy_arn = \"arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy\"\n  role       = aws_iam_role.eks_nodegroup_role.name\n}\n\nresource \"aws_iam_role_policy_attachment\" \"eks-AmazonEC2ContainerRegistryReadOnly\" {\n  policy_arn = \"arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly\"\n  role       = aws_iam_role.eks_nodegroup_role.name\n  }",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:05:39"
+  }
+}

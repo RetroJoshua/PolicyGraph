@@ -1,0 +1,14 @@
+{
+  "id": "policy_216",
+  "filename": "escalation_set_default_policy_version.json",
+  "source_repo": "original_samples",
+  "source_path": "escalation_set_default_policy_version.json",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"iam:CreatePolicyVersion\",\n        \"iam:SetDefaultPolicyVersion\"\n      ],\n      \"Resource\": \"arn:aws:iam::*:policy/*\"\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: critical, Risk: 10",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

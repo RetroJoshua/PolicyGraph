@@ -1,0 +1,14 @@
+{
+  "id": "policy_015",
+  "filename": "main_custom_assumeRole.tf",
+  "source_repo": "JousP/terraform-aws-iam-assumeRole",
+  "source_path": "examples\\custom-role\\main_custom_assumeRole.tf",
+  "content": "# Generates an IAM policy document\ndata \"aws_iam_policy_document\" \"role_custom_assumeRole\" {\n  statement {\n    sid     = \"CustomAssumeRole\"\n    actions = [\"sts:AssumeRole\"]\n    principals {\n      type        = \"Service\"\n      identifiers = [\"ecs.amazonaws.com\"]\n    }\n    effect = \"Allow\"\n  }\n}\n\nmodule \"role_custom_assumeRole\" {\n  source               = \"JousP/iam-assumeRole/aws\"\n  version              = \"~> 3.3\"\n  name                 = \"custom-assumeRole\"\n  description          = \"Custom role with customization the assume_role policy\"\n  assume_role_policy   = data.aws_iam_policy_document.role_custom_assumeRole.json\n  path                 = \"/custom/\"\n  max_session_duration = 7200\n}\n\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:03:18"
+  }
+}

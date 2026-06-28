@@ -1,0 +1,14 @@
+{
+  "id": "policy_017",
+  "filename": "main_custom_policies_strict.tf",
+  "source_repo": "JousP/terraform-aws-iam-assumeRole",
+  "source_path": "examples\\custom-role\\main_custom_policies_strict.tf",
+  "content": "# Generates an IAM policy document\ndata \"aws_iam_policy_document\" \"s3_bucket1_readonly\" {\n  statement {\n    actions   = [\"s3:Get*\", \"s3:List*\"]\n    effect    = \"Allow\"\n    resources = [\"arn:aws:s3:::bucket1*\"]\n  }\n}\n\ndata \"aws_iam_policy_document\" \"s3_bucket2_readonly\" {\n  statement {\n    actions   = [\"s3:Get*\", \"s3:List*\"]\n    effect    = \"Allow\"\n    resources = [\"arn:aws:s3:::bucket2*\"]\n  }\n}\n\nmodule \"role_custom_policies_strict\" {\n  source              = \"JousP/iam-assumeRole/aws\"\n  version             = \"~> 3.3\"\n  name                = \"custom-policies-trict\"\n  description         = \"Custom role with fixed and strict inline and managed policies\"\n  path                = \"/custom/\"\n  managed_policy_arns = [\"arn:aws:iam::aws:policy/ReadOnlyAccess\"]\n  inline_policy = [\n    {\n      name   = \"ReadOnlyBucket1\"\n      policy = data.aws_iam_policy_document.s3_bucket1_readonly.json\n    },\n    {\n      name   = \"ReadOnlyBucket2\"\n      policy = data.aws_iam_policy_document.s3_bucket2_readonly.json\n    }\n  ]\n}\n\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:03:18"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "policy_153",
+  "filename": "role.tf",
+  "source_repo": "spirius/terraform-aws-iam-role",
+  "source_path": "role.tf",
+  "content": "data \"aws_iam_policy_document\" \"assume_role\" {\n  source_policy_documents = try([var.assume_role_policy.json], [])\n\n  dynamic \"statement\" {\n    for_each = length(var.assume_role_services) > 0 || length(var.assume_role_arns) > 0 ? [1] : []\n\n    content {\n      sid = \"Module\"\n\n      actions = [\"sts:AssumeRole\"]\n\n      dynamic \"principals\" {\n        for_each = length(var.assume_role_services) > 0 ? [var.assume_role_services] : []\n\n        content {\n          type        = \"Service\"\n          identifiers = principals.value\n        }\n      }\n\n      dynamic \"principals\" {\n        for_each = length(var.assume_role_arns) > 0 ? [var.assume_role_arns] : []\n\n        content {\n          type        = \"AWS\"\n          identifiers = principals.value\n        }\n      }\n    }\n  }\n}\n\nresource \"aws_iam_role\" \"role\" {\n  path = var.path\n  name = var.name\n\n  assume_role_policy    = data.aws_iam_policy_document.assume_role.json\n  max_session_duration  = var.max_session_duration\n  force_detach_policies = var.force_detach_policies\n  description           = var.description\n  permissions_boundary  = var.permissions_boundary == \"\" ? null : var.permissions_boundary\n}\n\nresource \"aws_iam_role_policy\" \"access_policy\" {\n  count = var.access_policy == null ? 0 : (var.wait_for_policy ? 1 : 0)\n\n  name   = \"AccessPolicy\"\n  role   = aws_iam_role.role.name\n  policy = var.access_policy.json\n}\n\nresource \"aws_iam_role_policy\" \"access_policy_independent\" {\n  count = var.access_policy == null ? 0 : (var.wait_for_policy ? 0 : 1)\n\n  name   = \"AccessPolicy\"\n  role   = aws_iam_role.role.name\n  policy = var.access_policy.json\n}\n\nresource \"aws_iam_role_policy_attachment\" \"managed_policies\" {\n  for_each = var.wait_for_policy ? toset(var.managed_policy_arns) : toset([])\n\n  role       = aws_iam_role.role.name\n  policy_arn = each.value\n}\n\nresource \"aws_iam_role_policy_attachment\" \"managed_policies_independent\" {\n  for_each = var.wait_for_policy ? toset([]) : toset(var.managed_policy_arns)\n\n  role       = aws_iam_role.role.name\n  policy_arn = each.value\n}\n\nresource \"aws_iam_instance_profile\" \"profile\" {\n  count = var.instance_profile ? 1 : 0\n\n  name = aws_iam_role.role.name\n  role = aws_iam_role.role.name\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:06:51"
+  }
+}

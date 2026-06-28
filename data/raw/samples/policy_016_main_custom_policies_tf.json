@@ -1,0 +1,14 @@
+{
+  "id": "policy_016",
+  "filename": "main_custom_policies.tf",
+  "source_repo": "JousP/terraform-aws-iam-assumeRole",
+  "source_path": "examples\\custom-role\\main_custom_policies.tf",
+  "content": "# Generates an IAM policy document\ndata \"aws_iam_policy_document\" \"s3_all_readonly\" {\n  statement {\n    actions   = [\"s3:Get*\", \"s3:List*\"]\n    effect    = \"Allow\"\n    resources = [\"arn:aws:s3:::bucket1*\"]\n  }\n}\n\ndata \"aws_iam_policy_document\" \"s3_bucket3_readonly\" {\n  statement {\n    actions   = [\"s3:Get*\", \"s3:List*\"]\n    effect    = \"Allow\"\n    resources = [\"arn:aws:s3:::bucket3*\"]\n  }\n}\n\ndata \"aws_iam_policy_document\" \"s3_bucket4_readonly\" {\n  statement {\n    actions   = [\"s3:Get*\", \"s3:List*\"]\n    effect    = \"Allow\"\n    resources = [\"arn:aws:s3:::bucket4*\"]\n  }\n}\n\nresource \"aws_iam_policy\" \"s3_all_readonly\" {\n  name        = \"custom-policies-s3-all-readonly\"\n  path        = \"/\"\n  description = \"Policy for custom-policies role\"\n  policy      = data.aws_iam_policy_document.s3_all_readonly.json\n}\n\nmodule \"role_custom_policies\" {\n  source              = \"JousP/iam-assumeRole/aws\"\n  version             = \"~> 3.3\"\n  name                = \"custom-policies\"\n  description         = \"Custom role with fixed inline and managed policies\"\n  path                = \"/custom/\"\n  policies            = [aws_iam_policy.s3_all_readonly.arn]\n  policies_count      = 1\n  json_policies       = [data.aws_iam_policy_document.s3_bucket3_readonly.json]\n  json_policies_count = 1\n}\n\nresource \"aws_iam_role_policy\" \"role_custom_policies_bucket4\" {\n  name   = \"custom-policies-s3-bucket4-readonly\"\n  role   = module.role_custom_policies.id\n  policy = data.aws_iam_policy_document.s3_bucket4_readonly.json\n}\n\nresource \"aws_iam_role_policy_attachment\" \"role_custom_policies_ro\" {\n  role       = module.role_custom_policies.id\n  policy_arn = \"arn:aws:iam::aws:policy/ReadOnlyAccess\"\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:03:18"
+  }
+}

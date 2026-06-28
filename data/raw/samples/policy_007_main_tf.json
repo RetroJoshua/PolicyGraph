@@ -1,0 +1,14 @@
+{
+  "id": "policy_007",
+  "filename": "main.tf",
+  "source_repo": "BotTech/terraform-aws-role",
+  "source_path": "examples\\billing\\main.tf",
+  "content": "module \"billing_role\" {\n  source  = \"BotTech/role/aws\"\n  version = \"1.0.0\"\n\n  account_ids = [\n    data.aws_caller_identity.current.account_id\n  ]\n  description = \"Provides access to billing information.\"\n  groups      = [\n    var.group\n  ]\n  name        = \"Billing\"\n  policies    = {\n    billing       = \"arn:aws:iam::aws:policy/job-function/Billing\"\n    notifications = aws_iam_policy.subscribe_to_billing_notifications.arn\n  }\n}\n\ndata \"aws_caller_identity\" \"current\" {}\n\nresource \"aws_iam_policy\" \"subscribe_to_billing_notifications\" {\n  name        = \"SubscribeToBillingNotifications\"\n  description = \"Allow a user to manage their subscription to billing notifications.\"\n  policy      = data.aws_iam_policy_document.subscribe_to_billing_notifications.json\n}\n\ndata \"aws_iam_policy_document\" \"subscribe_to_billing_notifications\" {\n  statement {\n    actions   = [\n      \"sns:ConfirmSubscription\",\n      \"sns:GetTopicAttributes\",\n      \"sns:Subscribe\"\n    ]\n    resources = [\n      var.notifications_topic_arn\n    ]\n  }\n  statement {\n    actions   = [\n      \"sns:ListTopics\"\n    ]\n    resources = [\n      \"*\"\n    ]\n  }\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "Actions restricted to specific ARNs without wildcard resources",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:03:10"
+  }
+}

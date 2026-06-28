@@ -1,0 +1,14 @@
+{
+  "id": "policy_190",
+  "filename": "dynamodb_readwrite_cognito-items.json",
+  "source_repo": "original_samples",
+  "source_path": "dynamodb_readwrite_cognito-items.json",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"dynamodb:DeleteItem\",\n                \"dynamodb:GetItem\",\n                \"dynamodb:PutItem\",\n                \"dynamodb:Query\",\n                \"dynamodb:UpdateItem\"\n            ],\n            \"Resource\": [\"arn:aws:dynamodb:*:*:table/MyTable\"],\n            \"Condition\": {\n                \"ForAllValues:StringEquals\": {\n                    \"dynamodb:LeadingKeys\": [\"${cognito-identity.amazonaws.com:sub}\"]\n                }\n            }\n        }\n    ]\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

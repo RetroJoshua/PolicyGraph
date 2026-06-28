@@ -1,0 +1,14 @@
+{
+  "id": "policy_002",
+  "filename": "main.tf",
+  "source_repo": "bryan-rhm/terraform-aws-iam-role",
+  "source_path": "main.tf",
+  "content": "data \"aws_iam_policy_document\" \"aws_trust_policy\" {\n  statement {\n    sid = var.statement_id\n    actions = [\"sts:AssumeRole\"]\n\n    principals {\n      type        = var.trusted_identifier.type\n      identifiers = var.trusted_identifier.identifiers\n    }\n\n    dynamic \"condition\" {\n      for_each = var.conditions\n      content {\n        test     = lookup(condition.value.condition, \"test\", null)\n        variable = lookup(condition.value.condition, \"variable\", null)\n        values   = lookup(condition.value.condition, \"values\", null)\n      }\n    }\n  }\n}\n\nresource \"aws_iam_role\" \"role\" {\n  description           = var.description\n  name                  = var.name\n  assume_role_policy    = data.aws_iam_policy_document.aws_trust_policy.json\n  managed_policy_arns   = var.managed_policy_arns\n  force_detach_policies = true\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:03:01"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "policy_113",
+  "filename": "iam.tf",
+  "source_repo": "sourcefuse/terraform-aws-arc-ecs",
+  "source_path": "modules\\ecs-service\\iam.tf",
+  "content": "# The ECS Task role permissions\nresource \"aws_iam_role\" \"task_role\" {\n  name               = \"${local.service_name_full}-task-role\"\n  assume_role_policy = data.aws_iam_policy_document.document.json\n}\n\n# The ECS Task Execution role IAM permissions\nresource \"aws_iam_role\" \"execution_role\" {\n  name               = \"${local.service_name_full}-execution-role\"\n  assume_role_policy = data.aws_iam_policy_document.document.json\n}\n\nresource \"aws_iam_role_policy\" \"execution_role\" {\n  name = \"${local.service_name_full}-execution-role\"\n  role = aws_iam_role.execution_role.id\n\n  policy = file(local.task.task_execution_role)\n}\n\n# Policy document (used by both)\ndata \"aws_iam_policy_document\" \"document\" {\n  statement {\n    actions = [\"sts:AssumeRole\"]\n\n    principals {\n      identifiers = [\"ecs-tasks.amazonaws.com\"]\n      type        = \"Service\"\n    }\n  }\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:05:47"
+  }
+}

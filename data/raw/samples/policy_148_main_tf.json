@@ -1,0 +1,14 @@
+{
+  "id": "policy_148",
+  "filename": "main.tf",
+  "source_repo": "yrahul05/terraform-aws-iam-role",
+  "source_path": "main.tf",
+  "content": "##-----------------------------------------------------------------------------\n## Labels module callled that will be used for naming and tags.\n##-----------------------------------------------------------------------------\nmodule \"lables\" {\n  source      = \"git::https://github.com/yrahul05/terraform-multicloud-labels.git?ref=v1.0.0\"\n  enabled     = var.enabled\n  name        = var.name\n  repository  = var.repository\n  environment = var.environment\n  managedby   = var.managedby\n  label_order = var.label_order\n\n}\n\n##-----------------------------------------------------------------------------\n## Below resource will deploy IAM role in AWS environment.\n##----------------------------------------------------------------------------\nresource \"aws_iam_role\" \"default\" {\n  count                 = var.enabled ? 1 : 0\n  name                  = module.lables.id\n  assume_role_policy    = var.assume_role_policy\n  managed_policy_arns   = var.managed_policy_arns\n  force_detach_policies = var.force_detach_policies\n  path                  = var.path\n  description           = var.description\n  max_session_duration  = var.max_session_duration\n  permissions_boundary  = var.permissions_boundary\n  tags                  = module.lables.tags\n}\n\n#-----------------------------------------------------------------------------\n# Below resource will deploy IAM policy and attach it to above created IAM role.\n#-----------------------------------------------------------------------------\nresource \"aws_iam_role_policy\" \"default\" {\n  count  = var.enabled && var.policy_enabled && var.policy_arn == \"\" ? 1 : 0\n  name   = format(\"%s-policy\", module.lables.id)\n  role   = join(\"\", aws_iam_role.default[*].id)\n  policy = var.policy\n}\n\n##-----------------------------------------------------------------------------\n## Below resource will attach IAM policy to above created IAM role.\n##-----------------------------------------------------------------------------\nresource \"aws_iam_role_policy_attachment\" \"default\" {\n  count      = var.enabled && var.policy_enabled && var.policy_arn != \"\" ? 1 : 0\n  role       = join(\"\", aws_iam_role.default[*].id)\n  policy_arn = var.policy_arn\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:06:46"
+  }
+}

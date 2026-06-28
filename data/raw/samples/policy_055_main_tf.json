@@ -1,0 +1,14 @@
+{
+  "id": "policy_055",
+  "filename": "main.tf",
+  "source_repo": "omerbsezer/Fast-Terraform",
+  "source_path": "labs\\template\\main.tf",
+  "content": "terraform {\n  required_providers {\n    aws = {\n      source  = \"hashicorp/aws\"\n      version = \"~> 4.16\"\n    }\n  }\n\n  required_version = \">= 1.2.0\"\n}\n\nprovider \"aws\" {\n\tregion = \"eu-central-1\"\n}\n\nresource \"aws_iam_user\" \"newuser\" {\n  name = \"New-User\"     # must only contain alphanumeric characters, hyphens, underscores, commas, periods, @ symbols, plus and equals signs\n}\nresource \"aws_iam_access_key\" \"access_key\" {\n  user = aws_iam_user.newuser.name\n}\n\nresource \"aws_iam_user_policy\" \"instanceManageUser_assume_role\" {\n  name = \"EC2-S3-Lambda-DynamoDb-Policy\"\n  user = \"${aws_iam_user.newuser.name}\"\n  policy = templatefile(\"${path.module}/policy.tftpl\", {\n    ec2_policies = [\n      \"ec2:RunInstances\",\n      \"ec2:StopInstances\",\n      \"ec2:StartInstances\",\n      \"ec2:TerminateInstances\",\n      \"ec2:TerminateInstances\",\n      \"ec2:Describe*\",\n      \"ec2:CreateTags\",\n      \"ec2:RequestSpotInstances\"\n    ],\n    s3_policies = [\n      \"s3:Get*\",\n      \"s3:List*\",\n      \"s3:Describe*\",\n      \"s3-object-lambda:Get*\",\n      \"s3-object-lambda:List*\"\n    ],\n    lambda_policies = [\n      \"lambda:Create*\",\n      \"lambda:List*\",\n      \"lambda:Delete*\",\n      \"lambda:Get*\"\n    ],\n    dynamodb_policies = [\n      \"dynamodb:Describe*\",\n      \"dynamodb:Update*\",\n      \"dynamodb:Get*\",\n      \"dynamodb:List*\",\n      \"dynamodb:BatchGetItem\",\n      \"dynamodb:Query\",\n      \"dynamodb:Scan\",\n      \"dynamodb:PartiQLSelect\"\n    ],\n  })\n}\n\noutput \"secret_key\" {\n  value = aws_iam_access_key.access_key.secret\n  sensitive = true\n}\n\noutput \"access_key\" {\n  value = aws_iam_access_key.access_key.id\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:04:18"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "policy_265",
+  "filename": "sts_get_caller_identity.json",
+  "source_repo": "original_samples",
+  "source_path": "sts_get_caller_identity.json",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:GetCallerIdentity\",\n      \"Resource\": \"*\"\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

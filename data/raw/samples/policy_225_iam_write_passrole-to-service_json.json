@@ -1,0 +1,14 @@
+{
+  "id": "policy_225",
+  "filename": "iam_write_passrole-to-service.json",
+  "source_repo": "original_samples",
+  "source_path": "iam_write_passrole-to-service.json",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": \"iam:PassRole\",\n            \"Resource\": \"*\",\n            \"Condition\": {\n                \"StringEquals\": {\"iam:PassedToService\": \"cloudwatch.amazonaws.com\"}\n            }\n        }\n    ]\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: medium, Risk: 6",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "policy_192",
+  "filename": "ec2_admin_region-full-access.json",
+  "source_repo": "original_samples",
+  "source_path": "ec2_admin_region-full-access.json",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": [\n        {\n            \"Action\": \"ec2:*\",\n            \"Resource\": \"*\",\n            \"Effect\": \"Allow\",\n            \"Condition\": {\n                \"StringEquals\": {\n                    \"ec2:Region\": \"us-east-2\"\n                }\n            }\n        }\n    ]\n}\n",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "Medium",
+    "notes": "Service-level wildcard (e.g. iam:*) with resources=[\"*\"]; condition present but scope still too broad",
+    "checkov_findings": "Severity: medium, Risk: 7",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

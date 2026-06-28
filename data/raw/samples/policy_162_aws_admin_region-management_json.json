@@ -1,0 +1,14 @@
+{
+  "id": "policy_162",
+  "filename": "aws_admin_region-management.json",
+  "source_repo": "original_samples",
+  "source_path": "aws_admin_region-management.json",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": {\n        \"Effect\": \"Deny\",\n        \"Action\": \"*\",\n        \"Resource\": \"*\",\n        \"Condition\": {\n            \"NotIpAddress\": {\n                \"aws:SourceIp\": [\n                    \"192.0.2.0/24\",\n                    \"203.0.113.0/24\"\n                ]\n            }\n        }\n    }\n}\n",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

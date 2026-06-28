@@ -1,0 +1,14 @@
+{
+  "id": "policy_246",
+  "filename": "secure_deny_unencrypted.json",
+  "source_repo": "original_samples",
+  "source_path": "secure_deny_unencrypted.json",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Deny\",\n      \"Action\": \"s3:PutObject\",\n      \"Resource\": \"arn:aws:s3:::encrypted-bucket/*\",\n      \"Condition\": {\n        \"StringNotEquals\": {\n          \"s3:x-amz-server-side-encryption\": \"AES256\"\n        }\n      }\n    },\n    {\n      \"Effect\": \"Deny\",\n      \"Action\": \"s3:PutObject\",\n      \"Resource\": \"arn:aws:s3:::encrypted-bucket/*\",\n      \"Condition\": {\n        \"Null\": {\n          \"s3:x-amz-server-side-encryption\": \"true\"\n        }\n      }\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

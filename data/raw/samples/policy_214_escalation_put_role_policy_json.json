@@ -1,0 +1,14 @@
+{
+  "id": "policy_214",
+  "filename": "escalation_put_role_policy.json",
+  "source_repo": "original_samples",
+  "source_path": "escalation_put_role_policy.json",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iam:PutRolePolicy\",\n      \"Resource\": \"arn:aws:iam::*:role/*\"\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: critical, Risk: 10",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

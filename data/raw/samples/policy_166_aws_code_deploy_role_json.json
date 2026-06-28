@@ -1,0 +1,14 @@
+{
+  "id": "policy_166",
+  "filename": "aws_code_deploy_role.json",
+  "source_repo": "original_samples",
+  "source_path": "aws_code_deploy_role.json",
+  "content": "{\n  \"Version\" : \"2012-10-17\",\n  \"Statement\" : [\n    {\n      \"Effect\" : \"Allow\",\n      \"Action\" : [\n        \"autoscaling:CompleteLifecycleAction\",\n        \"autoscaling:DeleteLifecycleHook\",\n        \"autoscaling:DescribeAutoScalingGroups\",\n        \"autoscaling:DescribeLifecycleHooks\",\n        \"autoscaling:PutLifecycleHook\",\n        \"autoscaling:RecordLifecycleActionHeartbeat\",\n        \"autoscaling:CreateAutoScalingGroup\",\n        \"autoscaling:CreateOrUpdateTags\",\n        \"autoscaling:UpdateAutoScalingGroup\",\n        \"autoscaling:EnableMetricsCollection\",\n        \"autoscaling:DescribePolicies\",\n        \"autoscaling:DescribeScheduledActions\",\n        \"autoscaling:DescribeNotificationConfigurations\",\n        \"autoscaling:SuspendProcesses\",\n        \"autoscaling:ResumeProcesses\",\n        \"autoscaling:AttachLoadBalancers\",\n        \"autoscaling:AttachLoadBalancerTargetGroups\",\n        \"autoscaling:PutScalingPolicy\",\n        \"autoscaling:PutScheduledUpdateGroupAction\",\n        \"autoscaling:PutNotificationConfiguration\",\n        \"autoscaling:PutWarmPool\",\n        \"autoscaling:DescribeScalingActivities\",\n        \"autoscaling:DeleteAutoScalingGroup\",\n        \"ec2:DescribeInstances\",\n        \"ec2:DescribeInstanceStatus\",\n        \"ec2:TerminateInstances\",\n        \"tag:GetResources\",\n        \"sns:Publish\",\n        \"cloudwatch:DescribeAlarms\",\n        \"cloudwatch:PutMetricAlarm\",\n        \"elasticloadbalancing:DescribeLoadBalancerAttributes\",\n        \"elasticloadbalancing:DescribeTargetGroupAttributes\",\n        \"elasticloadbalancing:DescribeLoadBalancers\",\n        \"elasticloadbalancing:DescribeInstanceHealth\",\n        \"elasticloadbalancing:RegisterInstancesWithLoadBalancer\",\n        \"elasticloadbalancing:DeregisterInstancesFromLoadBalancer\",\n        \"elasticloadbalancing:DescribeTargetGroups\",\n        \"elasticloadbalancing:DescribeTargetHealth\",\n        \"elasticloadbalancing:RegisterTargets\",\n        \"elasticloadbalancing:DeregisterTargets\"\n      ],\n      \"Resource\" : \"*\"\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

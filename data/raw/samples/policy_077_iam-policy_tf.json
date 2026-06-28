@@ -1,0 +1,14 @@
+{
+  "id": "policy_077",
+  "filename": "iam-policy.tf",
+  "source_repo": "godleon/aws-lab-001-assume-role",
+  "source_path": "source\\iam-policy.tf",
+  "content": "resource \"aws_iam_policy\" \"s3_management\" {\n  name = \"s3_management\"\n  path = \"/storage/\"\n\n  policy = <<-EOF\n  {\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n      {\n        \"Action\": [\n          \"s3:*\"\n        ],\n        \"Effect\": \"Allow\",\n        \"Resource\": \"*\"\n      }\n    ]\n  }\n  EOF\n}",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:04:48"
+  }
+}

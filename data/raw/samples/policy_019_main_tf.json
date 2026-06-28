@@ -1,0 +1,14 @@
+{
+  "id": "policy_019",
+  "filename": "main.tf",
+  "source_repo": "StratusGrid/terraform-aws-iam-role-cross-account-trusting",
+  "source_path": "main.tf",
+  "content": "data \"aws_caller_identity\" \"current\" {\n}\n\nmodule \"iam_policy_document\" {\n  source         = \"./iam-policy-document-abstraction\"\n  principal_arns = var.principal_arns\n  require_mfa    = var.require_mfa\n}\n\nresource \"aws_iam_role\" \"cross_account_assume_role\" {\n  name                 = var.role_name\n  assume_role_policy   = module.iam_policy_document.iam_policy_json\n  max_session_duration = var.max_session_duration\n  tags                 = local.common_tags\n}\n\nresource \"aws_iam_role_policy_attachment\" \"cross_account_assume_role\" {\n  count      = length(var.policy_arns)\n  role       = aws_iam_role.cross_account_assume_role.name\n  policy_arn = element(var.policy_arns, count.index)\n}\n\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "Scoped actions with MFA condition; follows least-privilege",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:03:23"
+  }
+}

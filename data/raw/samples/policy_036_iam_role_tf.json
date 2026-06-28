@@ -1,0 +1,14 @@
+{
+  "id": "policy_036",
+  "filename": "iam_role.tf",
+  "source_repo": "ShubhamTatvamasi/terraform-aws-iam-role-admin",
+  "source_path": "iam_role.tf",
+  "content": "resource \"aws_iam_role\" \"iam_admin\" {\n  name = \"iam-admin\"\n\n  assume_role_policy = jsonencode({\n    Version = \"2012-10-17\"\n    Statement = [\n      {\n        \"Effect\" : \"Allow\",\n        \"Principal\" : {\n          \"AWS\" : \"arn:aws:iam::<REPLACE_WITH_OUR_ACCOUNT_ID>:role/<REPLACE_WITH_OUR_DEPLOYMENT_ROLE_NAME>\"\n        },\n        \"Action\" : \"sts:AssumeRole\"\n      }\n    ]\n  })\n}\n\nresource \"aws_iam_role_policy_attachment\" \"admin_policy_attachment\" {\n  role       = aws_iam_role.iam_admin.name\n  policy_arn = \"arn:aws:iam::aws:policy/AdministratorAccess\"\n}\n",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Attaches AdministratorAccess managed policy",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:03:50"
+  }
+}

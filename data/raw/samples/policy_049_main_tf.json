@@ -1,0 +1,14 @@
+{
+  "id": "policy_049",
+  "filename": "main.tf",
+  "source_repo": "tmknom/terraform-aws-iam-role",
+  "source_path": "main.tf",
+  "content": "# Terraform module which creates IAM Role and IAM Policy resources on AWS.\n#\n# https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html\n\n# https://www.terraform.io/docs/providers/aws/r/iam_role.html\nresource \"aws_iam_role\" \"default\" {\n  name               = var.name\n  assume_role_policy = var.assume_role_policy\n\n  path        = var.path\n  description = var.description\n\n  max_session_duration  = var.max_session_duration\n  force_detach_policies = var.force_detach_policies\n}\n\n# https://www.terraform.io/docs/providers/aws/r/iam_policy.html\nresource \"aws_iam_policy\" \"default\" {\n  name   = var.name\n  policy = var.policy\n\n  path        = var.path\n  description = var.description\n}\n\n# https://www.terraform.io/docs/providers/aws/r/iam_role_policy_attachment.html\nresource \"aws_iam_role_policy_attachment\" \"default\" {\n  role       = aws_iam_role.default.name\n  policy_arn = aws_iam_policy.default.arn\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:04:10"
+  }
+}

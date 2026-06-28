@@ -1,0 +1,14 @@
+{
+  "id": "policy_239",
+  "filename": "rds_admin_region-specific.json",
+  "source_repo": "original_samples",
+  "source_path": "rds_admin_region-specific.json",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": \"rds:*\",\n            \"Resource\": [\"arn:aws:rds:us-east-1:*:*\"]\n        },\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": [\"rds:Describe*\"],\n            \"Resource\": [\"*\"]\n        }\n    ]\n}\n",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "Medium",
+    "notes": "Service-level wildcard but resources appear scoped",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

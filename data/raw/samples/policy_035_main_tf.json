@@ -1,0 +1,14 @@
+{
+  "id": "policy_035",
+  "filename": "main.tf",
+  "source_repo": "yukihira1992/terraform-aws-iam-service-role",
+  "source_path": "main.tf",
+  "content": "data \"aws_iam_policy_document\" \"assume_role_policy\" {\n  statement {\n    actions = [\n      \"sts:AssumeRole\",\n    ]\n    effect = \"Allow\"\n    principals {\n      identifiers = var.service_ids\n      type = \"Service\"\n    }\n  }\n}\n\nresource \"aws_iam_role\" \"this\" {\n  name = var.name\n  name_prefix = var.name_prefix\n  assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json\n  force_detach_policies = var.force_detach_policies\n  path = var.path\n  description = var.description\n  max_session_duration = var.max_session_duration\n  permissions_boundary = var.permissions_boundary\n  tags = var.tags\n}\n\nresource \"aws_iam_role_policy_attachment\" \"policies\" {\n  count = length(var.iam_policy_arns)\n  policy_arn = var.iam_policy_arns[count.index]\n  role = aws_iam_role.this.name\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:03:48"
+  }
+}

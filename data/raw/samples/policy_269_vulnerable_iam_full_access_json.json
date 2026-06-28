@@ -1,0 +1,14 @@
+{
+  "id": "policy_269",
+  "filename": "vulnerable/iam_full_access.json",
+  "source_repo": "original_samples",
+  "source_path": "vulnerable/iam_full_access.json",
+  "content": "{\n  \"Version\" : \"2012-10-17\",\n  \"Statement\" : [\n    {\n      \"Effect\" : \"Allow\",\n      \"Action\" : [\n        \"iam:*\",\n        \"organizations:DescribeAccount\",\n        \"organizations:DescribeOrganization\",\n        \"organizations:DescribeOrganizationalUnit\",\n        \"organizations:DescribePolicy\",\n        \"organizations:ListChildren\",\n        \"organizations:ListParents\",\n        \"organizations:ListPoliciesForTarget\",\n        \"organizations:ListRoots\",\n        \"organizations:ListPolicies\",\n        \"organizations:ListTargetsForPolicy\"\n      ],\n      \"Resource\" : \"*\"\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: critical, Risk: 10",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

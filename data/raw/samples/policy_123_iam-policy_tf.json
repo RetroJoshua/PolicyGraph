@@ -1,0 +1,14 @@
+{
+  "id": "policy_123",
+  "filename": "iam-policy.tf",
+  "source_repo": "StratusGrid/terraform-aws-iam-group-restricted-read-only",
+  "source_path": "iam-policy.tf",
+  "content": "resource \"aws_iam_policy\" \"this\" {\n  name        = \"${var.group_name}-policy\"\n  description = \"Policy to restrict read only users. This makes it so the read only users can't do some tasks like downloading s3 bucket objects and lambda code.\"\n  policy      = data.aws_iam_policy_document.deny_data_retrieval.json\n}\n\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:06:06"
+  }
+}

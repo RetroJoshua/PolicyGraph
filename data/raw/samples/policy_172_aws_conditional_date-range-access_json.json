@@ -1,0 +1,14 @@
+{
+  "id": "policy_172",
+  "filename": "aws_conditional_date-range-access.json",
+  "source_repo": "original_samples",
+  "source_path": "aws_conditional_date-range-access.json",
+  "content": "{\n    \"Version\":\"2012-10-17\",\t\t \t \t \n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": \"service-prefix:action-name\",\n            \"Resource\": \"*\",\n            \"Condition\": {\n                \"DateGreaterThan\": {\"aws:CurrentTime\": \"2020-04-01T00:00:00Z\"},\n                \"DateLessThan\": {\"aws:CurrentTime\": \"2020-06-30T23:59:59Z\"}\n            }\n        }\n    ]\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

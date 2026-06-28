@@ -1,0 +1,14 @@
+{
+  "id": "policy_232",
+  "filename": "lambda_invoke_specific.json",
+  "source_repo": "original_samples",
+  "source_path": "lambda_invoke_specific.json",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"lambda:InvokeFunction\",\n      \"Resource\": \"arn:aws:lambda:us-east-1:123456789012:function:MySpecificFunction\"\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "No IAM policy statements; Terraform provider or module config only",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

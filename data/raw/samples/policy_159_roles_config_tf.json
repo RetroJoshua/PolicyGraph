@@ -1,0 +1,14 @@
+{
+  "id": "policy_159",
+  "filename": "roles_config.tf",
+  "source_repo": "spotify/gcp-aws-iam-federation-webidentity",
+  "source_path": "terraform\\modules\\aws_resources\\roles_config.tf",
+  "content": "#################################################################################\n# Requirements\n#################################################################################\nterraform {\n  required_providers {\n    aws = {\n      source  = \"hashicorp/aws\"\n    }\n  }\n}\n# Declare variables\nvariable \"gcp_sa_display_name\" {}\nvariable \"gcp_sa_email\" {}\nvariable \"gcp_sa_unique_id\" {}\nvariable \"aws_iam_role_name\" {\n  default = \"gcp_aws_federated_role\"\n}\n#################################################################################\n# Resources\n#################################################################################\nresource \"aws_iam_role\" \"gcp_aws_federated_role\" {\n  name = var.aws_iam_role_name\n\n  # Update this section with the trust policy\n  assume_role_policy = jsonencode({\n    Version = \"2012-10-17\"\n    Statement = [\n      {\n        \"Effect\": \"Allow\",\n        \"Principal\": {\n          \"Federated\": \"accounts.google.com\"\n        },\n        \"Action\": \"sts:AssumeRoleWithWebIdentity\",\n        \"Condition\": {\n          \"StringEquals\": {\n            \"accounts.google.com:oaud\": \"GCP_federated_role_${var.aws_iam_role_name}\",\n            \"accounts.google.com:email\": var.gcp_sa_email,\n            \"accounts.google.com:sub\": var.gcp_sa_unique_id\n          }\n        }\n      },\n      {\n        \"Effect\": \"Allow\",\n        \"Principal\": {\n          \"Service\": \"ec2.amazonaws.com\"\n        },\n        \"Action\": \"sts:AssumeRole\"\n      }\n    ]\n  })\n\n  tags = {\n    tag-key = \"test-tag\"\n  }\n}\n\n# Reference existing AWS IAM policy\ndata \"aws_iam_policy\" \"AmazonEC2ReadOnlyAccess\" {\n  arn = \"arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess\"\n}\n# Assign the existing AWS IAM policy to your new role.\nresource \"aws_iam_role_policy_attachment\" \"amazon-readonly-role-policy-attach\" {\n  role       = \"${aws_iam_role.gcp_aws_federated_role.name}\"\n  policy_arn = \"${data.aws_iam_policy.AmazonEC2ReadOnlyAccess.arn}\"\n}\n#################################################################################\n# Outputs \n#################################################################################\noutput \"aws_role_name\" {\n  value = aws_iam_role.gcp_aws_federated_role.name\n}\n\noutput \"aws_role_arn\" {\n  value = aws_iam_role.gcp_aws_federated_role.arn\n}",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "High",
+    "notes": "Scoped resources with conditions; follows least-privilege",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:07:05"
+  }
+}

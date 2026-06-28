@@ -1,0 +1,14 @@
+{
+  "id": "policy_248",
+  "filename": "secure_ec2_read_only.json",
+  "source_repo": "original_samples",
+  "source_path": "secure_ec2_read_only.json",
+  "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"ec2:Describe*\",\n        \"ec2:GetConsoleOutput\",\n        \"ec2:GetConsoleScreenshot\"\n      ],\n      \"Resource\": \"*\"\n    }\n  ]\n}",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "High",
+    "notes": "Wildcard action (*) with wildcard resource (*)",
+    "checkov_findings": "Severity: low, Risk: 0",
+    "scraped_date": "2026-01-01 00:00:00"
+  }
+}

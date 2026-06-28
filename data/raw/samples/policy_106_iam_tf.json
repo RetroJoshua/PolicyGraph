@@ -1,0 +1,14 @@
+{
+  "id": "policy_106",
+  "filename": "iam.tf",
+  "source_repo": "aledivu/terraforming-opsman-securely",
+  "source_path": "modules\\pks\\iam.tf",
+  "content": "resource \"aws_iam_policy\" \"pks_master\" {\n  name   = \"${var.env_name}_pks-master-policy\"\n  policy = \"${file(\"${path.module}/policies/pks-master.json\")}\"\n}\n\nresource \"aws_iam_role\" \"pks_master\" {\n  name = \"${var.env_name}_pks-master\"\n\n  lifecycle {\n    create_before_destroy = true\n  }\n\n  assume_role_policy = <<EOF\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Principal\": {\n        \"Service\": [\n          \"ec2.amazonaws.com\"\n        ]\n      },\n      \"Action\": [\n        \"sts:AssumeRole\"\n      ]\n    }\n  ]\n}\nEOF\n}\n\nresource \"aws_iam_role_policy_attachment\" \"pks_master\" {\n  role       = \"${aws_iam_role.pks_master.name}\"\n  policy_arn = \"${aws_iam_policy.pks_master.arn}\"\n}\n\nresource \"aws_iam_instance_profile\" \"pks_master\" {\n  name = \"${var.env_name}_pks-master\"\n  role = \"${aws_iam_role.pks_master.name}\"\n\n  lifecycle {\n    ignore_changes = [\"name\"]\n  }\n}\n\nresource \"aws_iam_policy\" \"pks_worker\" {\n  name   = \"${var.env_name}_pks-worker-policy\"\n  policy = \"${file(\"${path.module}/policies/pks-worker.json\")}\"\n}\n\nresource \"aws_iam_role\" \"pks_worker\" {\n  name = \"${var.env_name}_pks-worker\"\n\n  lifecycle {\n    create_before_destroy = true\n  }\n\n  assume_role_policy = <<EOF\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Principal\": {\n        \"Service\": [\n          \"ec2.amazonaws.com\"\n        ]\n      },\n      \"Action\": [\n        \"sts:AssumeRole\"\n      ]\n    }\n  ]\n}\nEOF\n}\n\nresource \"aws_iam_role_policy_attachment\" \"pks_worker\" {\n  role       = \"${aws_iam_role.pks_worker.name}\"\n  policy_arn = \"${aws_iam_policy.pks_worker.arn}\"\n}\n\nresource \"aws_iam_instance_profile\" \"pks_worker\" {\n  name = \"${var.env_name}_pks-worker\"\n  role = \"${aws_iam_role.pks_worker.name}\"\n\n  lifecycle {\n    ignore_changes = [\"name\"]\n  }\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "No obvious wildcard escalation paths detected",
+    "checkov_findings": "Checkov not installed",
+    "scraped_date": "2026-06-14 20:05:30"
+  }
+}
