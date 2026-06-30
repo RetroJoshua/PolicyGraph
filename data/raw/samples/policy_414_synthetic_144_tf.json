@@ -1,0 +1,14 @@
+{
+  "id": "policy_414",
+  "filename": "synthetic_144.tf",
+  "source_repo": "synthetic/generated-policies",
+  "source_path": "synthetic/policies/synthetic_144.tf",
+  "content": "resource \"aws_iam_role\" \"synthetic_role_144\" {\n  name = \"synthetic_role_144\"\n  \n  assume_role_policy = jsonencode({\n    Version = \"2012-10-17\"\n    Statement = [\n      {\n        Action = \"sts:AssumeRole\"\n        Effect = \"Allow\"\n        Principal = {\n          Service = \"lambda.amazonaws.com\"\n        }\n      }\n    ]\n  })\n}\n\nresource \"aws_iam_role_policy\" \"synthetic_role_144_policy\" {\n  name   = \"synthetic_role_144-policy\"\n  role   = aws_iam_role.synthetic_role_144.id\n  policy = jsonencode({\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"*\",\n                \"*\",\n                \"*\"\n            ],\n            \"Resource\": \"arn:aws:iam::*:*\"\n        }\n    ]\n})\n}\n",
+  "metadata": {
+    "vulnerable": false,
+    "confidence": "Medium",
+    "notes": "Synthetically generated policy for dataset expansion",
+    "checkov_findings": "None",
+    "scraped_date": "2026-06-17 09:17:06"
+  }
+}

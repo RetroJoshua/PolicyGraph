@@ -1,910 +1,4505 @@
 {
-  "total_policies": 108,
+  "total_policies": 500,
   "labels": [
     {
-      "filename": "aws_admin_region-management.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "aws_code_commit_power_user.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "aws_code_deploy_deployer_access.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "aws_code_deploy_full_access.json",
+      "filename": "policy_001_main_tf.json",
       "label": "vulnerable",
-      "severity": "medium",
-      "vulnerability_type": "full_service_access",
-      "risk_score": 7.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker gains access to principal with full service permissions\", \"Enumerate all resources within the service\", \"Create, modify, or delete any resource\", \"Potentially pivot to other services via service-linked roles\"]"
-    },
-    {
-      "filename": "aws_code_deploy_role.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "aws_code_deploy_role_for_ecs.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "aws_code_pipeline_full_access.json",
-      "label": "vulnerable",
-      "severity": "medium",
-      "vulnerability_type": "full_service_access",
-      "risk_score": 7.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker gains access to principal with full service permissions\", \"Enumerate all resources within the service\", \"Create, modify, or delete any resource\", \"Potentially pivot to other services via service-linked roles\"]"
-    },
-    {
-      "filename": "aws_code_star_full_access.json",
-      "label": "vulnerable",
-      "severity": "medium",
-      "vulnerability_type": "full_service_access",
-      "risk_score": 7.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker gains access to principal with full service permissions\", \"Enumerate all resources within the service\", \"Create, modify, or delete any resource\", \"Potentially pivot to other services via service-linked roles\"]"
-    },
-    {
-      "filename": "aws_code_star_service_role.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "aws_compromised_key_quarantine.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "aws_conditional_date-range-access.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "aws_config_multi_account_setup_policy.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "aws_config_remediation_service_role_policy.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "aws_config_service_role_policy.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "aws_connector.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "aws_control_tower_account_service_role_policy.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "aws_deny_ip-based.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "cloudformation_create_changeset.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "cloudformation_create_with_passrole.json",
-      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
       "severity": "critical",
-      "vulnerability_type": "passrole_cloudformation",
-      "risk_score": 9.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:PassRole and cloudformation:CreateStack permissions\", \"Create a CloudFormation template that provisions IAM resources\", \"Pass an admin role to CloudFormation as the service role\", \"CloudFormation executes with admin privileges, creating backdoor resources\", \"Attacker gains admin-equivalent access through the provisioned resources\"]"
+      "source": "Bzahirpour/iac-pipeline-template",
+      "notes": "Attaches AdministratorAccess managed policy"
     },
     {
-      "filename": "cloudformation_delete_stack.json",
-      "label": "vulnerable",
-      "severity": "medium",
-      "vulnerability_type": "stack_deletion",
-      "risk_score": 6.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has cloudformation:DeleteStack on wildcard\", \"Delete critical infrastructure stacks\", \"Cause service disruption and potential data loss\"]"
-    },
-    {
-      "filename": "cloudformation_drift_detection.json",
+      "filename": "policy_002_main_tf.json",
       "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
       "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
+      "source": "bryan-rhm/terraform-aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
     },
     {
-      "filename": "cloudformation_full_access.json",
+      "filename": "policy_003_main_tf.json",
       "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "devops-workflow/terraform-aws-iam_role",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_004_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "vijayan1985/terraform-aws-finops-costreview-access",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_005_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "BotTech/terraform-aws-role",
+      "notes": "Scoped actions with MFA condition; follows least-privilege"
+    },
+    {
+      "filename": "policy_006_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
       "severity": "high",
-      "vulnerability_type": "full_service_access",
-      "risk_score": 7.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker gains access to principal with full service permissions\", \"Enumerate all resources within the service\", \"Create, modify, or delete any resource\", \"Potentially pivot to other services via service-linked roles\"]"
+      "source": "BotTech/terraform-aws-role",
+      "notes": "Service-level wildcard but resources appear scoped"
     },
     {
-      "filename": "cloudformation_read_only.json",
+      "filename": "policy_007_main_tf.json",
       "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
       "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
+      "source": "BotTech/terraform-aws-role",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
     },
     {
-      "filename": "cloudformation_stack_specific.json",
+      "filename": "policy_008_iam_tf.json",
       "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
       "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
+      "source": "jetbrains-infra/terraform-aws-assume-role-with-trust-to-account",
+      "notes": "Scoped actions with MFA condition; follows least-privilege"
     },
     {
-      "filename": "cloudformation_stacksets_admin.json",
+      "filename": "policy_009_adminstrator_tf.json",
       "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
       "severity": "high",
-      "vulnerability_type": "stackset_admin",
-      "risk_score": 9.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has CloudFormation StackSets admin with PassRole and AssumeRole\", \"Create a StackSet with malicious templates\", \"Deploy across multiple accounts in the organization\", \"Gain access to all target accounts simultaneously\"]"
+      "source": "kelseymok/aws-init-roles",
+      "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition"
     },
     {
-      "filename": "cloudformation_template_upload.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "cloudformation_update_stack.json",
+      "filename": "policy_010_developer_tf.json",
       "label": "vulnerable",
-      "severity": "medium",
-      "vulnerability_type": "stack_modification",
-      "risk_score": 6.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has cloudformation:UpdateStack on wildcard\", \"Modify existing stack templates to inject malicious resources\", \"Updated stack provisions backdoor access\"]"
-    },
-    {
-      "filename": "dynamodb_readwrite_attribute-level.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "dynamodb_readwrite_cognito-items.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "dynamodb_readwrite_table-specific.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "ec2_admin_region-full-access.json",
-      "label": "vulnerable",
-      "severity": "medium",
-      "vulnerability_type": "full_service_access",
-      "risk_score": 7.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker gains access to principal with full service permissions\", \"Enumerate all resources within the service\", \"Create, modify, or delete any resource\", \"Potentially pivot to other services via service-linked roles\"]"
-    },
-    {
-      "filename": "ec2_deny_terminate-ip.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "ec2_write_mfa-required.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "ec2_write_security-group-management.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "ec2_write_subnet-launch.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "ec2_write_tag-owner-instances.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "escalation_add_user_to_group.json",
-      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
       "severity": "high",
-      "vulnerability_type": "add_user_to_group",
-      "risk_score": 8.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:AddUserToGroup on wildcard group resources\", \"List IAM groups to find the admin group\", \"Add their own user to the admin group\", \"Inherit all admin group policies\"]"
+      "source": "kelseymok/aws-init-roles",
+      "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition"
     },
     {
-      "filename": "escalation_attach_group_policy.json",
-      "label": "vulnerable",
-      "severity": "critical",
-      "vulnerability_type": "attach_group_policy",
-      "risk_score": 10.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:AttachGroupPolicy on wildcard group resources\", \"Attach AdministratorAccess to a group they belong to\", \"Immediately gain full admin access through group membership\"]"
+      "filename": "policy_011_list-iam-users_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "kelseymok/aws-init-roles",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
     },
     {
-      "filename": "escalation_attach_role_policy.json",
-      "label": "vulnerable",
-      "severity": "critical",
-      "vulnerability_type": "attach_role_policy",
-      "risk_score": 10.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:AttachRolePolicy on wildcard role resources\", \"Attach AdministratorAccess to a role they can assume\", \"Assume the role to gain full admin access\"]"
+      "filename": "policy_012_manage-access-keys_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "kelseymok/aws-init-roles",
+      "notes": "Scoped actions with MFA condition; follows least-privilege"
     },
     {
-      "filename": "escalation_attach_user_policy.json",
-      "label": "vulnerable",
-      "severity": "critical",
-      "vulnerability_type": "attach_user_policy",
-      "risk_score": 10.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:AttachUserPolicy on wildcard user resources\", \"Attach the AdministratorAccess managed policy to their own user\", \"Immediately gain full admin access to the account\"]"
+      "filename": "policy_013_manage-mfa_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "kelseymok/aws-init-roles",
+      "notes": "Scoped actions with MFA condition; follows least-privilege"
     },
     {
-      "filename": "escalation_create_access_key.json",
-      "label": "vulnerable",
-      "severity": "critical",
-      "vulnerability_type": "create_access_key",
-      "risk_score": 9.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:CreateAccessKey on wildcard user resources\", \"List IAM users to find admin accounts\", \"Create a new access key for an admin user\", \"Use the access key for persistent admin access\"]"
+      "filename": "policy_014_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "JousP/terraform-aws-iam-assumeRole",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
     },
     {
-      "filename": "escalation_create_login_profile.json",
-      "label": "vulnerable",
-      "severity": "critical",
-      "vulnerability_type": "create_login_profile",
-      "risk_score": 9.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:CreateLoginProfile on wildcard user resources\", \"Identify an admin user without console access\", \"Create a login profile (console password) for that user\", \"Log in to the console as the admin user\"]"
+      "filename": "policy_015_main_custom_assumeRole_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "JousP/terraform-aws-iam-assumeRole",
+      "notes": "No obvious wildcard escalation paths detected"
     },
     {
-      "filename": "escalation_create_policy_version.json",
-      "label": "vulnerable",
-      "severity": "critical",
-      "vulnerability_type": "create_policy_version",
-      "risk_score": 10.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:CreatePolicyVersion on wildcard policy resources\", \"Create a new version of an existing policy with admin permissions\", \"Set the new version as the default\", \"All principals using that policy now have admin access\"]"
+      "filename": "policy_016_main_custom_policies_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "JousP/terraform-aws-iam-assumeRole",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
     },
     {
-      "filename": "escalation_passrole_cloudformation.json",
-      "label": "vulnerable",
-      "severity": "critical",
-      "vulnerability_type": "passrole_cloudformation",
-      "risk_score": 9.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:PassRole and cloudformation:CreateStack permissions\", \"Create a CloudFormation template that provisions IAM resources\", \"Pass an admin role to CloudFormation as the service role\", \"CloudFormation executes with admin privileges, creating backdoor resources\", \"Attacker gains admin-equivalent access through the provisioned resources\"]"
+      "filename": "policy_017_main_custom_policies_strict_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "JousP/terraform-aws-iam-assumeRole",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
     },
     {
-      "filename": "escalation_passrole_codebuild.json",
+      "filename": "policy_018_lambda_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "scott-thomas/AWS-Atlas-PrivateLink",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_019_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "StratusGrid/terraform-aws-iam-role-cross-account-trusting",
+      "notes": "Scoped actions with MFA condition; follows least-privilege"
+    },
+    {
+      "filename": "policy_020_-outputs_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "StratusGrid/terraform-aws-iam-role-cross-account-trusting",
+      "notes": "Scoped actions with MFA condition; follows least-privilege"
+    },
+    {
+      "filename": "policy_021_policy_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "StratusGrid/terraform-aws-iam-role-cross-account-trusting",
+      "notes": "Scoped actions with MFA condition; follows least-privilege"
+    },
+    {
+      "filename": "policy_022_data_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "tinfoilcipher/terraform-aws-eks-service-account-with-oidc-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_023_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "tinfoilcipher/terraform-aws-eks-service-account-with-oidc-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_024_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "ucopacme/terraform-aws-assume-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_025_iam_policies_tf.json",
       "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
       "severity": "high",
-      "vulnerability_type": "passrole_codebuild",
-      "risk_score": 8.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:PassRole and codebuild:CreateProject permissions\", \"Create a CodeBuild project with a malicious buildspec\", \"Pass an admin service role to the project\", \"Start a build \\u2014 the build environment runs with admin privileges\", \"Exfiltrate credentials from the build environment\"]"
+      "source": "dod-iac/terraform-aws-iam-billing-roles",
+      "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition"
     },
     {
-      "filename": "escalation_passrole_datapipeline.json",
+      "filename": "policy_026_iam_roles_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "dod-iac/terraform-aws-iam-billing-roles",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_027_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "npalm/terraform-aws-dockercloud-swarm-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_028_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "sourcefuse/terraform-aws-arc-github-runner",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_029_iam_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "johnmccuk/aws-iam-roles-anywhere-public-demo",
+      "notes": "Scoped resources with conditions; follows least-privilege"
+    },
+    {
+      "filename": "policy_030_iam_tf.json",
       "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
       "severity": "high",
-      "vulnerability_type": "passrole_datapipeline",
-      "risk_score": 8.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:PassRole and datapipeline:CreatePipeline permissions\", \"Create a Data Pipeline with a malicious activity definition\", \"Pass an admin role to the pipeline\", \"Activate the pipeline \\u2014 activities execute with admin privileges\"]"
+      "source": "amitsaha/aws-assume-role-demo",
+      "notes": "Service-level wildcard but resources appear scoped"
     },
     {
-      "filename": "escalation_passrole_ec2_run.json",
+      "filename": "policy_031_iam_tf.json",
       "label": "vulnerable",
-      "severity": "critical",
-      "vulnerability_type": "passrole_ec2",
-      "risk_score": 10.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:PassRole and ec2:RunInstances permissions\", \"Create an instance profile with an admin role\", \"Launch an EC2 instance with the admin instance profile\", \"SSH into the instance and access the instance metadata service\", \"Retrieve temporary admin credentials from IMDS\"]"
-    },
-    {
-      "filename": "escalation_passrole_glue_endpoint.json",
-      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
       "severity": "high",
-      "vulnerability_type": "passrole_glue",
-      "risk_score": 8.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:PassRole and glue:CreateDevEndpoint permissions\", \"Create a Glue development endpoint\", \"Pass an admin role to the endpoint\", \"Connect to the endpoint and execute code with admin privileges\"]"
+      "source": "amitsaha/aws-assume-role-demo",
+      "notes": "Service-level wildcard but resources appear scoped"
     },
     {
-      "filename": "escalation_passrole_lambda_create.json",
+      "filename": "policy_032_iam_tf.json",
       "label": "vulnerable",
-      "severity": "critical",
-      "vulnerability_type": "passrole_lambda_create",
-      "risk_score": 10.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:PassRole and lambda:CreateFunction permissions\", \"Create a Lambda function with malicious code\", \"Pass an admin execution role to the function\", \"Invoke the function \\u2014 it runs with admin privileges\", \"Exfiltrate credentials or modify IAM from within the Lambda\"]"
-    },
-    {
-      "filename": "escalation_passrole_lambda_update.json",
-      "label": "vulnerable",
-      "severity": "critical",
-      "vulnerability_type": "passrole_lambda_update",
-      "risk_score": 10.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:PassRole and lambda:UpdateFunctionCode permissions\", \"Identify an existing Lambda function with a privileged execution role\", \"Update the function code with malicious payload\", \"Optionally pass a more privileged role via UpdateFunctionConfiguration\", \"Invoke the function to execute code with elevated privileges\"]"
-    },
-    {
-      "filename": "escalation_passrole_sagemaker.json",
-      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
       "severity": "high",
-      "vulnerability_type": "passrole_sagemaker",
-      "risk_score": 8.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:PassRole and sagemaker:CreateNotebookInstance permissions\", \"Create a SageMaker notebook instance\", \"Pass an admin execution role to the notebook\", \"Open the notebook and execute code with admin privileges\"]"
+      "source": "amitsaha/aws-assume-role-demo",
+      "notes": "Service-level wildcard but resources appear scoped"
     },
     {
-      "filename": "escalation_put_group_policy.json",
+      "filename": "policy_033_main_tf.json",
       "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
       "severity": "critical",
-      "vulnerability_type": "put_group_policy",
-      "risk_score": 10.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:PutGroupPolicy on wildcard group resources\", \"Create an inline admin policy on a group they belong to\", \"Gain full admin access through group membership\"]"
+      "source": "cloudposse/terraform-aws-ssm-iam-role",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
     },
     {
-      "filename": "escalation_put_role_policy.json",
+      "filename": "policy_034_output_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "cloudposse/terraform-aws-ssm-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_035_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "yukihira1992/terraform-aws-iam-service-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_036_iam_role_tf.json",
       "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
       "severity": "critical",
-      "vulnerability_type": "put_role_policy",
-      "risk_score": 10.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:PutRolePolicy on wildcard role resources\", \"Create an inline admin policy on a role they can assume\", \"Assume the role to gain full admin access\"]"
+      "source": "ShubhamTatvamasi/terraform-aws-iam-role-admin",
+      "notes": "Attaches AdministratorAccess managed policy"
     },
     {
-      "filename": "escalation_put_user_policy.json",
+      "filename": "policy_037_policies_tf.json",
       "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
       "severity": "critical",
-      "vulnerability_type": "put_user_policy",
-      "risk_score": 10.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:PutUserPolicy on wildcard user resources\", \"Create an inline policy granting admin access on their own user\", \"Immediately gain full admin access\"]"
+      "source": "mockingbirdconsulting/terraform-aws-datadog-aws-integration",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
     },
     {
-      "filename": "escalation_set_default_policy_version.json",
+      "filename": "policy_038_roles_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "mockingbirdconsulting/terraform-aws-datadog-aws-integration",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_039_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "adamwshero/terraform-aws-ssm-activations",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_040_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "cytopia/terraform-aws-iam-roles",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_041_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "dod-iac/terraform-aws-glue-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_042_iam_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "Applied-Field-Engineering-Demo/terraform-snowflake-wif-aws-iam-ec2",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_043_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "baikonur-oss/terraform-aws-iam-nofile",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_044_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "anonymint/terraform-aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_045_variables_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "anonymint/terraform-aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_046_main_tf.json",
       "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
       "severity": "critical",
-      "vulnerability_type": "set_default_policy_version",
-      "risk_score": 10.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:CreatePolicyVersion and iam:SetDefaultPolicyVersion\", \"Create a new policy version with admin permissions\", \"Set it as the default version\", \"All principals using that policy are now admins\"]"
+      "source": "anonymint/terraform-aws-iam-role",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
     },
     {
-      "filename": "escalation_update_assume_role_policy.json",
+      "filename": "policy_047_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "anonymint/terraform-aws-iam-role",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_048_main_tf.json",
       "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "anonymint/terraform-aws-iam-role",
+      "notes": "Service-level wildcard (e.g. iam:*) with resources=[\"*\"]"
+    },
+    {
+      "filename": "policy_049_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "tmknom/terraform-aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_050_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "tmknom/terraform-aws-iam-role",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_051_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "tmknom/terraform-aws-iam-role",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_052_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "clouddrove/terraform-aws-cross-account-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_053_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "omerbsezer/Fast-Terraform",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_054_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "omerbsezer/Fast-Terraform",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_055_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "omerbsezer/Fast-Terraform",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_056_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
       "severity": "high",
-      "vulnerability_type": "update_assume_role_policy",
-      "risk_score": 8.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:UpdateAssumeRolePolicy on wildcard role resources\", \"Modify the trust policy of an admin role\", \"Add their own principal as a trusted entity\", \"Assume the admin role\"]"
+      "source": "omerbsezer/Fast-Terraform",
+      "notes": "Service-level wildcard but resources appear scoped"
     },
     {
-      "filename": "escalation_update_login_profile.json",
+      "filename": "policy_057_roles_tf.json",
       "label": "vulnerable",
-      "severity": "high",
-      "vulnerability_type": "update_login_profile",
-      "risk_score": 8.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:UpdateLoginProfile on wildcard user resources\", \"Reset the password for an admin user\", \"Log in to the console as the admin user\"]"
-    },
-    {
-      "filename": "iam_admin_password-policy.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "iam_read_console-full.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "iam_read_credential-report.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "iam_read_only_access.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "iam_read_policy-simulator-api.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "iam_write_manage-group-membership.json",
-      "label": "vulnerable",
-      "severity": "medium",
-      "vulnerability_type": "group_membership_management",
-      "risk_score": 5.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has scoped iam:AddUserToGroup permissions\", \"Add users to groups to grant additional permissions\", \"Potential for privilege escalation if admin groups are accessible\"]"
-    },
-    {
-      "filename": "iam_write_passrole-to-service.json",
-      "label": "vulnerable",
-      "severity": "medium",
-      "vulnerability_type": "passrole",
-      "risk_score": 6.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has scoped iam:PassRole permissions\", \"Pass a role to an AWS service\", \"Service operates with the passed role's permissions\"]"
-    },
-    {
-      "filename": "iam_write_self-manage-credentials-mfa.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "lambda_basic_execution.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "lambda_create_restricted.json",
-      "label": "safe",
-      "severity": "medium",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "lambda_create_with_passrole.json",
-      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
       "severity": "critical",
-      "vulnerability_type": "passrole_lambda",
-      "risk_score": 9.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:PassRole and lambda create/update permissions\", \"Create or modify a Lambda function\", \"Pass a privileged execution role to the function\", \"Invoke the function to run code with elevated privileges\"]"
+      "source": "omerbsezer/Fast-Terraform",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
     },
     {
-      "filename": "lambda_event_source_mapping.json",
+      "filename": "policy_058_2_ecs_tf.json",
       "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
       "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
+      "source": "omerbsezer/Fast-Terraform",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
     },
     {
-      "filename": "lambda_full_access.json",
+      "filename": "policy_059_1_lambda_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "omerbsezer/Fast-Terraform",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_060_lambda_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "omerbsezer/Fast-Terraform",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_061_iam_roles_tf.json",
       "label": "vulnerable",
-      "severity": "high",
-      "vulnerability_type": "full_service_access",
-      "risk_score": 7.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker gains access to principal with full service permissions\", \"Enumerate all resources within the service\", \"Create, modify, or delete any resource\", \"Potentially pivot to other services via service-linked roles\"]"
-    },
-    {
-      "filename": "lambda_invoke_specific.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "lambda_layer_management.json",
-      "label": "safe",
-      "severity": "medium",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "lambda_read_only.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "lambda_update_code_with_passrole.json",
-      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
       "severity": "critical",
-      "vulnerability_type": "passrole_lambda_update",
-      "risk_score": 10.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:PassRole and lambda:UpdateFunctionCode permissions\", \"Identify an existing Lambda function with a privileged execution role\", \"Update the function code with malicious payload\", \"Optionally pass a more privileged role via UpdateFunctionConfiguration\", \"Invoke the function to execute code with elevated privileges\"]"
+      "source": "omerbsezer/Fast-Terraform",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
     },
     {
-      "filename": "lambda_update_with_passrole.json",
+      "filename": "policy_062_s3_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "omerbsezer/Fast-Terraform",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_063_main_tf.json",
       "label": "vulnerable",
-      "severity": "high",
-      "vulnerability_type": "passrole_lambda",
-      "risk_score": 9.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:PassRole and lambda create/update permissions\", \"Create or modify a Lambda function\", \"Pass a privileged execution role to the function\", \"Invoke the function to run code with elevated privileges\"]"
-    },
-    {
-      "filename": "lambda_vpc_execution.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "lambda_write_dynamodb-access.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "rds_admin_region-specific.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "s3_readwrite_bucket-objects.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "s3_readwrite_cognito-user-bucket.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "s3_readwrite_home-directory.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "s3_readwrite_mfa-protected.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "secure_cloudwatch_read_only.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "secure_deny_root_account.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "secure_deny_unencrypted.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "secure_dynamodb_read_only.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "secure_ec2_read_only.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "secure_ip_restricted.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "secure_lambda_read_only.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "secure_mfa_required.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "secure_rds_read_only.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "secure_require_ssl.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "secure_resource_specific.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "secure_s3_least_privilege.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "secure_tag_based_access.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "secure_time_restricted.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "secure_vpc_read_only.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "sts_assume_role_chaining.json",
-      "label": "vulnerable",
-      "severity": "high",
-      "vulnerability_type": "role_chaining",
-      "risk_score": 8.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has sts:AssumeRole and sts:GetSessionToken on wildcard\", \"Assume an initial role with limited privileges\", \"From that role, assume another role with higher privileges\", \"Chain multiple role assumptions to reach admin access\"]"
-    },
-    {
-      "filename": "sts_assume_role_cross_account.json",
-      "label": "vulnerable",
-      "severity": "medium",
-      "vulnerability_type": "cross_account_access",
-      "risk_score": 7.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has cross-account sts:AssumeRole permissions\", \"Assume a role in an external AWS account\", \"Pivot laterally to access resources in the target account\", \"Potentially chain further cross-account role assumptions\"]"
-    },
-    {
-      "filename": "sts_assume_role_specific.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "sts_assume_role_wildcard.json",
-      "label": "vulnerable",
-      "severity": "high",
-      "vulnerability_type": "wildcard_assume_role",
-      "risk_score": 8.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has sts:AssumeRole on wildcard resources\", \"Enumerate all roles in the account\", \"Assume the most privileged role available\", \"Gain elevated access through role assumption\"]"
-    },
-    {
-      "filename": "sts_assume_role_with_conditions.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "sts_decode_authorization_message.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "sts_get_caller_identity.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "sts_get_federation_token.json",
-      "label": "vulnerable",
-      "severity": "medium",
-      "vulnerability_type": "federation_token",
-      "risk_score": 6.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has sts:GetFederationToken on wildcard\", \"Generate federated credentials with a permissive session policy\", \"Use federated credentials for access that bypasses normal controls\"]"
-    },
-    {
-      "filename": "sts_get_session_token.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "sts_tag_session.json",
-      "label": "safe",
-      "severity": "low",
-      "vulnerability_type": "none",
-      "risk_score": 0.0,
-      "source": "policies_labeled.csv"
-    },
-    {
-      "filename": "vulnerable/iam_full_access.json",
-      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
       "severity": "critical",
-      "vulnerability_type": "full_iam_access",
-      "risk_score": 10.0,
-      "source": "policies_labeled.csv",
-      "attack_path": "[\"Attacker has iam:* on all resources\", \"Create new admin users, roles, and policies at will\", \"Modify any existing IAM configuration\", \"Complete control over the account's identity and access management\"]"
+      "source": "stealthllama/terraform-aws-prisma-cloud",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_064_eks_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "ravindrasinghh/Kubernetes-Playlist",
+      "notes": "Scoped resources with conditions; follows least-privilege"
+    },
+    {
+      "filename": "policy_065_eks_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "ravindrasinghh/Kubernetes-Playlist",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_066_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "sailthru/terraform-aws-ec2-instance-base",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_067_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "JesterCloud/aml-fraud-detection-aws",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_068_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "rhythmictech/terraform-aws-rhythmic-iam-roles",
+      "notes": "Attaches AdministratorAccess managed policy"
+    },
+    {
+      "filename": "policy_069_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "cloudposse/terraform-aws-eks-iam-role",
+      "notes": "Scoped resources with conditions; follows least-privilege"
+    },
+    {
+      "filename": "policy_070_variables_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "cloudposse/terraform-aws-eks-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_071_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "cloudposse/terraform-aws-eks-iam-role",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_072_iam_roles_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "AheadAviation/terraform-aws-eks-2.0",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_073_iam_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "bijubayarea/terraform-eks-s3-irsa",
+      "notes": "Scoped resources with conditions; follows least-privilege"
+    },
+    {
+      "filename": "policy_074_irsa_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "bijubayarea/terraform-eks-s3-irsa",
+      "notes": "Service-level wildcard but resources appear scoped"
+    },
+    {
+      "filename": "policy_075_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "mineiros-io/terraform-aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_076_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "hashicorp-education/learn-terraform-aws-assume-role-iam",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_077_iam-policy_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "godleon/aws-lab-001-assume-role",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_078_iam-role_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "godleon/aws-lab-001-assume-role",
+      "notes": "Scoped resources with conditions; follows least-privilege"
+    },
+    {
+      "filename": "policy_079_iam-user_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "godleon/aws-lab-001-assume-role",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_080_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "helecloud/terraform-aws-bitbucket-oidc",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_081_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "helecloud/terraform-aws-bitbucket-oidc",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_082_iam_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "apparentlymart/terraform-aws-service-roles",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_083_IAM_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "dean6969/Streaming-data-on-AWS-kinesis-Data-stream-Lambda-S3-IAM-roles-Cloudwatch-",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_084_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "resizes/platform-terraform-module-github-oidc-aws-role",
+      "notes": "Scoped resources with conditions; follows least-privilege"
+    },
+    {
+      "filename": "policy_085_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "cloudposse-archives/terraform-aws-iam-chamber-s3-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_086_admin_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "ik-cloud-iam/iam-by-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_087_auditor_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "ik-cloud-iam/iam-by-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_088_devops_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "ik-cloud-iam/iam-by-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_089_ec2admin_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "ik-cloud-iam/iam-by-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_090_groups_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "ik-cloud-iam/iam-by-role",
+      "notes": "Scoped actions with MFA condition; follows least-privilege"
+    },
+    {
+      "filename": "policy_091_iamadmin_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "ik-cloud-iam/iam-by-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_092_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "LozanoMatheus/eks-oidc",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_093_roles_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "Basillica/roles-terraform-module",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_094_admin-role_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "bpineau/aws-iam-mfa",
+      "notes": "Attaches AdministratorAccess managed policy"
+    },
+    {
+      "filename": "policy_095_mfa_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "bpineau/aws-iam-mfa",
+      "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition"
+    },
+    {
+      "filename": "policy_096_readonly-role_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "bpineau/aws-iam-mfa",
+      "notes": "Scoped actions with MFA condition; follows least-privilege"
+    },
+    {
+      "filename": "policy_097_iam_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "charlottemach/cross-account-aws-iam-roles",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_098_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "hendrixroa/terraform-aws-iam-role-ecs",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_099_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "sailthru/terraform-aws-asg-base",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_100_permissions_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "cirocosta/sample-docker-registry-aws",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_101_aws_cf_clusters_high-terraform_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "squasta/Terraform-RolePermissions-for-NC2onAWS",
+      "notes": "Service-level wildcard but resources appear scoped"
+    },
+    {
+      "filename": "policy_102_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "babbel/terraform-aws-iam-role-for-github-repository",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_103_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "tkskwn/terraform-aws-ec2-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_104_iam_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "aledivu/terraforming-opsman-securely",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_105_iam_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "aledivu/terraforming-opsman-securely",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_106_iam_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "aledivu/terraforming-opsman-securely",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_107_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "offensive-terraform/terraform-aws-cross-account-persistence",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_108_eks-cluster-iam_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "abbashussainz/IRSA-EKS-Terraform",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_109_eks-nodegroup-iam_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "abbashussainz/IRSA-EKS-Terraform",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_110_irsa-iam_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "abbashussainz/IRSA-EKS-Terraform",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_111_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "cloudposse-archives/terraform-aws-kops-aws-alb-ingress",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_112_terraform-iam-ec2_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "KyMidd/AWS_EC2_IAM_Authentication",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_113_iam_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "sourcefuse/terraform-aws-arc-ecs",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_114_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "dod-iac/terraform-aws-kinesis-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_115_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "cloudposse/terraform-aws-iam-assumed-roles",
+      "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition"
+    },
+    {
+      "filename": "policy_116_iam-role-vmimport_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "StratusGrid/terraform-aws-iam-role-vmimport",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_117_iam-policies_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "annegl/101_terraform",
+      "notes": "Service-level wildcard but resources appear scoped"
+    },
+    {
+      "filename": "policy_118_iam-roles_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "annegl/101_terraform",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_119_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "cloudposse/terraform-aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_120_outputs_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "cloudposse/terraform-aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_121_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "cloudposse/terraform-aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_122_iam-group_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "StratusGrid/terraform-aws-iam-group-restricted-read-only",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_123_iam-policy_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "StratusGrid/terraform-aws-iam-group-restricted-read-only",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_124_iam-role_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "StratusGrid/terraform-aws-iam-group-restricted-read-only",
+      "notes": "Scoped actions with MFA condition; follows least-privilege"
+    },
+    {
+      "filename": "policy_125_iamdata_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "StratusGrid/terraform-aws-iam-group-restricted-read-only",
+      "notes": "Scoped actions with MFA condition; follows least-privilege"
+    },
+    {
+      "filename": "policy_126_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "clutchsecurity/AWSKeyLockdown",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_127_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "baka126/terraform-k8s-irsa-iam",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_128_iam_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "baka126/terraform-k8s-irsa-iam",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_129_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "thanhbn87/terraform-aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_130_iam_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "MaheshShukla1/aws-devsecops-infra",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_131_data_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "clouddrove/terraform-aws-iam-role",
+      "notes": "Actions restricted to specific ARNs without wildcard resources"
+    },
+    {
+      "filename": "policy_132_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "clouddrove/terraform-aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_133_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "clouddrove/terraform-aws-iam-role",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_134_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "clouddrove/terraform-aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_135_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "dod-iac/terraform-aws-sagemaker-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_136_eks-assume-role-policy_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "cloudposse-terraform-components/aws-iam-role",
+      "notes": "Scoped resources with conditions; follows least-privilege"
+    },
+    {
+      "filename": "policy_137_github-assume-role-policy_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "cloudposse-terraform-components/aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_138_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "cloudposse-terraform-components/aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_139_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "jslopes8/terraform-aws-iam-roles",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_140_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "Smartbrood/terraform-aws-ec2-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_141_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "cloudposse/terraform-aws-eks-workers",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_142_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "Spandan-Malpani/Organizational_Account-Infra-Automation",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_143_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "anthunt/terraform-aws-iam-assume-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_144_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "lucidsoftware/terraform-aws-lucid-aws-import",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_145_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "lucidsoftware/terraform-aws-lucid-aws-import",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_146_main_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "lucidsoftware/terraform-aws-lucid-aws-import",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_147_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "jsallis/terraform-packer-iam-policy",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_148_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "yrahul05/terraform-aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_149_example_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "yrahul05/terraform-aws-iam-role",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_150_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "cloudposse/terraform-aws-helm-release",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_151_variables_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "cloudposse/terraform-aws-helm-release",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_152_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "cloudposse/terraform-aws-helm-release",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_153_role_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "spirius/terraform-aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_154_data_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "Cloud-42/terraform-aws-ec2-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_155_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "Cloud-42/terraform-aws-ec2-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_156_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "tierratelematics/terraform-aws-iam",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_157_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "autoclouddev/terraform-aws-autocloud-access-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_158_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "dod-iac/terraform-aws-api-gateway-cloudwatch-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_159_roles_config_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "spotify/gcp-aws-iam-federation-webidentity",
+      "notes": "Scoped resources with conditions; follows least-privilege"
+    },
+    {
+      "filename": "policy_160_main_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "opsstation/terraform-aws-iam-role",
+      "notes": "No obvious wildcard escalation paths detected"
+    },
+    {
+      "filename": "policy_161_example_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "opsstation/terraform-aws-iam-role",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_162_aws_admin_region-management_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_163_aws_code_commit_power_user_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_164_aws_code_deploy_deployer_access_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_165_aws_code_deploy_full_access_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_166_aws_code_deploy_role_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_167_aws_code_deploy_role_for_ecs_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_168_aws_code_pipeline_full_access_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_169_aws_code_star_full_access_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_170_aws_code_star_service_role_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_171_aws_compromised_key_quarantine_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_172_aws_conditional_date-range-access_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_173_aws_config_multi_account_setup_policy_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_174_aws_config_remediation_service_role_policy_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_175_aws_config_service_role_policy_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_176_aws_connector_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_177_aws_control_tower_account_service_role_policy_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_178_aws_deny_ip-based_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_179_cloudformation_create_changeset_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_180_cloudformation_create_with_passrole_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Service-level wildcard (e.g. iam:*) with resources=[\"*\"]"
+    },
+    {
+      "filename": "policy_181_cloudformation_delete_stack_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_182_cloudformation_drift_detection_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_183_cloudformation_full_access_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Service-level wildcard (e.g. iam:*) with resources=[\"*\"]"
+    },
+    {
+      "filename": "policy_184_cloudformation_read_only_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_185_cloudformation_stack_specific_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_186_cloudformation_stacksets_admin_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Service-level wildcard (e.g. iam:*) with resources=[\"*\"]"
+    },
+    {
+      "filename": "policy_187_cloudformation_template_upload_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_188_cloudformation_update_stack_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_189_dynamodb_readwrite_attribute-level_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_190_dynamodb_readwrite_cognito-items_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_191_dynamodb_readwrite_table-specific_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_192_ec2_admin_region-full-access_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "original_samples",
+      "notes": "Service-level wildcard (e.g. iam:*) with resources=[\"*\"]; condition present but scope still too broad"
+    },
+    {
+      "filename": "policy_193_ec2_deny_terminate-ip_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_194_ec2_write_mfa-required_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition"
+    },
+    {
+      "filename": "policy_195_ec2_write_security-group-management_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_196_ec2_write_subnet-launch_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_197_ec2_write_tag-owner-instances_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_198_escalation_add_user_to_group_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_199_escalation_attach_group_policy_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_200_escalation_attach_role_policy_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_201_escalation_attach_user_policy_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_202_escalation_create_access_key_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_203_escalation_create_login_profile_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_204_escalation_create_policy_version_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_205_escalation_passrole_cloudformation_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Service-level wildcard (e.g. iam:*) with resources=[\"*\"]"
+    },
+    {
+      "filename": "policy_206_escalation_passrole_codebuild_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_207_escalation_passrole_datapipeline_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_208_escalation_passrole_ec2_run_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "original_samples",
+      "notes": "Sensitive IAM write actions (e.g. iam:PassRole) on wildcard resource with no conditions"
+    },
+    {
+      "filename": "policy_209_escalation_passrole_glue_endpoint_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_210_escalation_passrole_lambda_create_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_211_escalation_passrole_lambda_update_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_212_escalation_passrole_sagemaker_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_213_escalation_put_group_policy_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_214_escalation_put_role_policy_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_215_escalation_put_user_policy_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_216_escalation_set_default_policy_version_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_217_escalation_update_assume_role_policy_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_218_escalation_update_login_profile_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_219_iam_admin_password-policy_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_220_iam_read_console-full_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_221_iam_read_credential-report_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_222_iam_read_only_access_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_223_iam_read_policy-simulator-api_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_224_iam_write_manage-group-membership_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_225_iam_write_passrole-to-service_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_226_iam_write_self-manage-credentials-mfa_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition"
+    },
+    {
+      "filename": "policy_227_lambda_basic_execution_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_228_lambda_create_restricted_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_229_lambda_create_with_passrole_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_230_lambda_event_source_mapping_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_231_lambda_full_access_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Service-level wildcard (e.g. iam:*) with resources=[\"*\"]"
+    },
+    {
+      "filename": "policy_232_lambda_invoke_specific_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_233_lambda_layer_management_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_234_lambda_read_only_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_235_lambda_update_code_with_passrole_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_236_lambda_update_with_passrole_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_237_lambda_vpc_execution_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_238_lambda_write_dynamodb-access_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_239_rds_admin_region-specific_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "original_samples",
+      "notes": "Service-level wildcard but resources appear scoped"
+    },
+    {
+      "filename": "policy_240_s3_readwrite_bucket-objects_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "original_samples",
+      "notes": "Service-level wildcard but resources appear scoped"
+    },
+    {
+      "filename": "policy_241_s3_readwrite_cognito-user-bucket_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_242_s3_readwrite_home-directory_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_243_s3_readwrite_mfa-protected_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "original_samples",
+      "notes": "Service-level wildcard but resources appear scoped"
+    },
+    {
+      "filename": "policy_244_secure_cloudwatch_read_only_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_245_secure_deny_root_account_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_246_secure_deny_unencrypted_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_247_secure_dynamodb_read_only_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_248_secure_ec2_read_only_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_249_secure_ip_restricted_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_250_secure_lambda_read_only_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_251_secure_mfa_required_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*); partially mitigated by MFA condition"
+    },
+    {
+      "filename": "policy_252_secure_rds_read_only_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_253_secure_require_ssl_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "original_samples",
+      "notes": "Service-level wildcard but resources appear scoped"
+    },
+    {
+      "filename": "policy_254_secure_resource_specific_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_255_secure_s3_least_privilege_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_256_secure_tag_based_access_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_257_secure_time_restricted_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_258_secure_vpc_read_only_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_259_sts_assume_role_chaining_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_260_sts_assume_role_cross_account_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_261_sts_assume_role_specific_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_262_sts_assume_role_wildcard_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_263_sts_assume_role_with_conditions_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_264_sts_decode_authorization_message_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_265_sts_get_caller_identity_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_266_sts_get_federation_token_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_267_sts_get_session_token_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_268_sts_tag_session_json.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "original_samples",
+      "notes": "No IAM policy statements; Terraform provider or module config only"
+    },
+    {
+      "filename": "policy_269_vulnerable_iam_full_access_json.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "original_samples",
+      "notes": "Wildcard action (*) with wildcard resource (*)"
+    },
+    {
+      "filename": "policy_270_synthetic_000_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_271_synthetic_001_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_272_synthetic_002_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_273_synthetic_003_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_274_synthetic_004_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_275_synthetic_005_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_276_synthetic_006_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_277_synthetic_007_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_278_synthetic_008_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_279_synthetic_009_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_280_synthetic_010_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_281_synthetic_011_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_282_synthetic_012_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_283_synthetic_013_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_284_synthetic_014_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_285_synthetic_015_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_286_synthetic_016_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_287_synthetic_017_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_288_synthetic_018_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_289_synthetic_019_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_290_synthetic_020_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_291_synthetic_021_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_292_synthetic_022_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_293_synthetic_023_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_294_synthetic_024_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_295_synthetic_025_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_296_synthetic_026_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_297_synthetic_027_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_298_synthetic_028_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_299_synthetic_029_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_300_synthetic_030_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_301_synthetic_031_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_302_synthetic_032_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_303_synthetic_033_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_304_synthetic_034_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_305_synthetic_035_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_306_synthetic_036_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_307_synthetic_037_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_308_synthetic_038_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_309_synthetic_039_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_310_synthetic_040_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_311_synthetic_041_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_312_synthetic_042_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_313_synthetic_043_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_314_synthetic_044_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_315_synthetic_045_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_316_synthetic_046_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_317_synthetic_047_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_318_synthetic_048_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_319_synthetic_049_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_320_synthetic_050_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_321_synthetic_051_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_322_synthetic_052_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_323_synthetic_053_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_324_synthetic_054_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_325_synthetic_055_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_326_synthetic_056_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_327_synthetic_057_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_328_synthetic_058_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_329_synthetic_059_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_330_synthetic_060_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_331_synthetic_061_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_332_synthetic_062_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_333_synthetic_063_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_334_synthetic_064_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_335_synthetic_065_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_336_synthetic_066_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_337_synthetic_067_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_338_synthetic_068_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_339_synthetic_069_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_340_synthetic_070_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_341_synthetic_071_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_342_synthetic_072_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_343_synthetic_073_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_344_synthetic_074_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_345_synthetic_075_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_346_synthetic_076_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_347_synthetic_077_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_348_synthetic_078_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_349_synthetic_079_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_350_synthetic_080_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_351_synthetic_081_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_352_synthetic_082_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_353_synthetic_083_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_354_synthetic_084_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_355_synthetic_085_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_356_synthetic_086_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_357_synthetic_087_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_358_synthetic_088_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_359_synthetic_089_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_360_synthetic_090_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_361_synthetic_091_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_362_synthetic_092_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_363_synthetic_093_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_364_synthetic_094_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_365_synthetic_095_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_366_synthetic_096_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_367_synthetic_097_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_368_synthetic_098_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_369_synthetic_099_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_370_synthetic_100_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_371_synthetic_101_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_372_synthetic_102_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_373_synthetic_103_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_374_synthetic_104_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_375_synthetic_105_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_376_synthetic_106_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_377_synthetic_107_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_378_synthetic_108_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_379_synthetic_109_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_380_synthetic_110_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_381_synthetic_111_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_382_synthetic_112_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_383_synthetic_113_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_384_synthetic_114_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_385_synthetic_115_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_386_synthetic_116_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_387_synthetic_117_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_388_synthetic_118_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_389_synthetic_119_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_390_synthetic_120_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_391_synthetic_121_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_392_synthetic_122_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_393_synthetic_123_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_394_synthetic_124_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_395_synthetic_125_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_396_synthetic_126_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_397_synthetic_127_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_398_synthetic_128_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_399_synthetic_129_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_400_synthetic_130_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_401_synthetic_131_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_402_synthetic_132_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_403_synthetic_133_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_404_synthetic_134_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_405_synthetic_135_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_406_synthetic_136_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_407_synthetic_137_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_408_synthetic_138_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_409_synthetic_139_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_410_synthetic_140_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_411_synthetic_141_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_412_synthetic_142_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_413_synthetic_143_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_414_synthetic_144_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_415_synthetic_145_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_416_synthetic_146_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_417_synthetic_147_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_418_synthetic_148_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_419_synthetic_149_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_420_synthetic_150_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_421_synthetic_151_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_422_synthetic_152_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_423_synthetic_153_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_424_synthetic_154_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_425_synthetic_155_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_426_synthetic_156_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_427_synthetic_157_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_428_synthetic_158_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_429_synthetic_159_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_430_synthetic_160_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_431_synthetic_161_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_432_synthetic_162_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_433_synthetic_163_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_434_synthetic_164_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_435_synthetic_165_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_436_synthetic_166_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_437_synthetic_167_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_438_synthetic_168_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_439_synthetic_169_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_440_synthetic_170_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_441_synthetic_171_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_442_synthetic_172_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_443_synthetic_173_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_444_synthetic_174_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_445_synthetic_175_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_446_synthetic_176_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_447_synthetic_177_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_448_synthetic_178_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_449_synthetic_179_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_450_synthetic_180_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_451_synthetic_181_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_452_synthetic_182_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_453_synthetic_183_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_454_synthetic_184_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_455_synthetic_185_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_456_synthetic_186_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_457_synthetic_187_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_458_synthetic_188_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_459_synthetic_189_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_460_synthetic_190_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_461_synthetic_191_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_462_synthetic_192_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_463_synthetic_193_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_464_synthetic_194_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_465_synthetic_195_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_466_synthetic_196_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_467_synthetic_197_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_468_synthetic_198_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_469_synthetic_199_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_470_synthetic_200_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_471_synthetic_201_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_472_synthetic_202_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_473_synthetic_203_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_474_synthetic_204_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_475_synthetic_205_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_476_synthetic_206_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_477_synthetic_207_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_478_synthetic_208_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_479_synthetic_209_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_480_synthetic_210_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_481_synthetic_211_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_482_synthetic_212_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_483_synthetic_213_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_484_synthetic_214_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_485_synthetic_215_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_486_synthetic_216_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_487_synthetic_217_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_488_synthetic_218_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_489_synthetic_219_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_490_synthetic_220_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_491_synthetic_221_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_492_synthetic_222_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_493_synthetic_223_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "Medium",
+      "severity": "high",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_494_synthetic_224_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_495_synthetic_225_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_496_synthetic_226_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_497_synthetic_227_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "High",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_498_synthetic_228_tf.json",
+      "label": "vulnerable",
+      "vulnerable": true,
+      "confidence": "High",
+      "severity": "critical",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_499_synthetic_229_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
+    },
+    {
+      "filename": "policy_500_synthetic_230_tf.json",
+      "label": "safe",
+      "vulnerable": false,
+      "confidence": "Medium",
+      "severity": "low",
+      "source": "synthetic/generated-policies",
+      "notes": "Synthetically generated policy for dataset expansion"
     }
   ]
 }

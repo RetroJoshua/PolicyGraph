@@ -1,0 +1,14 @@
+{
+  "id": "policy_349",
+  "filename": "synthetic_079.tf",
+  "source_repo": "synthetic/generated-policies",
+  "source_path": "synthetic/policies/synthetic_079.tf",
+  "content": "resource \"aws_iam_role\" \"synthetic_role_079\" {\n  name = \"synthetic_role_079\"\n  \n  assume_role_policy = jsonencode({\n    Version = \"2012-10-17\"\n    Statement = [\n      {\n        Action = \"sts:AssumeRole\"\n        Effect = \"Allow\"\n        Principal = {\n          Service = \"lambda.amazonaws.com\"\n        }\n      }\n    ]\n  })\n}\n\nresource \"aws_iam_role_policy\" \"synthetic_role_079_policy\" {\n  name   = \"synthetic_role_079-policy\"\n  role   = aws_iam_role.synthetic_role_079.id\n  policy = jsonencode({\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"*\"\n            ],\n            \"Resource\": \"arn:aws:iam::*:*\",\n            \"Condition\": {\n                \"StringEquals\": {\n                    \"aws:SourceAccount\": \"123456789012\"\n                }\n            }\n        }\n    ]\n})\n}\n",
+  "metadata": {
+    "vulnerable": true,
+    "confidence": "Medium",
+    "notes": "Synthetically generated policy for dataset expansion",
+    "checkov_findings": "Generated",
+    "scraped_date": "2026-06-08 09:17:06"
+  }
+}
